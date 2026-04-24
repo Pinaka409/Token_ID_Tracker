@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TokenID — Execution Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FE602C;--black:#1E1E22;--teal:#00BFA6;--white:#FFFFFF;
+  --bg:#FAFAFA;--bg2:#F2F2F4;--card:#FFFFFF;
+  --border:#E8E8EC;--border2:#D4D4DA;
+  --text:#1E1E22;--text2:#5A5A66;--text3:#8E8E9A;
+  --blue:#2B7DD6;--amber:#D48A1A;--red:#D44032;--purple:#6B63C5;--green:#0EA37A;
+  --mono:'JetBrains Mono',monospace;--sans:'Poppins',sans-serif;
+  --radius:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;font-size:14px}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 32px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:24px;height:54px}
+.nav-logo{font-weight:700;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;color:var(--black)}
+.nav-logo .mark{width:28px;height:28px;background:var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.nav-logo .mark svg{width:16px;height:16px}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{font-size:12px;color:var(--text3);text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:500;transition:all .15s}
+.nav-links a:hover{color:var(--text);background:var(--bg2)}
+.nav-links a.active{color:var(--orange);background:rgba(254,96,44,.06)}
+.hero{padding:52px 32px 36px;text-align:center}
+.hero h1{font-size:38px;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;color:var(--black)}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:16px;color:var(--text2);max-width:580px;margin:0 auto 28px;font-weight:300}
+.kpi-strip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:680px;margin:0 auto}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 22px;min-width:130px;text-align:left}
+.kpi-n{font-size:22px;font-weight:700;line-height:1.1}
+.kpi-l{font-size:11px;color:var(--text3);margin-top:3px;font-weight:500}
+.container{max-width:1100px;margin:0 auto;padding:0 32px}
+section{padding:44px 0}
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.section-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;color:var(--black)}
+.section-sub{font-size:14px;color:var(--text2);margin-bottom:24px;font-weight:300;max-width:700px}
+.divider{height:1px;background:var(--border)}
+.audit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.audit-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.audit-card:hover{border-color:var(--border2);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.audit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.audit-card[data-type="billing"]::before{background:var(--red)}
+.audit-card[data-type="efficiency"]::before{background:var(--teal)}
+.audit-card[data-type="execution"]::before{background:var(--purple)}
+.audit-name{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--black)}
+.audit-desc{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:10px}
+.audit-type{font-size:10px;font-weight:600;padding:3px 9px;border-radius:4px;display:inline-block}
+.type-billing{background:rgba(212,64,50,.08);color:var(--red)}
+.type-efficiency{background:rgba(0,191,166,.08);color:var(--teal)}
+.type-execution{background:rgba(107,99,197,.08);color:var(--purple)}
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:800px){.data-grid{grid-template-columns:1fr}}
+.data-col-title{font-size:13px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:var(--black)}
+.data-col-title .dot{width:8px;height:8px;border-radius:50%}
+.data-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:8px;border-left:3px solid var(--border);transition:border-color .15s}
+.data-item:hover{border-left-color:var(--orange)}
+.data-item-name{font-size:13px;font-weight:600;margin-bottom:3px;color:var(--black)}
+.data-item-desc{font-size:12px;color:var(--text2);line-height:1.55}
+.recon-bar{background:var(--black);border-radius:var(--radius);padding:20px 24px;margin-top:20px;color:#fff}
+.recon-bar h4{font-size:13px;font-weight:600;color:var(--orange);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.recon-bar p{font-size:13px;color:#B8B8C4;line-height:1.6}
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:'';position:absolute;left:13px;top:6px;bottom:20px;width:2px;background:var(--border)}
+.tl-phase{position:relative;margin-bottom:32px}
+.tl-phase:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-36px;top:2px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;border:3px solid var(--bg);z-index:2}
+.tl-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.tl-name{font-size:17px;font-weight:700;color:var(--black)}
+.tl-time{font-size:11px;color:var(--text3);font-family:var(--mono);font-weight:500;background:var(--bg2);padding:2px 8px;border-radius:4px}
+.tl-owner{font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px}
+.tl-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px;max-width:680px}
+.tl-tasks{display:flex;flex-direction:column;gap:4px}
+.tl-task{font-size:12px;color:var(--text2);padding:7px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;gap:8px}
+.tl-task .check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--border2);flex-shrink:0}
+.unknown-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:800px){.unknown-grid{grid-template-columns:1fr}}
+.unknown{background:#FFFBF0;border:1px solid #EDE0B8;border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
+.unknown::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber)}
+.unknown-title{font-size:14px;font-weight:600;color:#7A5A10;margin-bottom:6px}
+.unknown-desc{font-size:12px;color:#997520;line-height:1.55;margin-bottom:10px}
+.unknown-owner{font-size:11px;font-weight:600;color:#7A5A10;background:rgba(212,138,26,.1);padding:3px 9px;border-radius:4px;display:inline-block}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;transition:border-color .15s}
+.team-card:hover{border-color:var(--border2)}
+.team-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.team-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:1px}
+.team-role{font-size:12px;color:var(--text2);margin-bottom:4px}
+.team-scope{font-size:11px;color:var(--text3);line-height:1.55}
+footer{padding:32px;text-align:center;border-top:1px solid var(--border);font-size:11px;color:var(--text3);margin-top:32px}
+footer span{color:var(--orange);font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-logo"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 4.5v5c0 4.5-3.5 8.5-8 10-4.5-1.5-8-5.5-8-10v-5L12 3z"/></svg></div>TokenID</div><div class="nav-links"><a href="#audit" class="active">What we audit</a><a href="#data">Data collection</a><a href="#timeline">Timeline</a><a href="#unknowns">Unknowns</a><a href="#team">Team</a></div></div></nav>
+
+<div class="hero"><h1>Local tracker → <em>audit system</em></h1><p class="hero-sub">What we're building, what we audit, how we collect the data, and when it ships.</p><div class="kpi-strip"><div class="kpi"><div class="kpi-n" style="color:var(--orange)">3</div><div class="kpi-l">Audit surfaces</div></div><div class="kpi"><div class="kpi-n" style="color:var(--teal)">6</div><div class="kpi-l">System layers</div></div><div class="kpi"><div class="kpi-n" style="color:var(--amber)">4</div><div class="kpi-l">Unknowns to resolve</div></div><div class="kpi"><div class="kpi-n" style="color:var(--green)">2 wks</div><div class="kpi-l">To external POC</div></div></div></div>
+
+<div class="container">
+<section id="audit"><div class="section-label" style="color:var(--teal)">What we audit</div><div class="section-title">Seven audit categories</div><div class="section-sub">Each finding maps to a violation type — billing, efficiency, or execution. Every violation carries a dollar amount.</div><div class="audit-grid"><div class="audit-card" data-type="billing"><div class="audit-name">Anomaly detection</div><div class="audit-desc">Token usage spikes, unexplained cost jumps, spend pattern outliers across models and services.</div><span class="audit-type type-billing">Billing</span></div><div class="audit-card" data-type="billing"><div class="audit-name">Token usage audit</div><div class="audit-desc">Input / output / cache token breakdown — how you are actually billed vs what was consumed.</div><span class="audit-type type-billing">Billing</span></div><div class="audit-card" data-type="efficiency"><div class="audit-name">Cache configuration</div><div class="audit-desc">Repeated system prompts eligible for prompt caching but not using it. 10x cheaper on cache read.</div><span class="audit-type type-efficiency">Efficiency</span></div><div class="audit-card" data-type="billing"><div class="audit-name">SLA uptime</div><div class="audit-desc">Vendor downtime windows correlated against billing periods. Each breach maps to a credit claim.</div><span class="audit-type type-billing">Billing</span></div><div class="audit-card" data-type="billing"><div class="audit-name">Ghost / failed results</div><div class="audit-desc">Failed requests still billed. Incomplete outputs. Duplicate billing. Visible only with call-level instrumentation.</div><span class="audit-type type-billing">Billing</span></div><div class="audit-card" data-type="execution"><div class="audit-name">Model substitution</div><div class="audit-desc">Did the vendor actually run the model you asked for? Detection via latency patterns, token generation speed, response fingerprinting.</div><span class="audit-type type-execution">Execution</span></div><div class="audit-card" data-type="execution"><div class="audit-name">Execution waste</div><div class="audit-desc">Retries, agent loops, duplicate tool calls, context inflation. Cost per agent run, not just per call.</div><span class="audit-type type-execution">Execution</span></div></div></section>
+
+<div class="divider"></div>
+
+<section id="data"><div class="section-label" style="color:var(--green)">How we collect data</div><div class="section-title">Two data streams. One reconciliation.</div><div class="section-sub">Usage data is our independent ledger — what actually happened. Billing data is what the vendor says you owe. The gap between them is where the money is.</div><div class="data-grid"><div><div class="data-col-title"><span class="dot" style="background:var(--green)"></span> Usage data — our independent ledger</div><div class="data-item" style="border-left-color:var(--green)"><div class="data-item-name">SDK wrapper (Y)</div><div class="data-item-desc">request_id, model, input/output/cache tokens, duration, tool calls, retries, errors. Per-call metadata. Prompt text never sent by default.</div></div><div class="data-item" style="border-left-color:var(--blue)"><div class="data-item-name">Cloud cost APIs (Tun)</div><div class="data-item-desc">Azure Cost Management · AWS Cost Explorer · GCP Billing API. Structured billing data — richest source for SLA breach detection.</div></div><div class="data-item" style="border-left-color:var(--orange)"><div class="data-item-name">Admin APIs (Tun)</div><div class="data-item-desc">ChatGPT Ent admin · Claude.ai Ent admin · M365 Graph — seat activity and utilisation rates.</div></div><div class="data-item" style="border-left-color:var(--purple)"><div class="data-item-name">CLI telemetry (Nayana)</div><div class="data-item-desc">GitHub org usage API · Cursor admin CSV export · Claude Code admin API. Dev tool seat and acceptance metrics.</div></div></div><div><div class="data-col-title"><span class="dot" style="background:var(--red)"></span> Billing data — what the vendor says you owe</div><div class="data-item" style="border-left-color:var(--teal)"><div class="data-item-name">Provider usage exports</div><div class="data-item-desc">OpenAI usage CSV · Anthropic console export · GCP billing export for Gemini. What the vendor reports as your consumption.</div></div><div class="data-item" style="border-left-color:var(--red)"><div class="data-item-name">Customer invoice upload</div><div class="data-item-desc">PDF / CSV invoices. We extract line items and cross-reference against our independent ledger. Every delta is a finding.</div></div><div class="data-item" style="border-left-color:var(--amber)"><div class="data-item-name">Pricing tables</div><div class="data-item-desc">Vendor rate cards · per-model pricing · committed-use discounts · PTU rates. Applied at log time for point-in-time accuracy.</div></div><div class="data-item" style="border-left-color:var(--blue)"><div class="data-item-name">SLA commitments</div><div class="data-item-desc">Uptime guarantees · latency SLAs · enterprise agreement terms. The contractual basis for credit claims.</div></div></div></div><div class="recon-bar"><h4>Reconciliation = usage ledger vs billing data</h4><p>Compare what we independently recorded against what the vendor says you owe. Every mismatch is a finding. Every finding has a dollar amount. Mark owns the claim workflow — evidence packaging, vendor submission, resolution tracking.</p></div></section>
+
+<div class="divider"></div>
+
+<section id="timeline"><div class="section-label" style="color:var(--orange)">Timeline</div><div class="section-title">Six phases. External POC in 2 weeks.</div><div class="section-sub">Priority order: API → cloud infra → CLI → copilots (research spike) → enforcement.</div><div class="timeline"><div class="tl-phase"><div class="tl-dot" style="background:var(--orange)">0</div><div class="tl-header"><span class="tl-name">Internal POC</span><span class="tl-time">Wk 1</span><span class="tl-owner" style="background:rgba(254,96,44,.08);color:var(--orange)">Deepak</span></div><div class="tl-desc">Instrument Vaudit's own Anthropic + Cursor usage. Central /events endpoint. Postgres ledger. Run 5 audit findings on our own spend with dollar amounts.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Y: Anthropic SDK wrapper scaffold</div><div class="tl-task"><div class="check"></div>Central POST /events endpoint + Postgres ledger</div><div class="tl-task"><div class="check"></div>Rate card calculator applied at log time</div><div class="tl-task"><div class="check"></div>Mark: refund process research per vendor</div><div class="tl-task"><div class="check"></div>Frontend: landing page + signup flow</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--teal)">1</div><div class="tl-header"><span class="tl-name">LLM API audit</span><span class="tl-time">Wk 2–4</span><span class="tl-owner" style="background:rgba(0,191,166,.08);color:var(--teal)">Y</span></div><div class="tl-desc">SDK wrapper for Anthropic + OpenAI + Gemini. One external POC customer onboarded. Reconciliation engine comparing our ledger vs provider exports. First claim filed.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Multi-vendor SDK (Anthropic, OpenAI, Gemini)</div><div class="tl-task"><div class="check"></div>Customer API key + data isolation</div><div class="tl-task"><div class="check"></div>Reconciliation engine: ledger vs provider billing</div><div class="tl-task"><div class="check"></div>Violation classification: billing · efficiency · execution</div><div class="tl-task"><div class="check"></div>24hr findings email with real dollar amounts</div><div class="tl-task"><div class="check"></div>Mark: first credit claim filed with POC customer</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--blue)">2</div><div class="tl-header"><span class="tl-name">Cloud LLM infra</span><span class="tl-time">Wk 5–10</span><span class="tl-owner" style="background:rgba(43,125,214,.08);color:var(--blue)">Tun</span></div><div class="tl-desc">Azure OpenAI · AWS Bedrock · Google Vertex. Cloud cost management APIs — richest structured billing data. SLA breach detection with formal enterprise credit paths. $18B+ addressable surface.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Azure Cost Management API integration</div><div class="tl-task"><div class="check"></div>AWS Cost Explorer integration</div><div class="tl-task"><div class="check"></div>GCP Billing API integration</div><div class="tl-task"><div class="check"></div>PTU vs consumption billing handling</div><div class="tl-task"><div class="check"></div>SLA breach → credit claim pipeline</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--purple)">3</div><div class="tl-header"><span class="tl-name">CLI tools</span><span class="tl-time">Wk 8–12</span><span class="tl-owner" style="background:rgba(107,99,197,.08);color:var(--purple)">Nayana</span></div><div class="tl-desc">GitHub Copilot · Cursor · Claude Code · Codeium. Seat utilisation, acceptance rates, cost per accepted suggestion, duplicate tool detection. $7.3B addressable surface.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>GitHub org usage API integration</div><div class="tl-task"><div class="check"></div>Cursor admin CSV export pipeline</div><div class="tl-task"><div class="check"></div>Claude Code via Anthropic admin API</div><div class="tl-task"><div class="check"></div>Active devs vs licensed seats analysis</div><div class="tl-task"><div class="check"></div>Duplicate tool overlap detection</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--amber)">4</div><div class="tl-header"><span class="tl-name">Enterprise copilots</span><span class="tl-time">Wk 13+ · lower priority</span><span class="tl-owner" style="background:rgba(212,138,26,.08);color:var(--amber)">Tun + Nayana</span></div><div class="tl-desc">M365 Copilot · Gemini Workspace. Seat-based billing with limited token visibility. Research spike — we don't have an audit methodology yet. Nayana's seat-audit pattern from CLI tools is the foundation.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Research: M365 Graph API telemetry depth</div><div class="tl-task"><div class="check"></div>Research: Gemini Workspace admin console capabilities</div><div class="tl-task"><div class="check"></div>Define seat utilisation audit methodology</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--green)">5</div><div class="tl-header"><span class="tl-name">Enforcement — TokenCeiling v1</span><span class="tl-time">Wk 17+</span><span class="tl-owner" style="background:rgba(14,163,122,.08);color:var(--green)">TBD</span></div><div class="tl-desc">Move from after-the-fact analysis to real-time control. Token ceilings per request, block duplicate / retry calls, detect and stop agent loops, basic model routing. The moat — no competitor does enforcement.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Token ceilings per request</div><div class="tl-task"><div class="check"></div>Duplicate request suppression</div><div class="tl-task"><div class="check"></div>Agent loop detection + kill-switch</div><div class="tl-task"><div class="check"></div>Basic model routing rules</div></div></div></div></section>
+
+<div class="divider"></div>
+
+<section id="unknowns"><div class="section-label" style="color:var(--amber)">Known unknowns</div><div class="section-title">Four questions to answer before week 2</div><div class="section-sub">These are blocking or de-risking the external POC. Each has an owner and a deadline.</div><div class="unknown-grid"><div class="unknown"><div class="unknown-title">Token-level billing granularity per vendor</div><div class="unknown-desc">Anthropic aggregates only — need to reach support for granular data. Gemini confirmed yes. OpenAI /v1/costs is partial. Can we get per-request billing or only daily totals?</div><span class="unknown-owner">Y · with Deepak on Anthropic relationship · Wk 1</span></div><div class="unknown"><div class="unknown-title">Tokenisation — can we verify counts independently?</div><div class="unknown-desc">Does our tiktoken / anthropic-tokenizer match what the vendor bills? If mismatched, how big is the gap? Core to model substitution detection.</div><span class="unknown-owner">Y · first-week spike</span></div><div class="unknown"><div class="unknown-title">Refund process per vendor — what works</div><div class="unknown-desc">Anthropic has no formal SLA credit portal. OpenAI uses support tickets. AWS has a formal path. Azure uses enterprise reps. Document accepted evidence types + resolution timelines.</div><span class="unknown-owner">Mark · week 1 deliverable</span></div><div class="unknown"><div class="unknown-title">Model substitution detection — methodology</div><div class="unknown-desc">Did the vendor run Sonnet when you asked for Opus? No vendor exposes this. Signals: response quality fingerprinting, latency patterns, token generation speed. Research spike needed.</div><span class="unknown-owner">Y + Deepak · methodology design</span></div></div></section>
+
+<div class="divider"></div>
+
+<section id="team"><div class="section-label" style="color:var(--blue)">Team</div><div class="section-title">Who does what</div><div class="section-sub">Six workstreams. Clear owners.</div><div class="team-grid"><div class="team-card"><div class="team-avatar" style="background:rgba(254,96,44,.1);color:var(--orange)">D</div><div><div class="team-name">Deepak</div><div class="team-role">Product owner — overall</div><div class="team-scope">Orchestration · leadership alignment · external POC outreach · violation schema · cost-per-outcome model</div></div></div><div class="team-card"><div class="team-avatar" style="background:rgba(0,191,166,.1);color:var(--teal)">Y</div><div><div class="team-name">Y</div><div class="team-role">SDK wrapper — API audit</div><div class="team-scope">Anthropic · OpenAI · Gemini · independent token ledger · privacy-first metadata capture</div></div></div><div class="team-card"><div class="team-avatar" style="background:rgba(43,125,214,.1);color:var(--blue)">T</div><div><div class="team-name">Tun</div><div class="team-role">Enterprise LLM + cloud infra</div><div class="team-scope">Azure OpenAI · AWS Bedrock · Google Vertex · ChatGPT Ent · Claude.ai Ent admin APIs</div></div></div><div class="team-card"><div class="team-avatar" style="background:rgba(107,99,197,.1);color:var(--purple)">N</div><div><div class="team-name">Nayana</div><div class="team-role">CLI tools audit</div><div class="team-scope">GitHub Copilot · Cursor · Claude Code · Codeium · seat utilisation + acceptance metrics</div></div></div><div class="team-card"><div class="team-avatar" style="background:rgba(212,64,50,.1);color:var(--red)">M</div><div><div class="team-name">Mark</div><div class="team-role">Recovery + refund process</div><div class="team-scope">Claim generation · evidence packaging · vendor submission · resolution tracking</div></div></div><div class="team-card"><div class="team-avatar" style="background:rgba(142,142,154,.1);color:var(--text3)">F</div><div><div class="team-name">Frontend team</div><div class="team-role">Onboarding · aha · virality</div><div class="team-scope">Landing · signup · connect · verify · 24hr email · dashboard · shareable PDF report</div></div></div></div></section>
+
+<footer><span>TokenID</span> · Vaudit · Internal execution tracker · Updated April 2026</footer>
+</div>
+<script>
+const sections=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(scrollY>=s.offsetTop-100)c=s.id});links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+</script>
+</body>
+</html>
