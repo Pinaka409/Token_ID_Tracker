@@ -110,7 +110,64 @@ footer span{color:var(--orange);font-weight:600}
 
 <div class="divider"></div>
 
-<section id="timeline"><div class="section-label" style="color:var(--orange)">Timeline</div><div class="section-title">Six phases. External POC in 2 weeks.</div><div class="section-sub">Priority order: API → cloud infra → CLI → copilots (research spike) → enforcement.</div><div class="timeline"><div class="tl-phase"><div class="tl-dot" style="background:var(--orange)">0</div><div class="tl-header"><span class="tl-name">Internal POC</span><span class="tl-time">Wk 1</span><span class="tl-owner" style="background:rgba(254,96,44,.08);color:var(--orange)">Deepak</span></div><div class="tl-desc">Instrument Vaudit's own Anthropic + Cursor usage. Central /events endpoint. Postgres ledger. Run 5 audit findings on our own spend with dollar amounts.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Y: Anthropic SDK wrapper scaffold</div><div class="tl-task"><div class="check"></div>Central POST /events endpoint + Postgres ledger</div><div class="tl-task"><div class="check"></div>Rate card calculator applied at log time</div><div class="tl-task"><div class="check"></div>Mark: refund process research per vendor</div><div class="tl-task"><div class="check"></div>Frontend: landing page + signup flow</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--teal)">1</div><div class="tl-header"><span class="tl-name">LLM API audit</span><span class="tl-time">Wk 2–4</span><span class="tl-owner" style="background:rgba(0,191,166,.08);color:var(--teal)">Y</span></div><div class="tl-desc">SDK wrapper for Anthropic + OpenAI + Gemini. One external POC customer onboarded. Reconciliation engine comparing our ledger vs provider exports. First claim filed.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Multi-vendor SDK (Anthropic, OpenAI, Gemini)</div><div class="tl-task"><div class="check"></div>Customer API key + data isolation</div><div class="tl-task"><div class="check"></div>Reconciliation engine: ledger vs provider billing</div><div class="tl-task"><div class="check"></div>Violation classification: billing · efficiency · execution</div><div class="tl-task"><div class="check"></div>24hr findings email with real dollar amounts</div><div class="tl-task"><div class="check"></div>Mark: first credit claim filed with POC customer</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--blue)">2</div><div class="tl-header"><span class="tl-name">Cloud LLM infra</span><span class="tl-time">Wk 5–10</span><span class="tl-owner" style="background:rgba(43,125,214,.08);color:var(--blue)">Tun</span></div><div class="tl-desc">Azure OpenAI · AWS Bedrock · Google Vertex. Cloud cost management APIs — richest structured billing data. SLA breach detection with formal enterprise credit paths. $18B+ addressable surface.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Azure Cost Management API integration</div><div class="tl-task"><div class="check"></div>AWS Cost Explorer integration</div><div class="tl-task"><div class="check"></div>GCP Billing API integration</div><div class="tl-task"><div class="check"></div>PTU vs consumption billing handling</div><div class="tl-task"><div class="check"></div>SLA breach → credit claim pipeline</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--purple)">3</div><div class="tl-header"><span class="tl-name">CLI tools</span><span class="tl-time">Wk 8–12</span><span class="tl-owner" style="background:rgba(107,99,197,.08);color:var(--purple)">Nayana</span></div><div class="tl-desc">GitHub Copilot · Cursor · Claude Code · Codeium. Seat utilisation, acceptance rates, cost per accepted suggestion, duplicate tool detection. $7.3B addressable surface.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>GitHub org usage API integration</div><div class="tl-task"><div class="check"></div>Cursor admin CSV export pipeline</div><div class="tl-task"><div class="check"></div>Claude Code via Anthropic admin API</div><div class="tl-task"><div class="check"></div>Active devs vs licensed seats analysis</div><div class="tl-task"><div class="check"></div>Duplicate tool overlap detection</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--amber)">4</div><div class="tl-header"><span class="tl-name">Enterprise copilots</span><span class="tl-time">Wk 13+ · lower priority</span><span class="tl-owner" style="background:rgba(212,138,26,.08);color:var(--amber)">Tun + Nayana</span></div><div class="tl-desc">M365 Copilot · Gemini Workspace. Seat-based billing with limited token visibility. Research spike — we don't have an audit methodology yet. Nayana's seat-audit pattern from CLI tools is the foundation.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Research: M365 Graph API telemetry depth</div><div class="tl-task"><div class="check"></div>Research: Gemini Workspace admin console capabilities</div><div class="tl-task"><div class="check"></div>Define seat utilisation audit methodology</div></div></div><div class="tl-phase"><div class="tl-dot" style="background:var(--green)">5</div><div class="tl-header"><span class="tl-name">Enforcement — TokenCeiling v1</span><span class="tl-time">Wk 17+</span><span class="tl-owner" style="background:rgba(14,163,122,.08);color:var(--green)">TBD</span></div><div class="tl-desc">Move from after-the-fact analysis to real-time control. Token ceilings per request, block duplicate / retry calls, detect and stop agent loops, basic model routing. The moat — no competitor does enforcement.</div><div class="tl-tasks"><div class="tl-task"><div class="check"></div>Token ceilings per request</div><div class="tl-task"><div class="check"></div>Duplicate request suppression</div><div class="tl-task"><div class="check"></div>Agent loop detection + kill-switch</div><div class="tl-task"><div class="check"></div>Basic model routing rules</div></div></div></div></section>
+<section id="timeline"><div class="section-label" style="color:var(--orange)">Timeline</div><div class="section-title">2-week sprint to external POC</div><div class="section-sub">This is what we're doing now. Everything after week 2 gets planned once the POC is live.</div>
+
+<div class="timeline">
+
+<div class="tl-phase">
+<div class="tl-dot" style="background:var(--orange)">1</div>
+<div class="tl-header"><span class="tl-name">Week 1 — internal POC</span><span class="tl-time">This week</span><span class="tl-owner" style="background:rgba(254,96,44,.08);color:var(--orange)">Deepak</span></div>
+<div class="tl-desc">Instrument Vaudit's own Anthropic + Cursor usage. Central /events endpoint. Postgres ledger. Run 5 audit findings on our own spend with dollar amounts. This becomes the sales artifact.</div>
+<div class="tl-tasks">
+<div class="tl-task"><div class="check"></div>Y: Anthropic SDK wrapper scaffold</div>
+<div class="tl-task"><div class="check"></div>Central POST /events endpoint + Postgres ledger</div>
+<div class="tl-task"><div class="check"></div>Rate card calculator applied at log time</div>
+<div class="tl-task"><div class="check"></div>Y: tokenisation spike — can we independently verify vendor token counts?</div>
+<div class="tl-task"><div class="check"></div>Mark: refund process research per vendor</div>
+<div class="tl-task"><div class="check"></div>Frontend: landing page + signup flow</div>
+</div>
+</div>
+
+<div class="tl-phase">
+<div class="tl-dot" style="background:var(--teal)">2</div>
+<div class="tl-header"><span class="tl-name">Week 2 — external POC</span><span class="tl-time">Next week</span><span class="tl-owner" style="background:rgba(0,191,166,.08);color:var(--teal)">Y</span></div>
+<div class="tl-desc">One external customer onboarded. SDK installed. Reconciliation engine comparing our ledger vs provider exports. 24hr findings email sent. First claim drafted by Mark.</div>
+<div class="tl-tasks">
+<div class="tl-task"><div class="check"></div>Multi-vendor SDK live (Anthropic, OpenAI, Gemini)</div>
+<div class="tl-task"><div class="check"></div>Customer API key + data isolation</div>
+<div class="tl-task"><div class="check"></div>Reconciliation engine: ledger vs provider billing</div>
+<div class="tl-task"><div class="check"></div>Violation classification: billing · efficiency · execution</div>
+<div class="tl-task"><div class="check"></div>24hr findings email with real dollar amounts</div>
+<div class="tl-task"><div class="check"></div>Mark: first credit claim drafted with POC customer</div>
+<div class="tl-task"><div class="check"></div>Frontend: CTO dashboard + shareable PDF report</div>
+<div class="tl-task"><div class="check"></div>Tun: Azure / AWS / GCP cost API access — natural extension of KLOUDID</div>
+</div>
+</div>
+
+<div class="tl-phase">
+<div class="tl-dot" style="background:var(--blue)">2b</div>
+<div class="tl-header"><span class="tl-name">Cloud LLM infra — extends KLOUDID</span><span class="tl-time">Wk 2 parallel</span><span class="tl-owner" style="background:rgba(43,125,214,.08);color:var(--blue)">Tun</span></div>
+<div class="tl-desc">Tun already audits cloud spend via KLOUDID. LLM inference on Azure OpenAI, AWS Bedrock, and Google Vertex flows through the same cloud cost APIs. This is a natural product extension, not a new build.</div>
+<div class="tl-tasks">
+<div class="tl-task"><div class="check"></div>Azure Cost Management API — LLM resource filtering</div>
+<div class="tl-task"><div class="check"></div>AWS Cost Explorer — Bedrock usage + SLA breach detection</div>
+<div class="tl-task"><div class="check"></div>GCP Billing API — Vertex AI spend isolation</div>
+<div class="tl-task"><div class="check"></div>PTU vs consumption billing handling</div>
+</div>
+</div>
+
+</div>
+
+<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-top:24px">
+<div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px">What comes next — planned after external POC ships</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;border-left:3px solid var(--purple)"><div style="font-size:12px;font-weight:600;color:var(--black)">CLI tools</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Nayana · GitHub Copilot · Cursor · Claude Code · Codeium</div></div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;border-left:3px solid var(--amber)"><div style="font-size:12px;font-weight:600;color:var(--black)">Enterprise copilots</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Tun + Nayana · M365 Copilot · Gemini Workspace · research spike</div></div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;border-left:3px solid var(--green)"><div style="font-size:12px;font-weight:600;color:var(--black)">Enforcement — TokenCeiling</div><div style="font-size:11px;color:var(--text2);margin-top:2px">TBD · real-time ceilings · agent loop kill-switch · model routing</div></div>
+</div>
+</div>
+
+</section>
 
 <div class="divider"></div>
 
