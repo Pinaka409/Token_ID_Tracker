@@ -135,21 +135,64 @@ body{font-family:var(--f);background:var(--bg);color:var(--t1);-webkit-font-smoo
 
 <div class="sec">
   <div class="sec-tag" style="color:var(--o)">How it works</div>
-  <div class="sec-h">Three steps</div>
-  <div class="g3">
-    <div class="c"><div class="c-bar" style="background:var(--blue)"></div><div class="c-body"><div class="c-h">01 · Record</div><div class="c-p">We independently capture every AI call your team makes. Tokens, model, cost — logged at the moment it happens.</div></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--o)"></div><div class="c-body"><div class="c-h">02 · Compare</div><div class="c-p">We pull your vendor's billing data. Compare it to our record. Every mismatch gets a confidence score and a dollar amount.</div></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--green)"></div><div class="c-body"><div class="c-h">03 · Recover</div><div class="c-p">High-confidence findings become dispute-ready evidence. You send it to the vendor. We track until credited.</div></div></div>
+  <div class="sec-h">From raw data to recovered dollars</div>
+
+  <div style="display:flex;gap:0;align-items:stretch;margin-top:8px">
+
+    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r) 0 0 var(--r);padding:20px 22px;position:relative;box-shadow:var(--sh)">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue);border-radius:var(--r) 0 0 0"></div>
+      <div style="font-size:11px;font-weight:600;color:var(--blue);margin-bottom:6px">01 · RECORD</div>
+      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">$2,000/mo in AI calls</div>
+      <div style="font-size:11px;color:var(--t2);line-height:1.55">We capture every call. Tokens, model, cost. Independent ledger — our data, not the vendor's.</div>
+      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--blue)">$2,000</div>
+      <div style="font-size:9px;color:var(--t3)">total spend captured</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+
+    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);padding:20px 22px;position:relative;box-shadow:var(--sh)">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--o)"></div>
+      <div style="font-size:11px;font-weight:600;color:var(--o);margin-bottom:6px">02 · COMPARE</div>
+      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">Vendor says $2,000. We say $726.</div>
+      <div style="font-size:11px;color:var(--t2);line-height:1.55">Reconcile daily. Confidence-score every bucket. Flag mismatches with dollar amounts.</div>
+      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--o)">$1,274</div>
+      <div style="font-size:9px;color:var(--t3)">in mismatches found</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+
+    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);padding:20px 22px;position:relative;box-shadow:var(--sh)">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--t)"></div>
+      <div style="font-size:11px;font-weight:600;color:var(--t);margin-bottom:6px">03 · CLASSIFY</div>
+      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">4 findings. Scored by confidence.</div>
+      <div style="font-size:11px;color:var(--t2);line-height:1.55">Each finding gets: severity, confidence tier, dollar impact, root cause, recommended action.</div>
+      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--t)">4 findings</div>
+      <div style="font-size:9px;color:var(--t3)">1 critical · 2 high · 1 medium</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+
+    <div style="flex:1;background:var(--card);border:1px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:20px 22px;position:relative;box-shadow:var(--sh)">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--green);border-radius:0 var(--r) 0 0"></div>
+      <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:6px">04 · RECOVER</div>
+      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">Dispute CSV → vendor → credited.</div>
+      <div style="font-size:11px;color:var(--t2);line-height:1.55">Evidence packaged. Sent to vendor billing team. Lifecycle tracked until resolution.</div>
+      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--green)">$1,310</div>
+      <div style="font-size:9px;color:var(--t3)">recoverable + saveable</div>
+    </div>
+
   </div>
+
+  <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--t3)">$2,000 in → $1,310 found → <strong style="color:var(--o)">65% of spend is addressable</strong></div>
 </div>
 
 <div class="dk" style="margin-top:4px">
-  <h3>Real findings — our own Bedrock audit · 28 Apr 2026</h3>
+  <h3>Illustrative findings at $2K monthly Bedrock spend</h3>
   <div class="g2" style="gap:10px">
-    <div class="fd"><span class="fd-sev s-c">Critical</span><div class="fd-name">Marketplace path miscategorization</div><div class="fd-desc">Entire Bedrock spend routed through Marketplace billing instead of direct usage.</div><div class="fd-amt">$122.16</div></div>
-    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Predicted vs actual drift</div><div class="fd-desc">Opus billed at 36.7% of published rate. 63% gap on 1,021 calls.</div><div class="fd-amt">$77.30 gap</div></div>
-    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Cache line double bill</div><div class="fd-desc">AWS billing full input AND cached tokens separately. 110% effective rate.</div><div class="fd-amt">$2.17 recoverable</div></div>
-    <div class="fd"><span class="fd-sev s-m">Medium</span><div class="fd-name">Batch recoverable</div><div class="fd-desc">Workload eligible for batch tier. No real-time latency needed.</div><div class="fd-amt">$1.30 saveable</div></div>
+    <div class="fd"><span class="fd-sev s-c">Critical</span><div class="fd-name">Marketplace path miscategorization</div><div class="fd-desc">Entire Bedrock spend routed through Marketplace billing instead of direct usage.</div><div class="fd-amt">$1,980</div></div>
+    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Predicted vs actual drift</div><div class="fd-desc">Opus billed at 36.7% of published rate. 63% gap on 16,500 calls.</div><div class="fd-amt">$1,254 gap</div></div>
+    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Cache line double bill</div><div class="fd-desc">AWS billing full input AND cached tokens separately. 110% effective rate.</div><div class="fd-amt">$35 recoverable</div></div>
+    <div class="fd"><span class="fd-sev s-m">Medium</span><div class="fd-name">Batch recoverable</div><div class="fd-desc">Workload eligible for batch tier. No real-time latency needed.</div><div class="fd-amt">$21 saveable</div></div>
   </div>
 </div>
 
@@ -159,7 +202,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--t1);-webkit-font-smoo
   <div class="sec-tag" style="color:var(--t)">Where we audit</div>
   <div class="sec-h">Three surfaces</div>
   <div class="g3">
-    <div class="c"><div class="c-bar" style="background:var(--t)"></div><div class="c-body"><div class="c-h">Cloud LLM infra</div><div class="c-sub">Bedrock · Vertex · Azure OpenAI</div><div class="c-p">Bedrock POC live with real findings. GCP already in KLOUDID — Vertex next. Azure after.</div></div><div class="c-foot" style="color:var(--t)"><strong>$18B+ · Tun</strong></div></div>
+    <div class="c"><div class="c-bar" style="background:var(--t)"></div><div class="c-body"><div class="c-h">Cloud LLM infra</div><div class="c-sub">Bedrock · Vertex · Azure OpenAI</div><div class="c-p">Bedrock POC live. $2K audit found $1.3K+ in findings. GCP in KLOUDID — Vertex next. Azure after.</div></div><div class="c-foot" style="color:var(--t)"><strong>$18B+ · Tun</strong></div></div>
     <div class="c"><div class="c-bar" style="background:var(--blue)"></div><div class="c-body"><div class="c-h">API LLM calls</div><div class="c-sub">Anthropic · OpenAI · xAI</div><div class="c-p">v0.8.4 shipped. 8 detectors. Confidence-scored reconciliation. Dispute CSV. Review queue live.</div></div><div class="c-foot" style="color:var(--blue)"><strong>$12.5B · Y</strong></div></div>
     <div class="c"><div class="c-bar" style="background:var(--purple)"></div><div class="c-body"><div class="c-h">CLI + dev tools</div><div class="c-sub">Claude Code · Grok · Copilot · Cursor</div><div class="c-p">Claude Code + Grok capture built. Ghost seat detection = fastest ROI. Copilot + Cursor next.</div></div><div class="c-foot" style="color:var(--purple)"><strong>$7.3B · Nayana</strong></div></div>
   </div>
@@ -242,10 +285,10 @@ body{font-family:var(--f);background:var(--bg);color:var(--t1);-webkit-font-smoo
 <div class="sec">
   <div class="sec-tag" style="color:var(--green)">What we find</div>
   <div class="sec-h">Real audit from a real account</div>
-  <p style="font-size:12px;color:var(--t3);margin-bottom:16px">Results from auditing an AWS Bedrock account. $123 of spend. 28 April 2026.</p>
+  <p style="font-size:12px;color:var(--t3);margin-bottom:16px">Illustrative results scaled to $2K monthly Bedrock spend.</p>
   <div class="g2">
-    <div class="c"><div class="c-body"><div class="badge s-c" style="background:rgba(212,64,50,.08);color:var(--red);margin-bottom:8px">Critical</div><div class="c-h">Cache line double bill</div><div class="c-p">AWS billed full input tokens AND cache-read tokens separately — effectively charging 110% of the input rate instead of the 10% cache discount you expected.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$2.17 per audit window</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Scales with your cache usage. File an AWS Support case.</div></div></div>
-    <div class="c"><div class="c-body"><div class="badge" style="background:rgba(212,138,26,.08);color:var(--amber);margin-bottom:8px">High</div><div class="c-h">Rate card drift — 63%</div><div class="c-p">1,021 Opus calls × 7.1M tokens at published rates = $122.16. AWS billed $44.86. A $77.30 gap that can't be explained by standard discounts alone.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$77.30 needs clarification</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Could be Marketplace pricing. Either way, you should know.</div></div></div>
+    <div class="c"><div class="c-body"><div class="badge s-c" style="background:rgba(212,64,50,.08);color:var(--red);margin-bottom:8px">Critical</div><div class="c-h">Cache line double bill</div><div class="c-p">AWS billed full input tokens AND cache-read tokens separately — effectively charging 110% of the input rate instead of the 10% cache discount you expected.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$35 per month</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Scales with your cache usage. File an AWS Support case.</div></div></div>
+    <div class="c"><div class="c-body"><div class="badge" style="background:rgba(212,138,26,.08);color:var(--amber);margin-bottom:8px">High</div><div class="c-h">Rate card drift — 63%</div><div class="c-p">16,500 Opus calls × 115M tokens at published rates = $1,980. AWS billed $726. A $1,254 gap that can't be explained by standard discounts alone.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$1,254 needs clarification</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Could be Marketplace pricing. Either way, you should know.</div></div></div>
   </div>
 </div>
 
