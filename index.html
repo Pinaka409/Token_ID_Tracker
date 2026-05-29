@@ -3,337 +3,1475 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TokenID — Every dollar. Verified.</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>TokenID — Audit Coverage Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --o:#FE602C;--k:#1E1E22;--t:#00BFA6;
-  --bg:#FBFBFC;--card:#FFF;--bdr:#EAEAEF;
-  --t1:#1E1E22;--t2:#555562;--t3:#909098;
-  --blue:#2B7DD6;--amber:#D48A1A;--red:#D44032;--purple:#6B63C5;--green:#0EA37A;
-  --f:'Poppins',sans-serif;--r:14px;
-  --sh:0 2px 8px rgba(0,0,0,.03),0 8px 28px rgba(0,0,0,.04);
-}
-body{font-family:var(--f);background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.6}
-.page{max-width:1040px;margin:0 auto;padding:0 40px 72px}
+  :root{
+    --orange:#FE602C;
+    --dark:#1E1E22;
+    --teal:#00BFA6;
+    --paper:#FAF8F5;
+    --card:#FFFFFF;
+    --ink:#1E1E22;
+    --muted:#6B6B72;
+    --line:#EAE6E0;
+    --green:#1FAA6E;
+    --amber:#E8A317;
+    --red:#D8553C;
+    --shadow:0 1px 2px rgba(30,30,34,.04),0 8px 24px rgba(30,30,34,.06);
+    --shadow-lg:0 2px 4px rgba(30,30,34,.05),0 18px 50px rgba(30,30,34,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    letter-spacing:-.003em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    background-image:radial-gradient(circle at 12% 8%,rgba(254,96,44,.04),transparent 42%),radial-gradient(circle at 88% 18%,rgba(0,191,166,.035),transparent 38%);
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  /* comfortable measure for any prose intro */
+  .sec-sub,.lede{max-width:64ch}
 
-/* Tabs */
-.tab-bar{display:flex;gap:4px;justify-content:center;padding:20px 0 0;position:sticky;top:0;z-index:10;background:var(--bg)}
-.tab-btn{padding:10px 24px;border-radius:8px;font-size:12px;font-weight:600;color:var(--t3);cursor:pointer;border:1px solid var(--bdr);background:var(--card);font-family:var(--f);transition:all .15s}
-.tab-btn:hover{color:var(--t1)}
-.tab-btn.on{background:var(--o);color:#fff;border-color:var(--o)}
-.tab-panel{display:none}.tab-panel.on{display:block}
+  /* ---------- HEADER ---------- */
+  header{padding:60px 0 36px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+  .kicker .chip{width:22px;height:22px;border-radius:6px;background:var(--orange);position:relative;display:inline-block}
+  .kicker .chip::after{content:"";position:absolute;inset:0;margin:auto;width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+  h1{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1.06;margin-bottom:16px}
+  h1 .id{color:var(--orange)}
+  .lede{font-size:18px;color:var(--muted);font-weight:300;line-height:1.55}
+  .lede strong{color:var(--ink);font-weight:600}
 
-/* Shared */
-.sep{border:none;border-top:1px solid var(--bdr);margin:0}
-.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-.badge{font-size:9px;font-weight:600;padding:4px 10px;border-radius:5px;display:inline-block;letter-spacing:.06em;text-transform:uppercase}
+  /* ---------- PRINCIPLE BAR ---------- */
+  .principle{margin-top:30px;background:var(--dark);color:#fff;border-radius:16px;padding:24px 28px;display:flex;gap:22px;align-items:flex-start;box-shadow:var(--shadow-lg)}
+  .principle .mark{font-size:30px;line-height:1;color:var(--orange);font-weight:700;flex-shrink:0}
+  .principle p{font-size:15.5px;font-weight:300;color:#E8E6E3}
+  .principle strong{color:var(--teal);font-weight:600}
 
-/* Hero */
-.hero{padding:48px 0 40px;text-align:center}
-.hero svg{width:44px;height:44px;margin-bottom:16px}
-.hero h1{font-size:44px;font-weight:800;letter-spacing:-.05em;line-height:1.05;margin-bottom:12px}
-.hero h1 span{color:var(--o)}
-.hero-sub{font-size:16px;color:var(--t2);font-weight:300;max-width:480px;margin:0 auto 28px;line-height:1.7}
-.kpis{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.kpi{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:16px 24px;min-width:130px;text-align:left;box-shadow:var(--sh)}
-.kpi .n{font-size:26px;font-weight:800;line-height:1}
-.kpi .l{font-size:10px;color:var(--t3);margin-top:3px;font-weight:500}
+  /* ---------- LEGEND ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:28px;padding:26px 0;align-items:center}
+  .legend-group{display:flex;align-items:center;gap:12px}
+  .legend-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .pips{display:flex;gap:4px}
+  .pip{width:9px;height:9px;border-radius:50%;background:var(--line)}
+  .pip.on-v{background:var(--orange)}
+  .pip.on-e{background:var(--dark)}
+  .legend-note{font-size:12.5px;color:var(--muted)}
 
-/* Section */
-.sec{padding:40px 0}
-.sec-tag{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-.sec-h{font-size:28px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
+  /* ---------- SECTION ---------- */
+  section{padding:52px 0 8px}
+  .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:8px}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--orange);background:rgba(254,96,44,.1);padding:4px 9px;border-radius:6px;line-height:1}
+  .sec-head h2{font-size:26px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
+  .sec-sub{font-size:15px;color:var(--muted);margin-bottom:28px;font-weight:300;line-height:1.55}
 
-/* 3-col grid */
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:700px){.g3{grid-template-columns:1fr}}
-/* 2-col grid */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:700px){.g2{grid-template-columns:1fr}}
+  /* ---------- TIER CARDS ---------- */
+  .tiers{display:flex;flex-direction:column;gap:16px}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+  .tier:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+  .tier-top{display:grid;grid-template-columns:1fr auto;gap:20px;padding:22px 26px;align-items:center;cursor:pointer}
+  .tier-id{display:flex;align-items:center;gap:16px}
+  .tier-tag{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+  .t1{background:#9AA0A6}.t2{background:var(--orange)}.t3{background:var(--teal)}.t4{background:var(--dark)}.t5{background:#7A5BD8}
+  .tier-name h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .tier-name p{font-size:13px;color:var(--muted);font-weight:300}
+  .tier-scores{display:flex;gap:26px;align-items:center}
+  .score{text-align:center}
+  .score .pips{justify-content:center;margin-bottom:5px}
+  .score .slabel{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .audit-badge{font-size:11px;font-weight:600;padding:5px 11px;border-radius:20px;white-space:nowrap}
+  .ab-full{background:rgba(31,170,110,.12);color:var(--green)}
+  .ab-partial{background:rgba(232,163,23,.14);color:#B5790A}
+  .ab-none{background:rgba(216,85,60,.12);color:var(--red)}
+  .tier-body{padding:0 26px 24px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+  .tier-body .col{padding-top:18px}
+  .tb-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
+  .tb-label.neg{color:var(--red)}
+  .tb-label.method{color:var(--teal)}
+  .tb-label.leak{color:var(--muted)}
+  .tier-body ul{list-style:none}
+  .tier-body li{font-size:13.5px;color:#3A3A40;padding-left:18px;position:relative;margin-bottom:6px;font-weight:300}
+  .tier-body li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+  .tier-body li.neg::before{background:var(--red);border-radius:1px}
+  .tier-body li.method::before{background:var(--teal)}
+  .reframe{grid-column:1/-1;margin-top:16px;background:var(--paper);border-radius:11px;padding:13px 16px;font-size:13px;color:#3A3A40;border-left:3px solid var(--orange)}
+  .reframe b{color:var(--ink);font-weight:600}
 
-/* Cards */
-.c{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
-.c-bar{height:4px}
-.c-body{padding:20px 22px}
-.c-h{font-size:15px;font-weight:700;color:var(--k);margin-bottom:4px}
-.c-sub{font-size:11px;color:var(--t3);margin-bottom:10px}
-.c-p{font-size:12px;color:var(--t2);line-height:1.6}
-.c-foot{padding:10px 22px;border-top:1px solid var(--bdr);font-size:10px}
+  /* ---------- GAP CALLOUT ---------- */
+  .gap{margin:14px 0 4px;background:linear-gradient(135deg,#2A1813,#1E1E22);border-radius:18px;padding:34px 36px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .gap::before{content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(216,85,60,.22),transparent 70%)}
+  .gap-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF8A6B;margin-bottom:14px}
+  .gap-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(216,85,60,.25);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(216,85,60,.25)}50%{box-shadow:0 0 0 8px rgba(216,85,60,.08)}}
+  .gap h3{font-size:23px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em;position:relative}
+  .gap p{font-size:14.5px;color:#D8D4D0;font-weight:300;max-width:780px;margin-bottom:8px;position:relative}
+  .gap p strong{color:#fff;font-weight:600}
+  .gap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;position:relative}
+  .gap-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px}
+  .gap-card h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .gap-card .why{font-size:12px;color:#A8A4A0;font-weight:300}
+  .gap-card .verdict{font-size:11px;font-weight:600;color:#FF8A6B;margin-top:8px;font-family:'JetBrains Mono',monospace}
 
-/* Dark block */
-.dk{background:var(--k);border-radius:var(--r);padding:28px 32px;color:#fff}
-.dk h3{font-size:9px;font-weight:600;color:var(--o);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+  /* ---------- PHASES ---------- */
+  .phase-wrap{display:flex;flex-direction:column;gap:0;position:relative;margin-top:8px}
+  .phase{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);position:relative}
+  .phase:last-child{border-bottom:none}
+  .phase-meta{position:relative}
+  .phase-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#fff;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:10px}
+  .pb1{background:var(--green)}.pb2{background:var(--orange)}.pb3{background:var(--teal)}.pb4{background:#7A5BD8}
+  .pb-mon{background:var(--green)}.pb-fast{background:var(--orange)}
+  .pstat{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:5px;white-space:nowrap;margin-left:8px;vertical-align:middle}
+  .ps-ship{background:rgba(31,170,110,.15);color:var(--green)}
+  .ps-fix{background:rgba(232,163,23,.16);color:#B5790A}
+  .ps-broken{background:rgba(216,85,60,.14);color:var(--red)}
+  .phase-meta h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+  .phase-meta .when{font-size:12px;color:var(--muted);font-weight:500}
+  .phase-meta .theme{font-size:12.5px;color:var(--muted);font-weight:300;margin-top:8px}
+  .phase-items{display:flex;flex-direction:column;gap:10px}
+  .pitem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;box-shadow:var(--shadow);transition:border-color .2s}
+  .pitem:hover{border-color:var(--orange)}
+  .pitem-main h4{font-size:14.5px;font-weight:600;margin-bottom:3px}
+  .pitem-main p{font-size:12.5px;color:var(--muted);font-weight:300}
+  .pitem-ve{display:flex;gap:18px;align-items:center}
+  .ve-block{text-align:center}
+  .ve-block .pips{justify-content:center;margin-bottom:4px}
+  .ve-block .slabel{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .ratio{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;white-space:nowrap}
+  .r-quick{background:rgba(31,170,110,.12);color:var(--green)}
+  .r-bet{background:rgba(254,96,44,.12);color:var(--orange)}
+  .r-grind{background:rgba(122,91,216,.12);color:#6A4BC8}
+  .r-bet.r-conv,.ratio.r-conv{background:var(--orange);color:#fff}
 
-/* Finding cards */
-.fd{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px 18px}
-.fd-sev{font-size:8px;font-weight:600;padding:3px 7px;border-radius:4px;display:inline-block;margin-bottom:5px}
-.s-c{background:rgba(212,64,50,.15);color:#E86B5E}
-.s-h{background:rgba(212,138,26,.15);color:#E8A94E}
-.s-m{background:rgba(43,125,214,.15);color:#6BABEA}
-.fd-name{font-size:13px;font-weight:600;margin-bottom:3px}
-.fd-desc{font-size:10px;color:#999;line-height:1.5}
-.fd-amt{font-size:18px;font-weight:700;color:var(--o);margin-top:6px}
+  /* ---------- CONVERSION ---------- */
+  .conv-intro{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:14px;padding:22px 26px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .conv-intro p{font-size:14.5px;color:#3A3A40;font-weight:300}
+  .conv-intro strong{color:var(--ink);font-weight:600}
+  .conv-intro .hl{color:var(--orange);font-weight:600}
 
-/* Money cards */
-.mc{text-align:center;padding:24px}
-.mc .n{font-size:34px;font-weight:800;line-height:1;margin-bottom:4px}
-.mc h4{font-size:12px;font-weight:600;margin-bottom:3px}
-.mc p{font-size:11px;color:var(--t2)}
+  /* tiered UI mock */
+  .ui-mock{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:8px 0 30px}
+  .ui-panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .ui-bar{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+  .ui-bar .tier-pill{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+  .pill-free{background:rgba(154,160,166,.15);color:#6B6B72}
+  .pill-paid{background:rgba(254,96,44,.12);color:var(--orange)}
+  .ui-bar .ui-title{font-size:13px;font-weight:600}
+  .ui-body{padding:18px}
+  .ui-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line)}
+  .ui-row:last-child{border-bottom:none}
+  .ui-row .lbl{font-size:12.5px;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .ui-row .ic{width:16px;height:16px;flex-shrink:0}
+  .ui-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
+  .ui-val.live{color:var(--green)}
+  .ui-val.lock{color:#B8B4AE;font-size:11px;font-weight:500;display:flex;align-items:center;gap:6px}
+  .ui-val.lock::before{content:"";width:11px;height:13px;border:1.6px solid #B8B4AE;border-radius:2px;border-top:none;position:relative;box-shadow:0 -4px 0 -1px transparent,0 0 0 0 transparent}
+  .lockicon{display:inline-block;width:12px;height:10px;border:1.6px solid #B8B4AE;border-top:none;border-radius:0 0 2px 2px;position:relative;margin-right:2px}
+  .lockicon::before{content:"";position:absolute;width:8px;height:7px;border:1.6px solid #B8B4AE;border-bottom:none;border-radius:5px 5px 0 0;top:-7px;left:1px}
+  .ghost{filter:blur(3.5px);opacity:.4;user-select:none;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
+  .ui-foot{padding:14px 18px;background:var(--paper);border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);font-weight:300;text-align:center}
+  .ui-foot.cta{background:var(--dark);color:#fff;font-weight:500;cursor:pointer;font-size:12.5px}
+  .ui-foot.cta span{color:var(--teal)}
+  .benchband{margin-top:14px;background:linear-gradient(90deg,rgba(254,96,44,.06),rgba(0,191,166,.05));border:1px dashed var(--orange);border-radius:10px;padding:12px 15px}
+  .benchband .bl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+  .benchband .bt{font-size:12.5px;color:#3A3A40;font-weight:300}
+  .benchband .bt b{color:var(--ink);font-weight:600}
 
-/* Moat */
-.moat{text-align:center;padding:32px}
-.moat h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
-.moat p{font-size:13px;color:#A8A8B4;line-height:1.65;max-width:540px;margin:0 auto}
-.moat p strong{color:var(--o)}
+  /* conversion ladder */
+  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+  .rung{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative}
+  .rung .step{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);margin-bottom:10px}
+  .rung h4{font-size:14.5px;font-weight:600;margin-bottom:7px}
+  .rung p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5}
+  .rung .conv-event{margin-top:11px;font-size:11px;font-weight:600;color:var(--green);background:rgba(31,170,110,.1);padding:5px 10px;border-radius:6px;display:inline-block}
+  .rung .arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:18px;font-weight:700;z-index:2}
+  @media(max-width:820px){.ui-mock{grid-template-columns:1fr}.ladder{grid-template-columns:1fr}.rung .arrow{display:none}}
 
-/* Customer-specific */
-.step-row{display:flex;gap:0;align-items:stretch;margin-bottom:24px}
-.step-num{width:48px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:4px}
-.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff}
-.step-line{flex:1;width:2px;background:var(--bdr);margin-top:6px}
-.step-body{flex:1;padding-bottom:8px}
-.step-title{font-size:16px;font-weight:700;color:var(--k);margin-bottom:4px}
-.step-desc{font-size:12px;color:var(--t2);line-height:1.6;max-width:520px}
-.step-time{font-size:10px;color:var(--t3);font-weight:500;margin-top:4px}
+  /* ---------- FOOTER NOTE ---------- */
+  .closer{margin:36px 0 72px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 34px;box-shadow:var(--shadow)}
+  .closer h3{font-size:16px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .closer h3::before{content:"";width:20px;height:20px;border-radius:5px;background:var(--orange)}
+  .closer p{font-size:14.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin-bottom:12px}
+  .closer strong{color:var(--ink);font-weight:600}
+  .closer .seq{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--teal);margin-top:6px;background:var(--paper);padding:13px 16px;border-radius:9px;border-left:3px solid var(--teal);line-height:1.5}
 
-.cta-block{background:var(--o);border-radius:var(--r);padding:28px 32px;text-align:center;color:#fff;margin-top:24px}
-.cta-block h3{font-size:22px;font-weight:800;margin-bottom:6px}
-.cta-block p{font-size:13px;opacity:.85}
+  @media(max-width:820px){
+    h1{font-size:34px}
+    .tier-top{grid-template-columns:1fr;gap:14px}
+    .tier-scores{flex-direction:row;gap:20px;align-items:center;justify-content:flex-start;flex-wrap:wrap}
+    .tier-body{grid-template-columns:1fr}
+    .gap-grid{grid-template-columns:1fr}
+    .phase{grid-template-columns:1fr;gap:14px}
+    .pitem{grid-template-columns:1fr}
+    .pitem-ve{justify-content:flex-start}
+    .legend{gap:18px}
+  }
 
-.foot{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:32px;font-size:10px;color:var(--t3)}
-.foot svg{width:16px;height:16px}
-@media print{body{background:#fff}.page{padding:16px}.tab-bar{display:none}.tab-panel{display:block!important}}
+  /* ---------- TABS ---------- */
+  .tabnav{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .tabnav-inner{max-width:1100px;margin:0 auto;padding:10px 32px;display:flex;gap:6px}
+  .tab{appearance:none;border:none;background:none;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--muted);padding:10px 16px;cursor:pointer;position:relative;letter-spacing:-.01em;transition:all .18s ease;border-radius:9px;display:inline-flex;align-items:center}
+  .tab:hover{color:var(--ink);background:rgba(30,30,34,.04)}
+  .tab.active{color:#fff;background:var(--dark)}
+  .tab.active .tnum{color:var(--orange);opacity:1}
+  .tab .tnum{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.55;margin-right:7px;font-weight:600}
+  .tabpanel{display:none}
+  .tabpanel.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* feature-detail extras */
+  .fd-hero{padding:54px 0 30px}
+  .fd-hero .kicker{margin-bottom:16px}
+  .fd-hero h1{font-size:38px}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:8px 0 30px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+  .feat .fnum{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);background:rgba(254,96,44,.1);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
+  .feat h4{font-size:15.5px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+  .feat p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55}
+  .feat .ftag{display:inline-block;margin-top:11px;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
+  .ftag-free{background:rgba(154,160,166,.15);color:#6B6B72}
+  .ftag-paid{background:rgba(254,96,44,.12);color:var(--orange)}
+  .ftag-both{background:rgba(0,191,166,.12);color:#048a78}
+  .specrow{display:grid;grid-template-columns:150px 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:10px;background:var(--card);box-shadow:var(--shadow)}
+  .specrow .sk{background:var(--paper);padding:15px 18px;font-size:12px;font-weight:600;color:var(--ink);border-right:1px solid var(--line);display:flex;align-items:center}
+  .specrow .sv{padding:15px 18px;font-size:13px;color:#3A3A40;font-weight:300}
+  .specrow .sv b{color:var(--ink);font-weight:600}
+  .specrow .sv code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--paper);padding:2px 6px;border-radius:4px;color:var(--orange)}
+  @media(max-width:820px){.feat-grid{grid-template-columns:1fr}.specrow{grid-template-columns:1fr}.specrow .sk{border-right:none;border-bottom:1px solid var(--line)}.tab{margin-right:14px}}
+
+  /* ---------- SIGNAL MATRIX ---------- */
+  .matrix{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px}
+  .matrix th,.matrix td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  .matrix thead th{background:var(--dark);color:#fff;font-weight:600;font-size:12px;letter-spacing:.02em}
+  .matrix thead th:first-child{font-weight:600}
+  .matrix tbody tr:last-child td{border-bottom:none}
+  .matrix tbody tr:hover{background:var(--paper)}
+  .matrix .sig{font-weight:600;color:var(--ink)}
+  .matrix .src{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .matrix td.cell{text-align:center;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:12px}
+  .cy{color:var(--green)}.cn{color:#C2BEB8}.cp{color:var(--amber)}
+  .matrix col.colhi{background:rgba(0,191,166,.04)}
+  @media(max-width:820px){.matrix{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}.matrix::-webkit-scrollbar{height:6px}.matrix::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}}
+  .matrix-hint{display:none}
+  @media(max-width:820px){.matrix-hint{display:block;font-size:11.5px;color:var(--muted);font-weight:300;margin-bottom:8px;font-style:italic}}
+
+  /* ---------- PLAN TIERS ---------- */
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column}
+  .plan.feat-pop{border-color:var(--orange);box-shadow:0 2px 4px rgba(254,96,44,.08),0 16px 40px rgba(254,96,44,.10)}
+  .plan .ptag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .plan.feat-pop .ptag{color:var(--orange)}
+  .plan h4{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+  .plan .psub{font-size:11.5px;color:var(--muted);font-weight:300;margin-bottom:14px;min-height:30px}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto}
+  .plan li{font-size:12px;color:#3A3A40;font-weight:300;padding-left:17px;position:relative;line-height:1.4}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700;font-size:11px}
+  .plan li.off{color:#B8B4AE}
+  .plan li.off::before{content:"—";color:#C2BEB8}
+  .plan .punlock{font-size:10.5px;font-weight:600;color:var(--teal);margin:10px 0 4px;letter-spacing:.04em;text-transform:uppercase}
+  @media(max-width:980px){.plans{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.plans{grid-template-columns:1fr}}
+
+  /* ---------- BILLING FINDINGS ---------- */
+  .findings{display:flex;flex-direction:column;gap:10px}
+  .finding{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start}
+  .finding .fmain h4{font-size:14.5px;font-weight:600;margin-bottom:4px}
+  .finding .fmain p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5}
+  .finding .fmeta{display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0}
+  .flik{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:5px;white-space:nowrap}
+  .lik-some{background:rgba(232,163,23,.15);color:#B5790A}
+  .lik-rare{background:rgba(154,160,166,.16);color:#6B6B72}
+  .lik-vrare{background:rgba(154,160,166,.12);color:#9AA0A6}
+  .frec{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:5px;white-space:nowrap}
+  .rec-yes{background:rgba(31,170,110,.13);color:var(--green)}
+  .rec-hard{background:rgba(232,163,23,.13);color:#B5790A}
+  .rec-no{background:rgba(216,85,60,.12);color:var(--red)}
+  .honest{margin-top:16px;background:#FFF8EE;border:1px solid #F0E2C8;border-left:4px solid var(--amber);border-radius:14px;padding:20px 24px}
+  .honest h4{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B5790A;margin-bottom:9px}
+  .honest p{font-size:14px;color:#4A4640;font-weight:300;line-height:1.6}
+  .honest strong{color:var(--ink);font-weight:600}
+  .honest .teal{color:#048a78;font-weight:600}
+  @media(max-width:560px){.finding{grid-template-columns:1fr}.finding .fmeta{flex-direction:row;align-items:center}}
+
+  /* ---------- EXEC SUMMARY ---------- */
+  .verdict{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow-lg);margin-bottom:22px}
+  .verdict .vlight{width:54px;height:54px;border-radius:14px;background:rgba(232,163,23,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .verdict .vlight span{width:22px;height:22px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 6px rgba(232,163,23,.16)}
+  .verdict h2{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;line-height:1.2}
+  .verdict p{font-size:14px;color:#3A3A40;font-weight:300;line-height:1.5}
+  .verdict p b{color:var(--ink);font-weight:600}
+  .verdict .on-track{color:var(--amber)}
+
+  .exec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .ecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .ecard::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px}
+  .ecard.good::after{background:var(--green)}
+  .ecard.warn::after{background:var(--amber)}
+  .ecard.bad::after{background:var(--red)}
+  .ecard .ek{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .ecard .ebig{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1}
+  .ecard.good .ebig{color:var(--green)}
+  .ecard.warn .ebig{color:var(--amber)}
+  .ecard.bad .ebig{color:var(--red)}
+  .ecard .esub{font-size:12px;color:var(--muted);font-weight:300;margin-top:7px;line-height:1.4}
+  .ecard .ebar{height:7px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}
+  .ecard .ebar i{display:block;height:100%;border-radius:4px}
+  .ecard.good .ebar i{background:var(--green)}
+  .ecard.warn .ebar i{background:var(--amber)}
+
+  .blocker-card{background:linear-gradient(135deg,#2A1813,#1E1E22);border-radius:16px;padding:24px 28px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-lg);margin-bottom:8px}
+  .blocker-card .bc-main h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:7px;display:flex;align-items:center;gap:10px}
+  .blocker-card .bc-main h3 .bdot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px rgba(216,85,60,.22);animation:pulse 2s infinite}
+  .blocker-card .bc-main p{font-size:13.5px;color:#D8D4D0;font-weight:300;line-height:1.55;max-width:660px}
+  .blocker-card .bc-main p b{color:#fff;font-weight:600}
+  .blocker-card .bc-main p .teal{color:var(--teal);font-weight:600}
+  .blocker-card .bc-side{text-align:center;flex-shrink:0;border-left:1px solid rgba(255,255,255,.12);padding-left:24px}
+  .blocker-card .bc-side .bnum{font-size:40px;font-weight:700;color:#FF8A6B;line-height:1}
+  .blocker-card .bc-side .blbl{font-size:11px;color:#A8A4A0;font-weight:300;margin-top:5px;max-width:130px}
+  @media(max-width:820px){.exec-grid{grid-template-columns:repeat(2,1fr)}.verdict{grid-template-columns:1fr}.blocker-card{grid-template-columns:1fr}.blocker-card .bc-side{border-left:none;border-top:1px solid rgba(255,255,255,.12);padding-left:0;padding-top:16px;text-align:left;display:flex;gap:14px;align-items:baseline}.blocker-card .bc-side .blbl{margin-top:0}}
+
+  /* ---------- MVP RELEASE TAB ---------- */
+  .mvp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 34px}
+  .mstat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .mstat::after{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--orange)}
+  .mstat .num{font-size:38px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+  .mstat .lbl{font-size:11.5px;font-weight:500;color:var(--muted);margin-top:8px}
+  .mstat.crit::after{background:var(--red)}
+  .mstat.crit .num{color:var(--red)}
+  .mstat.ship::after{background:var(--green)}
+  .mstat.ship .num{color:var(--green)}
+
+  .ipath{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px}
+  .ipath-top{display:flex;align-items:center;gap:16px;padding:18px 22px}
+  .ipath-icon{width:40px;height:40px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#fff}
+  .ic-journal{background:#9AA0A6}.ic-sdk{background:var(--orange)}.ic-proxy{background:var(--teal)}.ic-pub{background:var(--dark)}
+  .ipath-name{flex:1}
+  .ipath-name h4{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ipath-name p{font-size:12.5px;color:var(--muted);font-weight:300;margin-top:3px}
+  .persona{display:inline-flex;align-items:center;gap:7px;margin-top:9px;font-size:11.5px;font-weight:400;color:#4A4640;background:rgba(0,191,166,.08);border:1px solid rgba(0,191,166,.2);padding:5px 11px;border-radius:20px}
+  .persona b{font-weight:600;color:var(--ink)}
+  .persona .pico{font-size:13px}
+  .st{font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:4px 10px;border-radius:20px;white-space:nowrap}
+  .st-ready{background:rgba(31,170,110,.13);color:var(--green)}
+  .st-pending{background:rgba(232,163,23,.15);color:#B5790A}
+  .st-broken{background:rgba(216,85,60,.13);color:var(--red)}
+  .ipath-cmd{background:var(--dark);padding:11px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9FE3D6;overflow-x:auto;white-space:nowrap}
+  .ipath-cmd .pre{color:#6B6B72;user-select:none}
+  .enforce-note{padding:10px 22px;background:var(--paper);border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);font-weight:300}
+  .enforce-note b{color:var(--ink);font-weight:600}
+  .enforce-note .yes{color:var(--green);font-weight:600}
+  .enforce-note .no{color:var(--red);font-weight:600}
+
+  .fixlist{display:flex;flex-direction:column;gap:9px}
+  .fix{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 18px;box-shadow:var(--shadow)}
+  .fix .fno{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--muted);text-align:center}
+  .fix p{font-size:13.5px;color:#3A3A40;font-weight:400}
+  .fix.is-crit{border-color:rgba(216,85,60,.4);background:linear-gradient(90deg,rgba(216,85,60,.04),var(--card) 30%)}
+  .fix.is-crit .fno{color:var(--red)}
+  .ftype{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap}
+  .ft-bug{background:rgba(232,163,23,.15);color:#B5790A}
+  .ft-crit{background:var(--red);color:#fff}
+  .ft-minor{background:rgba(154,160,166,.18);color:#6B6B72}
+  .ft-verify{background:rgba(0,191,166,.13);color:#048a78}
+
+  .vio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .vio{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 17px;box-shadow:var(--shadow)}
+  .vio .vdot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+  .vd-pending{background:var(--amber)}.vd-flagged{background:var(--teal)}.vd-noflag{background:#C9C5BF}
+  .vd-verified{background:var(--green)}.vd-probe{background:var(--amber)}.vd-blocked{background:var(--red)}
+  .vio .vmeta{flex:1}
+  .vio .vmeta h5{font-size:14px;font-weight:600}
+  .vio .vmeta p{font-size:11.5px;color:var(--muted);font-weight:300}
+  .vio .venf{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:rgba(254,96,44,.1);color:var(--orange);white-space:nowrap}
+
+  .deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .dcheck{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 17px;box-shadow:var(--shadow)}
+  .dcheck .cbox{width:20px;height:20px;border-radius:6px;border:2px solid var(--orange);flex-shrink:0;position:relative;margin-top:1px}
+  .dcheck .cbox::after{content:"";position:absolute;inset:0;margin:auto;width:9px;height:5px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg) translate(0,-1px)}
+  .dcheck p{font-size:13px;color:#3A3A40;font-weight:400;line-height:1.45}
+  .dcheck p a{color:var(--teal);text-decoration:none;border-bottom:1px dotted var(--teal)}
+
+  .legend-vio{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+  .lv{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);font-weight:500}
+  .lv .vdot{width:10px;height:10px;border-radius:50%}
+  @media(max-width:820px){.mvp-stats{grid-template-columns:repeat(2,1fr)}.vio-grid,.deliv{grid-template-columns:1fr}.fix{grid-template-columns:28px 1fr;gap:10px}.fix .ftype{grid-column:2;justify-self:start}}
+
+  /* progress two-column */
+  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .prog-col h3{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .prog-col.done h3{color:var(--green)}
+  .prog-col.going h3{color:#B5790A}
+  .prog-list{display:flex;flex-direction:column;gap:8px}
+  .pgitem{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;color:#3A3A40;font-weight:400;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow)}
+  .pgitem .pmark{flex-shrink:0;font-weight:700;font-size:13px}
+  .pgitem.d .pmark{color:var(--green)}
+  .pgitem.g .pmark{color:#B5790A}
+  .pgitem.g{border-left:3px solid var(--amber)}
+  .pgitem.d{border-left:3px solid var(--green)}
+  @media(max-width:820px){.prog-grid{grid-template-columns:1fr}}
+
+  /* violation verification table */
+  .viotable{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px;margin-bottom:8px}
+  .viotable th,.viotable td{padding:12px 15px;text-align:left;border-bottom:1px solid var(--line)}
+  .viotable thead th{background:var(--dark);color:#fff;font-weight:600;font-size:11.5px;letter-spacing:.03em}
+  .viotable thead th.ctr,.viotable td.ctr{text-align:center}
+  .viotable tbody tr:last-child td{border-bottom:none}
+  .viotable tbody tr:hover{background:var(--paper)}
+  .viotable .vn{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+  .viotable .vname{font-weight:600;color:var(--ink)}
+  .viotable .venf2{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:rgba(254,96,44,.1);color:var(--orange);margin-left:7px;vertical-align:middle}
+  .chk{font-weight:700;font-family:'JetBrains Mono',monospace;font-size:13px}
+  .chk.y{color:var(--green)}.chk.n{color:#C2BEB8}.chk.dash{color:#C2BEB8}
+  .vstatus{font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;display:inline-block}
+  .vs-ok{background:rgba(31,170,110,.13);color:var(--green)}
+  .vs-pending{background:rgba(232,163,23,.15);color:#B5790A}
+  .vs-blocked{background:rgba(216,85,60,.13);color:var(--red)}
+  @media(max-width:560px){
+    .viotable,.viotable tbody,.viotable tr,.viotable td{display:block;width:100%}
+    .viotable thead{display:none}
+    .viotable{border:none;background:none;box-shadow:none}
+    .viotable tr{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;padding:14px 16px}
+    .viotable td{border:none;padding:3px 0;text-align:left!important}
+    .viotable td.vn{display:none}
+    .viotable td.vname{font-size:14.5px;font-weight:600;margin-bottom:8px}
+    .viotable td.ctr::before{content:attr(data-label) ": ";font-weight:600;color:var(--muted);font-size:12px}
+    .viotable td.ctr{display:inline-block;width:auto;margin-right:18px;font-size:12px}
+    .viotable td:last-child{margin-top:8px}
+  }
 </style>
 </head>
 <body>
-<div class="page">
 
-<div class="tab-bar">
-  <button class="tab-btn on" onclick="sw('board')">Board version</button>
-  <button class="tab-btn" onclick="sw('cust')">Customer version</button>
-</div>
+<nav class="tabnav"><div class="tabnav-inner">
+  <button class="tab active" data-tab="mvp"><span class="tnum">A</span>MVP Release · Monday</button>
+  <button class="tab" data-tab="roadmap"><span class="tnum">B</span>Roadmap (tentative)</button>
+</div></nav>
 
-<!-- ════════════════════════════════════════════════════════════ -->
-<!-- BOARD VERSION -->
-<!-- ════════════════════════════════════════════════════════════ -->
-<div class="tab-panel on" id="p-board">
+<div class="tabpanel" id="tab-roadmap">
 
-<div class="hero">
-  <svg viewBox="0 0 48 48" fill="none"><path d="M24 4L42 13v12c0 11-7 20-18 23C13 45 6 36 6 25V13L24 4z" fill="#FE602C" stroke="#1E1E22" stroke-width="2.5"/><path d="M17 24l5 5 9-9" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <h1>Every AI dollar.<br><span>Verified.</span></h1>
-  <p class="hero-sub">Companies spend millions on LLM APIs.<br>Nobody checks if the bill is correct. We do.</p>
-  <div class="kpis">
-    <div class="kpi"><div class="n" style="color:var(--o)">$37B</div><div class="l">Enterprise AI spend</div></div>
-    <div class="kpi"><div class="n" style="color:var(--red)">25–35%</div><div class="l">Is waste</div></div>
-    <div class="kpi"><div class="n" style="color:var(--green)">0</div><div class="l">Audit competitors</div></div>
+<header>
+  <div class="wrap">
+    <div class="kicker"><span class="chip"></span> TokenID · Product Roadmap · <span style="color:var(--amber)">Tentative / Directional</span></div>
+    <h1>Audit Coverage Map<br>for <span class="id">AI &amp; LLM Spend</span></h1>
+    <p class="lede">Every way someone uses AI — and what TokenID can check for each. Ordered by <strong>what we can do today</strong>, and rated on <strong>how useful</strong> and <strong>how much work</strong> each step is. <strong style="color:var(--amber)">This is a rough plan</strong> — a direction, not a fixed schedule. Only the MVP tab is firm for Monday.</p>
+
+    <div class="principle">
+      <span class="mark">&ldquo;</span>
+      <p>What we can check depends on <strong>how the user pays</strong> and <strong>what usage data we can see</strong>. We can only find wasted money where there's a per-use bill to check against. On flat monthly plans, there's no per-use bill — so instead of finding overspend, we help <em>right-size the plan</em>. Different kind of saving, still real money.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="legend">
+    <div class="legend-group">
+      <span class="legend-label">Value</span>
+      <span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span>
+    </div>
+    <div class="legend-group">
+      <span class="legend-label">Effort</span>
+      <span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span>
+    </div>
+    <span class="legend-note">Filled pips = magnitude (out of 5). Audit badges: <b style="color:var(--green)">Full</b> · <b style="color:#B5790A">Partial</b> · <b style="color:var(--red)">None yet</b></span>
   </div>
 </div>
 
-<hr class="sep">
+<!-- ============ COVERAGE BY CONSUMPTION PATTERN ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Coverage by consumption pattern</h2></div>
+    <p class="sec-sub">Five ways spend reaches a model. Each has a different telemetry source, a different best-case finding, and a different audit depth.</p>
 
-<div class="sec">
-  <div class="sec-tag" style="color:var(--o)">How it works</div>
-  <div class="sec-h">From raw data to recovered dollars</div>
+    <div class="tiers">
 
-  <div style="display:flex;gap:0;align-items:stretch;margin-top:8px">
+      <!-- TIER 1 -->
+      <div class="tier">
+        <div class="tier-top">
+          <div class="tier-id">
+            <div class="tier-tag t1">SUB</div>
+            <div class="tier-name">
+              <h3>Flat-rate subscription — CLI &amp; chat apps</h3>
+              <p>Claude Code CLI, ChatGPT Plus/Pro, Gemini app, Cursor bundled plan</p>
+            </div>
+          </div>
+          <div class="tier-scores">
+            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+            <span class="audit-badge ab-partial">Partial · usage only</span>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="col">
+            <div class="tb-label">Can audit — via journal logger</div>
+            <ul>
+              <li>Token <b>usage</b>: volume, frequency, model mix, session counts</li>
+              <li>Read from the local journal/log file the CLI tool writes to disk</li>
+              <li>Seat activity — who is actually using their seat</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tb-label neg">Cannot audit</div>
+            <ul>
+              <li class="neg"><b>Rate</b> — flat fee, no per-token price exposed</li>
+              <li class="neg"><b>Leakage</b> — nothing to leak against; it's a fixed bill</li>
+            </ul>
+          </div>
+          <div class="reframe"><b>Reframe:</b> value flips from "recover overspend" to <b>right-size subscriptions &amp; consolidate seats</b>. Waste here = paying $20/mo to use $3 of tokens, or inactive seats. Different finding, same product.</div>
+        </div>
+      </div>
 
-    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r) 0 0 var(--r);padding:20px 22px;position:relative;box-shadow:var(--sh)">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue);border-radius:var(--r) 0 0 0"></div>
-      <div style="font-size:11px;font-weight:600;color:var(--blue);margin-bottom:6px">01 · RECORD</div>
-      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">$2,000/mo in AI calls</div>
-      <div style="font-size:11px;color:var(--t2);line-height:1.55">We capture every call. Tokens, model, cost. Independent ledger — our data, not the vendor's.</div>
-      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--blue)">$2,000</div>
-      <div style="font-size:9px;color:var(--t3)">total spend captured</div>
+      <!-- TIER 2 -->
+      <div class="tier">
+        <div class="tier-top">
+          <div class="tier-id">
+            <div class="tier-tag t2">API</div>
+            <div class="tier-name">
+              <h3>Direct provider API — pay-per-token</h3>
+              <p>SDK (easier) or Proxy (deeper) · Anthropic, OpenAI, Gemini, Grok direct</p>
+            </div>
+          </div>
+          <div class="tier-scores">
+            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+            <span class="audit-badge ab-full">Full · rate + leakage</span>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="col">
+            <div class="tb-label">SDK — lower effort</div>
+            <ul>
+              <li>Instrument / wrap the client library</li>
+              <li>Usage, cost, model selection, caching gaps</li>
+              <li>Rule setting: model downgrades, token caps, cache enforcement</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tb-label">Proxy — higher effort, only place to <em>prevent</em></div>
+            <ul>
+              <li>Route traffic through our gateway</li>
+              <li>Everything SDK does + real-time enforcement</li>
+              <li>Prompt-level leakage, retry storms, live rule blocking</li>
+            </ul>
+          </div>
+          <div class="reframe"><b>This is the core of TokenID.</b> Real rate + leakage auditing lives here. Proxy is the only tier where we stop waste live instead of only reporting it.</div>
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="tier">
+        <div class="tier-top">
+          <div class="tier-id">
+            <div class="tier-tag t3">CLOUD</div>
+            <div class="tier-name">
+              <h3>Managed cloud-hosted models</h3>
+              <p>AWS Bedrock · Google Vertex · Azure OpenAI</p>
+            </div>
+          </div>
+          <div class="tier-scores">
+            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+            <span class="audit-badge ab-full">Full · via cloud billing</span>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="col">
+            <div class="tb-label">Can audit</div>
+            <ul>
+              <li>Usage + spend via CloudWatch / Cost Explorer (Bedrock)</li>
+              <li>Cloud Billing + Vertex logs (Google), Azure cost (Azure OpenAI)</li>
+              <li>Billing flows through the cloud account — <b>shares plumbing with KloudID</b></li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tb-label leak">Leakage vectors</div>
+            <ul>
+              <li>Wrong model tier for the task</li>
+              <li>No prompt caching enabled</li>
+              <li>Provisioned throughput sitting idle</li>
+              <li>Cross-region premium</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 4 -->
+      <div class="tier">
+        <div class="tier-top">
+          <div class="tier-id">
+            <div class="tier-tag t5">AGGR</div>
+            <div class="tier-name">
+              <h3>Aggregators &amp; routers</h3>
+              <p>OpenRouter, Together, Fireworks, gateway/router layers</p>
+            </div>
+          </div>
+          <div class="tier-scores">
+            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+            <span class="audit-badge ab-full">Full · via aggregator key</span>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="col">
+            <div class="tb-label method">Method</div>
+            <ul>
+              <li class="method">Read-only aggregator API key → pull usage</li>
+              <li class="method">Same "admin key" motion as direct API</li>
+              <li class="method">Most expose a usage dashboard / API</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tb-label leak">Leakage vectors unique to this tier</div>
+            <ul>
+              <li><b>Aggregator margin</b> — premium vs. going direct</li>
+              <li>Routing to needlessly expensive models</li>
+              <li>Fallback-route cost spikes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 5 -->
+      <div class="tier">
+        <div class="tier-top">
+          <div class="tier-id">
+            <div class="tier-tag t4">SELF</div>
+            <div class="tier-name">
+              <h3>Self-hosted / open models</h3>
+              <p>Llama, Mistral, DeepSeek on own GPUs · vLLM, Ollama, TGI</p>
+            </div>
+          </div>
+          <div class="tier-scores">
+            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+            <span class="audit-badge ab-partial">Partial · compute, not tokens</span>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="col">
+            <div class="tb-label">The reframe</div>
+            <ul>
+              <li>There is <b>no token bill</b> — cost is compute (GPU hours)</li>
+              <li>A <b>KloudID problem wearing a TokenID hat</b></li>
+              <li>Token "usage" becomes a utilization denominator, not a billing line</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tb-label leak">Leakage vectors</div>
+            <ul>
+              <li>GPUs idling at low utilization</li>
+              <li>Oversized instances, no autoscaling</li>
+              <li>Inference capacity paid for but unused</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNAL CAPABILITY MATRIX ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01·A</span><h2>What we can actually capture</h2></div>
+    <p class="sec-sub">The definitive signal table — each audit signal, its data source, and whether it's available on subscription, API without proxy, or API with proxy. This is the honest capability map the rest of the product is built on.</p>
+
+    <p class="matrix-hint">← swipe to see all columns →</p>
+    <table class="matrix">
+      <colgroup><col><col><col><col><col class="colhi"></colgroup>
+      <thead>
+        <tr><th>Signal</th><th>Data source</th><th style="text-align:center">Subscription</th><th style="text-align:center">API · no proxy</th><th style="text-align:center">API + proxy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="sig">Token counts / session</td><td class="src">~/.claude JSONL</td><td class="cell cy">exact</td><td class="cell cy">exact</td><td class="cell cy">exact</td></tr>
+        <tr><td class="sig">Model used per turn</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
+        <tr><td class="sig">Cache hit rate</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
+        <tr><td class="sig">Tool calls (bash, file, search)</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
+        <tr><td class="sig">Daily limit hit frequency</td><td class="src">session-end detection</td><td class="cell cp">inferred</td><td class="cell cp">~ via budget</td><td class="cell cy">exact 429</td></tr>
+        <tr><td class="sig">Provider aggregate totals</td><td class="src">provider usage API</td><td class="cell cn">no access</td><td class="cell cy">admin key</td><td class="cell cy">admin key</td></tr>
+        <tr><td class="sig">Per-request billing match</td><td class="src">proxy request log</td><td class="cell cn">impossible</td><td class="cell cn">no req IDs</td><td class="cell cy">full audit</td></tr>
+        <tr><td class="sig">HTTP error / latency logs</td><td class="src">proxy request log</td><td class="cell cn">—</td><td class="cell cn">—</td><td class="cell cy">full</td></tr>
+      </tbody>
+    </table>
+    <p class="sec-sub" style="margin-top:14px;margin-bottom:0">The JSONL reader covers the top four signals on <em>any</em> plan with zero friction — no proxy, no key. The admin key adds provider-level totals. Per-request billing match and error logs are the proxy's exclusive territory, because only the proxy holds request IDs.</p>
+  </div>
+</section>
+
+<!-- ============ PLAN TIERS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01·B</span><h2>Right features, right plan</h2></div>
+    <p class="sec-sub">How capability ladders across the four plans. Dev mode works standalone with zero team involvement; each step up unlocks a distinct class of value — visibility, then billing accuracy, then legal-grade recovery.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <span class="ptag">Open source</span>
+        <h4>Dev mode</h4>
+        <p class="psub">Installs in 30s. Data never leaves the machine until you join a team.</p>
+        <ul>
+          <li>Token heatmap + coaching</li>
+          <li>Context-window management</li>
+          <li>Cache hit-rate tracking</li>
+          <li>Ralph-loop adoption</li>
+          <li>Weekly personal digest</li>
+          <li>CLAUDE.md writer</li>
+          <li class="off">Team dashboard</li>
+          <li class="off">Billing audit</li>
+        </ul>
+      </div>
+
+      <div class="plan">
+        <span class="ptag">Per seat</span>
+        <h4>Team plan</h4>
+        <p class="psub">Shared visibility + optional enforcement. Manager dashboard, per-dev attribution.</p>
+        <ul>
+          <li>Everything in dev mode</li>
+          <li>Web dashboard + per-dev visibility</li>
+          <li>GitHub / GitLab integration</li>
+          <li>Skills repo sync</li>
+          <li>Manager digest</li>
+          <li>Key management</li>
+          <li>Harness rules (optional)</li>
+          <li class="off">Billing line-item audit</li>
+        </ul>
+      </div>
+
+      <div class="plan feat-pop">
+        <span class="ptag">Most popular · API add-on</span>
+        <h4>+ Billing audit</h4>
+        <p class="psub">Unlocks invoice accuracy. Auto-runs, drafts a support ticket when it finds something.</p>
+        <ul>
+          <li>Everything in team plan</li>
+          <li>Invoice reconciliation</li>
+          <li>Failed-request detection</li>
+          <li>Rate verification</li>
+          <li>Provider comparison</li>
+          <li>Optimisation suggestions</li>
+          <li>Support-ticket generator</li>
+          <li class="off">Contract SLA enforcement</li>
+        </ul>
+      </div>
+
+      <div class="plan">
+        <span class="ptag">Enterprise</span>
+        <h4>+ Refund package</h4>
+        <p class="psub">Where real recovery lives — SLA contracts give legal leverage. Success-fee pricing.</p>
+        <ul>
+          <li>Everything in API add-on</li>
+          <li>Contract upload + parsing</li>
+          <li>SLA breach monitoring</li>
+          <li>Charge anomaly detection</li>
+          <li>Evidence bundle assembly</li>
+          <li>Credit-formula calculator</li>
+          <li>Legal-ready export</li>
+          <li>SSO / SAML</li>
+        </ul>
+      </div>
     </div>
 
-    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+    <div class="conv-intro" style="margin-top:22px">
+      <p><strong>Enforcement model, stated honestly.</strong> <span class="hl">Subscription = coach</span> (soft levers): CLAUDE.md governance, usage-violation alerts, manager digest, skills sync — all plans. A determined dev <em>can</em> ignore the platform; enforcement is ultimately a manager conversation backed by undeniable data. <span class="hl">API + proxy = enforce</span> (hard levers): model routing rewrites the model field, daily budget returns a 429, context limit returns 413, key revocation is instant. Proxy is one env var (<code style="font-family:'JetBrains Mono',monospace;font-size:11px">ANTHROPIC_BASE_URL</code>), ~20–80ms latency, opt-in — enabled once trust is established. This is exactly why dedup guard and guardrails are SDK/proxy-only.</p>
+    </div>
+  </div>
+</section>
 
-    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);padding:20px 22px;position:relative;box-shadow:var(--sh)">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--o)"></div>
-      <div style="font-size:11px;font-weight:600;color:var(--o);margin-bottom:6px">02 · COMPARE</div>
-      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">Vendor says $2,000. We say $726.</div>
-      <div style="font-size:11px;color:var(--t2);line-height:1.55">Reconcile daily. Confidence-score every bucket. Flag mismatches with dollar amounts.</div>
-      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--o)">$1,274</div>
-      <div style="font-size:9px;color:var(--t3)">in mismatches found</div>
+<!-- ============ BILLING FINDINGS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01·C</span><h2>What the billing audit actually finds</h2></div>
+    <p class="sec-sub">Honest about likelihood and recoverability. The audit runs automatically; when it finds something it drafts a support ticket, and when it finds nothing, that confirmation is itself valuable.</p>
+
+    <div class="findings">
+      <div class="finding">
+        <div class="fmain"><h4>Failed-request charges (5xx + billed)</h4><p>Provider bills tokens on requests that returned an error. Proxy logs error + bill, cross-referenceable. A simple support ticket typically gets credit.</p></div>
+        <div class="fmeta"><span class="flik lik-some">Sometimes</span><span class="frec rec-yes">Recoverable</span></div>
+      </div>
+      <div class="finding">
+        <div class="fmain"><h4>Wrong rate tier applied</h4><p>Higher per-token rate than published — pricing changed mid-period, or volume discounts not applied. Provider usage API shows the model breakdown to verify.</p></div>
+        <div class="fmeta"><span class="flik lik-some">Sometimes</span><span class="frec rec-yes">Recoverable</span></div>
+      </div>
+      <div class="finding">
+        <div class="fmain"><h4>Billing-period boundary double-charge</h4><p>Month-end requests appear in two consecutive invoices. Proxy timestamps prove the correct period.</p></div>
+        <div class="fmeta"><span class="flik lik-rare">Rare</span><span class="frec rec-yes">Recoverable</span></div>
+      </div>
+      <div class="finding">
+        <div class="fmain"><h4>Token-count discrepancy</h4><p>Invoice token count differs from response header. Extremely rare — both use the same server-side count, usually rounding. Worth flagging, rarely disputed successfully.</p></div>
+        <div class="fmeta"><span class="flik lik-vrare">Very rare</span><span class="frec rec-hard">Hard to prove</span></div>
+      </div>
+      <div class="finding">
+        <div class="fmain"><h4>SLA uptime violations</h4><p>Standard API plans have no SLA — no contractual obligation to credit downtime. Monitoring is still useful as evidence if you later negotiate a contract.</p></div>
+        <div class="fmeta"><span class="flik lik-vrare">No contract</span><span class="frec rec-no">Not recoverable</span></div>
+      </div>
     </div>
 
-    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+    <div class="honest">
+      <h4>⚠ Honest positioning — don't oversell the standard tier</h4>
+      <p>Standard API plan billing mismatches are real but <strong>small — typically 0.5–2% of spend</strong>. The support-ticket approach fits the size of issues found, so call it a <span class="teal">"billing health check," not a "refund package."</span> Significant recovery (<strong>$10k–$100k+</strong>) only becomes possible at the enterprise tier, because SLA contracts are what give you legal leverage. The output scales to what you can prove: standard teams get a support-ticket draft; enterprise teams get a legal-ready evidence bundle with a credit calculation.</p>
+    </div>
+  </div>
+</section>
 
-    <div style="flex:1;background:var(--card);border:1px solid var(--bdr);padding:20px 22px;position:relative;box-shadow:var(--sh)">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--t)"></div>
-      <div style="font-size:11px;font-weight:600;color:var(--t);margin-bottom:6px">03 · CLASSIFY</div>
-      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">4 findings. Scored by confidence.</div>
-      <div style="font-size:11px;color:var(--t2);line-height:1.55">Each finding gets: severity, confidence tier, dollar impact, root cause, recommended action.</div>
-      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--t)">4 findings</div>
-      <div style="font-size:9px;color:var(--t3)">1 critical · 2 high · 1 medium</div>
+<!-- ============ THE GAP ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The open gap — chat-based usage</h2></div>
+    <p class="sec-sub">Being honest about what we cannot reach today, so the roadmap doesn't promise coverage we can't deliver.</p>
+
+    <div class="gap">
+      <div class="gap-tag"><span class="dot"></span> Unsolved · no known data access</div>
+      <h3>We have no way to audit chat-based LLM usage</h3>
+      <p>For interactive chat surfaces — ChatGPT web, Claude.ai, Gemini app, in-IDE chat on bundled plans — <strong>we do not currently have a path to the underlying usage data.</strong> There is no admin API, no exportable journal, and no billing line broken down per interaction. The flat fee is the only artifact, and it tells us nothing about rate or leakage.</p>
+      <p>This is a <strong>real constraint, not a sequencing choice.</strong> It stays out of the committed roadmap until a data path exists. The cards below are where a path <em>might</em> open — to be validated, not assumed.</p>
+
+      <div class="gap-grid">
+        <div class="gap-card">
+          <h4>Enterprise admin consoles</h4>
+          <p class="why">ChatGPT Enterprise / Claude Team sometimes expose seat-level usage analytics to admins. Worth probing whether any export exists.</p>
+          <p class="verdict">→ research, unconfirmed</p>
+        </div>
+        <div class="gap-card">
+          <h4>BYOK fallback</h4>
+          <p class="why">If a chat surface can be pointed at the customer's own API key, it collapses into the API tier and becomes auditable.</p>
+          <p class="verdict">→ best available lever</p>
+        </div>
+        <div class="gap-card">
+          <h4>Seat right-sizing only</h4>
+          <p class="why">Even with zero token data, headcount × plan tier × activity is auditable from procurement. Finding = seats, not rate.</p>
+          <p class="verdict">→ partial, low-confidence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHASED ROADMAP ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap, anchored on Monday</h2></div>
+    <p class="sec-sub">Monday is the line. Phase 1 is only what actually ships then — confirmed against Nayanah's launch plan. Phase 2 is the immediate finish-work (the broken and unverified pieces). Everything past that is the post-launch arc toward full coverage and enforcement.</p>
+
+    <div class="phase-wrap">
+
+      <!-- PHASE 1 · SHIPPING MONDAY -->
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-badge pb-mon">PHASE 1 · MONDAY</span>
+          <h3>Ships at launch</h3>
+          <div class="when">Confirmed in the launch plan</div>
+          <div class="theme">Two paths ready to share, observe-first, plus the fixed onboarding.</div>
+        </div>
+        <div class="phase-items">
+          <div class="pitem">
+            <div class="pitem-main"><h4>Journal logger <span class="pstat ps-ship">Ready</span></h4><p>Shell script for individual Claude Code / Copilot users. Local usage report + dev plan value-add. Observe-only.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">SHIPPING</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Python SDK (private) <span class="pstat ps-ship">Ready</span></h4><p>Audits agentic services calling LLMs via API. Powers every current dashboard feature + enforcement.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">SHIPPING</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Fixed onboarding flow <span class="pstat ps-ship">Deliverable</span></h4><p>Consistent UI aligned to product expectations — a named Monday deliverable.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">SHIPPING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 · FINISH FOR MONDAY -->
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-badge pb-fast">PHASE 2 · MUST-FIX</span>
+          <h3>Blockers before launch</h3>
+          <div class="when">In flight — gates the launch</div>
+          <div class="theme">The fixes and verifications that make Phase 1 trustworthy. Detail lives in the MVP tab.</div>
+        </div>
+        <div class="phase-items">
+          <div class="pitem">
+            <div class="pitem-main"><h4>Reconciliation logic <span class="pstat ps-broken">Critical</span></h4><p>API-key-scoped events vs. account-level usage → false anomalies. Unblocks pricing &amp; token mismatch.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-conv">KEYSTONE</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Free SDK (public) ingestion <span class="pstat ps-broken">Broken</span></h4><p>HubSpot-distributed <code style="font-family:'JetBrains Mono',monospace;font-size:11px">pip install tokenid</code> data not reaching dashboard.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-bet">BLOCKER</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Verify 8 violation types <span class="pstat ps-fix">6 unverified</span></h4><p>2 wait on reconciliation; 6 show no flags yet. Needed for the refund report.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-bet">BLOCKER</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Login/registration + alert-rule bugs <span class="pstat ps-fix">Bugs</span></h4><p>Auth fixes, separate event tables, alert rules working end-to-end.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">FIX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 · RIGHT AFTER -->
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-badge pb2">PHASE 3 · POST-LAUNCH</span>
+          <h3>Bridge &amp; enforce</h3>
+          <div class="when">Next, once launch is stable</div>
+          <div class="theme">Turn the proxy hook on and move from reporting to preventing.</div>
+        </div>
+        <div class="phase-items">
+          <div class="pitem">
+            <div class="pitem-main"><h4>Homebrew proxy — share &amp; activate <span class="pstat ps-fix">Not shared yet</span></h4><p><code style="font-family:'JetBrains Mono',monospace;font-size:11px">brew install tokenid</code> — the free→paid bridge that lands the SDK hook.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-conv">CONVERSION</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Dedup guard + guardrail enforcement</h4><p>The paid payoff — auto-recover, not just report. SDK/proxy only.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-conv">CONVERSION</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Tiered journal-logger UI (free → paid)</h4><p>Locked rate/leakage states, benchmark band, guided connect-flow</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-conv">CONVERSION</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 · EXPAND COVERAGE -->
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-badge pb3">PHASE 4 · EXPAND</span>
+          <h3>Widen the surface</h3>
+          <div class="when">Later, where a key or log exists</div>
+          <div class="theme">More paths into the same audit engine.</div>
+        </div>
+        <div class="phase-items">
+          <div class="pitem">
+            <div class="pitem-main"><h4>Bedrock + Vertex audit</h4><p>Cloud billing pull — reuses KloudID plumbing</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">QUICK WIN</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Aggregator key ingest</h4><p>OpenRouter / Together usage + margin detection</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">QUICK WIN</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Azure OpenAI coverage</h4><p>Completes the managed-cloud trio</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-quick">QUICK WIN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 · HARD + RESEARCH -->
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-badge pb4">PHASE 5 · HARD / RESEARCH</span>
+          <h3>Harder telemetry &amp; the chat gap</h3>
+          <div class="when">High effort or unproven</div>
+          <div class="theme">Worth it where customers run it; chat stays research.</div>
+        </div>
+        <div class="phase-items">
+          <div class="pitem">
+            <div class="pitem-main"><h4>Self-hosted GPU utilization</h4><p>Infra metrics × instance cost — bridges into KloudID</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-grind">GRIND</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>IDE BYOK detection (Cursor / Windsurf / Copilot)</h4><p>Route bundled-tool traffic through customer key → makes it auditable</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-grind">GRIND</span>
+            </div>
+          </div>
+          <div class="pitem">
+            <div class="pitem-main"><h4>Chat-based usage <span class="pstat ps-broken">No data path</span></h4><p>No known access today. Enterprise admin-console probe + data-free seat right-sizing only.</p></div>
+            <div class="pitem-ve">
+              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
+              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
+              <span class="ratio r-grind">RESEARCH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CONVERSION (merged into roadmap) ============ -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 0 22px;border-top:1px solid var(--line)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Feature deep-dive</span>
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Converting the free journal-logger user</h2></div>
+    <p class="sec-sub">The hardest conversion we have — the free tier genuinely cannot show rate or leakage, so there's no recovered-dollar number to dangle. The upgrade is a <strong>data-source change</strong> plus the <strong>implementation of dedup + guardrails</strong>. How the feature behaves at each tier:</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04·A</span><h2>The conversion mechanic</h2></div>
+    <p class="sec-sub">Why the standard PLG move doesn't apply here, and what replaces it.</p>
+
+    <div class="conv-intro">
+      <p><strong>The mechanic flips.</strong> Normal PLG = "here's $X of waste, pay to recover it." We can't do that — the journal file has no rate data to find waste in. So instead: <span class="hl">free surfaces the opportunities</span> (what's likely leaking, observed from usage patterns), and <span class="hl">paid implements the dedup + guard rules</span> that actually act on them. Free shows the shape of the problem; paid applies the fix.</p>
     </div>
 
-    <div style="display:flex;align-items:center;font-size:18px;color:var(--bdr);padding:0 2px">→</div>
+    <div class="ui-mock">
+      <div class="ui-panel">
+        <div class="ui-bar">
+          <span class="ui-title">Usage Dashboard</span>
+          <span class="tier-pill pill-free">Free · Journal</span>
+        </div>
+        <div class="ui-body">
+          <div class="ui-row"><span class="lbl">Tokens this month</span><span class="ui-val live">14.2M</span></div>
+          <div class="ui-row"><span class="lbl">Model mix</span><span class="ui-val live">4 models</span></div>
+          <div class="ui-row"><span class="lbl">Sessions</span><span class="ui-val live">1,840</span></div>
+          <div class="ui-row"><span class="lbl"><span class="lockicon"></span> Rate / effective $</span><span class="ui-val lock">Connect to unlock</span></div>
+          <div class="ui-row"><span class="lbl"><span class="lockicon"></span> Leakage found</span><span class="ghost">$ 3,1•• .••</span></div>
+          <div class="benchband">
+            <div class="bl">Benchmark · not your data</div>
+            <div class="bt">Teams at your usage level <b>commonly leave 8–15%</b> on retries &amp; over-tiering. Connect a key to see your actual figure.</div>
+          </div>
+        </div>
+        <div class="ui-foot cta">Connect API key or cloud billing → <span>watch leakage populate live</span></div>
+      </div>
 
-    <div style="flex:1;background:var(--card);border:1px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:20px 22px;position:relative;box-shadow:var(--sh)">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--green);border-radius:0 var(--r) 0 0"></div>
-      <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:6px">04 · RECOVER</div>
-      <div style="font-size:13px;font-weight:700;color:var(--k);margin-bottom:4px">Dispute CSV → vendor → credited.</div>
-      <div style="font-size:11px;color:var(--t2);line-height:1.55">Evidence packaged. Sent to vendor billing team. Lifecycle tracked until resolution.</div>
-      <div style="margin-top:10px;font-size:24px;font-weight:800;color:var(--green)">$1,310</div>
-      <div style="font-size:9px;color:var(--t3)">recoverable + saveable</div>
+      <div class="ui-panel">
+        <div class="ui-bar">
+          <span class="ui-title">Audit &amp; Optimization</span>
+          <span class="tier-pill pill-paid">Paid · Connected</span>
+        </div>
+        <div class="ui-body">
+          <div class="ui-row"><span class="lbl">Tokens this month</span><span class="ui-val live">14.2M</span></div>
+          <div class="ui-row"><span class="lbl">Effective rate</span><span class="ui-val live">$0.94 / 1K</span></div>
+          <div class="ui-row"><span class="lbl">Leakage found</span><span class="ui-val live">$3,180</span></div>
+          <div class="ui-row"><span class="lbl">Dedup guard</span><span class="ui-val live">ON · saves $740/mo</span></div>
+          <div class="ui-row"><span class="lbl">Over-tier rule</span><span class="ui-val live">ON · 312 calls</span></div>
+          <div class="benchband" style="border-style:solid;border-color:var(--teal);background:rgba(0,191,166,.06)">
+            <div class="bl" style="color:var(--teal)">Live · your data</div>
+            <div class="bt">Guardrails active. <b>$1,090/mo recovered</b> across dedup + downgrade rules, applied automatically.</div>
+          </div>
+        </div>
+        <div class="ui-foot">Rules running on SDK / proxy · adjust thresholds anytime</div>
+      </div>
+    </div>
+
+    <div class="ladder">
+      <div class="rung">
+        <span class="step">STEP 01 · FREE</span>
+        <h4>See usage + opportunities</h4>
+        <p>Journal logger shows real usage. Rate &amp; leakage rendered as honest locked states. A benchmark band shows the <em>shape</em> of likely waste — labelled as benchmark, never as their audited finding.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="rung">
+        <span class="step">STEP 02 · CONNECT</span>
+        <h4>2-min guided key connect</h4>
+        <p>Not a pricing page — a connect-flow. Drop in an API key or point at Bedrock/Vertex. Locked panels populate live. The <b>first real leakage row</b> is the conversion event, not checkout.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="rung">
+        <span class="step">STEP 03 · PAID</span>
+        <h4>Implement dedup + guard rules</h4>
+        <p>The paid value isn't just <em>seeing</em> leakage — it's TokenID <b>applying the dedup guard and guardrail rules</b> that act on it. Recovery runs automatically; UI shifts from passive dashboard to active control.</p>
+      </div>
+    </div>
+
+    <div class="conv-intro" style="margin-top:26px;border-left-color:var(--teal)">
+      <p><strong>UI restraint — industry standard.</strong> Locked dimensions use clear lock affordances and one honest line ("Not available from journal data — connect a key to unlock"). Ghosted/blurred values show a real number exists without inventing one. No countdown timers, no fake urgency, no dark patterns. The benchmark band is always explicitly marked <span class="hl">"benchmark · not your data"</span> so it never reads as a fabricated audit result.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04·B</span><h2>Feature inventory</h2></div>
+    <p class="sec-sub">Every surface this conversion touches, and which tier it belongs to.</p>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fnum">01</div>
+        <h4>Usage dashboard</h4>
+        <p>Tokens, model mix, sessions — read from the local journal file. Full fidelity, no key required. This is the value that earns the free user's trust before any ask.</p>
+        <span class="ftag ftag-free">Free</span>
+      </div>
+      <div class="feat">
+        <div class="fnum">02</div>
+        <h4>Locked rate &amp; leakage panels</h4>
+        <p>Rendered as honest empty states — lock affordance + one plain line. Leakage shows a ghosted/blurred figure so the user sees a real number exists without us inventing one.</p>
+        <span class="ftag ftag-free">Free</span>
+      </div>
+      <div class="feat">
+        <div class="fnum">03</div>
+        <h4>Benchmark opportunity band</h4>
+        <p>Category-level "teams at your usage level commonly leave 8–15%." Always stamped <em>benchmark · not your data</em>. Surfaces the shape of waste without claiming it as their audited finding.</p>
+        <span class="ftag ftag-free">Free</span>
+      </div>
+      <div class="feat">
+        <div class="fnum">04</div>
+        <h4>Guided connect-flow</h4>
+        <p>A 2-minute key/billing connect — not a pricing page. Drop in an API key or point at Bedrock/Vertex. Panels populate live. The first real leakage row is the conversion event.</p>
+        <span class="ftag ftag-both">The bridge</span>
+      </div>
+      <div class="feat">
+        <div class="fnum">05</div>
+        <h4>Dedup guard</h4>
+        <p>Detects and collapses duplicate / redundant calls (repeat prompts, retry storms, identical context re-sends). Reports savings in free preview; <b>enforces</b> them once paid.</p>
+        <span class="ftag ftag-paid">Paid · enforced</span>
+      </div>
+      <div class="feat">
+        <div class="fnum">06</div>
+        <h4>Guardrail rule set</h4>
+        <p>Model-downgrade on over-tiered calls, token caps, cache enforcement. Configurable thresholds. Runs on the SDK/proxy plumbing — the active control the paid tier is really buying.</p>
+        <span class="ftag ftag-paid">Paid · enforced</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04·C</span><h2>Tier behaviour spec</h2></div>
+    <p class="sec-sub">What each dimension does at free vs. paid — the contract for the build.</p>
+
+    <div class="specrow">
+      <div class="sk">Data source</div>
+      <div class="sv"><b>Free:</b> local journal file only. &nbsp;<b>Paid:</b> API key, proxy, or cloud billing (<code>Bedrock</code> / <code>Vertex</code>).</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Usage metrics</div>
+      <div class="sv"><b>Free:</b> full — tokens, models, sessions. &nbsp;<b>Paid:</b> same, plus per-call attribution.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Rate / effective $</div>
+      <div class="sv"><b>Free:</b> locked — "connect to unlock." &nbsp;<b>Paid:</b> live <code>$/1K</code> effective rate.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Leakage</div>
+      <div class="sv"><b>Free:</b> ghosted figure + benchmark band. &nbsp;<b>Paid:</b> real per-vector leakage total.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Dedup guard</div>
+      <div class="sv"><b>Free:</b> opportunity flagged, savings estimated. &nbsp;<b>Paid:</b> <b>active</b> — duplicates collapsed automatically.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Guardrail rules</div>
+      <div class="sv"><b>Free:</b> visible but toggles disabled. &nbsp;<b>Paid:</b> <b>enforced</b> on SDK/proxy, thresholds adjustable.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">Conversion event</div>
+      <div class="sv">Not checkout — the moment the <b>first real leakage row replaces the ghost</b> after connect.</div>
+    </div>
+    <div class="specrow">
+      <div class="sk">UI restraint</div>
+      <div class="sv">Industry standard — lock icons, one honest line, blurred-not-fabricated values, no dark patterns.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSER ============ -->
+<section>
+  <div class="wrap">
+
+    <div class="closer">
+      <h3>The sequencing logic in one line</h3>
+      <p><strong>Monday ships the journal logger + private SDK + fixed onboarding</strong> — observe-first, with the SDK as the enforcement-ready spine. The gate is the <strong>must-fix list</strong>: reconciliation is the keystone (it unblocks two violation types), the public-SDK ingestion bug has to be cleared, and the six silent violations verified for the refund report. Right after launch, <strong>turn on the Homebrew proxy bridge and dedup/guardrail enforcement</strong> — the move from reporting waste to preventing it. Then widen coverage (Bedrock, Vertex, aggregators, Azure) and treat self-hosted, IDE-BYOK and <strong>chat as later/ research</strong>, since chat has no data path yet.</p>
+      <p class="seq">ship logger + SDK + onboarding → clear must-fix blockers → activate proxy + enforcement → widen coverage → research the chat gap</p>
     </div>
 
   </div>
+</section>
 
-  <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--t3)">$2,000 in → $1,310 found → <strong style="color:var(--o)">65% of spend is addressable</strong></div>
-</div>
+</div><!-- /tab-roadmap -->
 
-<div class="dk" style="margin-top:4px">
-  <h3>Illustrative findings at $2K monthly Bedrock spend</h3>
-  <div class="g2" style="gap:10px">
-    <div class="fd"><span class="fd-sev s-c">Critical</span><div class="fd-name">Marketplace path miscategorization</div><div class="fd-desc">Entire Bedrock spend routed through Marketplace billing instead of direct usage.</div><div class="fd-amt">$1,980</div></div>
-    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Predicted vs actual drift</div><div class="fd-desc">Opus billed at 36.7% of published rate. 63% gap on 16,500 calls.</div><div class="fd-amt">$1,254 gap</div></div>
-    <div class="fd"><span class="fd-sev s-h">High</span><div class="fd-name">Cache line double bill</div><div class="fd-desc">AWS billing full input AND cached tokens separately. 110% effective rate.</div><div class="fd-amt">$35 recoverable</div></div>
-    <div class="fd"><span class="fd-sev s-m">Medium</span><div class="fd-name">Batch recoverable</div><div class="fd-desc">Workload eligible for batch tier. No real-time latency needed.</div><div class="fd-amt">$21 saveable</div></div>
+
+<!-- ============ MVP RELEASE TAB ============ -->
+<div class="tabpanel active" id="tab-mvp">
+<header class="fd-hero" style="padding-bottom:18px">
+  <div class="wrap">
+    <div class="kicker"><span class="chip"></span> TokenID · Monday Launch · Status</div>
+    <h1>Monday Launch —<br><span class="id">Where We Stand</span></h1>
+    <p class="lede">What's done, what's at risk, the one thing that decides Monday. Detail below.</p>
   </div>
-</div>
+</header>
 
-<hr class="sep" style="margin-top:40px">
+<section style="padding-top:14px">
+  <div class="wrap">
 
-<div class="sec">
-  <div class="sec-tag" style="color:var(--t)">Where we audit</div>
-  <div class="sec-h">Three surfaces</div>
-  <div class="g3">
-    <div class="c"><div class="c-bar" style="background:var(--t)"></div><div class="c-body"><div class="c-h">Cloud LLM infra</div><div class="c-sub">Bedrock · Vertex · Azure OpenAI</div><div class="c-p">Bedrock POC live. $2K audit found $1.3K+ in findings. GCP in KLOUDID — Vertex next. Azure after.</div></div><div class="c-foot" style="color:var(--t)"><strong>$18B+ · Tun</strong></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--blue)"></div><div class="c-body"><div class="c-h">API LLM calls</div><div class="c-sub">Anthropic · OpenAI · xAI</div><div class="c-p">v0.8.4 shipped. 8 detectors. Confidence-scored reconciliation. Dispute CSV. Review queue live.</div></div><div class="c-foot" style="color:var(--blue)"><strong>$12.5B · Y</strong></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--purple)"></div><div class="c-body"><div class="c-h">CLI + dev tools</div><div class="c-sub">Claude Code · Grok · Copilot · Cursor</div><div class="c-p">Claude Code + Grok capture built. Ghost seat detection = fastest ROI. Copilot + Cursor next.</div></div><div class="c-foot" style="color:var(--purple)"><strong>$7.3B · Nayana</strong></div></div>
+    <!-- VERDICT -->
+    <div class="verdict">
+      <div class="vlight"><span></span></div>
+      <div>
+        <h2>On track — <span class="on-track">one risk to watch</span></h2>
+        <p><b>5 of 5 build tasks done. 5 of 8 problem-checks confirmed.</b> One thing is still outside our hands — a fix Nayanah's AI agent is building. If it's late, we'll build it ourselves. <b>We're working this weekend to get it done.</b></p>
+      </div>
+    </div>
+
+    <!-- AT-A-GLANCE GRID -->
+    <div class="exec-grid">
+      <div class="ecard good">
+        <div class="ek">Build tasks</div>
+        <div class="ebig">5/5</div>
+        <div class="esub">Done</div>
+        <div class="ebar"><i style="width:100%"></i></div>
+      </div>
+      <div class="ecard warn">
+        <div class="ek">Problem-checks confirmed</div>
+        <div class="ebig">5/8</div>
+        <div class="esub">3 more ready, just need live use to confirm</div>
+        <div class="ebar"><i style="width:62%"></i></div>
+      </div>
+      <div class="ecard bad">
+        <div class="ek">Blockers</div>
+        <div class="ebig">1</div>
+        <div class="esub">Pricing check — waiting on the SDK fix</div>
+      </div>
+      <div class="ecard warn">
+        <div class="ek">Tasks in progress</div>
+        <div class="ebig">5</div>
+        <div class="esub">Moving, none holding up launch</div>
+      </div>
+    </div>
+
+    <!-- THE ONE BLOCKER -->
+    <div class="blocker-card">
+      <div class="bc-main">
+        <h3><span class="bdot"></span> The one thing that decides Monday</h3>
+        <p>Two important pieces — the <b>pricing check</b> and the <b>bill-matching fix</b> — both need the same small change to the SDK. That change is being built by <b>Nayanah's AI agent</b>. <span class="teal">What we need to decide:</span> a cut-off date. If the agent isn't done by then, we build it ourselves. <b>The team is on it this weekend.</b></p>
+      </div>
+      <div class="bc-side">
+        <div class="bnum">2</div>
+        <div class="blbl">key pieces, one shared fix</div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
-<div class="sec" style="padding-top:16px">
-  <div class="sec-tag" style="color:var(--green)">Customer value</div>
-  <div class="sec-h">Three money buckets</div>
-  <div class="g3">
-    <div class="c mc"><div class="n" style="color:var(--red)">1–5%</div><h4>Recover</h4><p>Billing errors found and disputed</p></div>
-    <div class="c mc"><div class="n" style="color:var(--o)">15–35%</div><h4>Save</h4><p>Waste identified and eliminated</p></div>
-    <div class="c mc"><div class="n" style="color:var(--green)">ongoing</div><h4>Prevent</h4><p>Spend controls that stop future waste</p></div>
+<!-- DETAILS DIVIDER -->
+<section style="padding-top:30px">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 0 4px;border-top:1px solid var(--line)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Detail</span>
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="dk moat" style="margin-top:16px">
-  <h3>Nobody else does this</h3>
-  <p>Optimization is crowded. Observability is commoditizing. <strong>Nobody independently audits the bill.</strong> A vendor auditing their own billing is like an accountant auditing their own books.</p>
-</div>
+<section style="padding-top:18px">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">C1</span><h2>Install paths</h2></div>
+    <p class="sec-sub">What each version does, and whether it can actually control spend or only show it.</p>
 
-</div>
+    <div class="ipath">
+      <div class="ipath-top">
+        <div class="ipath-icon ic-journal">LOG</div>
+        <div class="ipath-name">
+          <h4>Journal logger <span class="st st-ready">Ready to share</span></h4>
+          <p>Reads Claude Code / Copilot usage files on the user's computer and makes a report.</p>
+          <span class="persona"><span class="pico">👤</span> <b>Solo developer on a flat monthly plan</b> — Max or Copilot subscriber who wants to see their own usage</span>
+        </div>
+      </div>
+      <div class="enforce-note"><b>Can it control spend?</b> <span class="no">No</span> — it only shows usage and reports. Free tier.</div>
+    </div>
 
-<!-- ════════════════════════════════════════════════════════════ -->
-<!-- CUSTOMER VERSION -->
-<!-- ════════════════════════════════════════════════════════════ -->
-<div class="tab-panel" id="p-cust">
+    <div class="ipath">
+      <div class="ipath-top">
+        <div class="ipath-icon ic-sdk">SDK</div>
+        <div class="ipath-name">
+          <h4>Python SDK (private) <span class="st st-ready">Ready to share</span></h4>
+          <p>For AI features that call providers directly. Powers all the dashboard features.</p>
+          <span class="persona"><span class="pico">⚙️</span> <b>Engineering team paying per use</b> — runs AI features in production, wants to check the bill and set spending limits</span>
+        </div>
+      </div>
+      <div class="ipath-cmd"><span class="pre">$ </span>pip install --extra-index-url https://tokenid:td_•••@pypi.token.audit.id/simple/ tokenid</div>
+      <div class="enforce-note"><b>Can it control spend?</b> <span class="yes">Yes</span> — can catch duplicate calls, apply spending limits, and send alerts. This is what the paid tier buys.</div>
+    </div>
 
-<div class="hero">
-  <svg viewBox="0 0 48 48" fill="none"><path d="M24 4L42 13v12c0 11-7 20-18 23C13 45 6 36 6 25V13L24 4z" fill="#FE602C" stroke="#1E1E22" stroke-width="2.5"/><path d="M17 24l5 5 9-9" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <h1>Is your AI bill <span>correct?</span></h1>
-  <p class="hero-sub">You trust your LLM vendor's invoice because you have no alternative. TokenID gives you the alternative.</p>
-</div>
+    <div class="ipath">
+      <div class="ipath-top">
+        <div class="ipath-icon ic-proxy">BRW</div>
+        <div class="ipath-name">
+          <h4>Free tool — Homebrew <span class="st st-pending">Not shared yet</span></h4>
+          <p>A small tool that sits between the app and the AI provider — the easy way to step up from free to paid.</p>
+          <span class="persona"><span class="pico">🧭</span> <b>Free user ready to upgrade</b> — wants the simplest way to turn on the paid features</span>
+        </div>
+      </div>
+      <div class="ipath-cmd"><span class="pre">$ </span>brew install tokenid</div>
+      <div class="enforce-note"><b>Can it control spend?</b> <span class="yes">Yes</span> — this is the bridge from free to paid.</div>
+    </div>
 
-<hr class="sep">
-
-<div class="sec">
-  <div class="sec-tag" style="color:var(--red)">The problem</div>
-  <div class="sec-h">You can't verify what you can't see</div>
-  <div class="g2">
-    <div class="c"><div class="c-body">
-      <div class="c-h">What your vendor shows you</div>
-      <div class="c-p" style="margin-top:8px">A monthly invoice with aggregated totals. "$2,156 for Claude Sonnet in April." No way to trace back to individual calls. No way to know if the token counts are correct. No way to check if the rate card was applied correctly.</div>
-    </div></div>
-    <div class="c" style="border-color:var(--green)"><div class="c-body">
-      <div class="c-h" style="color:var(--green)">What TokenID shows you</div>
-      <div class="c-p" style="margin-top:8px">Every API call your team made, independently recorded. Compared against the vendor's numbers daily. Every mismatch flagged with a confidence score, a dollar amount, and the evidence to dispute it.</div>
-    </div></div>
+    <div class="ipath">
+      <div class="ipath-top">
+        <div class="ipath-icon ic-pub">PUB</div>
+        <div class="ipath-name">
+          <h4>Free SDK (public) <span class="st st-broken">Data not showing up</span></h4>
+          <p>Sent to customers by email. Right now its data isn't reaching the dashboard.</p>
+          <span class="persona"><span class="pico">📥</span> <b>New lead who signed up themselves</b> — installs from an email and expects it to just work</span>
+        </div>
+      </div>
+      <div class="ipath-cmd"><span class="pre">$ </span>pip install tokenid</div>
+      <div class="enforce-note"><b>Status:</b> <span class="no">blocked</span> — a bug stops its data reaching the dashboard; must fix before launch.</div>
+    </div>
   </div>
-</div>
+</section>
 
-<hr class="sep">
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">C2</span><h2>Progress</h2></div>
+    <p class="sec-sub">5 done, 5 still going. Working through the weekend.</p>
 
-<div class="sec">
-  <div class="sec-tag" style="color:var(--o)">How it works</div>
-  <div class="sec-h">Four steps to your first audit</div>
-
-  <div class="step-row">
-    <div class="step-num"><div class="step-dot" style="background:var(--blue)">1</div><div class="step-line"></div></div>
-    <div class="step-body"><div class="step-title">Connect</div><div class="step-desc">Add a lightweight wrapper to your existing AI calls — two lines of code. Or connect your cloud account (AWS, GCP) with read-only access. We never see your prompts or responses. Metadata only.</div><div class="step-time">10 minutes</div></div>
+    <div class="prog-grid">
+      <div class="prog-col done">
+        <h3>✓ Done</h3>
+        <div class="prog-list">
+          <div class="pgitem d"><span class="pmark">✓</span><span>Journal logger enhancement</span></div>
+          <div class="pgitem d"><span class="pmark">✓</span><span>Login / registration bugs fixed</span></div>
+          <div class="pgitem d"><span class="pmark">✓</span><span>Onboarding flow updated</span></div>
+          <div class="pgitem d"><span class="pmark">✓</span><span>Split event data from logger data</span></div>
+          <div class="pgitem d"><span class="pmark">✓</span><span>Provider key encryption</span></div>
+        </div>
+      </div>
+      <div class="prog-col going">
+        <h3>▸ In progress</h3>
+        <div class="prog-list">
+          <div class="pgitem g"><span class="pmark">▸</span><span>Bill-matching fix — waiting on Nayanah's SDK fix; we can build it ourselves if needed</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>Checking alerts work &amp; fixing remaining bugs</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>New version of the journal logger</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>Charts for the new usage data</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>Separate views for the two kinds of data</span></div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="step-row">
-    <div class="step-num"><div class="step-dot" style="background:var(--o)">2</div><div class="step-line"></div></div>
-    <div class="step-body"><div class="step-title">We build your ledger</div><div class="step-desc">TokenID records every AI call: which model, how many tokens, what it should cost. We also pull your vendor's usage reports and invoices. Now there are two independent records of the same spend.</div><div class="step-time">Automatic — starts immediately</div></div>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">C3</span><h2>The 8 problems we check for</h2></div>
+    <p class="sec-sub">Each one gets two checks: a <strong>lab test</strong> we run ourselves, then a <strong>real-world check</strong> on live usage. 5 are fully confirmed, 3 just need live use to confirm, 1 is blocked.</p>
+
+    <table class="viotable">
+      <thead>
+        <tr><th>#</th><th>What we check for</th><th class="ctr">Lab test</th><th class="ctr">Live check</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="vn">1</td><td class="vname">Token count doesn't match the bill</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
+        <tr><td class="vn">2</td><td class="vname">Wrong price charged</td><td data-label="Lab test" class="ctr chk dash">—</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-blocked">Blocked — needs the SDK fix</span></td></tr>
+        <tr><td class="vn">3</td><td class="vname">Bloated context (sending too much)</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
+        <tr><td class="vn">4</td><td class="vname">Using a pricier model than needed <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
+        <tr><td class="vn">5</td><td class="vname">Overly long prompts</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
+        <tr><td class="vn">6</td><td class="vname">Repeated retries piling up cost <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
+        <tr><td class="vn">7</td><td class="vname">An agent stuck in a loop <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
+        <tr><td class="vn">8</td><td class="vname">The same request charged twice <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="legend-vio" style="margin-top:14px">
+      <span class="lv"><span class="vdot vd-verified"></span> Confirmed (5)</span>
+      <span class="lv"><span class="vdot vd-probe"></span> Needs live check (3)</span>
+      <span class="lv"><span class="vdot vd-blocked"></span> Blocked (1)</span>
+    </div>
+
+    <div class="conv-intro" style="margin-top:18px">
+      <p><strong>One thing to know:</strong> we can <em>spot</em> all 8 problems on any version. But the four marked <span class="hl">paid only</span> can only be <em>stopped automatically</em> on the paid version. On the free version, we can tell the user it happened — we just can't block it for them.</p>
+    </div>
   </div>
+</section>
 
-  <div class="step-row">
-    <div class="step-num"><div class="step-dot" style="background:var(--t)">3</div><div class="step-line"></div></div>
-    <div class="step-body"><div class="step-title">We find the gaps</div><div class="step-desc">Our reconciliation engine compares the two records daily. Token mismatches, pricing errors, charges for failed calls, cache double-billing — every finding gets a confidence score and a dollar amount.</div><div class="step-time">Daily — automated</div></div>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">C4</span><h2>What's left</h2></div>
+    <p class="sec-sub">In the order they need to happen.</p>
+
+    <div class="deliv">
+      <div class="dcheck" style="grid-column:1/-1"><span class="cbox"></span><p><b>The SDK fix + bill-matching</b> — <span style="color:var(--red);font-weight:600">blocked.</span> This is what frees up the pricing check. Waiting on Nayanah; we can build it ourselves if needed.</p></div>
+      <div class="dcheck"><span class="cbox"></span><p>Release the new journal logger</p></div>
+      <div class="dcheck"><span class="cbox"></span><p>Confirm 3 checks on live usage: pricier model, agent loop, double charge</p></div>
+      <div class="dcheck"><span class="cbox"></span><p>Check alerts work &amp; fix remaining bugs</p></div>
+      <div class="dcheck"><span class="cbox"></span><p>Separate views + charts for the data</p></div>
+    </div>
+
+    <div class="closer" style="margin-top:26px">
+      <h3>Bottom line</h3>
+      <p>One thing decides Monday: the <b>SDK fix</b>. It frees up both the pricing check and bill-matching — two pieces, one fix. We need to set a cut-off date for waiting on it. Everything else is in good shape, and <b>we're working the weekend to get there.</b></p>
+      <p class="seq">get the SDK fix (or build it ourselves) → frees the pricing check + bill-matching → confirm 3 checks on live use → release → launch</p>
+    </div>
   </div>
+</section>
 
-  <div class="step-row">
-    <div class="step-num"><div class="step-dot" style="background:var(--green)">4</div></div>
-    <div class="step-body"><div class="step-title">You get the money back</div><div class="step-desc">High-confidence findings are packaged as dispute-ready evidence — a CSV with timestamps, token counts, cost deltas, and rate card references. Send it to your vendor's billing team. We track until it's credited.</div><div class="step-time">First findings within 24 hours</div></div>
-  </div>
-</div>
+</div><!-- /tab-mvp -->
 
-<hr class="sep">
 
-<div class="sec">
-  <div class="sec-tag" style="color:var(--green)">What we find</div>
-  <div class="sec-h">Real audit from a real account</div>
-  <p style="font-size:12px;color:var(--t3);margin-bottom:16px">Illustrative results scaled to $2K monthly Bedrock spend.</p>
-  <div class="g2">
-    <div class="c"><div class="c-body"><div class="badge s-c" style="background:rgba(212,64,50,.08);color:var(--red);margin-bottom:8px">Critical</div><div class="c-h">Cache line double bill</div><div class="c-p">AWS billed full input tokens AND cache-read tokens separately — effectively charging 110% of the input rate instead of the 10% cache discount you expected.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$35 per month</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Scales with your cache usage. File an AWS Support case.</div></div></div>
-    <div class="c"><div class="c-body"><div class="badge" style="background:rgba(212,138,26,.08);color:var(--amber);margin-bottom:8px">High</div><div class="c-h">Rate card drift — 63%</div><div class="c-p">16,500 Opus calls × 115M tokens at published rates = $1,980. AWS billed $726. A $1,254 gap that can't be explained by standard discounts alone.</div><div style="font-size:18px;font-weight:700;color:var(--o);margin-top:10px">$1,254 needs clarification</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Could be Marketplace pricing. Either way, you should know.</div></div></div>
-  </div>
-</div>
-
-<hr class="sep">
-
-<div class="sec">
-  <div class="sec-tag" style="color:var(--t)">What we cover</div>
-  <div class="sec-h">Wherever your company uses AI</div>
-  <div class="g3">
-    <div class="c"><div class="c-bar" style="background:var(--t)"></div><div class="c-body"><div class="c-h">Cloud AI platforms</div><div class="c-sub">AWS Bedrock · Google Vertex · Azure OpenAI</div><div class="c-p">Connect your cloud account. We read your cost reports and invocation logs. Findings in hours, not weeks.</div></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--blue)"></div><div class="c-body"><div class="c-h">Direct API calls</div><div class="c-sub">Anthropic · OpenAI · Google · xAI</div><div class="c-p">Two-line SDK wrapper. Every call captured with full metadata. Reconciled against vendor billing daily.</div></div></div>
-    <div class="c"><div class="c-bar" style="background:var(--purple)"></div><div class="c-body"><div class="c-h">Developer tools</div><div class="c-sub">GitHub Copilot · Cursor · Claude Code</div><div class="c-p">Are all your purchased seats being used? Which developers have duplicate tools? Cancel what's wasted.</div></div></div>
-  </div>
-</div>
-
-<div class="sec" style="padding-top:16px">
-  <div class="g3">
-    <div class="c mc"><div class="n" style="color:var(--red)">1–5%</div><h4>Billing errors recovered</h4><p>Mismatches found and disputed</p></div>
-    <div class="c mc"><div class="n" style="color:var(--o)">15–35%</div><h4>Waste eliminated</h4><p>Wrong models, unused seats, bloated prompts</p></div>
-    <div class="c mc"><div class="n" style="color:var(--green)">24hrs</div><h4>First findings</h4><p>Connect today, see results tomorrow</p></div>
-  </div>
-</div>
-
-<div class="cta-block">
-  <h3>See what your AI spend really looks like</h3>
-  <p>Connect in 10 minutes. First findings within 24 hours. No code changes required for cloud audits.</p>
-</div>
-
-</div>
-
-<div class="foot">
-  <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5.5-3.5 10.7-8 12-4.5-1.3-8-6.5-8-12V6l8-4z" fill="#FE602C"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  TokenID by Vaudit · token.audit.id
-</div>
-
-</div>
 
 <script>
-function sw(id){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
-  document.getElementById('p-'+id).classList.add('on');
-  event.target.classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+  document.querySelectorAll('.tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')});
+      document.querySelectorAll('.tabpanel').forEach(function(p){p.classList.remove('active')});
+      btn.classList.add('active');
+      document.getElementById('tab-'+id).classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
 </script>
+
 </body>
 </html>
