@@ -308,6 +308,10 @@
   .verdict p{font-size:14px;color:#3A3A40;font-weight:300;line-height:1.5}
   .verdict p b{color:var(--ink);font-weight:600}
   .verdict .on-track{color:var(--amber)}
+  .verdict.good-state{border-left-color:var(--green)}
+  .verdict.good-state .vlight{background:rgba(31,170,110,.14)}
+  .verdict.good-state .vlight span{background:var(--green);box-shadow:0 0 0 6px rgba(31,170,110,.16)}
+  .verdict.good-state .on-track{color:var(--green)}
 
   .exec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
   .ecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
@@ -329,11 +333,14 @@
   .blocker-card{background:linear-gradient(135deg,#2A1813,#1E1E22);border-radius:16px;padding:24px 28px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-lg);margin-bottom:8px}
   .blocker-card .bc-main h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:7px;display:flex;align-items:center;gap:10px}
   .blocker-card .bc-main h3 .bdot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px rgba(216,85,60,.22);animation:pulse 2s infinite}
+  .blocker-card .bc-main h3 .bdot.ok{background:var(--teal);box-shadow:0 0 0 5px rgba(0,191,166,.22)}
   .blocker-card .bc-main p{font-size:13.5px;color:#D8D4D0;font-weight:300;line-height:1.55;max-width:660px}
   .blocker-card .bc-main p b{color:#fff;font-weight:600}
   .blocker-card .bc-main p .teal{color:var(--teal);font-weight:600}
   .blocker-card .bc-side{text-align:center;flex-shrink:0;border-left:1px solid rgba(255,255,255,.12);padding-left:24px}
   .blocker-card .bc-side .bnum{font-size:40px;font-weight:700;color:#FF8A6B;line-height:1}
+  .blocker-card .bc-side .bnum.ok{color:var(--teal)}
+  .blocker-card.focus-state{background:linear-gradient(135deg,#0E2A26,#1E1E22)}
   .blocker-card .bc-side .blbl{font-size:11px;color:#A8A4A0;font-weight:300;margin-top:5px;max-width:130px}
   @media(max-width:820px){.exec-grid{grid-template-columns:repeat(2,1fr)}.verdict{grid-template-columns:1fr}.blocker-card{grid-template-columns:1fr}.blocker-card .bc-side{border-left:none;border-top:1px solid rgba(255,255,255,.12);padding-left:0;padding-top:16px;text-align:left;display:flex;gap:14px;align-items:baseline}.blocker-card .bc-side .blbl{margin-top:0}}
 
@@ -1255,11 +1262,11 @@
   <div class="wrap">
 
     <!-- VERDICT -->
-    <div class="verdict">
+    <div class="verdict good-state">
       <div class="vlight"><span></span></div>
       <div>
-        <h2>On track — <span class="on-track">one risk to watch</span></h2>
-        <p><b>5 of 5 build tasks done. 5 of 8 problem-checks confirmed.</b> One thing is still outside our hands — a fix Nayanah's AI agent is building. If it's late, we'll build it ourselves. <b>We're working this weekend to get it done.</b></p>
+        <h2>On track — <span class="on-track">now in testing</span></h2>
+        <p><b>The SDK fix is deployed</b> — that was the one thing holding us up, and it's done. <b>5 of 5 build tasks done.</b> All the pieces are in place; we're now <b>focused on testing</b> to confirm everything works on live usage. <b>The team is on it this weekend.</b></p>
       </div>
     </div>
 
@@ -1271,33 +1278,32 @@
         <div class="esub">Done</div>
         <div class="ebar"><i style="width:100%"></i></div>
       </div>
-      <div class="ecard warn">
-        <div class="ek">Problem-checks confirmed</div>
-        <div class="ebig">5/8</div>
-        <div class="esub">3 more ready, just need live use to confirm</div>
-        <div class="ebar"><i style="width:62%"></i></div>
+      <div class="ecard good">
+        <div class="ek">SDK fix</div>
+        <div class="ebig">✓</div>
+        <div class="esub">Deployed — blocker cleared</div>
       </div>
-      <div class="ecard bad">
+      <div class="ecard good">
         <div class="ek">Blockers</div>
-        <div class="ebig">1</div>
-        <div class="esub">Pricing check — waiting on the SDK fix</div>
+        <div class="ebig">0</div>
+        <div class="esub">Nothing holding up launch</div>
       </div>
       <div class="ecard warn">
-        <div class="ek">Tasks in progress</div>
-        <div class="ebig">5</div>
-        <div class="esub">Moving, none holding up launch</div>
+        <div class="ek">Now testing</div>
+        <div class="ebig">4</div>
+        <div class="esub">Checks to confirm on live usage</div>
       </div>
     </div>
 
-    <!-- THE ONE BLOCKER -->
-    <div class="blocker-card">
+    <!-- THE CURRENT FOCUS -->
+    <div class="blocker-card focus-state">
       <div class="bc-main">
-        <h3><span class="bdot"></span> The one thing that decides Monday</h3>
-        <p>Two important pieces — the <b>pricing check</b> and the <b>bill-matching fix</b> — both need the same small change to the SDK. That change is being built by <b>Nayanah's AI agent</b>. <span class="teal">What we need to decide:</span> a cut-off date. If the agent isn't done by then, we build it ourselves. <b>The team is on it this weekend.</b></p>
+        <h3><span class="bdot ok"></span> What we're focused on now</h3>
+        <p>The SDK fix is in, so the <b>pricing check</b> is unblocked. We're now <b>testing the remaining checks on live usage</b> — pricing, pricier-model, agent-loop, and double-charge — to confirm they fire correctly with real traffic. No blockers left. <b>The team is testing through the weekend.</b></p>
       </div>
       <div class="bc-side">
-        <div class="bnum">2</div>
-        <div class="blbl">key pieces, one shared fix</div>
+        <div class="bnum ok">4</div>
+        <div class="blbl">checks left to confirm</div>
       </div>
     </div>
 
@@ -1375,7 +1381,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">C2</span><h2>Progress</h2></div>
-    <p class="sec-sub">5 done, 5 still going. Working through the weekend.</p>
+    <p class="sec-sub">6 done, 4 still going. Testing through the weekend.</p>
 
     <div class="prog-grid">
       <div class="prog-col done">
@@ -1386,16 +1392,16 @@
           <div class="pgitem d"><span class="pmark">✓</span><span>Onboarding flow updated</span></div>
           <div class="pgitem d"><span class="pmark">✓</span><span>Split event data from logger data</span></div>
           <div class="pgitem d"><span class="pmark">✓</span><span>Provider key encryption</span></div>
+          <div class="pgitem d"><span class="pmark">✓</span><span>SDK fix deployed — the blocker is cleared</span></div>
         </div>
       </div>
       <div class="prog-col going">
         <h3>▸ In progress</h3>
         <div class="prog-list">
-          <div class="pgitem g"><span class="pmark">▸</span><span>Bill-matching fix — waiting on Nayanah's SDK fix; we can build it ourselves if needed</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>Testing all the checks on live usage</span></div>
           <div class="pgitem g"><span class="pmark">▸</span><span>Checking alerts work &amp; fixing remaining bugs</span></div>
           <div class="pgitem g"><span class="pmark">▸</span><span>New version of the journal logger</span></div>
-          <div class="pgitem g"><span class="pmark">▸</span><span>Charts for the new usage data</span></div>
-          <div class="pgitem g"><span class="pmark">▸</span><span>Separate views for the two kinds of data</span></div>
+          <div class="pgitem g"><span class="pmark">▸</span><span>Charts + separate views for the data</span></div>
         </div>
       </div>
     </div>
@@ -1405,7 +1411,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">C3</span><h2>The 8 problems we check for</h2></div>
-    <p class="sec-sub">Each one gets two checks: a <strong>lab test</strong> we run ourselves, then a <strong>real-world check</strong> on live usage. 5 are fully confirmed, 3 just need live use to confirm, 1 is blocked.</p>
+    <p class="sec-sub">Each one gets two checks: a <strong>lab test</strong> we run ourselves, then a <strong>real-world check</strong> on live usage. 4 are fully confirmed; the other 4 are in testing now that the SDK fix is in. Nothing blocked.</p>
 
     <table class="viotable">
       <thead>
@@ -1413,20 +1419,19 @@
       </thead>
       <tbody>
         <tr><td class="vn">1</td><td class="vname">Token count doesn't match the bill</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">2</td><td class="vname">Wrong price charged</td><td data-label="Lab test" class="ctr chk dash">—</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-blocked">Blocked — needs the SDK fix</span></td></tr>
+        <tr><td class="vn">2</td><td class="vname">Wrong price charged</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">testing</td><td><span class="vstatus vs-pending">Now testing — SDK fix in</span></td></tr>
         <tr><td class="vn">3</td><td class="vname">Bloated context (sending too much)</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">4</td><td class="vname">Using a pricier model than needed <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
+        <tr><td class="vn">4</td><td class="vname">Using a pricier model than needed <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
         <tr><td class="vn">5</td><td class="vname">Overly long prompts</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
         <tr><td class="vn">6</td><td class="vname">Repeated retries piling up cost <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">7</td><td class="vname">An agent stuck in a loop <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
-        <tr><td class="vn">8</td><td class="vname">The same request charged twice <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Needs live check</span></td></tr>
+        <tr><td class="vn">7</td><td class="vname">An agent stuck in a loop <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
+        <tr><td class="vn">8</td><td class="vname">The same request charged twice <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
       </tbody>
     </table>
 
     <div class="legend-vio" style="margin-top:14px">
-      <span class="lv"><span class="vdot vd-verified"></span> Confirmed (5)</span>
-      <span class="lv"><span class="vdot vd-probe"></span> Needs live check (3)</span>
-      <span class="lv"><span class="vdot vd-blocked"></span> Blocked (1)</span>
+      <span class="lv"><span class="vdot vd-verified"></span> Confirmed (4)</span>
+      <span class="lv"><span class="vdot vd-probe"></span> In testing (4)</span>
     </div>
 
     <div class="conv-intro" style="margin-top:18px">
@@ -1441,17 +1446,16 @@
     <p class="sec-sub">In the order they need to happen.</p>
 
     <div class="deliv">
-      <div class="dcheck" style="grid-column:1/-1"><span class="cbox"></span><p><b>The SDK fix + bill-matching</b> — <span style="color:var(--red);font-weight:600">blocked.</span> This is what frees up the pricing check. Waiting on Nayanah; we can build it ourselves if needed.</p></div>
+      <div class="dcheck" style="grid-column:1/-1"><span class="cbox"></span><p><b>Test all the checks on live usage</b> — pricing, pricier-model, agent-loop, double-charge. This is the main focus now.</p></div>
       <div class="dcheck"><span class="cbox"></span><p>Release the new journal logger</p></div>
-      <div class="dcheck"><span class="cbox"></span><p>Confirm 3 checks on live usage: pricier model, agent loop, double charge</p></div>
       <div class="dcheck"><span class="cbox"></span><p>Check alerts work &amp; fix remaining bugs</p></div>
       <div class="dcheck"><span class="cbox"></span><p>Separate views + charts for the data</p></div>
     </div>
 
     <div class="closer" style="margin-top:26px">
       <h3>Bottom line</h3>
-      <p>One thing decides Monday: the <b>SDK fix</b>. It frees up both the pricing check and bill-matching — two pieces, one fix. We need to set a cut-off date for waiting on it. Everything else is in good shape, and <b>we're working the weekend to get there.</b></p>
-      <p class="seq">get the SDK fix (or build it ourselves) → frees the pricing check + bill-matching → confirm 3 checks on live use → release → launch</p>
+      <p>The <b>SDK fix is deployed</b> — the one thing that was holding us up is done, and there are <b>no blockers left</b>. All the pieces are in place. We're now <b>focused on testing</b> the checks on live usage to make sure everything fires correctly before launch. <b>The team is testing through the weekend.</b></p>
+      <p class="seq">SDK fix deployed ✓ → testing checks on live use → release → launch</p>
     </div>
   </div>
 </section>
