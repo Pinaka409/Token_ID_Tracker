@@ -3,1231 +3,1208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TokenID — Audit Coverage Roadmap</title>
+<title>TokenID — Expansion Roadmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --orange:#FE602C;
-    --dark:#1E1E22;
-    --teal:#00BFA6;
-    --paper:#FAF8F5;
-    --card:#FFFFFF;
-    --ink:#1E1E22;
-    --muted:#6B6B72;
-    --line:#EAE6E0;
-    --green:#1FAA6E;
-    --amber:#E8A317;
-    --red:#D8553C;
+    --orange:#FE602C;--dark:#1E1E22;--teal:#00BFA6;--paper:#FAF8F5;--card:#FFFFFF;
+    --ink:#1E1E22;--muted:#6B6B72;--line:#EAE6E0;--green:#1FAA6E;--amber:#E8A317;--red:#D8553C;--purple:#7A5BD8;
     --shadow:0 1px 2px rgba(30,30,34,.04),0 8px 24px rgba(30,30,34,.06);
     --shadow-lg:0 2px 4px rgba(30,30,34,.05),0 18px 50px rgba(30,30,34,.10);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth;font-size:16px}
-  body{
-    font-family:'Poppins',sans-serif;
-    background:var(--paper);
-    color:var(--ink);
-    line-height:1.6;
-    letter-spacing:-.003em;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-    background-image:radial-gradient(circle at 12% 8%,rgba(254,96,44,.04),transparent 42%),radial-gradient(circle at 88% 18%,rgba(0,191,166,.035),transparent 38%);
-  }
+  body{font-family:'Poppins',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;letter-spacing:-.003em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background-image:radial-gradient(circle at 12% 8%,rgba(254,96,44,.04),transparent 42%),radial-gradient(circle at 88% 18%,rgba(0,191,166,.035),transparent 38%)}
   .wrap{max-width:1100px;margin:0 auto;padding:0 32px}
   .mono{font-family:'JetBrains Mono',monospace}
-  /* comfortable measure for any prose intro */
-  .sec-sub,.lede{max-width:64ch}
+  .sec-sub,.lede{max-width:66ch}
 
-  /* ---------- HEADER ---------- */
-  header{padding:60px 0 36px}
+  /* HEADER */
+  header{padding:64px 0 34px}
   .kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
   .kicker .chip{width:22px;height:22px;border-radius:6px;background:var(--orange);position:relative;display:inline-block}
   .kicker .chip::after{content:"";position:absolute;inset:0;margin:auto;width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
-  h1{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1.06;margin-bottom:16px}
+  .kicker .conf{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none}
+  h1{font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
   h1 .id{color:var(--orange)}
   .lede{font-size:18px;color:var(--muted);font-weight:300;line-height:1.55}
   .lede strong{color:var(--ink);font-weight:600}
 
-  /* ---------- PRINCIPLE BAR ---------- */
-  .principle{margin-top:30px;background:var(--dark);color:#fff;border-radius:16px;padding:24px 28px;display:flex;gap:22px;align-items:flex-start;box-shadow:var(--shadow-lg)}
-  .principle .mark{font-size:30px;line-height:1;color:var(--orange);font-weight:700;flex-shrink:0}
-  .principle p{font-size:15.5px;font-weight:300;color:#E8E6E3}
-  .principle strong{color:var(--teal);font-weight:600}
+  .thesis{margin-top:30px;background:var(--dark);color:#fff;border-radius:16px;padding:26px 30px;display:flex;gap:22px;align-items:flex-start;box-shadow:var(--shadow-lg)}
+  .thesis .mark{font-size:30px;line-height:1;color:var(--orange);font-weight:700;flex-shrink:0}
+  .thesis p{font-size:15.5px;font-weight:300;color:#E8E6E3}
+  .thesis strong{color:var(--teal);font-weight:600}
 
-  /* ---------- LEGEND ---------- */
-  .legend{display:flex;flex-wrap:wrap;gap:28px;padding:26px 0;align-items:center}
-  .legend-group{display:flex;align-items:center;gap:12px}
-  .legend-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .pips{display:flex;gap:4px}
-  .pip{width:9px;height:9px;border-radius:50%;background:var(--line)}
-  .pip.on-v{background:var(--orange)}
-  .pip.on-e{background:var(--dark)}
-  .legend-note{font-size:12.5px;color:var(--muted)}
-
-  /* ---------- SECTION ---------- */
-  section{padding:52px 0 8px}
+  /* SECTION */
+  section{padding:54px 0 8px}
   .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:8px}
   .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--orange);background:rgba(254,96,44,.1);padding:4px 9px;border-radius:6px;line-height:1}
-  .sec-head h2{font-size:26px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
+  .sec-head h2{font-size:27px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
   .sec-sub{font-size:15px;color:var(--muted);margin-bottom:28px;font-weight:300;line-height:1.55}
 
-  /* ---------- TIER CARDS ---------- */
-  .tiers{display:flex;flex-direction:column;gap:16px}
-  .tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
-  .tier:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-  .tier-top{display:grid;grid-template-columns:1fr auto;gap:20px;padding:22px 26px;align-items:center;cursor:pointer}
-  .tier-id{display:flex;align-items:center;gap:16px}
-  .tier-tag{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
-  .t1{background:#9AA0A6}.t2{background:var(--orange)}.t3{background:var(--teal)}.t4{background:var(--dark)}.t5{background:#7A5BD8}
-  .tier-name h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
-  .tier-name p{font-size:13px;color:var(--muted);font-weight:300}
-  .tier-scores{display:flex;gap:26px;align-items:center}
-  .score{text-align:center}
-  .score .pips{justify-content:center;margin-bottom:5px}
-  .score .slabel{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .audit-badge{font-size:11px;font-weight:600;padding:5px 11px;border-radius:20px;white-space:nowrap}
-  .ab-full{background:rgba(31,170,110,.12);color:var(--green)}
-  .ab-partial{background:rgba(232,163,23,.14);color:#B5790A}
-  .ab-none{background:rgba(216,85,60,.12);color:var(--red)}
-  .tier-body{padding:0 26px 24px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
-  .tier-body .col{padding-top:18px}
-  .tb-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:9px}
-  .tb-label.neg{color:var(--red)}
-  .tb-label.method{color:var(--teal)}
-  .tb-label.leak{color:var(--muted)}
-  .tier-body ul{list-style:none}
-  .tier-body li{font-size:13.5px;color:#3A3A40;padding-left:18px;position:relative;margin-bottom:6px;font-weight:300}
-  .tier-body li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
-  .tier-body li.neg::before{background:var(--red);border-radius:1px}
-  .tier-body li.method::before{background:var(--teal)}
-  .reframe{grid-column:1/-1;margin-top:16px;background:var(--paper);border-radius:11px;padding:13px 16px;font-size:13px;color:#3A3A40;border-left:3px solid var(--orange)}
-  .reframe b{color:var(--ink);font-weight:600}
+  /* AXES OF EXPANSION */
+  .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:8px}
+  .axis{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .axis::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px}
+  .axis.a1::after{background:var(--teal)}
+  .axis.a2::after{background:var(--orange)}
+  .axis.a3::after{background:var(--purple)}
+  .axis .anum{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:10px}
+  .axis h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .axis p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55}
+  .axis .drives{margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:6px;display:inline-block}
+  .a1 .drives{background:rgba(0,191,166,.12);color:#048a78}
+  .a2 .drives{background:rgba(254,96,44,.12);color:var(--orange)}
+  .a3 .drives{background:rgba(122,91,216,.12);color:#6A4BC8}
+  @media(max-width:820px){.axes{grid-template-columns:1fr}}
 
-  /* ---------- GAP CALLOUT ---------- */
-  .gap{margin:14px 0 4px;background:linear-gradient(135deg,#2A1813,#1E1E22);border-radius:18px;padding:34px 36px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
-  .gap::before{content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(216,85,60,.22),transparent 70%)}
-  .gap-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF8A6B;margin-bottom:14px}
-  .gap-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(216,85,60,.25);animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(216,85,60,.25)}50%{box-shadow:0 0 0 8px rgba(216,85,60,.08)}}
-  .gap h3{font-size:23px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em;position:relative}
-  .gap p{font-size:14.5px;color:#D8D4D0;font-weight:300;max-width:780px;margin-bottom:8px;position:relative}
-  .gap p strong{color:#fff;font-weight:600}
-  .gap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;position:relative}
-  .gap-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px}
-  .gap-card h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:7px}
-  .gap-card .why{font-size:12px;color:#A8A4A0;font-weight:300}
-  .gap-card .verdict{font-size:11px;font-weight:600;color:#FF8A6B;margin-top:8px;font-family:'JetBrains Mono',monospace}
+  /* COVERAGE MAP */
+  .cov{display:flex;flex-direction:column;gap:10px}
+  .crow{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 22px;display:grid;grid-template-columns:48px 1fr auto;gap:18px;align-items:center;box-shadow:var(--shadow)}
+  .ctag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;width:48px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff}
+  .t-sub{background:#9AA0A6}.t-api{background:var(--orange)}.t-cloud{background:var(--teal)}.t-aggr{background:var(--purple)}.t-self{background:var(--dark)}
+  .cmid h4{font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .cmid p{font-size:12.5px;color:var(--muted);font-weight:300}
+  .cbadge{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;white-space:nowrap}
+  .cb-full{background:rgba(31,170,110,.12);color:var(--green)}
+  .cb-partial{background:rgba(232,163,23,.14);color:#B5790A}
+  .cb-none{background:rgba(216,85,60,.12);color:var(--red)}
+  @media(max-width:560px){.crow{grid-template-columns:40px 1fr;gap:12px}.crow .cbadge{grid-column:2;justify-self:start}}
 
-  /* ---------- PHASES ---------- */
-  .phase-wrap{display:flex;flex-direction:column;gap:0;position:relative;margin-top:8px}
-  .phase{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);position:relative}
-  .phase:last-child{border-bottom:none}
-  .phase-meta{position:relative}
-  .phase-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#fff;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:10px}
-  .pb1{background:var(--green)}.pb2{background:var(--orange)}.pb3{background:var(--teal)}.pb4{background:#7A5BD8}
-  .pb-mon{background:var(--green)}.pb-fast{background:var(--orange)}
-  .pstat{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:5px;white-space:nowrap;margin-left:8px;vertical-align:middle}
-  .ps-ship{background:rgba(31,170,110,.15);color:var(--green)}
-  .ps-fix{background:rgba(232,163,23,.16);color:#B5790A}
-  .ps-broken{background:rgba(216,85,60,.14);color:var(--red)}
-  .phase-meta h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
-  .phase-meta .when{font-size:12px;color:var(--muted);font-weight:500}
-  .phase-meta .theme{font-size:12.5px;color:var(--muted);font-weight:300;margin-top:8px}
-  .phase-items{display:flex;flex-direction:column;gap:10px}
-  .pitem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;box-shadow:var(--shadow);transition:border-color .2s}
-  .pitem:hover{border-color:var(--orange)}
-  .pitem-main h4{font-size:14.5px;font-weight:600;margin-bottom:3px}
-  .pitem-main p{font-size:12.5px;color:var(--muted);font-weight:300}
-  .pitem-ve{display:flex;gap:18px;align-items:center}
-  .ve-block{text-align:center}
-  .ve-block .pips{justify-content:center;margin-bottom:4px}
-  .ve-block .slabel{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .ratio{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;white-space:nowrap}
-  .r-quick{background:rgba(31,170,110,.12);color:var(--green)}
-  .r-bet{background:rgba(254,96,44,.12);color:var(--orange)}
-  .r-grind{background:rgba(122,91,216,.12);color:#6A4BC8}
-  .r-bet.r-conv,.ratio.r-conv{background:var(--orange);color:#fff}
+  /* COMPETITIVE LANDSCAPE */
+  .market-intro{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:14px;padding:22px 26px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .market-intro p{font-size:14.5px;color:#3A3A40;font-weight:300;line-height:1.6}
+  .market-intro strong{color:var(--ink);font-weight:600}
+  .market-intro .hl{color:var(--orange);font-weight:600}
+  .lanes{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+  .lane{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;display:grid;grid-template-columns:150px 1fr 150px;gap:20px;align-items:center;box-shadow:var(--shadow)}
+  .lane .lane-cat{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .lane .lane-cat span{display:block;font-size:11px;color:var(--muted);font-weight:300;margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em}
+  .lane .lane-does{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5}
+  .lane .lane-gap{font-size:11px;font-weight:600;padding:6px 12px;border-radius:8px;text-align:center;background:rgba(216,85,60,.1);color:var(--red);line-height:1.3}
+  .lane.us{border-color:var(--orange);background:linear-gradient(90deg,rgba(254,96,44,.05),var(--card) 40%);border-left:4px solid var(--orange)}
+  .lane.us .lane-cat{color:var(--orange)}
+  .lane.us .lane-gap{background:rgba(31,170,110,.12);color:var(--green)}
+  @media(max-width:820px){.lane{grid-template-columns:1fr;gap:8px}.lane .lane-gap{justify-self:start}}
+  .standout{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px}
+  .so{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .so::after{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--orange)}
+  .so h4{font-size:14.5px;font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .so h4 .son{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);background:rgba(254,96,44,.1);width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .so p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.55}
+  .so p b{color:var(--ink);font-weight:600}
+  @media(max-width:560px){.standout{grid-template-columns:1fr}}
 
-  /* ---------- CONVERSION ---------- */
-  .conv-intro{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:14px;padding:22px 26px;margin-bottom:26px;box-shadow:var(--shadow)}
-  .conv-intro p{font-size:14.5px;color:#3A3A40;font-weight:300}
-  .conv-intro strong{color:var(--ink);font-weight:600}
-  .conv-intro .hl{color:var(--orange);font-weight:600}
+  /* MARKET / TAM */
+  .tam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .tam{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .tam::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--orange)}
+  .tam.teal::after{background:var(--teal)}
+  .tam.green::after{background:var(--green)}
+  .tam .tnum{font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+  .tam.teal .tnum{color:#048a78}.tam.green .tnum{color:var(--green)}
+  .tam .tlbl{font-size:12px;font-weight:600;color:var(--ink);margin-top:9px}
+  .tam .tsrc{font-size:10.5px;color:var(--muted);font-weight:300;margin-top:5px;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em}
+  @media(max-width:820px){.tam-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.tam-grid{grid-template-columns:1fr}}
+  .analog{background:linear-gradient(135deg,rgba(0,191,166,.07),rgba(254,96,44,.05));border:1px solid rgba(0,191,166,.25);border-radius:14px;padding:22px 26px}
+  .analog h4{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#048a78;margin-bottom:9px}
+  .analog p{font-size:14.5px;color:#3A3A40;font-weight:300;line-height:1.6}
+  .analog strong{color:var(--ink);font-weight:600}
+  .analog .big{color:#048a78;font-weight:600}
 
-  /* tiered UI mock */
-  .ui-mock{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:8px 0 30px}
-  .ui-panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-  .ui-bar{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-  .ui-bar .tier-pill{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
-  .pill-free{background:rgba(154,160,166,.15);color:#6B6B72}
-  .pill-paid{background:rgba(254,96,44,.12);color:var(--orange)}
-  .ui-bar .ui-title{font-size:13px;font-weight:600}
-  .ui-body{padding:18px}
-  .ui-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line)}
-  .ui-row:last-child{border-bottom:none}
-  .ui-row .lbl{font-size:12.5px;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:8px}
-  .ui-row .ic{width:16px;height:16px;flex-shrink:0}
-  .ui-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
-  .ui-val.live{color:var(--green)}
-  .ui-val.lock{color:#B8B4AE;font-size:11px;font-weight:500;display:flex;align-items:center;gap:6px}
-  .ui-val.lock::before{content:"";width:11px;height:13px;border:1.6px solid #B8B4AE;border-radius:2px;border-top:none;position:relative;box-shadow:0 -4px 0 -1px transparent,0 0 0 0 transparent}
-  .lockicon{display:inline-block;width:12px;height:10px;border:1.6px solid #B8B4AE;border-top:none;border-radius:0 0 2px 2px;position:relative;margin-right:2px}
-  .lockicon::before{content:"";position:absolute;width:8px;height:7px;border:1.6px solid #B8B4AE;border-bottom:none;border-radius:5px 5px 0 0;top:-7px;left:1px}
-  .ghost{filter:blur(3.5px);opacity:.4;user-select:none;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
-  .ui-foot{padding:14px 18px;background:var(--paper);border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);font-weight:300;text-align:center}
-  .ui-foot.cta{background:var(--dark);color:#fff;font-weight:500;cursor:pointer;font-size:12.5px}
-  .ui-foot.cta span{color:var(--teal)}
-  .benchband{margin-top:14px;background:linear-gradient(90deg,rgba(254,96,44,.06),rgba(0,191,166,.05));border:1px dashed var(--orange);border-radius:10px;padding:12px 15px}
-  .benchband .bl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
-  .benchband .bt{font-size:12.5px;color:#3A3A40;font-weight:300}
-  .benchband .bt b{color:var(--ink);font-weight:600}
+  /* WHY NOW */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);border-top:3px solid var(--orange)}
+  .why .wn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);margin-bottom:9px}
+  .why h4{font-size:14.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.01em}
+  .why p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.55}
+  .why p b{color:var(--ink);font-weight:600}
+  @media(max-width:820px){.why-grid{grid-template-columns:1fr}}
 
-  /* conversion ladder */
-  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
-  .rung{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative}
-  .rung .step{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);margin-bottom:10px}
-  .rung h4{font-size:14.5px;font-weight:600;margin-bottom:7px}
-  .rung p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5}
-  .rung .conv-event{margin-top:11px;font-size:11px;font-weight:600;color:var(--green);background:rgba(31,170,110,.1);padding:5px 10px;border-radius:6px;display:inline-block}
-  .rung .arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:18px;font-weight:700;z-index:2}
-  @media(max-width:820px){.ui-mock{grid-template-columns:1fr}.ladder{grid-template-columns:1fr}.rung .arrow{display:none}}
+  /* METRICS in milestone */
+  .ms-metrics{margin-top:4px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:8px}
+  .ms-metric{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#3A3A40;background:var(--paper);border:1px solid var(--line);padding:5px 11px;border-radius:7px}
+  .ms-metric b{color:var(--orange);font-weight:600}
 
-  /* ---------- FOOTER NOTE ---------- */
+  /* RISK TABLE */
+  .risks{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px}
+  .risks th,.risks td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .risks thead th{background:var(--dark);color:#fff;font-weight:600;font-size:12px;letter-spacing:.02em}
+  .risks tbody tr:last-child td{border-bottom:none}
+  .risks tbody tr:hover{background:var(--paper)}
+  .risks .rk{font-weight:600;color:var(--ink);width:30%}
+  .risks .rm{color:#3A3A40;font-weight:300;line-height:1.5}
+  .risks .rm b{color:var(--ink);font-weight:600}
+  @media(max-width:680px){
+    .risks,.risks tbody,.risks tr,.risks td{display:block;width:100%}
+    .risks thead{display:none}
+    .risks tr{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;padding:14px 16px}
+    .risks td{border:none;padding:3px 0}
+    .risks .rk{width:auto;font-size:14px;margin-bottom:5px}
+  }
+
+  /* MILESTONES */
+  .ms{display:flex;flex-direction:column;gap:18px;margin-top:6px}
+  .milestone{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
+  .milestone:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .ms-head{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:22px 28px;border-bottom:1px solid var(--line)}
+  .ms-badge{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#fff;padding:7px 13px;border-radius:9px;white-space:nowrap}
+  .m1{background:var(--orange)}.m2{background:var(--teal)}.m3{background:var(--green)}.m4{background:var(--purple)}.m5{background:var(--dark)}
+  .m0{background:#9AA0A6}
+  .ms-title h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .ms-title .theme{font-size:13px;color:var(--muted);font-weight:300;margin-top:3px}
+  .ms-axis{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap}
+  .mx-depth{background:rgba(254,96,44,.12);color:var(--orange)}
+  .mx-cov{background:rgba(0,191,166,.12);color:#048a78}
+  .mx-plat{background:rgba(122,91,216,.12);color:#6A4BC8}
+  .ms-body{display:grid;grid-template-columns:1.25fr 1fr;gap:0}
+  .ms-col{padding:22px 28px}
+  .ms-col.detail{border-right:1px solid var(--line)}
+  .ms-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  .ms-label.det{color:var(--orange)}
+  .ms-label.val{color:var(--teal)}
+  .ms-col ul{list-style:none}
+  .ms-col.detail li{font-size:13.5px;color:#3A3A40;padding-left:18px;position:relative;margin-bottom:9px;font-weight:300;line-height:1.5}
+  .ms-col.detail li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+  .ms-col.detail li b{color:var(--ink);font-weight:600}
+  .ms-col.detail code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--paper);padding:2px 6px;border-radius:4px;color:var(--orange)}
+  .valbox{background:var(--paper);border-radius:11px;padding:16px 18px;margin-bottom:12px}
+  .valbox .vk{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .valbox .vv{font-size:14px;color:#3A3A40;font-weight:300;line-height:1.5}
+  .valbox .vv b{color:var(--ink);font-weight:600}
+  .valbox.hero{background:linear-gradient(135deg,rgba(254,96,44,.07),rgba(0,191,166,.05));border:1px solid rgba(254,96,44,.2)}
+  .valbox.hero .vv b{color:var(--orange)}
+  .dep{font-size:11.5px;color:var(--muted);font-weight:300;margin-top:4px}
+  .dep b{color:var(--ink);font-weight:600}
+  @media(max-width:820px){.ms-head{grid-template-columns:1fr;gap:12px}.ms-axis{justify-self:start}.ms-body{grid-template-columns:1fr}.ms-col.detail{border-right:none;border-bottom:1px solid var(--line)}}
+
+  /* HORIZON */
+  .horizon{margin-top:6px;background:linear-gradient(135deg,#241B33,#1E1E22);border-radius:18px;padding:34px 36px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .horizon::before{content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(122,91,216,.25),transparent 70%)}
+  .horizon-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#B79BF0;margin-bottom:14px}
+  .horizon h3{font-size:23px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em;position:relative}
+  .horizon p{font-size:14.5px;color:#D8D4D0;font-weight:300;max-width:780px;margin-bottom:8px;position:relative}
+  .horizon p strong{color:#fff;font-weight:600}
+  .horizon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;position:relative}
+  .hcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px}
+  .hcard h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:7px}
+  .hcard p{font-size:12.5px;color:#A8A4A0;font-weight:300;margin-bottom:0}
+  .hcard .hverdict{font-size:11px;font-weight:600;color:#B79BF0;margin-top:10px;font-family:'JetBrains Mono',monospace}
+  @media(max-width:820px){.horizon-grid{grid-template-columns:1fr}}
+
+  /* ONGOING BETS */
+  .ongoing{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:6px}
+  @media(max-width:820px){.ongoing{grid-template-columns:1fr}}
+  .obet{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .obet::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--teal)}
+  .obet.moat::before{background:var(--orange)}
+  .obet .ohead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .obet .oico{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#fff;background:var(--teal)}
+  .obet.moat .oico{background:var(--orange)}
+  .obet h4{font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .obet .orun{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#048a78;margin-top:2px}
+  .obet.moat .orun{color:var(--orange)}
+  .obet p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55;margin-bottom:10px}
+  .obet p b{color:var(--ink);font-weight:600}
+  .obet .owhy{font-size:12px;color:#3A3A40;font-weight:300;background:var(--paper);border-radius:9px;padding:11px 14px;line-height:1.5}
+  .obet .owhy b{color:var(--ink);font-weight:600}
+  .ongoing-note{margin-top:18px;background:var(--dark);color:#E8E6E3;border-radius:14px;padding:20px 26px;font-size:14px;font-weight:300;line-height:1.6}
+  .ongoing-note b{color:#fff;font-weight:600}
+  .ongoing-note .teal{color:var(--teal);font-weight:600}
+
+  /* VISION / GOLD STANDARD */
+  .vision{background:linear-gradient(135deg,#1E1E22 0%,#2A1813 100%);border-radius:20px;padding:42px 40px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .vision::before{content:"";position:absolute;top:-80px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(254,96,44,.25),transparent 70%)}
+  .vision::after{content:"";position:absolute;bottom:-90px;left:-50px;width:280px;height:280px;background:radial-gradient(circle,rgba(0,191,166,.18),transparent 70%)}
+  .vision>*{position:relative}
+  .vision .vtag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#FF8A6B;margin-bottom:16px}
+  .vision h3{font-size:30px;font-weight:700;letter-spacing:-.025em;line-height:1.12;margin-bottom:16px}
+  .vision h3 em{font-style:italic;color:#7fd3a6}
+  .vision .vlede{font-size:15.5px;color:#D8D4D0;font-weight:300;line-height:1.6;max-width:760px;margin-bottom:26px}
+  .vision .vlede b{color:#fff;font-weight:600}
+  .vsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .vstep{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:18px 20px}
+  .vstep .vn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#FF8A6B;margin-bottom:8px}
+  .vstep h5{font-size:14.5px;font-weight:600;color:#fff;margin-bottom:6px}
+  .vstep p{font-size:12.5px;color:#A8A4A0;font-weight:300;line-height:1.5}
+  @media(max-width:820px){.vsteps{grid-template-columns:1fr}.vision{padding:30px 26px}.vision h3{font-size:24px}}
+
+  /* CLOSER */
   .closer{margin:36px 0 72px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 34px;box-shadow:var(--shadow)}
   .closer h3{font-size:16px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:10px}
   .closer h3::before{content:"";width:20px;height:20px;border-radius:5px;background:var(--orange)}
   .closer p{font-size:14.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin-bottom:12px}
   .closer strong{color:var(--ink);font-weight:600}
-  .closer .seq{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--teal);margin-top:6px;background:var(--paper);padding:13px 16px;border-radius:9px;border-left:3px solid var(--teal);line-height:1.5}
+  .closer .seq{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--teal);margin-top:6px;background:var(--paper);padding:13px 16px;border-radius:9px;border-left:3px solid var(--teal);line-height:1.6}
 
-  @media(max-width:820px){
-    h1{font-size:34px}
-    .tier-top{grid-template-columns:1fr;gap:14px}
-    .tier-scores{flex-direction:row;gap:20px;align-items:center;justify-content:flex-start;flex-wrap:wrap}
-    .tier-body{grid-template-columns:1fr}
-    .gap-grid{grid-template-columns:1fr}
-    .phase{grid-template-columns:1fr;gap:14px}
-    .pitem{grid-template-columns:1fr}
-    .pitem-ve{justify-content:flex-start}
-    .legend{gap:18px}
-  }
+  /* PERSONA + USAGE MODEL */
+  .pmodel{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+  @media(max-width:820px){.pmodel{grid-template-columns:1fr}}
+  .pcol{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .pcol .pch{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .pcol.who .pch{color:var(--orange)}
+  .pcol.how .pch{color:var(--teal)}
+  .prow{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .prow:last-child{border-bottom:none}
+  .prow .pmark{width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;color:#fff}
+  .pm-ind{background:#9AA0A6}.pm-team{background:var(--orange)}.pm-ent{background:var(--dark)}
+  .pm-cli{background:#9AA0A6}.pm-api{background:var(--orange)}.pm-chat{background:#C2BEB8}
+  .prow .pbody h4{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+  .prow .pbody p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5;margin-top:2px}
+  .prow .pbody .tagrow{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+  .ptag2{font-size:10px;font-weight:600;letter-spacing:.03em;padding:3px 8px;border-radius:5px}
+  .pt-live{background:rgba(31,170,110,.13);color:var(--green)}
+  .pt-gap{background:rgba(216,85,60,.12);color:var(--red)}
+  .pt-soon{background:rgba(232,163,23,.15);color:#B5790A}
 
-  /* ---------- TABS ---------- */
-  .tabnav{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .tabnav-inner{max-width:1100px;margin:0 auto;padding:10px 32px;display:flex;gap:6px}
-  .tab{appearance:none;border:none;background:none;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--muted);padding:10px 16px;cursor:pointer;position:relative;letter-spacing:-.01em;transition:all .18s ease;border-radius:9px;display:inline-flex;align-items:center}
+  /* MATRIX grid: persona x usage */
+  .pmatrix{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px;margin-top:22px}
+  .pmatrix th,.pmatrix td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .pmatrix thead th{background:var(--dark);color:#fff;font-weight:600;font-size:12px}
+  .pmatrix tbody tr:last-child td{border-bottom:none}
+  .pmatrix .pm-row-h{font-weight:600;color:var(--ink)}
+  .pmatrix .pm-row-h span{display:block;font-size:11px;color:var(--muted);font-weight:300;margin-top:2px}
+  .pmatrix td .cellwrap{font-size:12.5px;color:#3A3A40;font-weight:300;line-height:1.45}
+  .pmatrix td .st2{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-bottom:5px}
+  .st2-live{background:rgba(31,170,110,.14);color:var(--green)}
+  .st2-gap{background:rgba(216,85,60,.13);color:var(--red)}
+  .st2-soon{background:rgba(232,163,23,.16);color:#B5790A}
+  .st2-na{background:rgba(154,160,166,.16);color:#6B6B72}
+  @media(max-width:820px){.pmatrix{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}}
+
+  @media(max-width:820px){h1{font-size:34px}}
+
+  /* TABS */
+  .tabnav{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .tabnav-inner{max-width:1100px;margin:0 auto;padding:11px 32px;display:flex;gap:6px}
+  .tab{appearance:none;border:none;background:none;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--muted);padding:10px 18px;cursor:pointer;letter-spacing:-.01em;transition:all .18s ease;border-radius:9px;display:inline-flex;align-items:center}
   .tab:hover{color:var(--ink);background:rgba(30,30,34,.04)}
   .tab.active{color:#fff;background:var(--dark)}
   .tab.active .tnum{color:var(--orange);opacity:1}
-  .tab .tnum{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.55;margin-right:7px;font-weight:600}
+  .tab .tnum{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.55;margin-right:8px;font-weight:600}
   .tabpanel{display:none}
   .tabpanel.active{display:block;animation:fade .35s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media print{.tabnav{display:none}.tabpanel{display:block!important}.no-print{display:none!important}}
 
-  /* feature-detail extras */
-  .fd-hero{padding:54px 0 30px}
-  .fd-hero .kicker{margin-bottom:16px}
-  .fd-hero h1{font-size:38px}
-  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:8px 0 30px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
-  .feat .fnum{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);background:rgba(254,96,44,.1);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
-  .feat h4{font-size:15.5px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
-  .feat p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55}
-  .feat .ftag{display:inline-block;margin-top:11px;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
-  .ftag-free{background:rgba(154,160,166,.15);color:#6B6B72}
-  .ftag-paid{background:rgba(254,96,44,.12);color:var(--orange)}
-  .ftag-both{background:rgba(0,191,166,.12);color:#048a78}
-  .specrow{display:grid;grid-template-columns:150px 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:10px;background:var(--card);box-shadow:var(--shadow)}
-  .specrow .sk{background:var(--paper);padding:15px 18px;font-size:12px;font-weight:600;color:var(--ink);border-right:1px solid var(--line);display:flex;align-items:center}
-  .specrow .sv{padding:15px 18px;font-size:13px;color:#3A3A40;font-weight:300}
-  .specrow .sv b{color:var(--ink);font-weight:600}
-  .specrow .sv code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--paper);padding:2px 6px;border-radius:4px;color:var(--orange)}
-  @media(max-width:820px){.feat-grid{grid-template-columns:1fr}.specrow{grid-template-columns:1fr}.specrow .sk{border-right:none;border-bottom:1px solid var(--line)}.tab{margin-right:14px}}
+  /* PRIORITIZATION */
+  .prio-band{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+  @media(max-width:820px){.prio-band{grid-template-columns:1fr}}
+  .pband{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .pband::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px}
+  .pband.now::after{background:var(--red)}
+  .pband.next::after{background:var(--orange)}
+  .pband.later::after{background:var(--teal)}
+  .pband .ph{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .pband.now .ph{color:var(--red)}.pband.next .ph{color:var(--orange)}.pband.later .ph{color:#048a78}
+  .pband .psub{font-size:11.5px;color:var(--muted);font-weight:300;margin-bottom:14px}
+  .pband ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .pband li{font-size:13px;color:#3A3A40;font-weight:400;display:flex;gap:9px;align-items:baseline}
+  .pband li .mtag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:#fff;padding:2px 6px;border-radius:4px;flex-shrink:0}
+  .mt1{background:var(--orange)}.mt2{background:var(--teal)}.mt3{background:var(--green)}.mt4{background:var(--purple)}.mt5{background:var(--dark)}.mt6{background:#B5790A}.mt7{background:#9AA0A6}
+  .mt0{background:#9AA0A6}
 
-  /* ---------- SIGNAL MATRIX ---------- */
-  .matrix{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px}
-  .matrix th,.matrix td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
-  .matrix thead th{background:var(--dark);color:#fff;font-weight:600;font-size:12px;letter-spacing:.02em}
-  .matrix thead th:first-child{font-weight:600}
-  .matrix tbody tr:last-child td{border-bottom:none}
-  .matrix tbody tr:hover{background:var(--paper)}
-  .matrix .sig{font-weight:600;color:var(--ink)}
-  .matrix .src{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
-  .matrix td.cell{text-align:center;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:12px}
-  .cy{color:var(--green)}.cn{color:#C2BEB8}.cp{color:var(--amber)}
-  .matrix col.colhi{background:rgba(0,191,166,.04)}
-  @media(max-width:820px){.matrix{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}.matrix::-webkit-scrollbar{height:6px}.matrix::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}}
-  .matrix-hint{display:none}
-  @media(max-width:820px){.matrix-hint{display:block;font-size:11.5px;color:var(--muted);font-weight:300;margin-bottom:8px;font-style:italic}}
-
-  /* ---------- PLAN TIERS ---------- */
-  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column}
-  .plan.feat-pop{border-color:var(--orange);box-shadow:0 2px 4px rgba(254,96,44,.08),0 16px 40px rgba(254,96,44,.10)}
-  .plan .ptag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .plan.feat-pop .ptag{color:var(--orange)}
-  .plan h4{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
-  .plan .psub{font-size:11.5px;color:var(--muted);font-weight:300;margin-bottom:14px;min-height:30px}
-  .plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto}
-  .plan li{font-size:12px;color:#3A3A40;font-weight:300;padding-left:17px;position:relative;line-height:1.4}
-  .plan li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700;font-size:11px}
-  .plan li.off{color:#B8B4AE}
-  .plan li.off::before{content:"—";color:#C2BEB8}
-  .plan .punlock{font-size:10.5px;font-weight:600;color:var(--teal);margin:10px 0 4px;letter-spacing:.04em;text-transform:uppercase}
-  @media(max-width:980px){.plans{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.plans{grid-template-columns:1fr}}
-
-  /* ---------- BILLING FINDINGS ---------- */
-  .findings{display:flex;flex-direction:column;gap:10px}
-  .finding{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start}
-  .finding .fmain h4{font-size:14.5px;font-weight:600;margin-bottom:4px}
-  .finding .fmain p{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.5}
-  .finding .fmeta{display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0}
-  .flik{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:5px;white-space:nowrap}
-  .lik-some{background:rgba(232,163,23,.15);color:#B5790A}
-  .lik-rare{background:rgba(154,160,166,.16);color:#6B6B72}
-  .lik-vrare{background:rgba(154,160,166,.12);color:#9AA0A6}
-  .frec{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:5px;white-space:nowrap}
-  .rec-yes{background:rgba(31,170,110,.13);color:var(--green)}
-  .rec-hard{background:rgba(232,163,23,.13);color:#B5790A}
-  .rec-no{background:rgba(216,85,60,.12);color:var(--red)}
-  .honest{margin-top:16px;background:#FFF8EE;border:1px solid #F0E2C8;border-left:4px solid var(--amber);border-radius:14px;padding:20px 24px}
-  .honest h4{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B5790A;margin-bottom:9px}
-  .honest p{font-size:14px;color:#4A4640;font-weight:300;line-height:1.6}
-  .honest strong{color:var(--ink);font-weight:600}
-  .honest .teal{color:#048a78;font-weight:600}
-  @media(max-width:560px){.finding{grid-template-columns:1fr}.finding .fmeta{flex-direction:row;align-items:center}}
-
-  /* ---------- EXEC SUMMARY ---------- */
-  .verdict{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow-lg);margin-bottom:22px}
-  .verdict .vlight{width:54px;height:54px;border-radius:14px;background:rgba(232,163,23,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .verdict .vlight span{width:22px;height:22px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 6px rgba(232,163,23,.16)}
-  .verdict h2{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;line-height:1.2}
-  .verdict p{font-size:14px;color:#3A3A40;font-weight:300;line-height:1.5}
-  .verdict p b{color:var(--ink);font-weight:600}
-  .verdict .on-track{color:var(--amber)}
-  .verdict.good-state{border-left-color:var(--green)}
-  .verdict.good-state .vlight{background:rgba(31,170,110,.14)}
-  .verdict.good-state .vlight span{background:var(--green);box-shadow:0 0 0 6px rgba(31,170,110,.16)}
-  .verdict.good-state .on-track{color:var(--green)}
-
-  .exec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
-  .ecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .ecard::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px}
-  .ecard.good::after{background:var(--green)}
-  .ecard.warn::after{background:var(--amber)}
-  .ecard.bad::after{background:var(--red)}
-  .ecard .ek{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  .ecard .ebig{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1}
-  .ecard.good .ebig{color:var(--green)}
-  .ecard.warn .ebig{color:var(--amber)}
-  .ecard.bad .ebig{color:var(--red)}
-  .ecard .esub{font-size:12px;color:var(--muted);font-weight:300;margin-top:7px;line-height:1.4}
-  .ecard .ebar{height:7px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}
-  .ecard .ebar i{display:block;height:100%;border-radius:4px}
-  .ecard.good .ebar i{background:var(--green)}
-  .ecard.warn .ebar i{background:var(--amber)}
-
-  .blocker-card{background:linear-gradient(135deg,#2A1813,#1E1E22);border-radius:16px;padding:24px 28px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-lg);margin-bottom:8px}
-  .blocker-card .bc-main h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:7px;display:flex;align-items:center;gap:10px}
-  .blocker-card .bc-main h3 .bdot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px rgba(216,85,60,.22);animation:pulse 2s infinite}
-  .blocker-card .bc-main h3 .bdot.ok{background:var(--teal);box-shadow:0 0 0 5px rgba(0,191,166,.22)}
-  .blocker-card .bc-main p{font-size:13.5px;color:#D8D4D0;font-weight:300;line-height:1.55;max-width:660px}
-  .blocker-card .bc-main p b{color:#fff;font-weight:600}
-  .blocker-card .bc-main p .teal{color:var(--teal);font-weight:600}
-  .blocker-card .bc-side{text-align:center;flex-shrink:0;border-left:1px solid rgba(255,255,255,.12);padding-left:24px}
-  .blocker-card .bc-side .bnum{font-size:40px;font-weight:700;color:#FF8A6B;line-height:1}
-  .blocker-card .bc-side .bnum.ok{color:var(--teal)}
-  .blocker-card.focus-state{background:linear-gradient(135deg,#0E2A26,#1E1E22)}
-  .blocker-card .bc-side .blbl{font-size:11px;color:#A8A4A0;font-weight:300;margin-top:5px;max-width:130px}
-  @media(max-width:820px){.exec-grid{grid-template-columns:repeat(2,1fr)}.verdict{grid-template-columns:1fr}.blocker-card{grid-template-columns:1fr}.blocker-card .bc-side{border-left:none;border-top:1px solid rgba(255,255,255,.12);padding-left:0;padding-top:16px;text-align:left;display:flex;gap:14px;align-items:baseline}.blocker-card .bc-side .blbl{margin-top:0}}
-
-  /* ---------- MVP RELEASE TAB ---------- */
-  .mvp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 34px}
-  .mstat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .mstat::after{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--orange)}
-  .mstat .num{font-size:38px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
-  .mstat .lbl{font-size:11.5px;font-weight:500;color:var(--muted);margin-top:8px}
-  .mstat.crit::after{background:var(--red)}
-  .mstat.crit .num{color:var(--red)}
-  .mstat.ship::after{background:var(--green)}
-  .mstat.ship .num{color:var(--green)}
-
-  .ipath{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px}
-  .ipath-top{display:flex;align-items:center;gap:16px;padding:18px 22px}
-  .ipath-icon{width:40px;height:40px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#fff}
-  .ic-journal{background:#9AA0A6}.ic-sdk{background:var(--orange)}.ic-proxy{background:var(--teal)}.ic-pub{background:var(--dark)}
-  .ipath-name{flex:1}
-  .ipath-name h4{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .ipath-name p{font-size:12.5px;color:var(--muted);font-weight:300;margin-top:3px}
-  .persona{display:inline-flex;align-items:center;gap:7px;margin-top:9px;font-size:11.5px;font-weight:400;color:#4A4640;background:rgba(0,191,166,.08);border:1px solid rgba(0,191,166,.2);padding:5px 11px;border-radius:20px}
-  .persona b{font-weight:600;color:var(--ink)}
-  .persona .pico{font-size:13px}
-  .st{font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:4px 10px;border-radius:20px;white-space:nowrap}
-  .st-ready{background:rgba(31,170,110,.13);color:var(--green)}
-  .st-pending{background:rgba(232,163,23,.15);color:#B5790A}
-  .st-broken{background:rgba(216,85,60,.13);color:var(--red)}
-  .ipath-cmd{background:var(--dark);padding:11px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9FE3D6;overflow-x:auto;white-space:nowrap}
-  .ipath-cmd .pre{color:#6B6B72;user-select:none}
-  .enforce-note{padding:10px 22px;background:var(--paper);border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);font-weight:300}
-  .enforce-note b{color:var(--ink);font-weight:600}
-  .enforce-note .yes{color:var(--green);font-weight:600}
-  .enforce-note .no{color:var(--red);font-weight:600}
-
-  .fixlist{display:flex;flex-direction:column;gap:9px}
-  .fix{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 18px;box-shadow:var(--shadow)}
-  .fix .fno{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--muted);text-align:center}
-  .fix p{font-size:13.5px;color:#3A3A40;font-weight:400}
-  .fix.is-crit{border-color:rgba(216,85,60,.4);background:linear-gradient(90deg,rgba(216,85,60,.04),var(--card) 30%)}
-  .fix.is-crit .fno{color:var(--red)}
-  .ftype{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap}
-  .ft-bug{background:rgba(232,163,23,.15);color:#B5790A}
-  .ft-crit{background:var(--red);color:#fff}
-  .ft-minor{background:rgba(154,160,166,.18);color:#6B6B72}
-  .ft-verify{background:rgba(0,191,166,.13);color:#048a78}
-
-  .vio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  .vio{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 17px;box-shadow:var(--shadow)}
-  .vio .vdot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
-  .vd-pending{background:var(--amber)}.vd-flagged{background:var(--teal)}.vd-noflag{background:#C9C5BF}
-  .vd-verified{background:var(--green)}.vd-probe{background:var(--amber)}.vd-blocked{background:var(--red)}
-  .vio .vmeta{flex:1}
-  .vio .vmeta h5{font-size:14px;font-weight:600}
-  .vio .vmeta p{font-size:11.5px;color:var(--muted);font-weight:300}
-  .vio .venf{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:rgba(254,96,44,.1);color:var(--orange);white-space:nowrap}
-
-  .deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  .dcheck{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 17px;box-shadow:var(--shadow)}
-  .dcheck .cbox{width:20px;height:20px;border-radius:6px;border:2px solid var(--orange);flex-shrink:0;position:relative;margin-top:1px}
-  .dcheck .cbox::after{content:"";position:absolute;inset:0;margin:auto;width:9px;height:5px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg) translate(0,-1px)}
-  .dcheck p{font-size:13px;color:#3A3A40;font-weight:400;line-height:1.45}
-  .dcheck p a{color:var(--teal);text-decoration:none;border-bottom:1px dotted var(--teal)}
-
-  .legend-vio{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:18px}
-  .lv{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);font-weight:500}
-  .lv .vdot{width:10px;height:10px;border-radius:50%}
-  @media(max-width:820px){.mvp-stats{grid-template-columns:repeat(2,1fr)}.vio-grid,.deliv{grid-template-columns:1fr}.fix{grid-template-columns:28px 1fr;gap:10px}.fix .ftype{grid-column:2;justify-self:start}}
-
-  /* progress two-column */
-  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .prog-col h3{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-  .prog-col.done h3{color:var(--green)}
-  .prog-col.going h3{color:#B5790A}
-  .prog-list{display:flex;flex-direction:column;gap:8px}
-  .pgitem{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;color:#3A3A40;font-weight:400;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow)}
-  .pgitem .pmark{flex-shrink:0;font-weight:700;font-size:13px}
-  .pgitem.d .pmark{color:var(--green)}
-  .pgitem.g .pmark{color:#B5790A}
-  .pgitem.g{border-left:3px solid var(--amber)}
-  .pgitem.d{border-left:3px solid var(--green)}
-  @media(max-width:820px){.prog-grid{grid-template-columns:1fr}}
-
-  /* violation verification table */
-  .viotable{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px;margin-bottom:8px}
-  .viotable th,.viotable td{padding:12px 15px;text-align:left;border-bottom:1px solid var(--line)}
-  .viotable thead th{background:var(--dark);color:#fff;font-weight:600;font-size:11.5px;letter-spacing:.03em}
-  .viotable thead th.ctr,.viotable td.ctr{text-align:center}
-  .viotable tbody tr:last-child td{border-bottom:none}
-  .viotable tbody tr:hover{background:var(--paper)}
-  .viotable .vn{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
-  .viotable .vname{font-weight:600;color:var(--ink)}
-  .viotable .venf2{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:rgba(254,96,44,.1);color:var(--orange);margin-left:7px;vertical-align:middle}
-  .chk{font-weight:700;font-family:'JetBrains Mono',monospace;font-size:13px}
-  .chk.y{color:var(--green)}.chk.n{color:#C2BEB8}.chk.dash{color:#C2BEB8}
-  .vstatus{font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;display:inline-block}
-  .vs-ok{background:rgba(31,170,110,.13);color:var(--green)}
-  .vs-pending{background:rgba(232,163,23,.15);color:#B5790A}
-  .vs-blocked{background:rgba(216,85,60,.13);color:var(--red)}
-  @media(max-width:560px){
-    .viotable,.viotable tbody,.viotable tr,.viotable td{display:block;width:100%}
-    .viotable thead{display:none}
-    .viotable{border:none;background:none;box-shadow:none}
-    .viotable tr{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;padding:14px 16px}
-    .viotable td{border:none;padding:3px 0;text-align:left!important}
-    .viotable td.vn{display:none}
-    .viotable td.vname{font-size:14.5px;font-weight:600;margin-bottom:8px}
-    .viotable td.ctr::before{content:attr(data-label) ": ";font-weight:600;color:var(--muted);font-size:12px}
-    .viotable td.ctr{display:inline-block;width:auto;margin-right:18px;font-size:12px}
-    .viotable td:last-child{margin-top:8px}
+  /* PRIORITY TABLE */
+  .ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:13px}
+  .ptable th,.ptable td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+  .ptable thead th{background:var(--dark);color:#fff;font-weight:600;font-size:11.5px;letter-spacing:.02em}
+  .ptable thead th.ctr,.ptable td.ctr{text-align:center}
+  .ptable tbody tr:last-child td{border-bottom:none}
+  .ptable tbody tr:hover{background:var(--paper)}
+  .ptable .mname{font-weight:600;color:var(--ink)}
+  .ptable .mname span{font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;padding:2px 6px;border-radius:4px;margin-right:8px}
+  .scorepips{display:inline-flex;gap:3px}
+  .sp{width:8px;height:8px;border-radius:50%;background:var(--line)}
+  .sp.on{background:var(--orange)}
+  .sp.on-t{background:var(--teal)}
+  .pri-badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:20px;white-space:nowrap}
+  .pri-p0{background:var(--red);color:#fff}
+  .pri-p1{background:rgba(254,96,44,.14);color:var(--orange)}
+  .pri-p2{background:rgba(0,191,166,.13);color:#048a78}
+  .pri-p3{background:rgba(154,160,166,.16);color:#6B6B72}
+  @media(max-width:820px){
+    .ptable{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
   }
+  .prio-logic{margin-top:18px;background:var(--paper);border-left:4px solid var(--orange);border-radius:11px;padding:16px 20px}
+  .prio-logic p{font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6}
+  .prio-logic b{color:var(--ink);font-weight:600}
 </style>
 </head>
 <body>
 
-<nav class="tabnav"><div class="tabnav-inner">
-  <button class="tab active" data-tab="mvp"><span class="tnum">A</span>MVP Release · Monday</button>
-  <button class="tab" data-tab="roadmap"><span class="tnum">B</span>Roadmap (tentative)</button>
-</div></nav>
-
-<div class="tabpanel" id="tab-roadmap">
-
 <header>
   <div class="wrap">
-    <div class="kicker"><span class="chip"></span> TokenID · Product Roadmap · <span style="color:var(--amber)">Tentative / Directional</span></div>
-    <h1>Audit Coverage Map<br>for <span class="id">AI &amp; LLM Spend</span></h1>
-    <p class="lede">Every way someone uses AI — and what TokenID can check for each. Ordered by <strong>what we can do today</strong>, and rated on <strong>how useful</strong> and <strong>how much work</strong> each step is. <strong style="color:var(--amber)">This is a rough plan</strong> — a direction, not a fixed schedule. Only the MVP tab is firm for Monday.</p>
+    <div class="kicker"><span class="chip"></span> TokenID · Expansion Roadmap · <span class="conf">Directional — for discussion</span></div>
+    <h1>Expanding the audit:<br>more <span class="id">coverage</span>, deeper <span class="id">recovery</span>.</h1>
+    <p class="lede">TokenID audits AI &amp; LLM spend — verifying charges, catching leakage, and recovering overcharges. This is the forward plan, defined by <strong>who the user is</strong> and <strong>how their spend reaches a model</strong>: what each persona gets today, and the milestones that deepen it.</p>
 
-    <div class="principle">
+    <div class="thesis">
       <span class="mark">&ldquo;</span>
-      <p>What we can check depends on <strong>how the user pays</strong> and <strong>what usage data we can see</strong>. We can only find wasted money where there's a per-use bill to check against. On flat monthly plans, there's no per-use bill — so instead of finding overspend, we help <em>right-size the plan</em>. Different kind of saving, still real money.</p>
+      <p>What we can audit depends on <strong>how the customer pays</strong> and <strong>what telemetry we can see</strong>. Expansion runs on three axes at once: <strong>widen coverage</strong> across consumption patterns, <strong>deepen value</strong> from reporting to enforcement to legal-grade recovery, and <strong>extend the platform</strong> into adjacent spend. The deeper axis is where the money is; the wider axis is where the market is.</p>
     </div>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="legend">
-    <div class="legend-group">
-      <span class="legend-label">Value</span>
-      <span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span>
-    </div>
-    <div class="legend-group">
-      <span class="legend-label">Effort</span>
-      <span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span>
-    </div>
-    <span class="legend-note">Filled pips = magnitude (out of 5). Audit badges: <b style="color:var(--green)">Full</b> · <b style="color:#B5790A">Partial</b> · <b style="color:var(--red)">None yet</b></span>
-  </div>
-</div>
+<nav class="tabnav no-print"><div class="tabnav-inner">
+  <button class="tab active" data-tab="overview"><span class="tnum">A</span>Overview &amp; Market</button>
+  <button class="tab" data-tab="roadmap"><span class="tnum">B</span>Roadmap &amp; Priorities</button>
+</div></nav>
 
-<!-- ============ COVERAGE BY CONSUMPTION PATTERN ============ -->
+<div class="tabpanel active" id="tab-overview">
+
+<!-- ============ THREE AXES ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Coverage by consumption pattern</h2></div>
-    <p class="sec-sub">Five ways spend reaches a model. Each has a different telemetry source, a different best-case finding, and a different audit depth.</p>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Three axes of expansion</h2></div>
+    <p class="sec-sub">Every milestone in this roadmap advances at least one of these. Reading them together is how the sequencing makes sense.</p>
 
-    <div class="tiers">
-
-      <!-- TIER 1 -->
-      <div class="tier">
-        <div class="tier-top">
-          <div class="tier-id">
-            <div class="tier-tag t1">SUB</div>
-            <div class="tier-name">
-              <h3>Flat-rate subscription — CLI &amp; chat apps</h3>
-              <p>Claude Code CLI, ChatGPT Plus/Pro, Gemini app, Cursor bundled plan</p>
-            </div>
-          </div>
-          <div class="tier-scores">
-            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-            <span class="audit-badge ab-partial">Partial · usage only</span>
-          </div>
-        </div>
-        <div class="tier-body">
-          <div class="col">
-            <div class="tb-label">Can audit — via journal logger</div>
-            <ul>
-              <li>Token <b>usage</b>: volume, frequency, model mix, session counts</li>
-              <li>Read from the local journal/log file the CLI tool writes to disk</li>
-              <li>Seat activity — who is actually using their seat</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="tb-label neg">Cannot audit</div>
-            <ul>
-              <li class="neg"><b>Rate</b> — flat fee, no per-token price exposed</li>
-              <li class="neg"><b>Leakage</b> — nothing to leak against; it's a fixed bill</li>
-            </ul>
-          </div>
-          <div class="reframe"><b>Reframe:</b> value flips from "recover overspend" to <b>right-size subscriptions &amp; consolidate seats</b>. Waste here = paying $20/mo to use $3 of tokens, or inactive seats. Different finding, same product.</div>
-        </div>
+    <div class="axes">
+      <div class="axis a1">
+        <div class="anum">AXIS A</div>
+        <h3>Widen coverage</h3>
+        <p>Bring more consumption patterns to full-audit depth — managed cloud, aggregators, and the harder telemetry beyond. Each new path feeds the same audit engine.</p>
+        <span class="drives">Drives → addressable spend</span>
       </div>
-
-      <!-- TIER 2 -->
-      <div class="tier">
-        <div class="tier-top">
-          <div class="tier-id">
-            <div class="tier-tag t2">API</div>
-            <div class="tier-name">
-              <h3>Direct provider API — pay-per-token</h3>
-              <p>SDK (easier) or Proxy (deeper) · Anthropic, OpenAI, Gemini, Grok direct</p>
-            </div>
-          </div>
-          <div class="tier-scores">
-            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-            <span class="audit-badge ab-full">Full · rate + leakage</span>
-          </div>
-        </div>
-        <div class="tier-body">
-          <div class="col">
-            <div class="tb-label">SDK — lower effort</div>
-            <ul>
-              <li>Instrument / wrap the client library</li>
-              <li>Usage, cost, model selection, caching gaps</li>
-              <li>Rule setting: model downgrades, token caps, cache enforcement</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="tb-label">Proxy — higher effort, only place to <em>prevent</em></div>
-            <ul>
-              <li>Route traffic through our gateway</li>
-              <li>Everything SDK does + real-time enforcement</li>
-              <li>Prompt-level leakage, retry storms, live rule blocking</li>
-            </ul>
-          </div>
-          <div class="reframe"><b>This is the core of TokenID.</b> Real rate + leakage auditing lives here. Proxy is the only tier where we stop waste live instead of only reporting it.</div>
-        </div>
+      <div class="axis a2">
+        <div class="anum">AXIS B</div>
+        <h3>Deepen value</h3>
+        <p>Climb the ladder: observe → enforce → recover. The proxy is the only place we prevent waste live; enterprise SLA contracts are the only place large recovery dollars exist.</p>
+        <span class="drives">Drives → revenue per account</span>
       </div>
-
-      <!-- TIER 3 -->
-      <div class="tier">
-        <div class="tier-top">
-          <div class="tier-id">
-            <div class="tier-tag t3">CLOUD</div>
-            <div class="tier-name">
-              <h3>Managed cloud-hosted models</h3>
-              <p>AWS Bedrock · Google Vertex · Azure OpenAI</p>
-            </div>
-          </div>
-          <div class="tier-scores">
-            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-            <span class="audit-badge ab-full">Full · via cloud billing</span>
-          </div>
-        </div>
-        <div class="tier-body">
-          <div class="col">
-            <div class="tb-label">Can audit</div>
-            <ul>
-              <li>Usage + spend via CloudWatch / Cost Explorer (Bedrock)</li>
-              <li>Cloud Billing + Vertex logs (Google), Azure cost (Azure OpenAI)</li>
-              <li>Billing flows through the cloud account — <b>shares plumbing with KloudID</b></li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="tb-label leak">Leakage vectors</div>
-            <ul>
-              <li>Wrong model tier for the task</li>
-              <li>No prompt caching enabled</li>
-              <li>Provisioned throughput sitting idle</li>
-              <li>Cross-region premium</li>
-            </ul>
-          </div>
-        </div>
+      <div class="axis a3">
+        <div class="anum">AXIS C</div>
+        <h3>Extend the platform</h3>
+        <p>One audit engine, adjacent spend categories. Cloud billing and GPU utilization already share plumbing with KloudID — the natural multi-product expansion.</p>
+        <span class="drives">Drives → platform TAM</span>
       </div>
-
-      <!-- TIER 4 -->
-      <div class="tier">
-        <div class="tier-top">
-          <div class="tier-id">
-            <div class="tier-tag t5">AGGR</div>
-            <div class="tier-name">
-              <h3>Aggregators &amp; routers</h3>
-              <p>OpenRouter, Together, Fireworks, gateway/router layers</p>
-            </div>
-          </div>
-          <div class="tier-scores">
-            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-            <span class="audit-badge ab-full">Full · via aggregator key</span>
-          </div>
-        </div>
-        <div class="tier-body">
-          <div class="col">
-            <div class="tb-label method">Method</div>
-            <ul>
-              <li class="method">Read-only aggregator API key → pull usage</li>
-              <li class="method">Same "admin key" motion as direct API</li>
-              <li class="method">Most expose a usage dashboard / API</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="tb-label leak">Leakage vectors unique to this tier</div>
-            <ul>
-              <li><b>Aggregator margin</b> — premium vs. going direct</li>
-              <li>Routing to needlessly expensive models</li>
-              <li>Fallback-route cost spikes</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- TIER 5 -->
-      <div class="tier">
-        <div class="tier-top">
-          <div class="tier-id">
-            <div class="tier-tag t4">SELF</div>
-            <div class="tier-name">
-              <h3>Self-hosted / open models</h3>
-              <p>Llama, Mistral, DeepSeek on own GPUs · vLLM, Ollama, TGI</p>
-            </div>
-          </div>
-          <div class="tier-scores">
-            <div class="score"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-            <div class="score"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-            <span class="audit-badge ab-partial">Partial · compute, not tokens</span>
-          </div>
-        </div>
-        <div class="tier-body">
-          <div class="col">
-            <div class="tb-label">The reframe</div>
-            <ul>
-              <li>There is <b>no token bill</b> — cost is compute (GPU hours)</li>
-              <li>A <b>KloudID problem wearing a TokenID hat</b></li>
-              <li>Token "usage" becomes a utilization denominator, not a billing line</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="tb-label leak">Leakage vectors</div>
-            <ul>
-              <li>GPUs idling at low utilization</li>
-              <li>Oversized instances, no autoscaling</li>
-              <li>Inference capacity paid for but unused</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ SIGNAL CAPABILITY MATRIX ============ -->
+<!-- ============ MARKET / TAM ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01·A</span><h2>What we can actually capture</h2></div>
-    <p class="sec-sub">The definitive signal table — each audit signal, its data source, and whether it's available on subscription, API without proxy, or API with proxy. This is the honest capability map the rest of the product is built on.</p>
+    <div class="sec-head"><span class="sec-num">02</span><h2>The market we're auditing</h2></div>
+    <p class="sec-sub">AI API spend is the fastest-growing line item in the enterprise software budget — and it's metered on a pricing surface no one has methodologized. That combination is the opening.</p>
 
-    <p class="matrix-hint">← swipe to see all columns →</p>
-    <table class="matrix">
-      <colgroup><col><col><col><col><col class="colhi"></colgroup>
+    <div class="tam-grid">
+      <div class="tam">
+        <div class="tnum">$8.4B</div>
+        <div class="tlbl">Enterprise LLM API spend, mid-2025</div>
+        <div class="tsrc">Menlo Ventures · 2.4× in 6 months</div>
+      </div>
+      <div class="tam teal">
+        <div class="tnum">~$15B</div>
+        <div class="tlbl">Projected by end of 2026</div>
+        <div class="tsrc">Menlo / Gartner</div>
+      </div>
+      <div class="tam">
+        <div class="tnum">37%</div>
+        <div class="tlbl">of enterprises spend &gt;$250k/yr on LLM APIs</div>
+        <div class="tsrc">Kong Enterprise AI Survey</div>
+      </div>
+      <div class="tam green">
+        <div class="tnum">73%</div>
+        <div class="tlbl">spend &gt;$50k/yr · 72% plan to increase</div>
+        <div class="tsrc">Kong · curve not flattening</div>
+      </div>
+    </div>
+
+    <div class="analog">
+      <h4>◆ The proven analog — cloud FinOps</h4>
+      <p>The same problem already created a category one layer down. <strong>27% of cloud spend is wasted — roughly <span class="big">$182B in 2026</span></strong> (Flexera, measured three years running), and that built an entire FinOps + cloud-audit industry. AI token spend is the identical structural problem — fragmented pricing, opaque metering, waste hidden in retries and over-tiering — but <strong>earlier in its maturity and metered on a surface that changes every model release.</strong> TokenID is to AI spend what cloud-audit was to AWS in 2018: the recovery layer that arrives once spend gets big enough to hurt. Our serviceable wedge is the recoverable slice of a $15B-and-doubling base.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NOW ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Why now</h2></div>
+    <p class="sec-sub">Three forces converge in 2026 that make this the moment — not 2024 (spend too small) and not 2028 (the gap gets standardized and closed).</p>
+
+    <div class="why-grid">
+      <div class="why">
+        <div class="wn">FORCE 01</div>
+        <h4>Spend crossed the pain threshold</h4>
+        <p>At <b>$8.4B doubling toward $15B</b>, and 37% of enterprises over $250k/yr, AI spend is now a CFO line item — large enough that a 10–30% leak is worth a dedicated audit, not a footnote.</p>
+      </div>
+      <div class="why">
+        <div class="wn">FORCE 02</div>
+        <h4>The meter keeps fracturing</h4>
+        <p>Cached, reasoning, tool, batch, and image tokens are each priced differently, and a <b>new billing axis ships with nearly every model release</b>. Integrations written against the old meter silently overpay — the gap widens faster than customers can track it.</p>
+      </div>
+      <div class="why">
+        <div class="wn">FORCE 03</div>
+        <h4>No attestation standard exists yet</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COVERAGE MAP ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Who the user is, and how they spend</h2></div>
+    <p class="sec-sub">Two independent axes define the product. <b>Persona</b> is who buys and how much they need. <b>Usage type</b> is how their spend physically reaches a model — which determines what telemetry we can see and therefore what we can audit.</p>
+
+    <div class="pmodel">
+      <div class="pcol who">
+        <div class="pch">◆ Persona — who buys</div>
+        <div class="prow">
+          <span class="pmark pm-ind">IND</span>
+          <div class="pbody"><h4>Individual</h4><p>A single developer. Wants to see their own usage and catch their own refunds. Entry point and trust-builder — free.</p></div>
+        </div>
+        <div class="prow">
+          <span class="pmark pm-team">TEAM</span>
+          <div class="pbody"><h4>Team</h4><p>An eng manager who needs to see <b>everyone's</b> usage and usage types in one view, attribute spend, and act on it. Per-seat, paid.</p></div>
+        </div>
+        <div class="prow">
+          <span class="pmark pm-ent">ENT</span>
+          <div class="pbody"><h4>Enterprise</h4><p>Finance + FinOps. Contracts, SLA leverage, legal-grade recovery. Success-fee on recovered dollars.</p></div>
+        </div>
+      </div>
+      <div class="pcol how">
+        <div class="pch">◆ Usage type — how spend reaches a model</div>
+        <div class="prow">
+          <span class="pmark pm-cli">CLI</span>
+          <div class="pbody"><h4>CLI &amp; subscription tools</h4><p>Claude Code, Copilot, ChatGPT Plus. Flat fee, no per-token price. We read the local usage journal — <b>usage insights + refund findings only</b>.</p><div class="tagrow"><span class="ptag2 pt-live">Findings live</span></div></div>
+        </div>
+        <div class="prow">
+          <span class="pmark pm-api">API</span>
+          <div class="pbody"><h4>API / SDK — pay-per-token</h4><p>Direct provider calls via our SDK. <b>This is the meat</b> — full rate + leakage audit and a recoverable refund package.</p><div class="tagrow"><span class="ptag2 pt-live">Audit + refund live</span><span class="ptag2 pt-soon">Aggregators next</span></div></div>
+        </div>
+        <div class="prow">
+          <span class="pmark pm-api" style="background:var(--teal)">CLD</span>
+          <div class="pbody"><h4>Cloud-hosted models</h4><p>AWS Bedrock &amp; Google Vertex, audited via cloud billing. <b>Already live</b> — wrong-tier, idle provisioned throughput, no-caching and cross-region leaks.</p><div class="tagrow"><span class="ptag2 pt-live">AWS + Google live</span><span class="ptag2 pt-soon">Azure next</span></div></div>
+        </div>
+        <div class="prow">
+          <span class="pmark pm-chat">CHAT</span>
+          <div class="pbody"><h4>Chat-based usage</h4><p>ChatGPT / Claude.ai web. No admin API, no per-interaction billing line — <b>no data path today</b>. Research frontier.</p><div class="tagrow"><span class="ptag2 pt-soon">Research</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sec-sub" style="margin-top:22px;margin-bottom:14px">Crossing the two axes gives the honest state of the product — what exists now (API/SDK and <b>cloud audit on AWS Bedrock + Google Vertex are already live</b>), what's a gap, and what stays research.</p>
+
+    <table class="pmatrix">
       <thead>
-        <tr><th>Signal</th><th>Data source</th><th style="text-align:center">Subscription</th><th style="text-align:center">API · no proxy</th><th style="text-align:center">API + proxy</th></tr>
+        <tr><th style="width:20%">Persona ↓ &nbsp; Usage →</th><th>CLI / subscription</th><th>API / SDK</th><th>Cloud (Bedrock/Vertex)</th><th>Chat-based</th></tr>
       </thead>
       <tbody>
-        <tr><td class="sig">Token counts / session</td><td class="src">~/.claude JSONL</td><td class="cell cy">exact</td><td class="cell cy">exact</td><td class="cell cy">exact</td></tr>
-        <tr><td class="sig">Model used per turn</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
-        <tr><td class="sig">Cache hit rate</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
-        <tr><td class="sig">Tool calls (bash, file, search)</td><td class="src">~/.claude JSONL</td><td class="cell cy">✓</td><td class="cell cy">✓</td><td class="cell cy">✓</td></tr>
-        <tr><td class="sig">Daily limit hit frequency</td><td class="src">session-end detection</td><td class="cell cp">inferred</td><td class="cell cp">~ via budget</td><td class="cell cy">exact 429</td></tr>
-        <tr><td class="sig">Provider aggregate totals</td><td class="src">provider usage API</td><td class="cell cn">no access</td><td class="cell cy">admin key</td><td class="cell cy">admin key</td></tr>
-        <tr><td class="sig">Per-request billing match</td><td class="src">proxy request log</td><td class="cell cn">impossible</td><td class="cell cn">no req IDs</td><td class="cell cy">full audit</td></tr>
-        <tr><td class="sig">HTTP error / latency logs</td><td class="src">proxy request log</td><td class="cell cn">—</td><td class="cell cn">—</td><td class="cell cy">full</td></tr>
+        <tr>
+          <td class="pm-row-h">Individual<span>solo dev · free</span></td>
+          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Own usage insights + refund findings from the local journal.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Personal API audit via Python SDK.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-na">N/A</span>Cloud accounts are org-level.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-na">N/A</span>No data path.</div></td>
+        </tr>
+        <tr>
+          <td class="pm-row-h">Team<span>eng manager · per-seat</span></td>
+          <td><div class="cellwrap"><span class="st2 st2-gap">Gap</span><b>Team view</b> — see every member's usage &amp; types in one place. Not built yet; the Team-plan hook.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Team API audit + refund package. <span class="st2 st2-soon" style="margin-top:6px">Next</span>Aggregator coverage (OpenRouter, Together).</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>AWS Bedrock + Google Vertex audited via cloud billing.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-soon">Research</span>Admin-console probe / BYOK.</div></td>
+        </tr>
+        <tr>
+          <td class="pm-row-h">Enterprise<span>finance + FinOps · success-fee</span></td>
+          <td><div class="cellwrap"><span class="st2 st2-soon">Reframe</span>Seat right-sizing &amp; consolidation.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-soon">Build</span>Contract + SLA recovery, legal-grade evidence bundle.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Cloud-billing audit; <span class="st2 st2-soon" style="margin-top:6px">Next</span>Azure + reserved-capacity validation.</div></td>
+          <td><div class="cellwrap"><span class="st2 st2-soon">Research</span>BYOK to collapse into auditable API.</div></td>
+        </tr>
       </tbody>
     </table>
-    <p class="sec-sub" style="margin-top:14px;margin-bottom:0">The JSONL reader covers the top four signals on <em>any</em> plan with zero friction — no proxy, no key. The admin key adds provider-level totals. Per-request billing match and error logs are the proxy's exclusive territory, because only the proxy holds request IDs.</p>
   </div>
 </section>
 
-<!-- ============ PLAN TIERS ============ -->
+<!-- ============ COMPETITIVE LANDSCAPE ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01·B</span><h2>Right features, right plan</h2></div>
-    <p class="sec-sub">How capability ladders across the four plans. Dev mode works standalone with zero team involvement; each step up unlocks a distinct class of value — visibility, then billing accuracy, then legal-grade recovery.</p>
+    <div class="sec-head"><span class="sec-num">05</span><h2>The competitive landscape</h2></div>
+    <p class="sec-sub">The "LLM cost" space looks crowded, but nearly everyone is doing the same thing: <em>showing</em> you what you spent. The audit-and-recover motion is structurally empty.</p>
 
-    <div class="plans">
-      <div class="plan">
-        <span class="ptag">Open source</span>
-        <h4>Dev mode</h4>
-        <p class="psub">Installs in 30s. Data never leaves the machine until you join a team.</p>
+    <div class="market-intro">
+      <p><strong>The whole category surfaces spend; we recover it.</strong> Observability tools (Langfuse, Helicone, LangSmith, Braintrust) and gateways (Bifrost, LiteLLM, Portkey) give you per-request token attribution, dashboards, and budget alerts. They tell you <span class="hl">what you spent</span> — never <span class="hl">what you should have been billed</span>. The refund-automation tools (Fini, Quadrant) handle <em>your customers'</em> refunds, not your own provider bill. <strong>No one independently audits the provider's invoice for correctness and recovers the difference.</strong> That gap is the entire product.</p>
+    </div>
+
+    <div class="lanes">
+      <div class="lane">
+        <div class="lane-cat">LLM observability<span>Langfuse · Helicone · Braintrust</span></div>
+        <div class="lane-does">Per-request traces, cost attribution by user / feature / model, eval hooks. The dashboard is the product.</div>
+        <div class="lane-gap">No rate verification · no recovery</div>
+      </div>
+      <div class="lane">
+        <div class="lane-cat">AI gateways<span>Bifrost · LiteLLM · Portkey</span></div>
+        <div class="lane-does">Sit in the request path, route between providers, enforce budget caps, add caching. Optimize one axis: routing.</div>
+        <div class="lane-gap">Create their own audit surface · no audit</div>
+      </div>
+      <div class="lane">
+        <div class="lane-cat">APM with AI tabs<span>Datadog · New Relic</span></div>
+        <div class="lane-does">Service health — latency, errors, throughput — with token counts bolted on. Cost is a side metric.</div>
+        <div class="lane-gap">Adds platform cost · shallow on tokens</div>
+      </div>
+      <div class="lane">
+        <div class="lane-cat">Refund automation<span>Fini · Quadrant</span></div>
+        <div class="lane-does">Resolve <em>your customers'</em> refund and chargeback tickets against your billing system.</div>
+        <div class="lane-gap">Wrong direction · not your AI bill</div>
+      </div>
+      <div class="lane us">
+        <div class="lane-cat">TokenID<span>audit + recover</span></div>
+        <div class="lane-does">Independently verifies the provider's bill, catches leakage across eight token types, enforces guardrails, and recovers overcharges through credits and config.</div>
+        <div class="lane-gap">The only audit-and-recover motion</div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:8px"><span class="sec-num">05·A</span><h2 style="font-size:20px">What makes us stand out</h2></div>
+    <p class="sec-sub">Five structural advantages — each one a thing the monitoring tools cannot do without becoming a different product.</p>
+
+    <div class="standout">
+      <div class="so">
+        <h4><span class="son">1</span> Audit, not observe</h4>
+        <p>Dashboards show what you spent. We hold a <b>versioned rate-card history</b> and compute what you <b>should have</b> been billed — then recover the gap. Different verb, different buyer (the CFO acts on an audit, not a dashboard).</p>
+      </div>
+      <div class="so">
+        <h4><span class="son">2</span> Enforcement, not just alerts</h4>
+        <p>The proxy is the only place waste is <b>prevented live</b> — dedup collapsed, over-tiered calls downgraded, caps enforced. Monitoring tools alert after the spend; we stop it.</p>
+      </div>
+      <div class="so">
+        <h4><span class="son">3</span> Provider-independent</h4>
+        <p>We audit spend <b>on</b> providers, not for them — so we're trusted the way a bank's own statement never is. The Anthropic billing-bug episode (overcharge, refund denied) is exactly why independent audit exists.</p>
+      </div>
+      <div class="so">
+        <h4><span class="son">4</span> Success-fee, not another SaaS seat</h4>
+        <p>Monitoring tools add cost on top of your AI bill. Our enterprise tier is <b>no recovery, no charge</b> — aligned to dollars returned, not seats sold. Easiest possible procurement yes.</p>
+      </div>
+      <div class="so">
+        <h4><span class="son">5</span> Moat compounds with complexity</h4>
+        <p>Every new token type, caching mode, and reasoning tier adds a billing axis customers didn't account for. The audit's value <b>grows with the pricing surface</b>, not against it.</p>
+      </div>
+      <div class="so">
+        <h4><span class="son">6</span> Partner, not collide</h4>
+        <p>Observability tools become <b>distribution</b>, not competition — their telemetry is the input layer our audit sits on top of. We meet customers who already have Helicone or Langfuse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /tab-overview -->
+
+<div class="tabpanel" id="tab-roadmap">
+
+<!-- ============ PRIORITIZATION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">R1</span><h2>Prioritization</h2></div>
+    <p class="sec-sub">Seven milestones, sequenced by a simple rule: <b>build what creates a paid tier or closes a revenue gap first; defer what depends on trust or an unproven data path.</b> Scored on value, effort, and dependency.</p>
+
+    <div class="prio-band">
+      <div class="pband now">
+        <div class="ph">● Now — P0/P1</div>
+        <div class="psub">The acquisition hook, the first paid tier, and the headline enforcement capability. Build immediately.</div>
         <ul>
-          <li>Token heatmap + coaching</li>
-          <li>Context-window management</li>
-          <li>Cache hit-rate tracking</li>
-          <li>Ralph-loop adoption</li>
-          <li>Weekly personal digest</li>
-          <li>CLAUDE.md writer</li>
-          <li class="off">Team dashboard</li>
-          <li class="off">Billing audit</li>
+          <li><span class="mtag mt0">M0</span> Free OSS journal logger — the acquisition hook</li>
+          <li><span class="mtag mt1">M1</span> Team view — the Individual→Team conversion</li>
+          <li><span class="mtag mt4">M2</span> Enforcement rules — Ralph-loop guard, recurring recovery</li>
         </ul>
       </div>
-
-      <div class="plan">
-        <span class="ptag">Per seat</span>
-        <h4>Team plan</h4>
-        <p class="psub">Shared visibility + optional enforcement. Manager dashboard, per-dev attribution.</p>
+      <div class="pband next">
+        <div class="ph">● Next — P1/P2</div>
+        <div class="psub">Widen coverage and the funnel once the core loop is live.</div>
         <ul>
-          <li>Everything in dev mode</li>
-          <li>Web dashboard + per-dev visibility</li>
-          <li>GitHub / GitLab integration</li>
-          <li>Skills repo sync</li>
-          <li>Manager digest</li>
-          <li>Key management</li>
-          <li>Harness rules (optional)</li>
-          <li class="off">Billing line-item audit</li>
+          <li><span class="mtag mt2">M3</span> Aggregator coverage — close the API-axis gap</li>
+          <li><span class="mtag mt3">M4</span> SDK expansion — TypeScript + public PyPI</li>
+          <li><span class="mtag mt5">M5</span> In-product refund flow</li>
         </ul>
       </div>
-
-      <div class="plan feat-pop">
-        <span class="ptag">Most popular · API add-on</span>
-        <h4>+ Billing audit</h4>
-        <p class="psub">Unlocks invoice accuracy. Auto-runs, drafts a support ticket when it finds something.</p>
+      <div class="pband later">
+        <div class="ph">● Later — P2/P3</div>
+        <div class="psub">Largest dollars, category-defining bets, and TAM — gated on the foundation below.</div>
         <ul>
-          <li>Everything in team plan</li>
-          <li>Invoice reconciliation</li>
-          <li>Failed-request detection</li>
-          <li>Rate verification</li>
-          <li>Provider comparison</li>
-          <li>Optimisation suggestions</li>
-          <li>Support-ticket generator</li>
-          <li class="off">Contract SLA enforcement</li>
-        </ul>
-      </div>
-
-      <div class="plan">
-        <span class="ptag">Enterprise</span>
-        <h4>+ Refund package</h4>
-        <p class="psub">Where real recovery lives — SLA contracts give legal leverage. Success-fee pricing.</p>
-        <ul>
-          <li>Everything in API add-on</li>
-          <li>Contract upload + parsing</li>
-          <li>SLA breach monitoring</li>
-          <li>Charge anomaly detection</li>
-          <li>Evidence bundle assembly</li>
-          <li>Credit-formula calculator</li>
-          <li>Legal-ready export</li>
-          <li>SSO / SAML</li>
+          <li><span class="mtag mt6">M6</span> Enterprise recovery + cloud convergence + KloudID</li>
+          <li><span class="mtag mt4">M7</span> Claude Cowork plugin — distribution + new surface</li>
+          <li><span class="mtag mt2">M8</span> Pricing-change radar — early-warning</li>
+          <li><span class="mtag mt4">M9</span> Industry benchmark index — data asset</li>
+          <li><span class="mtag mt6">M10</span> TokenID-verified mark — the standard</li>
+          <li><span class="mtag mt7">M11</span> Chat frontier — research, gated</li>
         </ul>
       </div>
     </div>
 
-    <div class="conv-intro" style="margin-top:22px">
-      <p><strong>Enforcement model, stated honestly.</strong> <span class="hl">Subscription = coach</span> (soft levers): CLAUDE.md governance, usage-violation alerts, manager digest, skills sync — all plans. A determined dev <em>can</em> ignore the platform; enforcement is ultimately a manager conversation backed by undeniable data. <span class="hl">API + proxy = enforce</span> (hard levers): model routing rewrites the model field, daily budget returns a 429, context limit returns 413, key revocation is instant. Proxy is one env var (<code style="font-family:'JetBrains Mono',monospace;font-size:11px">ANTHROPIC_BASE_URL</code>), ~20–80ms latency, opt-in — enabled once trust is established. This is exactly why dedup guard and guardrails are SDK/proxy-only.</p>
+    <table class="ptable">
+      <thead>
+        <tr><th>Milestone</th><th class="ctr">Value</th><th class="ctr">Effort</th><th class="ctr">Unlocks</th><th class="ctr">Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mname"><span class="mt0">M0</span>Free OSS journal logger</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">the whole funnel</td>
+          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt1">M1</span>Team view</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">paid Team tier</td>
+          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt4">M2</span>Enforcement rules</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">recurring recovery</td>
+          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt2">M3</span>Aggregator coverage</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">API coverage</td>
+          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt3">M4</span>SDK expansion</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">funnel width</td>
+          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt5">M5</span>In-product refunds</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">conversion proof</td>
+          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt6">M6</span>Enterprise + expansion</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr">large $ + TAM</td>
+          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt4">M7</span>Claude Cowork plugin</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">distribution + new surface</td>
+          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt2">M8</span>Pricing-change radar</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">continuous trigger</td>
+          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt4">M9</span>Benchmark index</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">brand + inbound</td>
+          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt6">M10</span>Verified mark</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr">category ownership</td>
+          <td class="ctr"><span class="pri-badge pri-p3">P3 · bet</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt7">M11</span>Chat frontier</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr">largest surface</td>
+          <td class="ctr"><span class="pri-badge pri-p3">P3 · gated</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prio-logic">
+      <p><b>The logic:</b> M0, M1, and M2 are the P0 core — the <b>free OSS hook</b> that fills the funnel, the <b>Team view</b> that creates the first paid tier, and <b>enforcement rules</b> (headlined by Ralph-loop protection) that turn findings into recurring recovery. M3–M5 are Next: aggregator coverage, SDK breadth, and the UI + refund flow that widen reach and make value legible. M6–M7 are P2 — enterprise recovery with <b>cloud convergence</b> (AWS/Vertex already live → unified spend view) and the Cowork distribution play. <b>M8–M10 are the standout bets</b> — radar, index, verified mark — high-ceiling and category-defining, dependent on the rate-card and audit-data foundation. M11 (chat) stays P3 and explicitly <b>gated</b> on a proven data path.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ BILLING FINDINGS ============ -->
+<!-- ============ MILESTONES ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01·C</span><h2>What the billing audit actually finds</h2></div>
-    <p class="sec-sub">Honest about likelihood and recoverability. The audit runs automatically; when it finds something it drafts a support ticket, and when it finds nothing, that confirmation is itself valuable.</p>
+    <div class="sec-head"><span class="sec-num">R2</span><h2>Expansion milestones</h2></div>
+    <p class="sec-sub">Ordered by the build sequence — each milestone names its <b>persona</b>, the <b>usage type</b> it deepens, what ships, the value created, and how we'll measure it. Earlier milestones unlock later ones.</p>
 
-    <div class="findings">
-      <div class="finding">
-        <div class="fmain"><h4>Failed-request charges (5xx + billed)</h4><p>Provider bills tokens on requests that returned an error. Proxy logs error + bill, cross-referenceable. A simple support ticket typically gets credit.</p></div>
-        <div class="fmeta"><span class="flik lik-some">Sometimes</span><span class="frec rec-yes">Recoverable</span></div>
-      </div>
-      <div class="finding">
-        <div class="fmain"><h4>Wrong rate tier applied</h4><p>Higher per-token rate than published — pricing changed mid-period, or volume discounts not applied. Provider usage API shows the model breakdown to verify.</p></div>
-        <div class="fmeta"><span class="flik lik-some">Sometimes</span><span class="frec rec-yes">Recoverable</span></div>
-      </div>
-      <div class="finding">
-        <div class="fmain"><h4>Billing-period boundary double-charge</h4><p>Month-end requests appear in two consecutive invoices. Proxy timestamps prove the correct period.</p></div>
-        <div class="fmeta"><span class="flik lik-rare">Rare</span><span class="frec rec-yes">Recoverable</span></div>
-      </div>
-      <div class="finding">
-        <div class="fmain"><h4>Token-count discrepancy</h4><p>Invoice token count differs from response header. Extremely rare — both use the same server-side count, usually rounding. Worth flagging, rarely disputed successfully.</p></div>
-        <div class="fmeta"><span class="flik lik-vrare">Very rare</span><span class="frec rec-hard">Hard to prove</span></div>
-      </div>
-      <div class="finding">
-        <div class="fmain"><h4>SLA uptime violations</h4><p>Standard API plans have no SLA — no contractual obligation to credit downtime. Monitoring is still useful as evidence if you later negotiate a contract.</p></div>
-        <div class="fmeta"><span class="flik lik-vrare">No contract</span><span class="frec rec-no">Not recoverable</span></div>
-      </div>
-    </div>
+    <div class="ms">
 
-    <div class="honest">
-      <h4>⚠ Honest positioning — don't oversell the standard tier</h4>
-      <p>Standard API plan billing mismatches are real but <strong>small — typically 0.5–2% of spend</strong>. The support-ticket approach fits the size of issues found, so call it a <span class="teal">"billing health check," not a "refund package."</span> Significant recovery (<strong>$10k–$100k+</strong>) only becomes possible at the enterprise tier, because SLA contracts are what give you legal leverage. The output scales to what you can prove: standard teams get a support-ticket draft; enterprise teams get a legal-ready evidence bundle with a credit calculation.</p>
+      <!-- M0 FREE HOOK -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m0">M0</span>
+          <div class="ms-title"><h3>Free open-source journal logger — the hook</h3><div class="theme">Immediate. The acquisition layer: get individuals in, then convert to the free plan.</div></div>
+          <span class="ms-axis mx-cov">Persona · Individual · CLI</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Open-source CLI journal logger</b> — installs in seconds, reads the local Claude Code / Copilot usage file, runs <b>fully on-device</b> (data never leaves the machine)</li>
+              <li><b>Personal usage insights + refund findings</b> — token heatmap, model mix, cache-hit tracking, likely-leak flags</li>
+              <li><b>Frictionless distribution</b> — public install, no signup, no key; a developer can try it in under a minute</li>
+              <li><b>Convert-to-free-plan path</b> — one prompt to claim a free account that syncs the logger and unlocks the dashboard</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">This is the <b>top of the entire funnel</b>. Open-source + zero-friction earns developer trust before any ask; the local-only logger is a give, not a pitch. Everything above — free plan, Team, Enterprise — depends on this inflow.</div></div>
+            <div class="valbox"><div class="vk">Growth motion</div><div class="vv">Classic PLG hook: <b>free tool → free account → Team upgrade</b>. The logger creates the install base M1's team-view converts.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> installs / week</span><span class="ms-metric"><b>KPI</b> logger→free-account %</span><span class="ms-metric"><b>KPI</b> GitHub stars / OSS reach</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M1 TEAM VIEW -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m1">M1</span>
+          <div class="ms-title"><h3>Team view — see the whole team's usage</h3><div class="theme">Individual → Team. The upgrade trigger: from "my usage" to "everyone's."</div></div>
+          <span class="ms-axis mx-cov">Persona · Team · CLI</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Team dashboard</b> — every member's usage and <b>usage types</b> (CLI vs API) in one view</li>
+              <li><b>Per-developer attribution</b> — who spends what, where the findings concentrate</li>
+              <li><b>Seat activity</b> — who's actually using their seat vs. paying idle</li>
+              <li>Manager digest rolling up individual journal data across the team</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">This is the <b>Individual→Team conversion event</b>. The free CLI tool shows a dev <b>their own</b> usage; the reason to pay is seeing it <b>across everyone</b>. Currently a gap — building it is what creates the paid Team tier.</div></div>
+            <div class="valbox"><div class="vk">Commercial</div><div class="vv">Establishes the per-seat plan and the first recurring revenue line above free.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> free→Team conversion %</span><span class="ms-metric"><b>KPI</b> seats per team</span><span class="ms-metric"><b>KPI</b> idle-seat $ surfaced</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M2 ENFORCEMENT -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m4">M2</span>
+          <div class="ms-title"><h3>Enforcement rules</h3><div class="theme">From reporting waste to preventing it — headlined by Ralph-loop / agentic-loop protection.</div></div>
+          <span class="ms-axis mx-depth">Usage · API · Team / Enterprise</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Rule engine</b> — solve enforcement properly: model-downgrade on over-tiered calls, token caps, cache enforcement, dedup of redundant calls</li>
+              <li><b>Agentic-loop guard (Ralph-loop protection)</b> — detect and cap autonomous agent loops (Ralph loops, retry storms, runaway sub-agents) before they burn tokens silently — the single biggest agentic-spend risk</li>
+              <li><b>Adjustable thresholds</b> per team, opt-in via the proxy (one env var)</li>
+              <li><b>Expanding capability over time</b> — budget gates and new loop/anomaly rules as a growing rule library</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Converts the product from a <b>dashboard you read</b> into a <b>control that acts</b>. Recovery becomes automatic and recurring — a monthly run-rate, not a one-off finding.</div></div>
+            <div class="valbox"><div class="vk">Flagship rule · marketing</div><div class="vv"><b>Ralph-loop / agentic-loop protection</b> is the headline capability — as agentic billing crosses the majority of AI spend, "we stop runaway agent loops before they bankrupt you" is the line that sells. Name it, don't bury it in the SDK.</div></div>
+            <div class="valbox"><div class="vk">Commercial</div><div class="vv">The core paid payoff and the strongest retention lever — once rules run live, removing TokenID means re-opening the leaks.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> recovered $/mo run-rate</span><span class="ms-metric"><b>KPI</b> loops caught / capped</span><span class="ms-metric"><b>KPI</b> proxy activation rate</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M3 AGGREGATORS -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m2">M3</span>
+          <div class="ms-title"><h3>Aggregator coverage</h3><div class="theme">Close the gap on the API axis — where the meat already is.</div></div>
+          <span class="ms-axis mx-cov">Usage · API · Team</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Aggregator key ingest</b> — OpenRouter, Together, Fireworks via read-only key</li>
+              <li><b>Aggregator-margin detection</b> — the premium paid vs. going direct, a leak only this tier has</li>
+              <li>Routing analysis — fallback-route cost spikes, needlessly expensive model selection</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">A large and growing share of API spend now flows through aggregators. Today this is <b>uncovered</b> — closing it extends the core audit+refund engine to where the money increasingly routes.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Surfaces a leak category — aggregator margin — that no direct-API tool can see.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> aggregator spend connected</span><span class="ms-metric"><b>KPI</b> margin $ surfaced</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M4 SDK EXPANSION -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m3">M4</span>
+          <div class="ms-title"><h3>Expand the SDK</h3><div class="theme">Meet engineers in their language — remove the integration barrier.</div></div>
+          <span class="ms-axis mx-depth">Usage · API · all personas</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>TypeScript / JS SDK</b> — covers the largest slice of production AI app developers</li>
+              <li><b>Public PyPI registry</b> — <code>pip install tokenid</code> with frictionless distribution, not a private index</li>
+              <li>Consistent instrumentation API across languages feeding the same audit engine</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">The audit is only as wide as the SDK reaches. Python alone misses most of the TS/JS app ecosystem; public PyPI removes the install friction that throttles self-serve adoption.</div></div>
+            <div class="valbox"><div class="vk">Growth</div><div class="vv">Lowers time-to-first-audit — the top of the entire funnel feeding every persona above.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> installs / week</span><span class="ms-metric"><b>KPI</b> languages live</span><span class="ms-metric"><b>KPI</b> time-to-first-audit</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5 IN-PRODUCT REFUNDS -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m5">M5</span>
+          <div class="ms-title"><h3>In-product refund flow</h3><div class="theme">Make recovery one click away — findings become claimed dollars.</div></div>
+          <span class="ms-axis mx-plat">Persona · all · API</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>In-product refund flow</b> — auto-drafted provider claim packets with dollar figures, submitted from the app</li>
+              <li><b>Per-vector leakage breakdown</b> and recovered-dollar tracking over time</li>
+              <li>Claim status &amp; follow-up — from "leak found" to "credit received" in one place</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Recovery only converts if it's <b>effortless</b>. One-click refund packets turn findings into claimed dollars without manual paperwork — the proof point that justifies the success fee.</div></div>
+            <div class="valbox"><div class="vk">Commercial</div><div class="vv">Shortens the path from "leak found" to "money back" — the moment the product pays for itself.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> findings→claims submitted %</span><span class="ms-metric"><b>KPI</b> claim success rate</span><span class="ms-metric"><b>KPI</b> time-to-credit</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6 ENTERPRISE + EXPANSION -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m4">M6</span>
+          <div class="ms-title"><h3>Enterprise recovery &amp; expansion</h3><div class="theme">The large dollars, then new surfaces off the same engine.</div></div>
+          <span class="ms-axis mx-plat">Persona · Enterprise</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Enterprise recovery</b> — contract + SLA-breach monitoring, legal-grade evidence bundle, credit-formula calculator (success-fee)</li>
+              <li><b>Cloud audit expansion</b> — AWS Bedrock + Google Vertex are <b>already live</b>; add <b>Azure OpenAI</b>, reserved-capacity validation, and deeper cloud-billing reconciliation</li>
+              <li><b>Unified spend view</b> — merge cloud audit and API/SDK audit into <b>one product surface</b>: a single leakage and recovery picture across direct, cloud, and aggregator spend</li>
+              <li><b>Platform bridge</b> — self-hosted GPU utilization; one audit engine across AI + cloud + compute</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Cloud audit already works — the win here is <b>convergence</b>: an enterprise running Bedrock, Vertex, and direct API sees <b>one unified spend audit</b>, not three. That single-pane view is what finance actually buys.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Standard recovery is small (0.5–2%); large recovery (<b>$10k–$100k+</b>) lives here via SLA leverage. The unified surface + KloudID bridge expands TAM into the full cloud + compute spend.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> enterprise recovered $ (success fee)</span><span class="ms-metric"><b>KPI</b> unified-view adoption</span><span class="ms-metric"><b>KPI</b> multi-surface accounts</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M7 CLAUDE COWORK -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m4">M7</span>
+          <div class="ms-title"><h3>Claude Cowork plugin — audit where finance works</h3><div class="theme">Meet the non-technical buyer in Anthropic's agentic desktop, and audit a new spend surface.</div></div>
+          <span class="ms-axis mx-plat">Distribution · Team / Enterprise</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>TokenID Cowork plugin</b> — published to the Cowork plugin marketplace, bundling our skills + connectors + slash commands (e.g. <code>/tokenid:audit</code>, <code>/tokenid:recover</code>)</li>
+              <li><b>Plain-language audits</b> — a finance/FinOps user runs "audit last month's AI spend and draft the refund claims" from the desktop, no SDK or CLI</li>
+              <li><b>Cowork-spend auditing</b> — Cowork is itself a new source of agentic token spend; we audit org-wide Cowork usage alongside API spend</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Reaches the <b>non-technical buyer</b> — the finance/ops persona who'll never touch an SDK — through a channel Anthropic is actively pushing. The plugin marketplace is <b>distribution we don't have to build</b>, landing us in front of enterprise teams already managing Cowork spend.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Agentic desktop work is a <b>new, growing spend surface</b> — auditing it early extends coverage before anyone else treats it as a billable axis.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> plugin installs</span><span class="ms-metric"><b>KPI</b> audits run via Cowork</span><span class="ms-metric"><b>KPI</b> non-technical buyer reach</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M8 PRICING RADAR -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m2">M8</span>
+          <div class="ms-title"><h3>Pricing-change radar</h3><div class="theme">Be first to every provider price change — automatically.</div></div>
+          <span class="ms-axis mx-depth">Standout · all personas</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Real-time pricing monitor</b> across every provider — rate cuts, new token types, caching/thinking tiers</li>
+              <li><b>Auto re-audit trigger</b> — the moment a card changes, every affected customer is flagged and re-run against the new pricing</li>
+              <li>Proactive alert: "Provider X cut Y by Z% — you're owed a re-rate / you should switch"</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">Only an <b>independent layer watching all providers at once</b> can do this. A single-customer tool never sees the pattern; a provider won't tell you its new price disadvantaged you. Turns the constantly-changing meter from a threat into our recurring trigger.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Makes the audit <b>continuous</b> rather than periodic — a reason to stay subscribed between findings.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> price changes detected → re-audits</span><span class="ms-metric"><b>KPI</b> $ recovered from rate changes</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M9 BENCHMARK INDEX -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m4">M9</span>
+          <div class="ms-title"><h3>Industry benchmark index</h3><div class="theme">Become the published reference for AI spend efficiency.</div></div>
+          <span class="ms-axis mx-plat">Standout · data asset</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Anonymized cross-account index</b> — leak rates, cache-hit norms, over-tiering and retry waste by workload type</li>
+              <li><b>In-product benchmarks</b> — "your cache hit rate is bottom-quartile for this workload"</li>
+              <li><b>Published "State of AI Spend" report</b> — the citable number, the way Flexera owns cloud-waste</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">A <b>marketing flywheel and a moat in one</b>: every customer enriches the index, the index drives inbound, and owning <em>the</em> number makes us the category's reference point. Built entirely on data competitors can't access.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Converts accumulated audit data into a standalone brand and demand-gen asset.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> accounts in index</span><span class="ms-metric"><b>KPI</b> report-driven inbound</span><span class="ms-metric"><b>KPI</b> benchmark citations</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M10 VERIFICATION MARK -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m6">M10</span>
+          <div class="ms-title"><h3>TokenID-verified mark</h3><div class="theme">Turn the audit methodology into a standard others display.</div></div>
+          <span class="ms-axis mx-plat">Standout · category ownership</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Verification mark</b> — a "TokenID-verified bill" attestation a team can show finance, auditors, or a board</li>
+              <li><b>Public methodology</b> — the open audit format invoices can be checked against</li>
+              <li>API for third parties (FinOps tools, auditors) to verify against our standard</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">Productizes the attestation standard into something <b>customers and providers display</b> — the moment "TokenID-verified" means something, we've moved from a tool to the definition of correct. This is the gold-standard end-state made concrete.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Owning the methodology before a standard is written owns the category — defensibility no feature can match.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> verified bills issued</span><span class="ms-metric"><b>KPI</b> third-party integrations of the standard</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M11 FRONTIER -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m5">M11</span>
+          <div class="ms-title"><h3>The chat frontier</h3><div class="theme">Research horizon — pursued, never promised before a data path exists.</div></div>
+          <span class="ms-axis mx-cov">Usage · Chat</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships (when proven)</div>
+            <ul>
+              <li><b>IDE BYOK detection</b> — route Cursor / Windsurf / Copilot bundled traffic through the customer's own key, collapsing chat into the auditable API tier</li>
+              <li><b>Enterprise admin-console probe</b> — test whether ChatGPT Enterprise / Claude Team expose seat-level usage exports</li>
+              <li><b>Seat right-sizing</b> — auditable from procurement even with zero token data</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Chat is the <b>largest unaddressed surface</b> and today has <b>no data path</b>. BYOK is the most credible lever to reach it.</div></div>
+            <div class="valbox"><div class="vk">Discipline</div><div class="vv">Stated as <b>research, not commitment</b> — gated on a proven data path. Seat right-sizing is the data-free fallback.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>GATE</b> proven data path before commit</span><span class="ms-metric"><b>KPI</b> BYOK seats made auditable</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ THE GAP ============ -->
+<!-- ============ ONGOING BETS ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">02</span><h2>The open gap — chat-based usage</h2></div>
-    <p class="sec-sub">Being honest about what we cannot reach today, so the roadmap doesn't promise coverage we can't deliver.</p>
+    <div class="sec-head"><span class="sec-num">R3</span><h2>Ongoing bets — what we build in parallel</h2></div>
+    <p class="sec-sub">The milestones are discrete features. These are <b>continuous investments</b> that run across all of them — the work that converts a feature ladder into a defensible position. None of them "ship and stop"; they compound.</p>
 
-    <div class="gap">
-      <div class="gap-tag"><span class="dot"></span> Unsolved · no known data access</div>
-      <h3>We have no way to audit chat-based LLM usage</h3>
-      <p>For interactive chat surfaces — ChatGPT web, Claude.ai, Gemini app, in-IDE chat on bundled plans — <strong>we do not currently have a path to the underlying usage data.</strong> There is no admin API, no exportable journal, and no billing line broken down per interaction. The flat fee is the only artifact, and it tells us nothing about rate or leakage.</p>
-      <p>This is a <strong>real constraint, not a sequencing choice.</strong> It stays out of the committed roadmap until a data path exists. The cards below are where a path <em>might</em> open — to be validated, not assumed.</p>
-
-      <div class="gap-grid">
-        <div class="gap-card">
-          <h4>Enterprise admin consoles</h4>
-          <p class="why">ChatGPT Enterprise / Claude Team sometimes expose seat-level usage analytics to admins. Worth probing whether any export exists.</p>
-          <p class="verdict">→ research, unconfirmed</p>
-        </div>
-        <div class="gap-card">
-          <h4>BYOK fallback</h4>
-          <p class="why">If a chat surface can be pointed at the customer's own API key, it collapses into the API tier and becomes auditable.</p>
-          <p class="verdict">→ best available lever</p>
-        </div>
-        <div class="gap-card">
-          <h4>Seat right-sizing only</h4>
-          <p class="why">Even with zero token data, headcount × plan tier × activity is auditable from procurement. Finding = seats, not rate.</p>
-          <p class="verdict">→ partial, low-confidence</p>
-        </div>
+    <div class="ongoing">
+      <div class="obet">
+        <div class="ohead"><span class="oico">TEL</span><div><h4>Our own telemetry layer</h4><div class="orun">Continuous · foundational</div></div></div>
+        <p>Today we read provider usage APIs and local journals. Over time we build <b>first-party instrumentation</b> — our own SDK-level capture of every request, token type, and response — so we're not dependent on what a provider chooses to expose.</p>
+        <div class="owhy"><b>Why it compounds:</b> owning the measurement layer means we see signals providers don't surface (per-request billing match, error-billed calls, latency) and aren't blinded when a provider changes its API.</div>
       </div>
+
+      <div class="obet">
+        <div class="ohead"><span class="oico">AGT</span><div><h4>Autonomous audit &amp; refund agents</h4><div class="orun">Continuous · automation</div></div></div>
+        <p>Recovery starts as drafted claim packets. The trajectory is <b>autonomous agents running in loops</b> (the Ralph-loop pattern — fresh-context iterations until the goal is met) that detect a leak, assemble the evidence, file the provider claim, and follow it to credit — with human review only above a threshold.</p>
+        <div class="owhy"><b>Why it compounds:</b> the same autonomous-loop technique we <em>guard against</em> for runaway customer spend is what <em>powers</em> our own audit agents — we both enforce loop safety and run loops safely. Every recovered case trains the agent on what wins.</div>
+      </div>
+
+      <div class="obet moat">
+        <div class="ohead"><span class="oico">RC</span><div><h4>Rate-card &amp; leak intelligence</h4><div class="orun">Continuous · the moat</div></div></div>
+        <p>A <b>versioned history of every provider's pricing</b> and a cross-account library of leak patterns. Every audit we run makes this sharper — benchmark bands, the 80/20 leak split, what "normal" looks like per workload.</p>
+        <div class="owhy"><b>Why it's the moat:</b> a competitor can copy a feature in a sprint; they cannot copy years of pricing history and cross-account leak data. This is the asset that gets harder to replicate the longer we run.</div>
+      </div>
+
+      <div class="obet moat">
+        <div class="ohead"><span class="oico">STD</span><div><h4>The attestation standard</h4><div class="orun">Continuous · category ownership</div></div></div>
+        <p>No third-party standard exists for verifying an AI bill. We build toward <b>owning the methodology</b> — the audit format finance teams cite, the "TokenID-verified" mark a provider's invoice can be checked against.</p>
+        <div class="owhy"><b>Why it compounds:</b> whoever defines how an AI bill is verified before a standard is written owns the seat at the table — and every audit run is a vote for our methodology becoming the default.</div>
+      </div>
+
+      <div class="obet">
+        <div class="ohead"><span class="oico">RAD</span><div><h4>Pricing-change radar</h4><div class="orun">Continuous · early-warning</div></div></div>
+        <p>The meter changes constantly — a rate cut, a new token type, a caching mode. We monitor every provider's pricing in real time and the moment something shifts, <b>every affected customer is auto-flagged and re-audited</b> against the new card.</p>
+        <div class="owhy"><b>Why it stands out:</b> only an independent layer watching all providers at once can do this — a single-customer tool never sees the pattern, and a provider won't warn you its price just disadvantaged you.</div>
+      </div>
+
+      <div class="obet moat">
+        <div class="ohead"><span class="oico">IDX</span><div><h4>Industry benchmark index</h4><div class="orun">Continuous · data asset</div></div></div>
+        <p>An anonymized, aggregate <b>"State of AI Spend Efficiency"</b> index — leak rates, cache-hit norms, over-tiering by workload type. The cross-account dataset becomes a published reference the way Flexera's cloud-waste report defined FinOps.</p>
+        <div class="owhy"><b>Why it compounds:</b> it's a marketing flywheel and a moat in one — every new customer enriches the index, the index drives inbound, and being <em>the</em> source of the number makes us the category's reference point.</div>
+      </div>
+
+      <div class="obet">
+        <div class="ohead"><span class="oico" style="background:var(--teal)">CLD</span><div><h4>Cloud + API convergence</h4><div class="orun">Continuous · unified surface</div></div></div>
+        <p>Cloud LLM audit (<b>AWS Bedrock + Google Vertex live today</b>) and API/SDK audit are separate lenses on the same spend. The ongoing effort is <b>merging them into one engine and one view</b> — and extending cloud depth (Azure, reserved-capacity, cross-region) as providers evolve.</p>
+        <div class="owhy"><b>Why it compounds:</b> enterprises don't think in "API vs cloud" — they think in total AI spend. Owning the <b>unified picture</b> across both is what a finance team can't get from any provider or single-surface tool, and it deepens every quarter as new cloud billing dimensions appear.</div>
+      </div>
+
+      <div class="obet">
+        <div class="ohead"><span class="oico">UX</span><div><h4>Continuous UI / product experience</h4><div class="orun">Continuous · always-on</div></div></div>
+        <p>The dashboard is never "done" — every new surface (cloud, aggregators, Cowork), every new rule, and every new leak type needs a coherent home. The UI evolves continuously so usage, effective rate, leakage, enforcement state, and recovery all read as <b>one legible picture</b>.</p>
+        <div class="owhy"><b>Why it's continuous:</b> a roadmap that keeps adding capabilities can't bolt each onto a static UI — legibility is what converts a finding into a claimed dollar, so the experience layer has to track the product, not lag it.</div>
+      </div>
+    </div>
+
+    <div class="ongoing-note">
+      <b>The pattern:</b> the milestones win customers; the ongoing bets make those wins <span class="teal">impossible to dislodge</span>. Telemetry removes provider dependency, agents scale recovery, the rate-card library and benchmark index compound with every audit, the pricing radar keeps us first to every change, the cloud+API and UX layers keep the whole surface coherent, and the standard turns a product into a category. <b>We're starting as an audit tool — these are how we become the infrastructure.</b>
     </div>
   </div>
 </section>
 
-<!-- ============ PHASED ROADMAP ============ -->
+<!-- ============ HORIZON / RISK FRAME ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Roadmap, anchored on Monday</h2></div>
-    <p class="sec-sub">Monday is the line. Phase 1 is only what actually ships then — confirmed against Nayanah's launch plan. Phase 2 is the immediate finish-work (the broken and unverified pieces). Everything past that is the post-launch arc toward full coverage and enforcement.</p>
+    <div class="sec-head"><span class="sec-num">R4</span><h2>The honest boundary</h2></div>
+    <p class="sec-sub">What expansion can and cannot reach — stated plainly, because the roadmap's credibility depends on not overselling it.</p>
 
-    <div class="phase-wrap">
+    <div class="horizon">
+      <div class="horizon-tag">◆ Constraint, not a choice</div>
+      <h3>We can only find overspend where there's a per-use bill to check.</h3>
+      <p>On pay-per-token surfaces, we audit rate and leakage directly. On <strong>flat subscriptions there's nothing to leak against</strong> — so the value flips to right-sizing plans and seats. On <strong>self-hosted there's no token bill at all</strong> — it becomes a compute-utilization problem. And <strong>chat usage has no data path today</strong>. Each of these is addressed honestly in the milestones above rather than promised as token-level recovery.</p>
 
-      <!-- PHASE 1 · SHIPPING MONDAY -->
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="phase-badge pb-mon">PHASE 1 · MONDAY</span>
-          <h3>Ships at launch</h3>
-          <div class="when">Confirmed in the launch plan</div>
-          <div class="theme">Two paths ready to share, observe-first, plus the fixed onboarding.</div>
+      <div class="horizon-grid">
+        <div class="hcard">
+          <h4>Defensible moat</h4>
+          <p>The pricing surface gains a new billable dimension with every model and caching release. The audit's value compounds with that complexity.</p>
+          <p class="hverdict">→ widens with the market</p>
         </div>
-        <div class="phase-items">
-          <div class="pitem">
-            <div class="pitem-main"><h4>Journal logger <span class="pstat ps-ship">Ready</span></h4><p>Shell script for individual Claude Code / Copilot users. Local usage report + dev plan value-add. Observe-only.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">SHIPPING</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Python SDK (private) <span class="pstat ps-ship">Ready</span></h4><p>Audits agentic services calling LLMs via API. Powers every current dashboard feature + enforcement.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">SHIPPING</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Fixed onboarding flow <span class="pstat ps-ship">Deliverable</span></h4><p>Consistent UI aligned to product expectations — a named Monday deliverable.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">SHIPPING</span>
-            </div>
-          </div>
+        <div class="hcard">
+          <h4>Provider independence</h4>
+          <p>We audit spend <em>on</em> providers, not <em>for</em> them. No revenue dependency on any one — and customers won't trust a provider to audit its own bill.</p>
+          <p class="hverdict">→ structural neutrality</p>
+        </div>
+        <div class="hcard">
+          <h4>Platform optionality</h4>
+          <p>Shared plumbing with KloudID means the same engine extends into cloud and compute spend without rebuilding the core.</p>
+          <p class="hverdict">→ multi-product path</p>
         </div>
       </div>
-
-      <!-- PHASE 2 · FINISH FOR MONDAY -->
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="phase-badge pb-fast">PHASE 2 · MUST-FIX</span>
-          <h3>Blockers before launch</h3>
-          <div class="when">In flight — gates the launch</div>
-          <div class="theme">The fixes and verifications that make Phase 1 trustworthy. Detail lives in the MVP tab.</div>
-        </div>
-        <div class="phase-items">
-          <div class="pitem">
-            <div class="pitem-main"><h4>Reconciliation logic <span class="pstat ps-broken">Critical</span></h4><p>API-key-scoped events vs. account-level usage → false anomalies. Unblocks pricing &amp; token mismatch.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-conv">KEYSTONE</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Free SDK (public) ingestion <span class="pstat ps-broken">Broken</span></h4><p>HubSpot-distributed <code style="font-family:'JetBrains Mono',monospace;font-size:11px">pip install tokenid</code> data not reaching dashboard.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-bet">BLOCKER</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Verify 8 violation types <span class="pstat ps-fix">6 unverified</span></h4><p>2 wait on reconciliation; 6 show no flags yet. Needed for the refund report.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-bet">BLOCKER</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Login/registration + alert-rule bugs <span class="pstat ps-fix">Bugs</span></h4><p>Auth fixes, separate event tables, alert rules working end-to-end.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">FIX</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 3 · RIGHT AFTER -->
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="phase-badge pb2">PHASE 3 · POST-LAUNCH</span>
-          <h3>Bridge &amp; enforce</h3>
-          <div class="when">Next, once launch is stable</div>
-          <div class="theme">Turn the proxy hook on and move from reporting to preventing.</div>
-        </div>
-        <div class="phase-items">
-          <div class="pitem">
-            <div class="pitem-main"><h4>Homebrew proxy — share &amp; activate <span class="pstat ps-fix">Not shared yet</span></h4><p><code style="font-family:'JetBrains Mono',monospace;font-size:11px">brew install tokenid</code> — the free→paid bridge that lands the SDK hook.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-conv">CONVERSION</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Dedup guard + guardrail enforcement</h4><p>The paid payoff — auto-recover, not just report. SDK/proxy only.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-conv">CONVERSION</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Tiered journal-logger UI (free → paid)</h4><p>Locked rate/leakage states, benchmark band, guided connect-flow</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-conv">CONVERSION</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 4 · EXPAND COVERAGE -->
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="phase-badge pb3">PHASE 4 · EXPAND</span>
-          <h3>Widen the surface</h3>
-          <div class="when">Later, where a key or log exists</div>
-          <div class="theme">More paths into the same audit engine.</div>
-        </div>
-        <div class="phase-items">
-          <div class="pitem">
-            <div class="pitem-main"><h4>Bedrock + Vertex audit</h4><p>Cloud billing pull — reuses KloudID plumbing</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">QUICK WIN</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Aggregator key ingest</h4><p>OpenRouter / Together usage + margin detection</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">QUICK WIN</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Azure OpenAI coverage</h4><p>Completes the managed-cloud trio</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-quick">QUICK WIN</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHASE 5 · HARD + RESEARCH -->
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="phase-badge pb4">PHASE 5 · HARD / RESEARCH</span>
-          <h3>Harder telemetry &amp; the chat gap</h3>
-          <div class="when">High effort or unproven</div>
-          <div class="theme">Worth it where customers run it; chat stays research.</div>
-        </div>
-        <div class="phase-items">
-          <div class="pitem">
-            <div class="pitem-main"><h4>Self-hosted GPU utilization</h4><p>Infra metrics × instance cost — bridges into KloudID</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-grind">GRIND</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>IDE BYOK detection (Cursor / Windsurf / Copilot)</h4><p>Route bundled-tool traffic through customer key → makes it auditable</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-grind">GRIND</span>
-            </div>
-          </div>
-          <div class="pitem">
-            <div class="pitem-main"><h4>Chat-based usage <span class="pstat ps-broken">No data path</span></h4><p>No known access today. Enterprise admin-console probe + data-free seat right-sizing only.</p></div>
-            <div class="pitem-ve">
-              <div class="ve-block"><span class="pips"><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip on-v"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Value</span></div>
-              <div class="ve-block"><span class="pips"><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip on-e"></span><span class="pip"></span><span class="pip"></span></span><span class="slabel">Effort</span></div>
-              <span class="ratio r-grind">RESEARCH</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- ============ CONVERSION (merged into roadmap) ============ -->
-<section style="padding-top:40px">
-  <div class="wrap">
-    <div style="display:flex;align-items:center;gap:16px;padding:18px 0 22px;border-top:1px solid var(--line)">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Feature deep-dive</span>
-      <span style="flex:1;height:1px;background:var(--line)"></span>
-    </div>
-    <div class="sec-head"><span class="sec-num">04</span><h2>Converting the free journal-logger user</h2></div>
-    <p class="sec-sub">The hardest conversion we have — the free tier genuinely cannot show rate or leakage, so there's no recovered-dollar number to dangle. The upgrade is a <strong>data-source change</strong> plus the <strong>implementation of dedup + guardrails</strong>. How the feature behaves at each tier:</p>
-  </div>
-</section>
-
+<!-- ============ RISKS ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04·A</span><h2>The conversion mechanic</h2></div>
-    <p class="sec-sub">Why the standard PLG move doesn't apply here, and what replaces it.</p>
+    <div class="sec-head"><span class="sec-num">R5</span><h2>Key risks &amp; how the roadmap mitigates them</h2></div>
+    <p class="sec-sub">The objections a diligent reader will raise — answered against the plan, not waved away.</p>
 
-    <div class="conv-intro">
-      <p><strong>The mechanic flips.</strong> Normal PLG = "here's $X of waste, pay to recover it." We can't do that — the journal file has no rate data to find waste in. So instead: <span class="hl">free surfaces the opportunities</span> (what's likely leaking, observed from usage patterns), and <span class="hl">paid implements the dedup + guard rules</span> that actually act on them. Free shows the shape of the problem; paid applies the fix.</p>
-    </div>
-
-    <div class="ui-mock">
-      <div class="ui-panel">
-        <div class="ui-bar">
-          <span class="ui-title">Usage Dashboard</span>
-          <span class="tier-pill pill-free">Free · Journal</span>
-        </div>
-        <div class="ui-body">
-          <div class="ui-row"><span class="lbl">Tokens this month</span><span class="ui-val live">14.2M</span></div>
-          <div class="ui-row"><span class="lbl">Model mix</span><span class="ui-val live">4 models</span></div>
-          <div class="ui-row"><span class="lbl">Sessions</span><span class="ui-val live">1,840</span></div>
-          <div class="ui-row"><span class="lbl"><span class="lockicon"></span> Rate / effective $</span><span class="ui-val lock">Connect to unlock</span></div>
-          <div class="ui-row"><span class="lbl"><span class="lockicon"></span> Leakage found</span><span class="ghost">$ 3,1•• .••</span></div>
-          <div class="benchband">
-            <div class="bl">Benchmark · not your data</div>
-            <div class="bt">Teams at your usage level <b>commonly leave 8–15%</b> on retries &amp; over-tiering. Connect a key to see your actual figure.</div>
-          </div>
-        </div>
-        <div class="ui-foot cta">Connect API key or cloud billing → <span>watch leakage populate live</span></div>
-      </div>
-
-      <div class="ui-panel">
-        <div class="ui-bar">
-          <span class="ui-title">Audit &amp; Optimization</span>
-          <span class="tier-pill pill-paid">Paid · Connected</span>
-        </div>
-        <div class="ui-body">
-          <div class="ui-row"><span class="lbl">Tokens this month</span><span class="ui-val live">14.2M</span></div>
-          <div class="ui-row"><span class="lbl">Effective rate</span><span class="ui-val live">$0.94 / 1K</span></div>
-          <div class="ui-row"><span class="lbl">Leakage found</span><span class="ui-val live">$3,180</span></div>
-          <div class="ui-row"><span class="lbl">Dedup guard</span><span class="ui-val live">ON · saves $740/mo</span></div>
-          <div class="ui-row"><span class="lbl">Over-tier rule</span><span class="ui-val live">ON · 312 calls</span></div>
-          <div class="benchband" style="border-style:solid;border-color:var(--teal);background:rgba(0,191,166,.06)">
-            <div class="bl" style="color:var(--teal)">Live · your data</div>
-            <div class="bt">Guardrails active. <b>$1,090/mo recovered</b> across dedup + downgrade rules, applied automatically.</div>
-          </div>
-        </div>
-        <div class="ui-foot">Rules running on SDK / proxy · adjust thresholds anytime</div>
-      </div>
-    </div>
-
-    <div class="ladder">
-      <div class="rung">
-        <span class="step">STEP 01 · FREE</span>
-        <h4>See usage + opportunities</h4>
-        <p>Journal logger shows real usage. Rate &amp; leakage rendered as honest locked states. A benchmark band shows the <em>shape</em> of likely waste — labelled as benchmark, never as their audited finding.</p>
-        <span class="arrow">→</span>
-      </div>
-      <div class="rung">
-        <span class="step">STEP 02 · CONNECT</span>
-        <h4>2-min guided key connect</h4>
-        <p>Not a pricing page — a connect-flow. Drop in an API key or point at Bedrock/Vertex. Locked panels populate live. The <b>first real leakage row</b> is the conversion event, not checkout.</p>
-        <span class="arrow">→</span>
-      </div>
-      <div class="rung">
-        <span class="step">STEP 03 · PAID</span>
-        <h4>Implement dedup + guard rules</h4>
-        <p>The paid value isn't just <em>seeing</em> leakage — it's TokenID <b>applying the dedup guard and guardrail rules</b> that act on it. Recovery runs automatically; UI shifts from passive dashboard to active control.</p>
-      </div>
-    </div>
-
-    <div class="conv-intro" style="margin-top:26px;border-left-color:var(--teal)">
-      <p><strong>UI restraint — industry standard.</strong> Locked dimensions use clear lock affordances and one honest line ("Not available from journal data — connect a key to unlock"). Ghosted/blurred values show a real number exists without inventing one. No countdown timers, no fake urgency, no dark patterns. The benchmark band is always explicitly marked <span class="hl">"benchmark · not your data"</span> so it never reads as a fabricated audit result.</p>
-    </div>
+    <table class="risks">
+      <thead><tr><th>Risk</th><th>Mitigation in this roadmap</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rk">A provider builds its own audit feature</td>
+          <td class="rm">Structural independence is the defense: customers won't trust a provider to audit its own bill, the same way a bank can't audit its own fees. We audit spend <b>on</b> providers, not for them — no single-provider revenue dependency (M6, §07).</td>
+        </tr>
+        <tr>
+          <td class="rk">Observability incumbents (Langfuse, Helicone) move into recovery</td>
+          <td class="rm">They're positioned as <b>distribution partners</b>, not competitors — their telemetry is our input layer. Recovery requires rate-card history + credit workflow + enforcement, a different product they'd have to become. We meet their users already instrumented (§05).</td>
+        </tr>
+        <tr>
+          <td class="rk">Model prices keep falling — does waste shrink?</td>
+          <td class="rm">Prices fell ~80% and spend still <b>doubled</b>, because adoption and complexity outrun price. Each new token type adds a billing axis; the leak surface grows with the meter. Our moat compounds with complexity (Force 02, §03).</td>
+        </tr>
+        <tr>
+          <td class="rk">Standard-tier recovery is small (0.5–2%)</td>
+          <td class="rm">Stated honestly and priced accordingly — standard tier is a "health check" wedge; the large dollars live in <b>enterprise SLA recovery</b> (M6) where success-fee pricing aligns to recovered dollars.</td>
+        </tr>
+        <tr>
+          <td class="rk">Chat usage has no data path</td>
+          <td class="rm">Kept out of committed scope as <b>research, gated on a proven data path</b> (M7). BYOK is the credible lever; seat right-sizing is the data-free fallback. We don't promise coverage we can't deliver.</td>
+        </tr>
+        <tr>
+          <td class="rk">Enforcement requires sitting in the request path</td>
+          <td class="rm">Proxy is <b>opt-in, one env var, ~20–80ms</b>, enabled only after trust is established via observe-first SDK/journal. The free→paid bridge is designed around exactly this adoption curve (M4).</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
+<!-- ============ VISION ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04·B</span><h2>Feature inventory</h2></div>
-    <p class="sec-sub">Every surface this conversion touches, and which tier it belongs to.</p>
-
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="fnum">01</div>
-        <h4>Usage dashboard</h4>
-        <p>Tokens, model mix, sessions — read from the local journal file. Full fidelity, no key required. This is the value that earns the free user's trust before any ask.</p>
-        <span class="ftag ftag-free">Free</span>
+    <div class="vision">
+      <div class="vtag">◆ The end state</div>
+      <h3>From audit tool to the <em>gold standard</em><br>for AI spend.</h3>
+      <p class="vlede">We're starting where the value is provable — auditing API spend and recovering overcharges. But the destination is bigger: <b>the trusted, independent authority on what an AI bill should be.</b> When a finance team wants to verify AI spend, when a provider's invoice needs checking, when "is this charge correct?" gets asked — the answer runs through us.</p>
+      <div class="vsteps">
+        <div class="vstep">
+          <div class="vn">WHERE WE START</div>
+          <h5>The audit tool</h5>
+          <p>Catch leakage, recover overcharges, enforce guardrails. Prove the dollars, win the customers.</p>
+        </div>
+        <div class="vstep">
+          <div class="vn">WHERE WE'RE GOING</div>
+          <h5>The recovery infrastructure</h5>
+          <p>Own telemetry, autonomous refund agents, and the deepest cross-account leak intelligence in the market — recovery that scales and compounds.</p>
+        </div>
+        <div class="vstep">
+          <div class="vn">THE END STATE</div>
+          <h5>The gold standard</h5>
+          <p>The attestation methodology finance cites and providers are measured against. The category-defining authority on AI spend correctness.</p>
+        </div>
       </div>
-      <div class="feat">
-        <div class="fnum">02</div>
-        <h4>Locked rate &amp; leakage panels</h4>
-        <p>Rendered as honest empty states — lock affordance + one plain line. Leakage shows a ghosted/blurred figure so the user sees a real number exists without us inventing one.</p>
-        <span class="ftag ftag-free">Free</span>
-      </div>
-      <div class="feat">
-        <div class="fnum">03</div>
-        <h4>Benchmark opportunity band</h4>
-        <p>Category-level "teams at your usage level commonly leave 8–15%." Always stamped <em>benchmark · not your data</em>. Surfaces the shape of waste without claiming it as their audited finding.</p>
-        <span class="ftag ftag-free">Free</span>
-      </div>
-      <div class="feat">
-        <div class="fnum">04</div>
-        <h4>Guided connect-flow</h4>
-        <p>A 2-minute key/billing connect — not a pricing page. Drop in an API key or point at Bedrock/Vertex. Panels populate live. The first real leakage row is the conversion event.</p>
-        <span class="ftag ftag-both">The bridge</span>
-      </div>
-      <div class="feat">
-        <div class="fnum">05</div>
-        <h4>Dedup guard</h4>
-        <p>Detects and collapses duplicate / redundant calls (repeat prompts, retry storms, identical context re-sends). Reports savings in free preview; <b>enforces</b> them once paid.</p>
-        <span class="ftag ftag-paid">Paid · enforced</span>
-      </div>
-      <div class="feat">
-        <div class="fnum">06</div>
-        <h4>Guardrail rule set</h4>
-        <p>Model-downgrade on over-tiered calls, token caps, cache enforcement. Configurable thresholds. Runs on the SDK/proxy plumbing — the active control the paid tier is really buying.</p>
-        <span class="ftag ftag-paid">Paid · enforced</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04·C</span><h2>Tier behaviour spec</h2></div>
-    <p class="sec-sub">What each dimension does at free vs. paid — the contract for the build.</p>
-
-    <div class="specrow">
-      <div class="sk">Data source</div>
-      <div class="sv"><b>Free:</b> local journal file only. &nbsp;<b>Paid:</b> API key, proxy, or cloud billing (<code>Bedrock</code> / <code>Vertex</code>).</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Usage metrics</div>
-      <div class="sv"><b>Free:</b> full — tokens, models, sessions. &nbsp;<b>Paid:</b> same, plus per-call attribution.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Rate / effective $</div>
-      <div class="sv"><b>Free:</b> locked — "connect to unlock." &nbsp;<b>Paid:</b> live <code>$/1K</code> effective rate.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Leakage</div>
-      <div class="sv"><b>Free:</b> ghosted figure + benchmark band. &nbsp;<b>Paid:</b> real per-vector leakage total.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Dedup guard</div>
-      <div class="sv"><b>Free:</b> opportunity flagged, savings estimated. &nbsp;<b>Paid:</b> <b>active</b> — duplicates collapsed automatically.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Guardrail rules</div>
-      <div class="sv"><b>Free:</b> visible but toggles disabled. &nbsp;<b>Paid:</b> <b>enforced</b> on SDK/proxy, thresholds adjustable.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">Conversion event</div>
-      <div class="sv">Not checkout — the moment the <b>first real leakage row replaces the ghost</b> after connect.</div>
-    </div>
-    <div class="specrow">
-      <div class="sk">UI restraint</div>
-      <div class="sv">Industry standard — lock icons, one honest line, blurred-not-fabricated values, no dark patterns.</div>
     </div>
   </div>
 </section>
@@ -1235,234 +1212,20 @@
 <!-- ============ CLOSER ============ -->
 <section>
   <div class="wrap">
-
     <div class="closer">
-      <h3>The sequencing logic in one line</h3>
-      <p><strong>Monday ships the journal logger + private SDK + fixed onboarding</strong> — observe-first, with the SDK as the enforcement-ready spine. The gate is the <strong>must-fix list</strong>: reconciliation is the keystone (it unblocks two violation types), the public-SDK ingestion bug has to be cleared, and the six silent violations verified for the refund report. Right after launch, <strong>turn on the Homebrew proxy bridge and dedup/guardrail enforcement</strong> — the move from reporting waste to preventing it. Then widen coverage (Bedrock, Vertex, aggregators, Azure) and treat self-hosted, IDE-BYOK and <strong>chat as later/ research</strong>, since chat has no data path yet.</p>
-      <p class="seq">ship logger + SDK + onboarding → clear must-fix blockers → activate proxy + enforcement → widen coverage → research the chat gap</p>
+      <h3>The expansion in one line</h3>
+      <p><strong>Lead with the free open-source journal logger</strong> (M0) — the zero-friction hook that fills the funnel. <strong>Build the Team view</strong> (M1) to create the paid tier, then <strong>solve enforcement</strong> (M2) — the shift to recurring recovery, headlined by Ralph-loop protection. Next, <strong>close the aggregator gap</strong> (M3) and <strong>expand the SDK to TypeScript + public PyPI</strong> (M4) to widen reach, and ship the <strong>in-product refund flow</strong> (M5) so findings become claimed dollars in one click. <strong>Cloud audit (AWS Bedrock + Google Vertex) is already live</strong> — M6 converges it with API audit into one unified enterprise spend view, adds Azure, and bridges to KloudID. <strong>Ship the Claude Cowork plugin</strong> (M7) to reach the non-technical buyer, then make the category-defining bets — <strong>pricing radar (M8), the benchmark index (M9), and the TokenID-verified mark (M10)</strong>. Chat (M11) stays the research frontier until a data path is proven.</p>
+      <p class="seq">free OSS logger → team view → enforcement (Ralph-loop guard) → aggregator coverage → SDK expansion → in-product refunds → enterprise + cloud convergence → Cowork plugin → pricing radar → benchmark index → verified mark → chat frontier</p>
     </div>
-
+    <div style="margin-top:22px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Scope of this document</div>
+      <p style="font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin:0">This is the <b>product &amp; expansion roadmap</b> — strategy, sequencing, prioritization, and the defensibility thesis. Three companion items live elsewhere in the data room and are referenced here only by the KPI slots they'll populate: <b>current traction</b> (recovered-dollar actuals, customer / design-partner logos), <b>team &amp; founders</b>, and the <b>GTM &amp; financial model</b>. Market figures on this page are public and cited; they are context for the opportunity, not company performance. The per-milestone KPIs are the metrics each milestone will be held to once live.</p>
+    </div>
+    <p style="font-size:11px;color:var(--muted);font-weight:300;margin-top:16px;line-height:1.6;font-family:'JetBrains Mono',monospace">Sources: Menlo Ventures 2025 LLM Market Update · Kong Enterprise AI Survey 2025 · Gartner GenAI forecast · Flexera State of the Cloud 2025–26 (27% cloud waste / ~$182B). Market figures are directional and cited for context, not company financials. Roadmap sequencing is directional, not a dated commitment.</p>
   </div>
 </section>
 
 </div><!-- /tab-roadmap -->
-
-
-<!-- ============ MVP RELEASE TAB ============ -->
-<div class="tabpanel active" id="tab-mvp">
-<header class="fd-hero" style="padding-bottom:18px">
-  <div class="wrap">
-    <div class="kicker"><span class="chip"></span> TokenID · Monday Launch · Status</div>
-    <h1>Monday Launch —<br><span class="id">Where We Stand</span></h1>
-    <p class="lede">What's done, what's at risk, the one thing that decides Monday. Detail below.</p>
-  </div>
-</header>
-
-<section style="padding-top:14px">
-  <div class="wrap">
-
-    <!-- VERDICT -->
-    <div class="verdict good-state">
-      <div class="vlight"><span></span></div>
-      <div>
-        <h2>On track — <span class="on-track">now in testing</span></h2>
-        <p><b>The SDK fix is deployed</b> — that was the one thing holding us up, and it's done. <b>5 of 5 build tasks done.</b> All the pieces are in place; we're now <b>focused on testing</b> to confirm everything works on live usage. <b>The team is on it this weekend.</b></p>
-      </div>
-    </div>
-
-    <!-- AT-A-GLANCE GRID -->
-    <div class="exec-grid">
-      <div class="ecard good">
-        <div class="ek">Build tasks</div>
-        <div class="ebig">5/5</div>
-        <div class="esub">Done</div>
-        <div class="ebar"><i style="width:100%"></i></div>
-      </div>
-      <div class="ecard good">
-        <div class="ek">SDK fix</div>
-        <div class="ebig">✓</div>
-        <div class="esub">Deployed — blocker cleared</div>
-      </div>
-      <div class="ecard good">
-        <div class="ek">Blockers</div>
-        <div class="ebig">0</div>
-        <div class="esub">Nothing holding up launch</div>
-      </div>
-      <div class="ecard warn">
-        <div class="ek">Now testing</div>
-        <div class="ebig">4</div>
-        <div class="esub">Checks to confirm on live usage</div>
-      </div>
-    </div>
-
-    <!-- THE CURRENT FOCUS -->
-    <div class="blocker-card focus-state">
-      <div class="bc-main">
-        <h3><span class="bdot ok"></span> What we're focused on now</h3>
-        <p>The SDK fix is in, so the <b>pricing check</b> is unblocked. We're now <b>testing the remaining checks on live usage</b> — pricing, pricier-model, agent-loop, and double-charge — to confirm they fire correctly with real traffic. No blockers left. <b>The team is testing through the weekend.</b></p>
-      </div>
-      <div class="bc-side">
-        <div class="bnum ok">4</div>
-        <div class="blbl">checks left to confirm</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- DETAILS DIVIDER -->
-<section style="padding-top:30px">
-  <div class="wrap">
-    <div style="display:flex;align-items:center;gap:16px;padding:18px 0 4px;border-top:1px solid var(--line)">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Detail</span>
-      <span style="flex:1;height:1px;background:var(--line)"></span>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:18px">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">C1</span><h2>Install paths</h2></div>
-    <p class="sec-sub">What each version does, and whether it can actually control spend or only show it.</p>
-
-    <div class="ipath">
-      <div class="ipath-top">
-        <div class="ipath-icon ic-journal">LOG</div>
-        <div class="ipath-name">
-          <h4>Journal logger <span class="st st-ready">Ready to share</span></h4>
-          <p>Reads Claude Code / Copilot usage files on the user's computer and makes a report.</p>
-          <span class="persona"><span class="pico">👤</span> <b>Solo developer on a flat monthly plan</b> — Max or Copilot subscriber who wants to see their own usage</span>
-        </div>
-      </div>
-      <div class="enforce-note"><b>Can it control spend?</b> <span class="no">No</span> — it only shows usage and reports. Free tier.</div>
-    </div>
-
-    <div class="ipath">
-      <div class="ipath-top">
-        <div class="ipath-icon ic-sdk">SDK</div>
-        <div class="ipath-name">
-          <h4>Python SDK (private) <span class="st st-ready">Ready to share</span></h4>
-          <p>For AI features that call providers directly. Powers all the dashboard features.</p>
-          <span class="persona"><span class="pico">⚙️</span> <b>Engineering team paying per use</b> — runs AI features in production, wants to check the bill and set spending limits</span>
-        </div>
-      </div>
-      <div class="ipath-cmd"><span class="pre">$ </span>pip install --extra-index-url https://tokenid:td_•••@pypi.token.audit.id/simple/ tokenid</div>
-      <div class="enforce-note"><b>Can it control spend?</b> <span class="yes">Yes</span> — can catch duplicate calls, apply spending limits, and send alerts. This is what the paid tier buys.</div>
-    </div>
-
-    <div class="ipath">
-      <div class="ipath-top">
-        <div class="ipath-icon ic-proxy">BRW</div>
-        <div class="ipath-name">
-          <h4>Free tool — Homebrew <span class="st st-pending">Not shared yet</span></h4>
-          <p>A small tool that sits between the app and the AI provider — the easy way to step up from free to paid.</p>
-          <span class="persona"><span class="pico">🧭</span> <b>Free user ready to upgrade</b> — wants the simplest way to turn on the paid features</span>
-        </div>
-      </div>
-      <div class="ipath-cmd"><span class="pre">$ </span>brew install tokenid</div>
-      <div class="enforce-note"><b>Can it control spend?</b> <span class="yes">Yes</span> — this is the bridge from free to paid.</div>
-    </div>
-
-    <div class="ipath">
-      <div class="ipath-top">
-        <div class="ipath-icon ic-pub">PUB</div>
-        <div class="ipath-name">
-          <h4>Free SDK (public) <span class="st st-broken">Data not showing up</span></h4>
-          <p>Sent to customers by email. Right now its data isn't reaching the dashboard.</p>
-          <span class="persona"><span class="pico">📥</span> <b>New lead who signed up themselves</b> — installs from an email and expects it to just work</span>
-        </div>
-      </div>
-      <div class="ipath-cmd"><span class="pre">$ </span>pip install tokenid</div>
-      <div class="enforce-note"><b>Status:</b> <span class="no">blocked</span> — a bug stops its data reaching the dashboard; must fix before launch.</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">C2</span><h2>Progress</h2></div>
-    <p class="sec-sub">6 done, 4 still going. Testing through the weekend.</p>
-
-    <div class="prog-grid">
-      <div class="prog-col done">
-        <h3>✓ Done</h3>
-        <div class="prog-list">
-          <div class="pgitem d"><span class="pmark">✓</span><span>Journal logger enhancement</span></div>
-          <div class="pgitem d"><span class="pmark">✓</span><span>Login / registration bugs fixed</span></div>
-          <div class="pgitem d"><span class="pmark">✓</span><span>Onboarding flow updated</span></div>
-          <div class="pgitem d"><span class="pmark">✓</span><span>Split event data from logger data</span></div>
-          <div class="pgitem d"><span class="pmark">✓</span><span>Provider key encryption</span></div>
-          <div class="pgitem d"><span class="pmark">✓</span><span>SDK fix deployed — the blocker is cleared</span></div>
-        </div>
-      </div>
-      <div class="prog-col going">
-        <h3>▸ In progress</h3>
-        <div class="prog-list">
-          <div class="pgitem g"><span class="pmark">▸</span><span>Testing all the checks on live usage</span></div>
-          <div class="pgitem g"><span class="pmark">▸</span><span>Checking alerts work &amp; fixing remaining bugs</span></div>
-          <div class="pgitem g"><span class="pmark">▸</span><span>New version of the journal logger</span></div>
-          <div class="pgitem g"><span class="pmark">▸</span><span>Charts + separate views for the data</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">C3</span><h2>The 8 problems we check for</h2></div>
-    <p class="sec-sub">Each one gets two checks: a <strong>lab test</strong> we run ourselves, then a <strong>real-world check</strong> on live usage. 4 are fully confirmed; the other 4 are in testing now that the SDK fix is in. Nothing blocked.</p>
-
-    <table class="viotable">
-      <thead>
-        <tr><th>#</th><th>What we check for</th><th class="ctr">Lab test</th><th class="ctr">Live check</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="vn">1</td><td class="vname">Token count doesn't match the bill</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">2</td><td class="vname">Wrong price charged</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">testing</td><td><span class="vstatus vs-pending">Now testing — SDK fix in</span></td></tr>
-        <tr><td class="vn">3</td><td class="vname">Bloated context (sending too much)</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">4</td><td class="vname">Using a pricier model than needed <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
-        <tr><td class="vn">5</td><td class="vname">Overly long prompts</td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">6</td><td class="vname">Repeated retries piling up cost <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk dash">—</td><td><span class="vstatus vs-ok">Confirmed</span></td></tr>
-        <tr><td class="vn">7</td><td class="vname">An agent stuck in a loop <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
-        <tr><td class="vn">8</td><td class="vname">The same request charged twice <span class="venf2">paid only</span></td><td data-label="Lab test" class="ctr chk y">✓</td><td data-label="Live check" class="ctr chk n">not yet</td><td><span class="vstatus vs-pending">Testing now</span></td></tr>
-      </tbody>
-    </table>
-
-    <div class="legend-vio" style="margin-top:14px">
-      <span class="lv"><span class="vdot vd-verified"></span> Confirmed (4)</span>
-      <span class="lv"><span class="vdot vd-probe"></span> In testing (4)</span>
-    </div>
-
-    <div class="conv-intro" style="margin-top:18px">
-      <p><strong>One thing to know:</strong> we can <em>spot</em> all 8 problems on any version. But the four marked <span class="hl">paid only</span> can only be <em>stopped automatically</em> on the paid version. On the free version, we can tell the user it happened — we just can't block it for them.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">C4</span><h2>What's left</h2></div>
-    <p class="sec-sub">In the order they need to happen.</p>
-
-    <div class="deliv">
-      <div class="dcheck" style="grid-column:1/-1"><span class="cbox"></span><p><b>Test all the checks on live usage</b> — pricing, pricier-model, agent-loop, double-charge. This is the main focus now.</p></div>
-      <div class="dcheck"><span class="cbox"></span><p>Release the new journal logger</p></div>
-      <div class="dcheck"><span class="cbox"></span><p>Check alerts work &amp; fix remaining bugs</p></div>
-      <div class="dcheck"><span class="cbox"></span><p>Separate views + charts for the data</p></div>
-    </div>
-
-    <div class="closer" style="margin-top:26px">
-      <h3>Bottom line</h3>
-      <p>The <b>SDK fix is deployed</b> — the one thing that was holding us up is done, and there are <b>no blockers left</b>. All the pieces are in place. We're now <b>focused on testing</b> the checks on live usage to make sure everything fires correctly before launch. <b>The team is testing through the weekend.</b></p>
-      <p class="seq">SDK fix deployed ✓ → testing checks on live use → release → launch</p>
-    </div>
-  </div>
-</section>
-
-</div><!-- /tab-mvp -->
-
-
 
 <script>
   document.querySelectorAll('.tab').forEach(function(btn){
