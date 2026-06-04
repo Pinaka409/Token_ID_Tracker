@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TokenID — Expansion Roadmap</title>
+<title>TokenID — Roadmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -331,13 +331,28 @@
   .prio-logic{margin-top:18px;background:var(--paper);border-left:4px solid var(--orange);border-radius:11px;padding:16px 20px}
   .prio-logic p{font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6}
   .prio-logic b{color:var(--ink);font-weight:600}
+
+  /* FOUNDATION FIXES */
+  .fixstrip{background:#FFF8EE;border:1px solid #F0E2C8;border-left:4px solid var(--amber);border-radius:14px;padding:22px 26px}
+  .fixstrip .fh{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#B5790A;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+  .fixstrip .fh .fdot{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+  .fixstrip h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+  .fixstrip .fintro{font-size:13.5px;color:#4A4640;font-weight:300;line-height:1.55;margin-bottom:16px}
+  .fixstrip .fintro b{color:var(--ink);font-weight:600}
+  .fixgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:680px){.fixgrid{grid-template-columns:1fr}}
+  .fixitem{background:#fff;border:1px solid #F0E2C8;border-radius:11px;padding:14px 16px}
+  .fixitem h4{font-size:13.5px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .fixitem h4 .fchk{width:16px;height:16px;border-radius:5px;border:2px solid var(--amber);flex-shrink:0;position:relative}
+  .fixitem h4 .fchk::after{content:"";position:absolute;inset:0;margin:auto;width:7px;height:4px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg) translate(0,-1px)}
+  .fixitem p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="kicker"><span class="chip"></span> TokenID · Expansion Roadmap · <span class="conf">Directional — for discussion</span></div>
+    <div class="kicker"><span class="chip"></span> TokenID · Roadmap</div>
     <h1>Expanding the audit:<br>more <span class="id">coverage</span>, deeper <span class="id">recovery</span>.</h1>
     <p class="lede">TokenID audits AI &amp; LLM spend — verifying charges, catching leakage, and recovering overcharges. This is the forward plan, defined by <strong>who the user is</strong> and <strong>how their spend reaches a model</strong>: what each persona gets today, and the milestones that deepen it.</p>
 
@@ -599,37 +614,39 @@
 <section>
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">R1</span><h2>Prioritization</h2></div>
-    <p class="sec-sub">Seven milestones, sequenced by a simple rule: <b>build what creates a paid tier or closes a revenue gap first; defer what depends on trust or an unproven data path.</b> Scored on value, effort, and dependency.</p>
+    <p class="sec-sub">Fourteen milestones, sequenced by a simple rule: <b>build what creates a paid tier or closes a revenue gap first; defer what depends on trust or an unproven data path.</b> Scored on value, effort, and dependency.</p>
 
     <div class="prio-band">
       <div class="pband now">
         <div class="ph">● Now — P0/P1</div>
-        <div class="psub">The acquisition hook, the first paid tier, and the headline enforcement capability. Build immediately.</div>
+        <div class="psub">Fill the funnel, move users down it, create the paid tier, and turn findings into recurring recovery.</div>
         <ul>
           <li><span class="mtag mt0">M0</span> Free OSS journal logger — the acquisition hook</li>
           <li><span class="mtag mt1">M1</span> Team view — the Individual→Team conversion</li>
-          <li><span class="mtag mt4">M2</span> Enforcement rules — Ralph-loop guard, recurring recovery</li>
+          <li><span class="mtag mt3">M2</span> Communication &amp; lifecycle layer — activation engine</li>
+          <li><span class="mtag mt4">M3</span> Enforcement rules — Ralph-loop guard, recurring recovery</li>
         </ul>
       </div>
       <div class="pband next">
         <div class="ph">● Next — P1/P2</div>
-        <div class="psub">Widen coverage and the funnel once the core loop is live.</div>
+        <div class="psub">Reduce friction and widen coverage once the core loop is live.</div>
         <ul>
-          <li><span class="mtag mt2">M3</span> Aggregator coverage — close the API-axis gap</li>
-          <li><span class="mtag mt3">M4</span> SDK expansion — TypeScript + public PyPI</li>
-          <li><span class="mtag mt5">M5</span> In-product refund flow</li>
+          <li><span class="mtag mt2">M4</span> Auth migration + GitHub sign-up — lower friction</li>
+          <li><span class="mtag mt2">M5</span> Aggregator coverage — close the API-axis gap</li>
+          <li><span class="mtag mt3">M6</span> SDK expansion — TypeScript + public PyPI</li>
+          <li><span class="mtag mt5">M7</span> In-product refund flow</li>
         </ul>
       </div>
       <div class="pband later">
         <div class="ph">● Later — P2/P3</div>
-        <div class="psub">Largest dollars, category-defining bets, and TAM — gated on the foundation below.</div>
+        <div class="psub">Largest dollars, category-defining bets, and TAM — gated on the foundation above.</div>
         <ul>
-          <li><span class="mtag mt6">M6</span> Enterprise recovery + cloud convergence + KloudID</li>
-          <li><span class="mtag mt4">M7</span> Claude Cowork plugin — distribution + new surface</li>
-          <li><span class="mtag mt2">M8</span> Pricing-change radar — early-warning</li>
-          <li><span class="mtag mt4">M9</span> Industry benchmark index — data asset</li>
-          <li><span class="mtag mt6">M10</span> TokenID-verified mark — the standard</li>
-          <li><span class="mtag mt7">M11</span> Chat frontier — research, gated</li>
+          <li><span class="mtag mt6">M8</span> Enterprise recovery + cloud convergence + KloudID</li>
+          <li><span class="mtag mt4">M9</span> Claude Cowork plugin — distribution + new surface</li>
+          <li><span class="mtag mt2">M10</span> Pricing-change radar — early-warning</li>
+          <li><span class="mtag mt4">M11</span> Industry benchmark index — data asset</li>
+          <li><span class="mtag mt6">M12</span> TokenID-verified mark — the standard</li>
+          <li><span class="mtag mt7">M13</span> Chat frontier — research, gated</li>
         </ul>
       </div>
     </div>
@@ -654,70 +671,84 @@
           <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt4">M2</span>Enforcement rules</td>
+          <td class="mname"><span class="mt3">M2</span>Communication layer</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">activation + conversion</td>
+          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt4">M3</span>Enforcement rules</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">recurring recovery</td>
           <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt2">M3</span>Aggregator coverage</td>
+          <td class="mname"><span class="mt2">M4</span>Auth + GitHub sign-up</td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
+          <td class="ctr">friction + enterprise-ready</td>
+          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="mname"><span class="mt2">M5</span>Aggregator coverage</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">API coverage</td>
           <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt3">M4</span>SDK expansion</td>
+          <td class="mname"><span class="mt3">M6</span>SDK expansion</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">funnel width</td>
           <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt5">M5</span>In-product refunds</td>
+          <td class="mname"><span class="mt5">M7</span>In-product refunds</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">conversion proof</td>
           <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt6">M6</span>Enterprise + expansion</td>
+          <td class="mname"><span class="mt6">M8</span>Enterprise + expansion</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr">large $ + TAM</td>
           <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt4">M7</span>Claude Cowork plugin</td>
+          <td class="mname"><span class="mt4">M9</span>Claude Cowork plugin</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">distribution + new surface</td>
           <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt2">M8</span>Pricing-change radar</td>
+          <td class="mname"><span class="mt2">M10</span>Pricing-change radar</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">continuous trigger</td>
           <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt4">M9</span>Benchmark index</td>
+          <td class="mname"><span class="mt4">M11</span>Benchmark index</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr">brand + inbound</td>
           <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt6">M10</span>Verified mark</td>
+          <td class="mname"><span class="mt6">M12</span>Verified mark</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr">category ownership</td>
           <td class="ctr"><span class="pri-badge pri-p3">P3 · bet</span></td>
         </tr>
         <tr>
-          <td class="mname"><span class="mt7">M11</span>Chat frontier</td>
+          <td class="mname"><span class="mt7">M13</span>Chat frontier</td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
           <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
           <td class="ctr">largest surface</td>
@@ -727,7 +758,8 @@
     </table>
 
     <div class="prio-logic">
-      <p><b>The logic:</b> M0, M1, and M2 are the P0 core — the <b>free OSS hook</b> that fills the funnel, the <b>Team view</b> that creates the first paid tier, and <b>enforcement rules</b> (headlined by Ralph-loop protection) that turn findings into recurring recovery. M3–M5 are Next: aggregator coverage, SDK breadth, and the UI + refund flow that widen reach and make value legible. M6–M7 are P2 — enterprise recovery with <b>cloud convergence</b> (AWS/Vertex already live → unified spend view) and the Cowork distribution play. <b>M8–M10 are the standout bets</b> — radar, index, verified mark — high-ceiling and category-defining, dependent on the rate-card and audit-data foundation. M11 (chat) stays P3 and explicitly <b>gated</b> on a proven data path.</p>
+      <p><b>The logic:</b> the P0 core is M0–M3 — the <b>free OSS hook</b> (fills the funnel), the <b>communication layer</b> (moves users down it), the <b>Team view</b> (creates the paid tier), and <b>enforcement</b> (headlined by Ralph-loop protection — turns findings into recurring recovery). Next (M4–M7): <b>auth + GitHub sign-up</b> cuts friction and readies enterprise security review, then aggregator coverage, SDK breadth, and the in-product refund flow widen reach and prove conversion. M8–M9 are P2 — enterprise recovery with <b>cloud convergence</b> (AWS/Vertex already live → unified view) and the Cowork distribution play. <b>M10–M12 are the standout bets</b> — radar, index, verified mark — high-ceiling and category-defining, dependent on the rate-card and audit-data foundation. M13 (chat) stays P3, explicitly <b>gated</b> on a proven data path.</p>
+      <p style="font-size:12.5px;color:var(--muted);font-weight:300;margin-top:12px;line-height:1.55">Running alongside throughout: ongoing upgrades based on user feedback — installation &amp; setup documentation, server / self-hosting guides, quickstart and config reference — refined as users tell us where they get stuck.</p>
     </div>
   </div>
 </section>
@@ -792,10 +824,36 @@
         </div>
       </div>
 
+      <!-- COMMS -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m3">M2</span>
+          <div class="ms-title"><h3>Communication &amp; lifecycle layer</h3><div class="theme">Immediate. Turn installs into active, converting users.</div></div>
+          <span class="ms-axis mx-cov">Growth · all personas</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Drip / onboarding email sequences</b> — guide a new install from first run to first finding to first recovered dollar</li>
+              <li><b>Lifecycle &amp; activation nurture</b> — re-engage dormant loggers, surface "you have unclaimed findings," prompt the free→Team step</li>
+              <li><b>Digest emails</b> — weekly personal &amp; manager rollups that pull users back in</li>
+              <li>Event-triggered messaging on the conversion moments (first leak found, key connected)</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">M0 fills the funnel; <b>this is what moves people down it</b>. A free OSS install with no follow-up goes cold — drip + lifecycle messaging is the cheapest, highest-leverage lever on activation and free→paid conversion.</div></div>
+            <div class="valbox"><div class="vk">Growth</div><div class="vv">Directly multiplies every acquisition dollar — the same installs convert at a higher rate with a nurture engine behind them.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> activation rate</span><span class="ms-metric"><b>KPI</b> email→action CTR</span><span class="ms-metric"><b>KPI</b> dormant reactivation %</span></div>
+          </div>
+        </div>
+      </div>
+
       <!-- M2 ENFORCEMENT -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m4">M2</span>
+          <span class="ms-badge m4">M3</span>
           <div class="ms-title"><h3>Enforcement rules</h3><div class="theme">From reporting waste to preventing it — headlined by Ralph-loop / agentic-loop protection.</div></div>
           <span class="ms-axis mx-depth">Usage · API · Team / Enterprise</span>
         </div>
@@ -819,10 +877,35 @@
         </div>
       </div>
 
+      <!-- AUTH -->
+      <div class="milestone">
+        <div class="ms-head">
+          <span class="ms-badge m2">M4</span>
+          <div class="ms-title"><h3>Auth layer migration + GitHub sign-up</h3><div class="theme">Next. Cut signup friction for the developer audience.</div></div>
+          <span class="ms-axis mx-depth">Growth · Individual / Team</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-col detail">
+            <div class="ms-label det">What ships</div>
+            <ul>
+              <li><b>Auth layer migration</b> — move to a modern, hardened auth stack (SSO-ready, audit-logged), the foundation enterprise security review will require</li>
+              <li><b>GitHub sign-up / OAuth</b> — one-click signup for the developer persona who already lives in GitHub; removes the password-form drop-off</li>
+              <li>Groundwork for SSO / SAML used later by the Enterprise tier</li>
+            </ul>
+          </div>
+          <div class="ms-col value">
+            <div class="ms-label val">Value created</div>
+            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">GitHub sign-up is the <b>lowest-friction door</b> for developers — the exact audience the OSS logger and SDK bring in. The auth migration also unblocks the <b>enterprise security review</b> that M8 (enterprise recovery) depends on.</div></div>
+            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Reduces signup drop-off now and de-risks enterprise procurement later — a foundation investment, not just a convenience.</div></div>
+            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> signup completion %</span><span class="ms-metric"><b>KPI</b> GitHub-auth share</span><span class="ms-metric"><b>KPI</b> SSO-readiness</span></div>
+          </div>
+        </div>
+      </div>
+
       <!-- M3 AGGREGATORS -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m2">M3</span>
+          <span class="ms-badge m2">M5</span>
           <div class="ms-title"><h3>Aggregator coverage</h3><div class="theme">Close the gap on the API axis — where the meat already is.</div></div>
           <span class="ms-axis mx-cov">Usage · API · Team</span>
         </div>
@@ -847,7 +930,7 @@
       <!-- M4 SDK EXPANSION -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m3">M4</span>
+          <span class="ms-badge m3">M6</span>
           <div class="ms-title"><h3>Expand the SDK</h3><div class="theme">Meet engineers in their language — remove the integration barrier.</div></div>
           <span class="ms-axis mx-depth">Usage · API · all personas</span>
         </div>
@@ -872,7 +955,7 @@
       <!-- M5 IN-PRODUCT REFUNDS -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m5">M5</span>
+          <span class="ms-badge m5">M7</span>
           <div class="ms-title"><h3>In-product refund flow</h3><div class="theme">Make recovery one click away — findings become claimed dollars.</div></div>
           <span class="ms-axis mx-plat">Persona · all · API</span>
         </div>
@@ -897,7 +980,7 @@
       <!-- M6 ENTERPRISE + EXPANSION -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m4">M6</span>
+          <span class="ms-badge m4">M8</span>
           <div class="ms-title"><h3>Enterprise recovery &amp; expansion</h3><div class="theme">The large dollars, then new surfaces off the same engine.</div></div>
           <span class="ms-axis mx-plat">Persona · Enterprise</span>
         </div>
@@ -923,7 +1006,7 @@
       <!-- M7 CLAUDE COWORK -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m4">M7</span>
+          <span class="ms-badge m4">M9</span>
           <div class="ms-title"><h3>Claude Cowork plugin — audit where finance works</h3><div class="theme">Meet the non-technical buyer in Anthropic's agentic desktop, and audit a new spend surface.</div></div>
           <span class="ms-axis mx-plat">Distribution · Team / Enterprise</span>
         </div>
@@ -948,7 +1031,7 @@
       <!-- M8 PRICING RADAR -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m2">M8</span>
+          <span class="ms-badge m2">M10</span>
           <div class="ms-title"><h3>Pricing-change radar</h3><div class="theme">Be first to every provider price change — automatically.</div></div>
           <span class="ms-axis mx-depth">Standout · all personas</span>
         </div>
@@ -973,7 +1056,7 @@
       <!-- M9 BENCHMARK INDEX -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m4">M9</span>
+          <span class="ms-badge m4">M11</span>
           <div class="ms-title"><h3>Industry benchmark index</h3><div class="theme">Become the published reference for AI spend efficiency.</div></div>
           <span class="ms-axis mx-plat">Standout · data asset</span>
         </div>
@@ -998,7 +1081,7 @@
       <!-- M10 VERIFICATION MARK -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m6">M10</span>
+          <span class="ms-badge m6">M12</span>
           <div class="ms-title"><h3>TokenID-verified mark</h3><div class="theme">Turn the audit methodology into a standard others display.</div></div>
           <span class="ms-axis mx-plat">Standout · category ownership</span>
         </div>
@@ -1023,7 +1106,7 @@
       <!-- M11 FRONTIER -->
       <div class="milestone">
         <div class="ms-head">
-          <span class="ms-badge m5">M11</span>
+          <span class="ms-badge m5">M13</span>
           <div class="ms-title"><h3>The chat frontier</h3><div class="theme">Research horizon — pursued, never promised before a data path exists.</div></div>
           <span class="ms-axis mx-cov">Usage · Chat</span>
         </div>
@@ -1154,7 +1237,7 @@
       <tbody>
         <tr>
           <td class="rk">A provider builds its own audit feature</td>
-          <td class="rm">Structural independence is the defense: customers won't trust a provider to audit its own bill, the same way a bank can't audit its own fees. We audit spend <b>on</b> providers, not for them — no single-provider revenue dependency (M6, §07).</td>
+          <td class="rm">Structural independence is the defense: customers won't trust a provider to audit its own bill, the same way a bank can't audit its own fees. We audit spend <b>on</b> providers, not for them — no single-provider revenue dependency (M8, §07).</td>
         </tr>
         <tr>
           <td class="rk">Observability incumbents (Langfuse, Helicone) move into recovery</td>
@@ -1166,15 +1249,15 @@
         </tr>
         <tr>
           <td class="rk">Standard-tier recovery is small (0.5–2%)</td>
-          <td class="rm">Stated honestly and priced accordingly — standard tier is a "health check" wedge; the large dollars live in <b>enterprise SLA recovery</b> (M6) where success-fee pricing aligns to recovered dollars.</td>
+          <td class="rm">Stated honestly and priced accordingly — standard tier is a "health check" wedge; the large dollars live in <b>enterprise SLA recovery</b> (M8) where success-fee pricing aligns to recovered dollars.</td>
         </tr>
         <tr>
           <td class="rk">Chat usage has no data path</td>
-          <td class="rm">Kept out of committed scope as <b>research, gated on a proven data path</b> (M7). BYOK is the credible lever; seat right-sizing is the data-free fallback. We don't promise coverage we can't deliver.</td>
+          <td class="rm">Kept out of committed scope as <b>research, gated on a proven data path</b> (M13). BYOK is the credible lever; seat right-sizing is the data-free fallback. We don't promise coverage we can't deliver.</td>
         </tr>
         <tr>
           <td class="rk">Enforcement requires sitting in the request path</td>
-          <td class="rm">Proxy is <b>opt-in, one env var, ~20–80ms</b>, enabled only after trust is established via observe-first SDK/journal. The free→paid bridge is designed around exactly this adoption curve (M4).</td>
+          <td class="rm">Proxy is <b>opt-in, one env var, ~20–80ms</b>, enabled only after trust is established via observe-first SDK/journal. The free→paid bridge is designed around exactly this adoption curve (M3).</td>
         </tr>
       </tbody>
     </table>
@@ -1214,12 +1297,12 @@
   <div class="wrap">
     <div class="closer">
       <h3>The expansion in one line</h3>
-      <p><strong>Lead with the free open-source journal logger</strong> (M0) — the zero-friction hook that fills the funnel. <strong>Build the Team view</strong> (M1) to create the paid tier, then <strong>solve enforcement</strong> (M2) — the shift to recurring recovery, headlined by Ralph-loop protection. Next, <strong>close the aggregator gap</strong> (M3) and <strong>expand the SDK to TypeScript + public PyPI</strong> (M4) to widen reach, and ship the <strong>in-product refund flow</strong> (M5) so findings become claimed dollars in one click. <strong>Cloud audit (AWS Bedrock + Google Vertex) is already live</strong> — M6 converges it with API audit into one unified enterprise spend view, adds Azure, and bridges to KloudID. <strong>Ship the Claude Cowork plugin</strong> (M7) to reach the non-technical buyer, then make the category-defining bets — <strong>pricing radar (M8), the benchmark index (M9), and the TokenID-verified mark (M10)</strong>. Chat (M11) stays the research frontier until a data path is proven.</p>
-      <p class="seq">free OSS logger → team view → enforcement (Ralph-loop guard) → aggregator coverage → SDK expansion → in-product refunds → enterprise + cloud convergence → Cowork plugin → pricing radar → benchmark index → verified mark → chat frontier</p>
+      <p><strong>Lead with the free open-source journal logger</strong> (M0) — the zero-friction hook that fills the funnel — and a <strong>communication &amp; lifecycle layer</strong> (M2) to move those installs to active, converting users. <strong>Build the Team view</strong> (M1) to create the paid tier, then <strong>solve enforcement</strong> (M3) — recurring recovery, headlined by Ralph-loop protection. Next, cut friction with <strong>auth migration + GitHub sign-up</strong> (M4), <strong>close the aggregator gap</strong> (M5), <strong>expand the SDK to TypeScript + public PyPI</strong> (M6), and ship the <strong>in-product refund flow</strong> (M7). <strong>Cloud audit (AWS Bedrock + Google Vertex) is already live</strong> — M8 converges it with API audit into one unified enterprise view, adds Azure, bridges to KloudID. <strong>Ship the Claude Cowork plugin</strong> (M9) for the non-technical buyer, then the category-defining bets — <strong>pricing radar (M10), benchmark index (M11), TokenID-verified mark (M12)</strong>. Chat (M13) stays the research frontier until a data path is proven.</p>
+      <p class="seq">free OSS logger → team view → comms layer → enforcement → auth + GitHub → aggregator coverage → SDK expansion → in-product refunds → enterprise + cloud convergence → Cowork plugin → pricing radar → benchmark index → verified mark → chat frontier</p>
     </div>
     <div style="margin-top:22px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Scope of this document</div>
-      <p style="font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin:0">This is the <b>product &amp; expansion roadmap</b> — strategy, sequencing, prioritization, and the defensibility thesis. Three companion items live elsewhere in the data room and are referenced here only by the KPI slots they'll populate: <b>current traction</b> (recovered-dollar actuals, customer / design-partner logos), <b>team &amp; founders</b>, and the <b>GTM &amp; financial model</b>. Market figures on this page are public and cited; they are context for the opportunity, not company performance. The per-milestone KPIs are the metrics each milestone will be held to once live.</p>
+      <p style="font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin:0">This is the <b>product roadmap</b> — strategy, sequencing, prioritization, and the defensibility thesis. Three companion items live elsewhere in the data room and are referenced here only by the KPI slots they'll populate: <b>current traction</b> (recovered-dollar actuals, customer / design-partner logos), <b>team &amp; founders</b>, and the <b>GTM &amp; financial model</b>. Market figures on this page are public and cited; they are context for the opportunity, not company performance. The per-milestone KPIs are the metrics each milestone will be held to once live.</p>
     </div>
     <p style="font-size:11px;color:var(--muted);font-weight:300;margin-top:16px;line-height:1.6;font-family:'JetBrains Mono',monospace">Sources: Menlo Ventures 2025 LLM Market Update · Kong Enterprise AI Survey 2025 · Gartner GenAI forecast · Flexera State of the Cloud 2025–26 (27% cloud waste / ~$182B). Market figures are directional and cited for context, not company financials. Roadmap sequencing is directional, not a dated commitment.</p>
   </div>
