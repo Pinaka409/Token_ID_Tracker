@@ -6,7 +6,7 @@
 <title>TokenID — Roadmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,1,400;9..144,1,500;9..144,1,600&display=swap" rel="stylesheet">
 <style>
   :root{
     --orange:#FE602C;--dark:#1E1E22;--teal:#00BFA6;--paper:#FAF8F5;--card:#FFFFFF;
@@ -41,7 +41,7 @@
   section{padding:54px 0 8px}
   .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:8px}
   .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--orange);background:rgba(254,96,44,.1);padding:4px 9px;border-radius:6px;line-height:1}
-  .sec-head h2{font-size:27px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
+  .sec-head h2{font-family:'Poppins',sans-serif;font-size:27px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
   .sec-sub{font-size:15px;color:var(--muted);margin-bottom:28px;font-weight:300;line-height:1.55}
 
   /* AXES OF EXPANSION */
@@ -486,6 +486,12 @@
   .mc-tag.seg-ent{background:rgba(30,30,34,.1);color:var(--ink)}
   .mc-tag.jrn{background:rgba(0,191,166,.13);color:#048a78}
   .mc-tag.feat-bc{background:rgba(122,91,216,.13);color:var(--purple)}
+  .mc-ms{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2,#4A4A52);background:var(--paper-2,#F4F2EC);border:1px solid var(--rule,#E5E3DC);border-radius:5px;padding:3px 8px;width:fit-content;margin-bottom:8px}
+  .mc-ms::before{content:'';width:6px;height:6px;border-radius:2px;background:var(--teal);flex-shrink:0}
+  .mc-ms.ms-gateway::before{background:var(--purple)}
+  .mc-ms.ms-enforce::before{background:var(--green)}
+  .mc-ms.ms-moat::before{background:var(--orange)}
+  .mc-ms.ms-os::before{background:var(--ink)}
   .mc-when{position:absolute;bottom:13px;right:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:4px 10px;letter-spacing:.01em}
   .mc-when.live-now{color:var(--green);border-color:rgba(31,170,110,.4);background:rgba(31,170,110,.08)}
   .mc-title{font-size:13.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
@@ -539,6 +545,78 @@
   .tabview{display:none}
   .tabview.on{display:block;animation:fade .3s ease}
 
+  /* GANTT ROADMAP — SWIMLANES */
+  .gantt-wrap{margin-top:6px}
+  .gchart{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+  .gantt-inner{min-width:820px}
+  .ghead{display:grid;grid-template-columns:150px repeat(5,1fr);border-bottom:1px solid var(--line);background:var(--paper)}
+  .ghead .gcorner{padding:12px 14px;border-right:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center}
+  .ghead .gq{padding:12px 10px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink);border-right:1px solid var(--line);text-align:center}
+  .ghead .gq:last-child{border-right:none}
+  .ghead .gq span{display:block;font-size:9px;color:var(--orange);font-weight:600;margin-top:2px}
+  .glane{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line)}
+  .glane:last-child{border-bottom:none}
+  .glane-label{padding:16px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:3px}
+  .glane-label .ln{font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+  .glane-label .ld{font-size:10px;color:var(--muted);font-weight:400;line-height:1.3}
+  .glane-label .lk{width:18px;height:4px;border-radius:2px;margin-bottom:5px}
+  .glane-track{position:relative;padding:11px 0}
+  .glane-track .grid-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);pointer-events:none}
+  .glane-track .grid-cols div{border-right:1px solid var(--line)}
+  .glane-track .grid-cols div:last-child{border-right:none}
+  .grow{position:relative;height:42px;display:flex;align-items:center;margin-bottom:5px}
+  .grow:last-child{margin-bottom:0}
+  .gbar{position:absolute;height:36px;border-radius:7px;display:flex;flex-direction:column;justify-content:center;padding:0 11px;color:#fff;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+  .gbar .gname{font-size:11px;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+  .gbar.l-audit{background:var(--teal)}
+  .gbar.l-recovery{background:var(--green)}
+  .gbar.l-tracking{background:var(--amber)}
+  .gbar.l-control{background:var(--purple)}
+  .gbar.ghost{opacity:.5}
+  .gbar .gsub{display:block;font-weight:400;font-size:9px;opacity:.88;margin-left:0;margin-top:1px;font-family:'Poppins',sans-serif;overflow:hidden;text-overflow:ellipsis;line-height:1.1}
+  .lk.l-audit{background:var(--teal)} .lk.l-recovery{background:var(--green)} .lk.l-tracking{background:var(--amber)} .lk.l-control{background:var(--purple)}
+  /* VALUE-GROWTH STRIP */
+  .gvalue{display:grid;grid-template-columns:150px 1fr;border-top:2px solid var(--line);background:var(--paper)}
+  .gvalue-label{padding:13px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+  .gvalue-label .vt{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .gvalue-label .vs{font-size:9px;color:var(--muted);margin-top:2px}
+  .gvalue-track{position:relative;padding:13px 16px;display:flex;align-items:center}
+  .gvalue-bar{height:14px;border-radius:7px;width:100%;background:linear-gradient(90deg,rgba(0,191,166,.35),var(--green) 40%,var(--amber) 70%,var(--orange));position:relative;display:flex;align-items:center}
+  .gvalue-bar::after{content:'▶';position:absolute;right:-2px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:13px}
+  .gvalue-track .vmark{position:absolute;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:#fff;top:50%;transform:translateY(-50%)}
+  @media(max-width:760px){.gchart{overflow-x:auto}}
+  .gantt-note{font-size:11.5px;color:var(--muted);font-weight:300;margin-top:14px;line-height:1.5}
+
+  /* WINDING ROAD ROADMAP — Vaudit brand */
+  .road-hero{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px 30px 26px;margin-top:6px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .road-hero::before{content:'';position:absolute;top:0;left:32px;width:160px;height:5px;background:var(--orange);border-radius:0 0 3px 3px}
+  .road-hero::after{content:'';position:absolute;bottom:-90px;right:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--orange) 0%,transparent 70%);opacity:.07;pointer-events:none}
+  .road-head{text-align:center;margin-bottom:6px;position:relative}
+  .road-head h3{font-family:'Fraunces',serif;font-weight:500;font-size:30px;color:var(--ink);letter-spacing:-.02em;line-height:1.08}
+  .road-head h3 .hl{color:var(--orange);font-style:italic}
+  .road-head p{font-size:13px;color:var(--ink-3,#8A8A92);font-weight:300;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto}
+  .road-canvas{position:relative;width:100%;margin-top:6px}
+  .road-svg{display:block;width:100%;height:auto}
+  .road-node{position:absolute;transform:translate(-50%,-50%);z-index:3}
+  .road-node .dotmark{width:60px;height:60px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(30,30,34,.12);margin:0 auto}
+  .road-node .dotmark svg{width:26px;height:26px;display:block}
+  .road-node .dotmark svg path,.road-node .dotmark svg circle,.road-node .dotmark svg line,.road-node .dotmark svg polyline,.road-node .dotmark svg rect{stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .road-node.live .dotmark svg path,.road-node.live .dotmark svg circle,.road-node.live .dotmark svg line{stroke:var(--green)}
+  .road-node.moatnode .dotmark{border-color:var(--orange);box-shadow:0 0 0 4px rgba(254,96,44,.16),0 4px 14px rgba(30,30,34,.12)}
+  .road-node.moatnode .dotmark svg path,.road-node.moatnode .dotmark svg circle,.road-node.moatnode .dotmark svg line,.road-node.moatnode .dotmark svg rect,.road-node.moatnode .dotmark svg polyline{stroke:var(--orange)}
+  .road-cap .ph.ph-moat{color:var(--orange)}
+  .road-cap .ph.ph-moat::before{content:'◆ ';font-size:8px;vertical-align:middle}
+  .road-node.live .dotmark{border-color:var(--green);box-shadow:0 0 0 4px rgba(31,170,110,.18),0 4px 14px rgba(30,30,34,.12)}
+  .road-cap{position:absolute;width:216px;z-index:4;text-align:center}
+  .road-cap .ph{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+  .road-cap h5{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:6px;line-height:1.18}
+  .road-cap p{font-size:12px;color:var(--ink-2,#4A4A52);font-weight:400;line-height:1.5;margin:0}
+  .road-cap p b{color:var(--ink);font-weight:600}
+  @media(max-width:820px){
+    .road-hero{overflow-x:auto}
+    .road-canvas{min-width:760px}
+  }
+
   /* MVP LIVE CARDS */
   .live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
   @media(max-width:780px){.live-grid{grid-template-columns:1fr}}
@@ -590,11 +668,106 @@
 </header>
 
 <nav class="tabnav2">
-  <button class="tabbtn on" data-tab="main">Roadmap</button>
+  <button class="tabbtn on" data-tab="gantt">Roadmap</button>
+  <button class="tabbtn" data-tab="main">Detailed</button>
   <button class="tabbtn" data-tab="bets">Ongoing bets</button>
 </nav>
 
-<div class="tabview on" id="view-main">
+<div class="tabview on" id="view-gantt">
+<div class="docflow">
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The journey</h2></div>
+    <p class="qhint" style="margin-bottom:18px">From auditing a single bill to owning the standard for AI spend — six chapters, value compounding at each one.</p>
+        <div class="road-hero">
+      <div class="road-head">
+        <h3>From auditing the bill to the <span class="hl">Financial OS for AI</span></h3>
+        <p>Audit the spend &rarr; control it before the bill &rarr; learn the economics &rarr; own the control plane. The back half is moat that compounds with every request.</p>
+      </div>
+      <div class="road-canvas">
+        <svg class="road-svg" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet">
+          <path d="M -50 350 C 22.5 350, 22.5 350, 95 350 C 182.5 350, 182.5 200, 270 200 C 357.5 200, 357.5 350, 445 350 C 532.5 350, 532.5 200, 620 200 C 710.0 200, 710.0 350, 800 350 C 892.5 350, 892.5 200, 985 200 C 1067.5 200, 1067.5 200, 1150 200" fill="none" stroke="#EAE7DF" stroke-width="24" stroke-linecap="round"/>
+          <path d="M -50 350 C 22.5 350, 22.5 350, 95 350 C 182.5 350, 182.5 200, 270 200 C 357.5 200, 357.5 350, 445 350 C 532.5 350, 532.5 200, 620 200 C 710.0 200, 710.0 350, 800 350 C 892.5 350, 892.5 200, 985 200 C 1067.5 200, 1067.5 200, 1150 200" fill="none" stroke="#FE602C" stroke-width="2.5" stroke-dasharray="2 11" stroke-linecap="round" opacity="0.85"/>
+        </svg>
+        <div class="road-node live" style="left:8.64%;top:64.81%"><div class="dotmark"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg></div></div>
+<div class="road-cap" style="left:8.64%;top:calc(64.81% + 48px);transform:translateX(-50%)"><div class="ph">LIVE &middot; NOW</div><h5>Audit Core</h5><p>Admin-key audit + six-axis leak methodology. Recover overcharges &mdash; the wedge that wins the customer.</p></div>
+<div class="road-node" style="left:24.55%;top:37.04%"><div class="dotmark"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><path d="M7 11 L17 6"/><path d="M7 13 L17 18"/></svg></div></div>
+<div class="road-cap" style="left:24.55%;bottom:calc(62.96% + 48px);transform:translateX(-50%)"><div class="ph">Q2-Q3 2026</div><h5>BudgetRouter Gateway</h5><p>Route every request through us before it bills. Classify, price, and pick the cheapest acceptable model.</p></div>
+<div class="road-node" style="left:40.45%;top:64.81%"><div class="dotmark"><svg viewBox="0 0 24 24"><path d="M12 2.5 L19.5 5.5 V11 c0 5 -3.5 8.5 -7.5 10.5 c-4 -2 -7.5 -5.5 -7.5 -10.5 V5.5 Z"/><rect x="9.2" y="10.5" width="5.6" height="5" rx="1"/><path d="M10.4 10.5 V9 a1.6 1.6 0 0 1 3.2 0 V10.5"/></svg></div></div>
+<div class="road-cap" style="left:40.45%;top:calc(64.81% + 48px);transform:translateX(-50%)"><div class="ph">Q3-Q4 2026</div><h5>Policy &amp; Enforcement</h5><p>TokenCeiling, DedupGuard, LoopBreaker, budget thresholds &mdash; hardening our live enforcement rules to stop runaway agent spend.</p></div>
+<div class="road-node moatnode" style="left:56.36%;top:37.04%"><div class="dotmark"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6"/></svg></div></div>
+<div class="road-cap" style="left:56.36%;bottom:calc(62.96% + 48px);transform:translateX(-50%)"><div class="ph ph-moat">Q4 2026 &middot; MOAT</div><h5>Cost-Per-Outcome Intelligence</h5><p>Every request teaches us the cheapest model that still delivers &mdash; a dataset competitors cannot replay.</p></div>
+<div class="road-node moatnode" style="left:72.73%;top:64.81%"><div class="dotmark"><svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="17" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M8 7 L16 6.3"/><path d="M6.6 9 L7 15"/><path d="M8.7 16.2 L15.2 16.6"/><path d="M17.3 8 L17 15"/><path d="M7.6 8.6 L16.3 15.4"/></svg></div></div>
+<div class="road-cap" style="left:72.73%;top:calc(64.81% + 48px);transform:translateX(-50%)"><div class="ph ph-moat">Q1 2027 &middot; MOAT</div><h5>AI Spend Intelligence Graph</h5><p>Financial outcomes across thousands of orgs &mdash; routing, budgets, agent economics. Proprietary intelligence.</p></div>
+<div class="road-node" style="left:89.55%;top:37.04%"><div class="dotmark"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="12" rx="2"/><line x1="3.5" y1="9" x2="20.5" y2="9"/><circle cx="6" cy="7" r="0.5"/><circle cx="8" cy="7" r="0.5"/><line x1="9" y1="20.5" x2="15" y2="20.5"/><line x1="12" y1="17" x2="12" y2="20.5"/></svg></div></div>
+<div class="road-cap" style="left:89.55%;bottom:calc(62.96% + 48px);transform:translateX(-50%)"><div class="ph">2027+</div><h5>Financial OS for AI</h5><p>The control plane between every enterprise and every AI provider. Govern spend at machine speed.</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:34px;margin-bottom:4px"><h3 style="font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink)">The same plan, by quarter</h3><p class="qhint" style="margin-top:2px">Each layer — Measure · Recover · Govern · Benchmark — and where its milestones land. Value compounds left → right.</p></div>
+    <div class="gantt-wrap">
+      <div class="gchart">
+        <div class="gantt-inner">
+          <div class="ghead">
+            <div class="gcorner">Layer</div>
+            <div class="gq">Q2 2026 <span>now</span></div>
+            <div class="gq">Q3 2026</div>
+            <div class="gq">Q4 2026</div>
+            <div class="gq">Q1 2027</div>
+            <div class="gq">Q2 2027+</div>
+          </div>
+    <div class="glane">
+      <div class="glane-label"><span class="lk l-audit"></span><span class="ln">Audit</span><span class="ld">Verify the bill (live)</span></div>
+      <div class="glane-track">
+        <div class="grid-cols"><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="grow"><div class="gbar l-audit ghost" style="left:1.50%;width:17.00%"><span class="gname">Audit Core</span><span class="gsub">live · API · cloud · CLI</span></div></div>
+        <div class="grow"><div class="gbar l-audit" style="left:21.50%;width:17.00%"><span class="gname">Aggregator Reach</span><span class="gsub">OpenRouter, Together</span></div></div>
+        <div class="grow"><div class="gbar l-audit" style="left:41.50%;width:37.00%"><span class="gname">Unified Spend Lens</span><span class="gsub">cloud + API, one view</span></div></div>
+        <div class="grow"><div class="gbar l-audit" style="left:81.50%;width:17.00%"><span class="gname">Compute Horizon</span><span class="gsub">multi-cloud + GPU</span></div></div>
+      </div>
+    </div>
+    <div class="glane">
+      <div class="glane-label"><span class="lk l-control"></span><span class="ln">BudgetRouter</span><span class="ld">Control spend before the bill</span></div>
+      <div class="glane-track">
+        <div class="grid-cols"><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="grow"><div class="gbar l-control" style="left:1.50%;width:17.00%"><span class="gname">Gateway + Ledger</span><span class="gsub">route every request</span></div></div>
+        <div class="grow"><div class="gbar l-control" style="left:1.50%;width:37.00%"><span class="gname">Classifier + Routing</span><span class="gsub">cheapest acceptable model</span></div></div>
+        <div class="grow"><div class="gbar l-control" style="left:21.50%;width:37.00%"><span class="gname">Control Mode</span><span class="gsub">enforce policies live</span></div></div>
+        <div class="grow"><div class="gbar l-control" style="left:81.50%;width:17.00%"><span class="gname">Autonomous Mode</span><span class="gsub">self-optimizing routing</span></div></div>
+      </div>
+    </div>
+    <div class="glane">
+      <div class="glane-label"><span class="lk l-recovery"></span><span class="ln">Enforcement</span><span class="ld">Stop runaway spend</span></div>
+      <div class="glane-track">
+        <div class="grid-cols"><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="grow"><div class="gbar l-recovery" style="left:1.50%;width:17.00%"><span class="gname">TokenCeiling + Dedup</span><span class="gsub">block obvious waste</span></div></div>
+        <div class="grow"><div class="gbar l-recovery" style="left:21.50%;width:17.00%"><span class="gname">LoopBreaker</span><span class="gsub">stop agent loops</span></div></div>
+        <div class="grow"><div class="gbar l-recovery" style="left:41.50%;width:17.00%"><span class="gname">Budget Thresholds</span><span class="gsub">team / project / agent caps</span></div></div>
+      </div>
+    </div>
+    <div class="glane">
+      <div class="glane-label"><span class="lk l-tracking"></span><span class="ln">Intelligence</span><span class="ld">The compounding moat</span></div>
+      <div class="glane-track">
+        <div class="grid-cols"><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="grow"><div class="gbar l-tracking" style="left:41.50%;width:37.00%"><span class="gname">Cost-Per-Outcome Intelligence</span><span class="gsub">cheapest model that delivers</span></div></div>
+        <div class="grow"><div class="gbar l-tracking" style="left:61.50%;width:37.00%"><span class="gname">AI Spend Intelligence Graph</span><span class="gsub">cross-org financial outcomes</span></div></div>
+        <div class="grow"><div class="gbar l-tracking" style="left:81.50%;width:17.00%"><span class="gname">Financial OS for AI</span><span class="gsub">the control plane</span></div></div>
+      </div>
+    </div>
+                    <div class="gvalue">
+            <div class="gvalue-label"><span class="vt">Value compounds →</span><span class="vs">recovered + controlled $/mo</span></div>
+            <div class="gvalue-track"><div class="gvalue-bar"><span class="vmark" style="left:4%">Wedge</span><span class="vmark" style="left:42%">Recurring</span><span class="vmark" style="left:74%">Platform</span></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="gantt-note">Each layer makes the next more valuable: what we <b>measure</b> tells us what to <b>recover</b>; recovery data tunes how we <b>govern</b>; and every audit enriches the <b>benchmark</b> only an independent layer can own. Quarters are planning horizons; BudgetRouter timing is in working days (see Detailed).</p>
+    </div>
+  </div>
+</section>
+</div>
+</div><!-- /view-gantt -->
+
+<div class="tabview" id="view-main">
 
 <div class="docflow" id="context">
 
@@ -664,6 +837,7 @@
     <div class="mgrid">
       <details class="mcard" open>
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 9–11</span></div>
           <div class="mc-title">Gateway</div>
           <div class="mc-desc">One-line setup to route AI traffic through us.</div>
@@ -673,6 +847,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 9–11</span></div>
           <div class="mc-title">Spend record</div>
           <div class="mc-desc">Every request becomes a line item — who, which model, tokens, and cost — that you can reconcile against the provider bill.</div>
@@ -682,6 +857,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 10–15</span></div>
           <div class="mc-title">Request sorter</div>
           <div class="mc-desc">Reads each request to tell what job it's doing and how hard it is — so a cheaper model is used only when it's safe.</div>
@@ -691,6 +867,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-enforce">Policy & Enforcement</div>
           <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 11–16</span></div>
           <div class="mc-title">Your rules</div>
           <div class="mc-desc">You set budgets and routing rules; we follow them.</div>
@@ -700,6 +877,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 12–17</span></div>
           <div class="mc-title">Smart routing</div>
           <div class="mc-desc">Pick the cheapest model that still does the job.</div>
@@ -709,15 +887,27 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-enforce">Policy & Enforcement</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 12–18</span></div>
-          <div class="mc-title">Waste blockers</div>
-          <div class="mc-desc">Stop obvious money-wasting before it bills.</div>
+          <div class="mc-title">TokenCeiling</div>
+          <div class="mc-desc">Hardening our live cost/token guard — blocks or downgrades any request that exceeds a threshold before it bills.</div>
           <div class="mc-more"></div>
         </summary>
-        <div class="mc-detail"><ul><li>Cost limits, repeat catcher, runaway-loop stopper, budget guard</li></ul></div>
+        <div class="mc-detail"><ul><li>Already live as a guardrail; extending to per-request and per-session caps</li><li>Over-threshold calls are downgraded or stopped, not silently billed</li><li>Tightening thresholds and coverage as part of BudgetRouter enforcement</li></ul></div>
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-enforce">Policy & Enforcement</div>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 12–18</span></div>
+          <div class="mc-title">DedupGuard</div>
+          <div class="mc-desc">Extending our live dedup guard — detects identical or near-identical requests in a short window and serves the cached answer instead of paying twice.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Dedup guard already ships today; widening the matching window and coverage</li><li>Returns the cached response or blocks the repeat</li><li>Records "duplicate prevented — $X saved"</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 15–18</span></div>
           <div class="mc-title">Savings counter</div>
           <div class="mc-desc">Show the money saved, in dollars.</div>
@@ -727,6 +917,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 15–22</span></div>
           <div class="mc-title">Dashboard improvement</div>
           <div class="mc-desc">A clearer spend view — spent vs saved at a glance.</div>
@@ -736,6 +927,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 17–24</span></div>
           <div class="mc-title">Easy setup</div>
           <div class="mc-desc">Start in minutes; you decide what we see.</div>
@@ -745,6 +937,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-when">Q2 2026</span></div>
           <div class="mc-title">Team view</div>
           <div class="mc-desc">The whole team's AI spend in one place. First paid plan.</div>
@@ -754,6 +947,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-when">Q2 2026</span></div>
           <div class="mc-title">Onboarding emails</div>
           <div class="mc-desc">Guide new users to their first recovered dollar.</div>
@@ -763,12 +957,23 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-enforce">Policy & Enforcement</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q2 2026</span></div>
-          <div class="mc-title">Spend rules</div>
-          <div class="mc-desc">Stop waste automatically, including runaway loops.</div>
+          <div class="mc-title">LoopBreaker</div>
+          <div class="mc-desc">Hardening our live agent-loop protection — detects an agent repeating the same call without progress and stops the next one before it bills.</div>
           <div class="mc-more"></div>
         </summary>
-        <div class="mc-detail"><ul><li>Downgrade over-priced calls, cap tokens, skip repeats</li></ul></div>
+        <div class="mc-detail"><ul><li>Loop protection already exists; extending detection to more agent patterns</li><li>Halts the runaway loop and returns a structured error</li><li>The protection that matters most as agents run for hours unsupervised</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-ms ms-enforce">Policy & Enforcement</div>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q2 2026</span></div>
+          <div class="mc-title">Budget Thresholds</div>
+          <div class="mc-desc">Extending live enforcement rules into budget-aware control — as a team, project, or agent nears its budget, downgrade the model or require approval.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Builds on shipping enforcement rules; adds budget scopes by team, project, agent, or user</li><li>At the threshold: alert, downgrade, rate-limit, or require sign-off</li><li>Finance controls spend before the invoice, not after</li></ul></div>
       </details>
     </div>
 
@@ -776,6 +981,7 @@
     <div class="mgrid">
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q3 2026</span></div>
           <div class="mc-title">Easy sign-in</div>
           <div class="mc-desc">Quick signup, ready for bigger customers.</div>
@@ -785,6 +991,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q3 2026</span></div>
           <div class="mc-title">More providers</div>
           <div class="mc-desc">Cover the middlemen people route AI through.</div>
@@ -794,6 +1001,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q3 2026</span></div>
           <div class="mc-title">More languages</div>
           <div class="mc-desc">Let more developers plug in.</div>
@@ -803,6 +1011,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-when">Q3 2026</span></div>
           <div class="mc-title">One-click refunds</div>
           <div class="mc-desc">Turn a finding into money back, no paperwork.</div>
@@ -816,6 +1025,7 @@
     <div class="mgrid">
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q4 2026</span></div>
           <div class="mc-title">Big-company recovery</div>
           <div class="mc-desc">Go after large dollars; all spend in one view.</div>
@@ -825,6 +1035,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q4 2026</span></div>
           <div class="mc-title">Works inside Cowork</div>
           <div class="mc-desc">Reach the non-technical buyer where they work.</div>
@@ -834,8 +1045,9 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q4 2026</span></div>
-          <div class="mc-title">Auto refund agents</div>
+          <div class="mc-title">Autonomous Mode</div>
           <div class="mc-desc">Recover money on autopilot — grows the recovery side of the north star.</div>
           <div class="mc-more"></div>
         </summary>
@@ -843,6 +1055,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q4 2026</span></div>
           <div class="mc-title">All spend in one view</div>
           <div class="mc-desc">Cloud + API + aggregator spend, one picture.</div>
@@ -850,45 +1063,49 @@
         </summary>
         <div class="mc-detail"><ul><li>Merge cloud audit (Bedrock + Vertex, live) and API audit into one dashboard</li><li>Add Azure; one number for total AI spend</li></ul></div>
       </details>
-    </div>
-
-    <div class="qhead"><span class="qlabel">Q1 2027</span></div>
-    <div class="mgrid">
       <details class="mcard">
         <summary>
-          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q1 2027</span></div>
-          <div class="mc-title">Always-on monitoring</div>
-          <div class="mc-desc">The recurring subscription — watch spend continuously.</div>
+          <div class="mc-ms ms-moat">Cost-Per-Outcome Intelligence</div>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q4 2026</span></div>
+          <div class="mc-title">Cost-Per-Outcome Intelligence</div>
+          <div class="mc-desc">Every routed request teaches us which model delivers acceptable quality at the lowest cost — a dataset that compounds and competitors can't replay.</div>
           <div class="mc-more"></div>
         </summary>
-        <div class="mc-detail"><ul><li>Continuous auditing, not one-off checks</li><li>Turns one-time recovery into recurring monthly revenue — the tracking + control engine</li></ul></div>
+        <div class="mc-detail"><ul><li>Learns workload type → model effectiveness → financial efficiency per request</li><li>Over time, knows the cheapest acceptable model for any given task</li><li>This is the first moat: routing decisions get smarter the more traffic flows through us</li><li>A new entrant starts from zero; we start from millions of priced outcomes</li></ul></div>
       </details>
       <details class="mcard">
         <summary>
-          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q1 2027</span></div>
+          <div class="mc-ms ms-moat">Cost-Per-Outcome Intelligence</div>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q4 2026</span></div>
           <div class="mc-title">Price-change alerts</div>
           <div class="mc-desc">Catch every provider price change instantly.</div>
           <div class="mc-more"></div>
         </summary>
         <div class="mc-detail"><ul><li>Watches pricing, re-checks your spend</li></ul></div>
       </details>
+    </div>
+
+    <div class="qhead"><span class="qlabel">Q1 2027</span></div>
+    <div class="mgrid">
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-moat">AI Spend Intelligence Graph</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q1 2027</span></div>
-          <div class="mc-title">Spend benchmarks</div>
-          <div class="mc-desc">Show how a customer's costs compare to others.</div>
+          <div class="mc-title">AI Spend Intelligence Graph</div>
+          <div class="mc-desc">Where competitors store logs, we store financial outcomes across thousands of orgs — routing, budgets, model and agent economics. Proprietary intelligence no single account contains.</div>
           <div class="mc-more"></div>
         </summary>
-        <div class="mc-detail"><ul><li>Anonymized "you pay more than most" comparisons</li></ul></div>
+        <div class="mc-detail"><ul><li>Optimal routing decisions, budget behavior, and spend patterns across the whole portfolio</li><li>Powers cross-account benchmarks ("you pay more than most for this workload")</li><li>The second moat: the graph gets more valuable with every org that joins</li><li>Feeds commit-pricing negotiation and the published spend benchmark</li></ul></div>
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-os">Financial OS for AI</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q1 2027</span></div>
-          <div class="mc-title">Verified badge</div>
-          <div class="mc-desc">Make the audit a stamp customers want.</div>
+          <div class="mc-title">Financial OS for AI</div>
+          <div class="mc-desc">The control plane between every enterprise and every AI provider — policies and budgets decide where each request goes, in real time, at machine speed.</div>
           <div class="mc-more"></div>
         </summary>
-        <div class="mc-detail"><ul><li>A trusted "spend verified" mark</li></ul></div>
+        <div class="mc-detail"><ul><li>Companies stop choosing models manually; policies and economic constraints do</li><li>Finance controls spend before it occurs, not after the invoice</li><li>The third moat: financial enforcement — observability tools report, we act</li><li>The category endpoint: the Financial Operating System for AI inference</li></ul></div>
       </details>
     </div>
 
@@ -896,6 +1113,7 @@
     <div class="mgrid">
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
           <div class="mc-title">Multi-cloud + compute</div>
           <div class="mc-desc">Audit total AI infra spend, not just tokens — the biggest dollar lever.</div>
@@ -905,8 +1123,9 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-gateway">BudgetRouter Gateway</div>
           <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Q2 2027+</span></div>
-          <div class="mc-title">Auto-optimization mode</div>
+          <div class="mc-title">Autopilot optimization</div>
           <div class="mc-desc">BudgetRouter tunes routing on its own — controlled dollars grow hands-free.</div>
           <div class="mc-more"></div>
         </summary>
@@ -914,6 +1133,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-moat">AI Spend Intelligence Graph</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
           <div class="mc-title">Commit negotiation</div>
           <div class="mc-desc">Use cross-account pricing data to negotiate better enterprise rates.</div>
@@ -923,8 +1143,9 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-moat">AI Spend Intelligence Graph</div>
           <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
-          <div class="mc-title">Benchmark data API</div>
+          <div class="mc-title">Spend Intelligence API</div>
           <div class="mc-desc">Sell the pricing + leak intelligence as a data product.</div>
           <div class="mc-more"></div>
         </summary>
@@ -932,6 +1153,7 @@
       </details>
       <details class="mcard">
         <summary>
+          <div class="mc-ms ms-audit">Audit Core</div>
           <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q2 2027+</span></div>
           <div class="mc-title">Chat tools (research)</div>
           <div class="mc-desc">Audit ChatGPT / Claude.ai use — once data exists.</div>
