@@ -277,6 +277,46 @@
 
   @media(max-width:820px){h1{font-size:34px}}
 
+  /* OVERVIEW TEXT SHRINK */
+  #context .lede{font-size:16px;line-height:1.5}
+  #context .sec-sub{font-size:14px;line-height:1.5;margin-bottom:22px}
+  #context .thesis p{font-size:14px}
+  #context h2,#context .sec-head h2{font-size:24px}
+  #context p,#context li{font-size:13px}
+  #context .axis p,#context .so p,#context .why p{font-size:12.5px}
+
+  /* BUSINESS MODEL — RECOVERY WEDGE */
+  .wedge-intro{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:14px;padding:22px 26px;margin-bottom:24px}
+  .wedge-intro p{font-size:14.5px;color:#3A3A40;font-weight:300;line-height:1.6}
+  .wedge-intro strong{color:var(--ink);font-weight:600}
+  .wedge-intro .hl{color:var(--orange);font-weight:600}
+  .wedge-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:8px;position:relative}
+  @media(max-width:820px){.wedge-flow{grid-template-columns:1fr;gap:14px}}
+  .wstage{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;position:relative;box-shadow:var(--shadow)}
+  .wstage:not(:last-child){margin-right:18px}
+  @media(max-width:820px){.wstage:not(:last-child){margin-right:0}}
+  .wstage::after{content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:20px;font-weight:700;z-index:3}
+  .wstage:last-child::after{display:none}
+  @media(max-width:820px){.wstage::after{display:none}}
+  .wstage.hero{border:2px solid var(--orange);box-shadow:0 2px 4px rgba(254,96,44,.08),0 16px 40px rgba(254,96,44,.12)}
+  .wstage .wbadge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:12px}
+  .wb-wedge{background:var(--orange);color:#fff}
+  .wb-recur{background:rgba(0,191,166,.13);color:#048a78}
+  .wb-durable{background:rgba(30,30,34,.08);color:var(--ink)}
+  .wstage h4{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+  .wstage .wrole{font-size:11.5px;color:var(--muted);font-weight:500;margin-bottom:12px}
+  .wstage p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55;margin-bottom:10px}
+  .wstage p b{color:var(--ink);font-weight:600}
+  .wstage .wrev{font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:8px;display:block}
+  .wr-free{background:var(--paper);color:var(--muted)}
+  .wr-sub{background:rgba(0,191,166,.1);color:#048a78}
+  .wr-core{background:rgba(254,96,44,.1);color:var(--orange)}
+  .wedge-note{margin-top:22px;background:var(--dark);color:#E8E6E3;border-radius:14px;padding:22px 26px}
+  .wedge-note h4{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);margin-bottom:9px}
+  .wedge-note p{font-size:14px;font-weight:300;line-height:1.6}
+  .wedge-note b{color:#fff;font-weight:600}
+  .wedge-note .orange{color:#FF8A6B;font-weight:600}
+
   /* TABS */
   .tabnav{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .tabnav-inner{max-width:1100px;margin:0 auto;padding:11px 32px;display:flex;gap:6px}
@@ -287,6 +327,7 @@
   .tab .tnum{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.55;margin-right:8px;font-weight:600}
   .tabpanel{display:none}
   .tabpanel.active{display:block;animation:fade .35s ease}
+  .docflow{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   @media print{.tabnav{display:none}.tabpanel{display:block!important}.no-print{display:none!important}}
 
@@ -346,6 +387,196 @@
   .fixitem h4 .fchk{width:16px;height:16px;border-radius:5px;border:2px solid var(--amber);flex-shrink:0;position:relative}
   .fixitem h4 .fchk::after{content:"";position:absolute;inset:0;margin:auto;width:7px;height:4px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg) translate(0,-1px)}
   .fixitem p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5}
+
+  /* NEXT 90 DAYS — FOCUS */
+  .focus{background:linear-gradient(135deg,#1E1E22 0%,#241B33 100%);border-radius:20px;padding:36px 38px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .focus::before{content:"";position:absolute;top:-70px;right:-50px;width:260px;height:260px;background:radial-gradient(circle,rgba(254,96,44,.22),transparent 70%)}
+  .focus>*{position:relative}
+  .focus .ftag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#FF8A6B;margin-bottom:14px}
+  .focus h3{font-size:27px;font-weight:700;letter-spacing:-.025em;line-height:1.12;margin-bottom:10px}
+  .focus .flede{font-size:15px;color:#D8D4D0;font-weight:300;line-height:1.55;max-width:720px;margin-bottom:26px}
+  .focus .flede b{color:#fff;font-weight:600}
+  .focus-bets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+  .fbet{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+  .fbet .fbn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#FF8A6B;margin-bottom:8px}
+  .fbet h4{font-size:15.5px;font-weight:600;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
+  .fbet p{font-size:12.5px;color:#A8A4A0;font-weight:300;line-height:1.5}
+  .focus-metric{display:flex;align-items:center;gap:20px;background:rgba(0,191,166,.1);border:1px solid rgba(0,191,166,.3);border-radius:14px;padding:20px 24px}
+  .focus-metric .fm-l{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7fd3a6;flex-shrink:0}
+  .focus-metric .fm-v{font-size:15px;color:#E8F5EF;font-weight:300;line-height:1.5}
+  .focus-metric .fm-v b{color:#fff;font-weight:600}
+  @media(max-width:820px){.focus-bets{grid-template-columns:1fr}.focus{padding:28px 24px}.focus h3{font-size:22px}.focus-metric{flex-direction:column;align-items:flex-start;gap:8px}}
+
+  /* TRACTION SLOT */
+  .traction{background:var(--card);border:1px dashed var(--orange);border-radius:16px;padding:28px 30px}
+  .traction .tt{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+  .traction h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .traction .tintro{font-size:13.5px;color:var(--muted);font-weight:300;line-height:1.55;margin-bottom:20px;max-width:680px}
+  .traction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+  /* QUARTERS */
+  .quarter{margin-bottom:14px}
+  .qhead{display:flex;align-items:center;gap:14px;margin:34px 0 16px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+  .qhead .qlabel{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#fff;background:var(--ink);padding:6px 13px;border-radius:8px;letter-spacing:.02em}
+  .qhead .qlabel.now{background:var(--orange)}
+  .qhead .qtheme{font-size:14px;color:var(--muted);font-weight:400}
+  .qhead .qtheme b{color:var(--ink);font-weight:600}
+
+  /* BUDGETROUTER HERO */
+  .br-hero{background:linear-gradient(135deg,#2A1813 0%,#1E1E22 60%,#0E2A26 100%);border-radius:20px;padding:34px 36px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:18px}
+  .br-hero::before{content:"";position:absolute;top:-70px;right:-50px;width:280px;height:280px;background:radial-gradient(circle,rgba(254,96,44,.25),transparent 70%)}
+  .br-hero::after{content:"";position:absolute;bottom:-80px;left:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(0,191,166,.18),transparent 70%)}
+  .br-hero>*{position:relative}
+  .br-tag{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#FF8A6B;margin-bottom:14px}
+  .br-tag .brdot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(254,96,44,.25)}
+  .br-hero h3{font-size:30px;font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:6px}
+  .br-hero .br-sub{font-family:'JetBrains Mono',monospace;font-size:12px;color:#7fd3a6;font-weight:500;margin-bottom:16px;letter-spacing:.02em}
+  .br-hero .br-lede{font-size:14.5px;color:#D8D4D0;font-weight:300;line-height:1.6;max-width:760px;margin-bottom:18px}
+  .br-hero .br-lede b{color:#fff;font-weight:600}
+  .br-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px;font-family:'JetBrains Mono',monospace;font-size:12px}
+  .br-flow .node{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:6px 12px;color:#E8E6E3}
+  .br-flow .node.us{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+  .br-flow .arr{color:#FF8A6B;font-weight:700}
+  .br-modes{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .br-mode{font-size:11px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(127,211,166,.4);border-radius:7px;padding:5px 11px;color:#bfe3cf}
+  .br-mode b{color:#fff}
+
+  .tcard{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:18px 20px;text-align:center}  .tcard .tnum{font-size:30px;font-weight:700;letter-spacing:-.03em;color:var(--orange);line-height:1}
+  .tcard .tnum.ph{color:#C2BEB8;font-size:24px}
+  .tcard .tlbl{font-size:11.5px;color:var(--muted);font-weight:400;margin-top:9px;line-height:1.4}
+  @media(max-width:820px){.traction-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.traction-grid{grid-template-columns:1fr}}
+  /* COLLAPSIBLE MILESTONE ROWS */
+  .mrow{border:1px solid var(--line);border-radius:13px;background:var(--card);margin-bottom:9px;box-shadow:var(--shadow);overflow:hidden}
+  .mrow[open]{box-shadow:var(--shadow-lg)}
+  .mrow summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:14px;outline:none}
+  .mrow summary::-webkit-details-marker{display:none}
+  .mrow summary:hover{background:var(--paper)}
+  .mrow .mbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fff;background:var(--ink);border-radius:7px;padding:5px 9px;flex-shrink:0;min-width:42px;text-align:center}
+  .mrow .mbadge.br{background:var(--orange)}
+  .mrow .mtitle{font-size:14.5px;font-weight:600;flex:1;letter-spacing:-.01em}
+  .mrow .mwhen{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);font-weight:500;flex-shrink:0}
+  .mrow .mchev{flex-shrink:0;color:var(--muted);transition:transform .2s;font-size:12px}
+  .mrow[open] .mchev{transform:rotate(90deg)}
+  .mrow .mdetail{padding:2px 18px 18px 18px;border-top:1px solid var(--line)}
+  .mrow .mdetail .dlede{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55;margin:14px 0 12px}
+  .mrow .mdetail .dlede b{color:var(--ink);font-weight:600}
+  .mrow .mdetail ul{margin:0 0 12px;padding-left:18px}
+  .mrow .mdetail li{font-size:12.5px;color:#3A3A40;font-weight:300;line-height:1.55;margin-bottom:5px}
+  .mrow .mdetail li b{font-weight:600;color:var(--ink)}
+  .mrow .mdetail code{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--paper);padding:1px 5px;border-radius:4px;color:var(--orange)}
+  .mkpi{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+  .mkpi span{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+  .mkpi span b{color:var(--ink);font-weight:600}
+  .qhint{font-size:11.5px;color:var(--muted);font-weight:300;margin:-2px 0 16px;font-style:italic}
+
+  /* MILESTONE CARD GRID (uniform, tagged, columns) */
+  .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
+  @media(max-width:900px){.mgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.mgrid{grid-template-columns:1fr}}
+  .mcard{border:1px solid var(--line);border-radius:13px;background:var(--card);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .mcard[open]{box-shadow:var(--shadow-lg)}
+  .mcard summary{list-style:none;cursor:pointer;padding:15px 16px 44px 16px;outline:none;display:flex;flex-direction:column;gap:9px;height:100%;position:relative}
+  .mcard summary::-webkit-details-marker{display:none}
+  .mcard summary:hover{background:var(--paper)}
+  .mc-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .mc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:5px}
+  .mc-tag.seg-ind{background:rgba(154,160,166,.18);color:#5f6368}
+  .mc-tag.seg-team{background:rgba(254,96,44,.12);color:var(--orange)}
+  .mc-tag.seg-ent{background:rgba(30,30,34,.1);color:var(--ink)}
+  .mc-tag.jrn{background:rgba(0,191,166,.13);color:#048a78}
+  .mc-tag.feat-bc{background:rgba(122,91,216,.13);color:var(--purple)}
+  .mc-when{position:absolute;bottom:13px;right:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:4px 10px;letter-spacing:.01em}
+  .mc-when.live-now{color:var(--green);border-color:rgba(31,170,110,.4);background:rgba(31,170,110,.08)}
+  .mc-title{font-size:13.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+  .mc-desc{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.4;flex:1}
+  .mc-more{position:absolute;bottom:15px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);font-weight:600}
+  .mcard[open] .mc-more::after{content:" ↑ less"}
+  .mcard:not([open]) .mc-more::after{content:" ↓ details"}
+  .mc-detail{padding:0 16px 16px;border-top:1px solid var(--line);margin-top:2px}
+  .mc-detail ul{margin:12px 0 10px;padding-left:17px}
+  .mc-detail li{font-size:12px;color:#3A3A40;font-weight:300;line-height:1.5;margin-bottom:5px}
+  .mc-detail li b{font-weight:600;color:var(--ink)}
+  .mc-detail code{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--paper);padding:1px 5px;border-radius:4px;color:var(--orange)}
+  .mc-kpi{display:flex;flex-wrap:wrap;gap:6px}
+  .mc-kpi span{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  .mc-kpi span b{color:var(--ink);font-weight:600}
+
+  /* SIMPLE PERSONA × TOOL OVERVIEW */
+  .simple-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  @media(max-width:780px){.simple-grid{grid-template-columns:1fr}}
+  .scard{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px 22px;box-shadow:var(--shadow)}
+  .scard .sp-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .scard .sp-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fff;border-radius:6px;padding:4px 8px}
+  .scard h4{font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .scard .sp-sub{font-size:11.5px;color:var(--muted);font-weight:400}
+  .scard .sp-line{font-size:12.5px;color:#3A3A40;font-weight:300;line-height:1.5;margin-bottom:12px}
+  .scard .sp-tools{display:flex;flex-direction:column;gap:7px}
+  .scard .sp-tool{display:flex;align-items:center;gap:9px;font-size:12px;color:#3A3A40}
+  .scard .sp-tool .tk{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;border-radius:5px;padding:2px 7px;flex-shrink:0;min-width:54px;text-align:center}
+  .tk.live{background:rgba(31,170,110,.13);color:var(--green)}
+  .tk.gap{background:rgba(232,163,23,.15);color:#B5790A}
+  .tk.soon{background:rgba(122,91,216,.12);color:var(--purple)}
+  .tk.na{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
+
+  /* RECOVERY EMPHASIS BANNER */
+  .recbar{background:linear-gradient(135deg,var(--orange),#ff7e52);color:#fff;border-radius:16px;padding:26px 30px;margin-bottom:22px;box-shadow:var(--shadow-lg)}
+  .recbar h3{font-size:28px;font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:10px}
+  .recbar p{font-size:15.5px;font-weight:300;line-height:1.55;opacity:.96;max-width:780px}
+  .recbar p b{font-weight:600}
+
+  /* CURRENT STATE STRIP */
+  .nowstrip{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 18px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .nowstrip .nl{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);flex-shrink:0}
+  .nowstrip .ni{font-size:12.5px;color:#3A3A40;font-weight:400}
+  .nowstrip .ni b{color:var(--ink);font-weight:600}
+  .nowstrip .sep{color:var(--line)}
+
+  /* TAB NAV (lightweight) */
+  .tabnav2{display:flex;gap:6px;margin:0 auto 26px;max-width:var(--maxw,1080px);padding:0 32px}
+  .tabbtn{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;padding:10px 4px;margin-right:18px;cursor:pointer;letter-spacing:-.01em}
+  .tabbtn.on{color:var(--ink);border-bottom-color:var(--orange)}
+  .tabview{display:none}
+  .tabview.on{display:block;animation:fade .3s ease}
+
+  /* MVP LIVE CARDS */
+  .live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  @media(max-width:780px){.live-grid{grid-template-columns:1fr}}
+  .livecard{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+  .livecard .lc-tag{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:9px}
+  .livecard .lc-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+  .livecard h4{font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+  .livecard p{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.45}
+
+  /* RISK FLAG CARDS */
+  .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+  @media(max-width:780px){.risk-grid{grid-template-columns:1fr}}
+  .riskcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+  .riskcard .rc-q{display:flex;gap:9px;align-items:flex-start;font-size:13px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:8px}
+  .riskcard .rc-q .flag{color:var(--amber);flex-shrink:0;font-size:13px}
+  .riskcard .rc-a{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5}
+  .riskcard .rc-a b{color:var(--ink);font-weight:600}
+
+  /* ONGOING TAB — end-state cards */
+  .end-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+  @media(max-width:780px){.end-grid{grid-template-columns:1fr}}
+  .endcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+  .endcard.moat{border-left:3px solid var(--orange)}
+  .endcard h4{font-size:14px;font-weight:600;margin-bottom:5px}
+  .endcard p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5}
+  .endcard .tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--orange);display:block;margin-bottom:7px}
+
+  /* END-STATE 3-STEP PATH */
+  .pathrow{display:flex;align-items:stretch;gap:0;margin-top:6px}
+  @media(max-width:760px){.pathrow{flex-direction:column;gap:10px}}
+  .pathstep{flex:1;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 20px;box-shadow:var(--shadow);position:relative}
+  .pathstep.final{border:2px solid var(--orange)}
+  .pathstep .pn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .pathstep.final .pn{color:var(--orange)}
+  .pathstep h4{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .pathstep p{font-size:12px;color:var(--muted);font-weight:300;line-height:1.45}
+  .patharrow{display:flex;align-items:center;color:var(--orange);font-size:20px;font-weight:700;padding:0 10px;flex-shrink:0}
+  @media(max-width:760px){.patharrow{justify-content:center;padding:0;transform:rotate(90deg)}}
 </style>
 </head>
 <body>
@@ -353,940 +584,387 @@
 <header>
   <div class="wrap">
     <div class="kicker"><span class="chip"></span> TokenID · Roadmap</div>
-    <h1>Expanding the audit:<br>more <span class="id">coverage</span>, deeper <span class="id">recovery</span>.</h1>
-    <p class="lede">TokenID audits AI &amp; LLM spend — verifying charges, catching leakage, and recovering overcharges. This is the forward plan, defined by <strong>who the user is</strong> and <strong>how their spend reaches a model</strong>: what each persona gets today, and the milestones that deepen it.</p>
-
-    <div class="thesis">
-      <span class="mark">&ldquo;</span>
-      <p>What we can audit depends on <strong>how the customer pays</strong> and <strong>what telemetry we can see</strong>. Expansion runs on three axes at once: <strong>widen coverage</strong> across consumption patterns, <strong>deepen value</strong> from reporting to enforcement to legal-grade recovery, and <strong>extend the platform</strong> into adjacent spend. The deeper axis is where the money is; the wider axis is where the market is.</p>
-    </div>
+    <h1>Audit your AI spend now.<br><span class="id">Route your budget</span> later.</h1>
+    <p class="lede">TokenID audits AI &amp; LLM spend and recovers the overcharges today. BudgetRouter controls the spend before the bill, next.</p>
   </div>
 </header>
 
-<nav class="tabnav no-print"><div class="tabnav-inner">
-  <button class="tab active" data-tab="overview"><span class="tnum">A</span>Overview &amp; Market</button>
-  <button class="tab" data-tab="roadmap"><span class="tnum">B</span>Roadmap &amp; Priorities</button>
-</div></nav>
+<nav class="tabnav2">
+  <button class="tabbtn on" data-tab="main">Roadmap</button>
+  <button class="tabbtn" data-tab="bets">Ongoing bets</button>
+</nav>
 
-<div class="tabpanel active" id="tab-overview">
+<div class="tabview on" id="view-main">
 
-<!-- ============ THREE AXES ============ -->
+<div class="docflow" id="context">
+
+<!-- ============ WHAT WE DO (simple) ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Three axes of expansion</h2></div>
-    <p class="sec-sub">Every milestone in this roadmap advances at least one of these. Reading them together is how the sequencing makes sense.</p>
+    <div class="sec-head"><span class="sec-num">01</span><h2>What's live today</h2></div>
 
-    <div class="axes">
-      <div class="axis a1">
-        <div class="anum">AXIS A</div>
-        <h3>Widen coverage</h3>
-        <p>Bring more consumption patterns to full-audit depth — managed cloud, aggregators, and the harder telemetry beyond. Each new path feeds the same audit engine.</p>
-        <span class="drives">Drives → addressable spend</span>
+    <div class="live-grid">
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>API / SDK audit + refunds</h4><p>Audit pay-per-token spend, find leaks, recover overcharges.</p></div>
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>Cloud audit</h4><p>AWS Bedrock + Google Vertex spend, audited from cloud billing.</p></div>
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>CLI usage insights</h4><p>Usage and refund findings from local Claude Code / Copilot journals.</p></div>
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>Enforcement rules</h4><p>Dedup and guardrails that stop waste before it bills.</p></div>
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>Python SDK</h4><p>Drop-in client to audit spend from your own code.</p></div>
+      <div class="livecard"><div class="lc-tag"><span class="dot"></span> Live now</div><h4>Free usage tracker</h4><p>Open tool showing a dev their own usage + refunds, on-device. Expanding to more models.</p></div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:11px;padding:13px 18px;margin:14px 0 18px"><b style="font-size:14px;color:var(--ink)">Who we serve, and the tools they spend through.</b> <span style="color:var(--muted);font-size:13px">Audit now, route later.</span></div>
+
+    <div class="simple-grid">
+      <div class="scard">
+        <div class="sp-h"><span class="sp-badge" style="background:#9AA0A6">IND</span><div><h4>Individual</h4><div class="sp-sub">Solo dev · free</div></div></div>
+        <p class="sp-line">Your own usage, your own refunds. The entry point.</p>
+        <div class="sp-tools">
+          <div class="sp-tool"><span class="tk live">LIVE</span> CLI tools — usage + findings</div>
+          <div class="sp-tool"><span class="tk live">LIVE</span> API / SDK — personal audit</div>
+          <div class="sp-tool"><span class="tk na">N/A</span> Cloud / chat</div>
+        </div>
       </div>
-      <div class="axis a2">
-        <div class="anum">AXIS B</div>
-        <h3>Deepen value</h3>
-        <p>Climb the ladder: observe → enforce → recover. The proxy is the only place we prevent waste live; enterprise SLA contracts are the only place large recovery dollars exist.</p>
-        <span class="drives">Drives → revenue per account</span>
+      <div class="scard">
+        <div class="sp-h"><span class="sp-badge" style="background:var(--orange)">TEAM</span><div><h4>Team</h4><div class="sp-sub">Eng manager · per-seat</div></div></div>
+        <p class="sp-line">Everyone's spend in one view. The paid tier.</p>
+        <div class="sp-tools">
+          <div class="sp-tool"><span class="tk gap">SOON</span> Team view — the paid hook</div>
+          <div class="sp-tool"><span class="tk live">LIVE</span> API / SDK — team audit + refunds</div>
+          <div class="sp-tool"><span class="tk live">LIVE</span> Cloud — Bedrock + Vertex</div>
+        </div>
       </div>
-      <div class="axis a3">
-        <div class="anum">AXIS C</div>
-        <h3>Extend the platform</h3>
-        <p>One audit engine, adjacent spend categories. Cloud billing and GPU utilization already share plumbing with KloudID — the natural multi-product expansion.</p>
-        <span class="drives">Drives → platform TAM</span>
+      <div class="scard">
+        <div class="sp-h"><span class="sp-badge" style="background:var(--ink)">ENT</span><div><h4>Enterprise</h4><div class="sp-sub">Finance · success-fee</div></div></div>
+        <p class="sp-line">SLA leverage, legal-grade recovery. The large dollars.</p>
+        <div class="sp-tools">
+          <div class="sp-tool"><span class="tk live">LIVE</span> Cloud audit (AWS + Google)</div>
+          <div class="sp-tool"><span class="tk soon">BUILD</span> SLA recovery + evidence</div>
+          <div class="sp-tool"><span class="tk soon">SOON</span> BudgetRouter — live control</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ MARKET / TAM ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">02</span><h2>The market we're auditing</h2></div>
-    <p class="sec-sub">AI API spend is the fastest-growing line item in the enterprise software budget — and it's metered on a pricing surface no one has methodologized. That combination is the opening.</p>
+</div><!-- /docflow -->
 
-    <div class="tam-grid">
-      <div class="tam">
-        <div class="tnum">$8.4B</div>
-        <div class="tlbl">Enterprise LLM API spend, mid-2025</div>
-        <div class="tsrc">Menlo Ventures · 2.4× in 6 months</div>
-      </div>
-      <div class="tam teal">
-        <div class="tnum">~$15B</div>
-        <div class="tlbl">Projected by end of 2026</div>
-        <div class="tsrc">Menlo / Gartner</div>
-      </div>
-      <div class="tam">
-        <div class="tnum">37%</div>
-        <div class="tlbl">of enterprises spend &gt;$250k/yr on LLM APIs</div>
-        <div class="tsrc">Kong Enterprise AI Survey</div>
-      </div>
-      <div class="tam green">
-        <div class="tnum">73%</div>
-        <div class="tlbl">spend &gt;$50k/yr · 72% plan to increase</div>
-        <div class="tsrc">Kong · curve not flattening</div>
-      </div>
-    </div>
-
-    <div class="analog">
-      <h4>◆ The proven analog — cloud FinOps</h4>
-      <p>The same problem already created a category one layer down. <strong>27% of cloud spend is wasted — roughly <span class="big">$182B in 2026</span></strong> (Flexera, measured three years running), and that built an entire FinOps + cloud-audit industry. AI token spend is the identical structural problem — fragmented pricing, opaque metering, waste hidden in retries and over-tiering — but <strong>earlier in its maturity and metered on a surface that changes every model release.</strong> TokenID is to AI spend what cloud-audit was to AWS in 2018: the recovery layer that arrives once spend gets big enough to hurt. Our serviceable wedge is the recoverable slice of a $15B-and-doubling base.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHY NOW ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Why now</h2></div>
-    <p class="sec-sub">Three forces converge in 2026 that make this the moment — not 2024 (spend too small) and not 2028 (the gap gets standardized and closed).</p>
-
-    <div class="why-grid">
-      <div class="why">
-        <div class="wn">FORCE 01</div>
-        <h4>Spend crossed the pain threshold</h4>
-        <p>At <b>$8.4B doubling toward $15B</b>, and 37% of enterprises over $250k/yr, AI spend is now a CFO line item — large enough that a 10–30% leak is worth a dedicated audit, not a footnote.</p>
-      </div>
-      <div class="why">
-        <div class="wn">FORCE 02</div>
-        <h4>The meter keeps fracturing</h4>
-        <p>Cached, reasoning, tool, batch, and image tokens are each priced differently, and a <b>new billing axis ships with nearly every model release</b>. Integrations written against the old meter silently overpay — the gap widens faster than customers can track it.</p>
-      </div>
-      <div class="why">
-        <div class="wn">FORCE 03</div>
-        <h4>No attestation standard exists yet</h4>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COVERAGE MAP ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Who the user is, and how they spend</h2></div>
-    <p class="sec-sub">Two independent axes define the product. <b>Persona</b> is who buys and how much they need. <b>Usage type</b> is how their spend physically reaches a model — which determines what telemetry we can see and therefore what we can audit.</p>
-
-    <div class="pmodel">
-      <div class="pcol who">
-        <div class="pch">◆ Persona — who buys</div>
-        <div class="prow">
-          <span class="pmark pm-ind">IND</span>
-          <div class="pbody"><h4>Individual</h4><p>A single developer. Wants to see their own usage and catch their own refunds. Entry point and trust-builder — free.</p></div>
-        </div>
-        <div class="prow">
-          <span class="pmark pm-team">TEAM</span>
-          <div class="pbody"><h4>Team</h4><p>An eng manager who needs to see <b>everyone's</b> usage and usage types in one view, attribute spend, and act on it. Per-seat, paid.</p></div>
-        </div>
-        <div class="prow">
-          <span class="pmark pm-ent">ENT</span>
-          <div class="pbody"><h4>Enterprise</h4><p>Finance + FinOps. Contracts, SLA leverage, legal-grade recovery. Success-fee on recovered dollars.</p></div>
-        </div>
-      </div>
-      <div class="pcol how">
-        <div class="pch">◆ Usage type — how spend reaches a model</div>
-        <div class="prow">
-          <span class="pmark pm-cli">CLI</span>
-          <div class="pbody"><h4>CLI &amp; subscription tools</h4><p>Claude Code, Copilot, ChatGPT Plus. Flat fee, no per-token price. We read the local usage journal — <b>usage insights + refund findings only</b>.</p><div class="tagrow"><span class="ptag2 pt-live">Findings live</span></div></div>
-        </div>
-        <div class="prow">
-          <span class="pmark pm-api">API</span>
-          <div class="pbody"><h4>API / SDK — pay-per-token</h4><p>Direct provider calls via our SDK. <b>This is the meat</b> — full rate + leakage audit and a recoverable refund package.</p><div class="tagrow"><span class="ptag2 pt-live">Audit + refund live</span><span class="ptag2 pt-soon">Aggregators next</span></div></div>
-        </div>
-        <div class="prow">
-          <span class="pmark pm-api" style="background:var(--teal)">CLD</span>
-          <div class="pbody"><h4>Cloud-hosted models</h4><p>AWS Bedrock &amp; Google Vertex, audited via cloud billing. <b>Already live</b> — wrong-tier, idle provisioned throughput, no-caching and cross-region leaks.</p><div class="tagrow"><span class="ptag2 pt-live">AWS + Google live</span><span class="ptag2 pt-soon">Azure next</span></div></div>
-        </div>
-        <div class="prow">
-          <span class="pmark pm-chat">CHAT</span>
-          <div class="pbody"><h4>Chat-based usage</h4><p>ChatGPT / Claude.ai web. No admin API, no per-interaction billing line — <b>no data path today</b>. Research frontier.</p><div class="tagrow"><span class="ptag2 pt-soon">Research</span></div></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="sec-sub" style="margin-top:22px;margin-bottom:14px">Crossing the two axes gives the honest state of the product — what exists now (API/SDK and <b>cloud audit on AWS Bedrock + Google Vertex are already live</b>), what's a gap, and what stays research.</p>
-
-    <table class="pmatrix">
-      <thead>
-        <tr><th style="width:20%">Persona ↓ &nbsp; Usage →</th><th>CLI / subscription</th><th>API / SDK</th><th>Cloud (Bedrock/Vertex)</th><th>Chat-based</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="pm-row-h">Individual<span>solo dev · free</span></td>
-          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Own usage insights + refund findings from the local journal.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Personal API audit via Python SDK.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-na">N/A</span>Cloud accounts are org-level.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-na">N/A</span>No data path.</div></td>
-        </tr>
-        <tr>
-          <td class="pm-row-h">Team<span>eng manager · per-seat</span></td>
-          <td><div class="cellwrap"><span class="st2 st2-gap">Gap</span><b>Team view</b> — see every member's usage &amp; types in one place. Not built yet; the Team-plan hook.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Team API audit + refund package. <span class="st2 st2-soon" style="margin-top:6px">Next</span>Aggregator coverage (OpenRouter, Together).</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>AWS Bedrock + Google Vertex audited via cloud billing.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-soon">Research</span>Admin-console probe / BYOK.</div></td>
-        </tr>
-        <tr>
-          <td class="pm-row-h">Enterprise<span>finance + FinOps · success-fee</span></td>
-          <td><div class="cellwrap"><span class="st2 st2-soon">Reframe</span>Seat right-sizing &amp; consolidation.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-soon">Build</span>Contract + SLA recovery, legal-grade evidence bundle.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-live">Live</span>Cloud-billing audit; <span class="st2 st2-soon" style="margin-top:6px">Next</span>Azure + reserved-capacity validation.</div></td>
-          <td><div class="cellwrap"><span class="st2 st2-soon">Research</span>BYOK to collapse into auditable API.</div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ============ COMPETITIVE LANDSCAPE ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">05</span><h2>The competitive landscape</h2></div>
-    <p class="sec-sub">The "LLM cost" space looks crowded, but nearly everyone is doing the same thing: <em>showing</em> you what you spent. The audit-and-recover motion is structurally empty.</p>
-
-    <div class="market-intro">
-      <p><strong>The whole category surfaces spend; we recover it.</strong> Observability tools (Langfuse, Helicone, LangSmith, Braintrust) and gateways (Bifrost, LiteLLM, Portkey) give you per-request token attribution, dashboards, and budget alerts. They tell you <span class="hl">what you spent</span> — never <span class="hl">what you should have been billed</span>. The refund-automation tools (Fini, Quadrant) handle <em>your customers'</em> refunds, not your own provider bill. <strong>No one independently audits the provider's invoice for correctness and recovers the difference.</strong> That gap is the entire product.</p>
-    </div>
-
-    <div class="lanes">
-      <div class="lane">
-        <div class="lane-cat">LLM observability<span>Langfuse · Helicone · Braintrust</span></div>
-        <div class="lane-does">Per-request traces, cost attribution by user / feature / model, eval hooks. The dashboard is the product.</div>
-        <div class="lane-gap">No rate verification · no recovery</div>
-      </div>
-      <div class="lane">
-        <div class="lane-cat">AI gateways<span>Bifrost · LiteLLM · Portkey</span></div>
-        <div class="lane-does">Sit in the request path, route between providers, enforce budget caps, add caching. Optimize one axis: routing.</div>
-        <div class="lane-gap">Create their own audit surface · no audit</div>
-      </div>
-      <div class="lane">
-        <div class="lane-cat">APM with AI tabs<span>Datadog · New Relic</span></div>
-        <div class="lane-does">Service health — latency, errors, throughput — with token counts bolted on. Cost is a side metric.</div>
-        <div class="lane-gap">Adds platform cost · shallow on tokens</div>
-      </div>
-      <div class="lane">
-        <div class="lane-cat">Refund automation<span>Fini · Quadrant</span></div>
-        <div class="lane-does">Resolve <em>your customers'</em> refund and chargeback tickets against your billing system.</div>
-        <div class="lane-gap">Wrong direction · not your AI bill</div>
-      </div>
-      <div class="lane us">
-        <div class="lane-cat">TokenID<span>audit + recover</span></div>
-        <div class="lane-does">Independently verifies the provider's bill, catches leakage across eight token types, enforces guardrails, and recovers overcharges through credits and config.</div>
-        <div class="lane-gap">The only audit-and-recover motion</div>
-      </div>
-    </div>
-
-    <div class="sec-head" style="margin-top:8px"><span class="sec-num">05·A</span><h2 style="font-size:20px">What makes us stand out</h2></div>
-    <p class="sec-sub">Five structural advantages — each one a thing the monitoring tools cannot do without becoming a different product.</p>
-
-    <div class="standout">
-      <div class="so">
-        <h4><span class="son">1</span> Audit, not observe</h4>
-        <p>Dashboards show what you spent. We hold a <b>versioned rate-card history</b> and compute what you <b>should have</b> been billed — then recover the gap. Different verb, different buyer (the CFO acts on an audit, not a dashboard).</p>
-      </div>
-      <div class="so">
-        <h4><span class="son">2</span> Enforcement, not just alerts</h4>
-        <p>The proxy is the only place waste is <b>prevented live</b> — dedup collapsed, over-tiered calls downgraded, caps enforced. Monitoring tools alert after the spend; we stop it.</p>
-      </div>
-      <div class="so">
-        <h4><span class="son">3</span> Provider-independent</h4>
-        <p>We audit spend <b>on</b> providers, not for them — so we're trusted the way a bank's own statement never is. The Anthropic billing-bug episode (overcharge, refund denied) is exactly why independent audit exists.</p>
-      </div>
-      <div class="so">
-        <h4><span class="son">4</span> Success-fee, not another SaaS seat</h4>
-        <p>Monitoring tools add cost on top of your AI bill. Our enterprise tier is <b>no recovery, no charge</b> — aligned to dollars returned, not seats sold. Easiest possible procurement yes.</p>
-      </div>
-      <div class="so">
-        <h4><span class="son">5</span> Moat compounds with complexity</h4>
-        <p>Every new token type, caching mode, and reasoning tier adds a billing axis customers didn't account for. The audit's value <b>grows with the pricing surface</b>, not against it.</p>
-      </div>
-      <div class="so">
-        <h4><span class="son">6</span> Partner, not collide</h4>
-        <p>Observability tools become <b>distribution</b>, not competition — their telemetry is the input layer our audit sits on top of. We meet customers who already have Helicone or Langfuse.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-</div><!-- /tab-overview -->
-
-<div class="tabpanel" id="tab-roadmap">
-
-<!-- ============ PRIORITIZATION ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">R1</span><h2>Prioritization</h2></div>
-    <p class="sec-sub">Fourteen milestones, sequenced by a simple rule: <b>build what creates a paid tier or closes a revenue gap first; defer what depends on trust or an unproven data path.</b> Scored on value, effort, and dependency.</p>
-
-    <div class="prio-band">
-      <div class="pband now">
-        <div class="ph">● Now — P0/P1</div>
-        <div class="psub">Fill the funnel, move users down it, create the paid tier, and turn findings into recurring recovery.</div>
-        <ul>
-          <li><span class="mtag mt0">M0</span> Free OSS journal logger — the acquisition hook</li>
-          <li><span class="mtag mt1">M1</span> Team view — the Individual→Team conversion</li>
-          <li><span class="mtag mt3">M2</span> Communication &amp; lifecycle layer — activation engine</li>
-          <li><span class="mtag mt4">M3</span> Enforcement rules — Ralph-loop guard, recurring recovery</li>
-        </ul>
-      </div>
-      <div class="pband next">
-        <div class="ph">● Next — P1/P2</div>
-        <div class="psub">Reduce friction and widen coverage once the core loop is live.</div>
-        <ul>
-          <li><span class="mtag mt2">M4</span> Auth migration + GitHub sign-up — lower friction</li>
-          <li><span class="mtag mt2">M5</span> Aggregator coverage — close the API-axis gap</li>
-          <li><span class="mtag mt3">M6</span> SDK expansion — TypeScript + public PyPI</li>
-          <li><span class="mtag mt5">M7</span> In-product refund flow</li>
-        </ul>
-      </div>
-      <div class="pband later">
-        <div class="ph">● Later — P2/P3</div>
-        <div class="psub">Largest dollars, category-defining bets, and TAM — gated on the foundation above.</div>
-        <ul>
-          <li><span class="mtag mt6">M8</span> Enterprise recovery + cloud convergence + KloudID</li>
-          <li><span class="mtag mt4">M9</span> Claude Cowork plugin — distribution + new surface</li>
-          <li><span class="mtag mt2">M10</span> Pricing-change radar — early-warning</li>
-          <li><span class="mtag mt4">M11</span> Industry benchmark index — data asset</li>
-          <li><span class="mtag mt6">M12</span> TokenID-verified mark — the standard</li>
-          <li><span class="mtag mt7">M13</span> Chat frontier — research, gated</li>
-        </ul>
-      </div>
-    </div>
-
-    <table class="ptable">
-      <thead>
-        <tr><th>Milestone</th><th class="ctr">Value</th><th class="ctr">Effort</th><th class="ctr">Unlocks</th><th class="ctr">Priority</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="mname"><span class="mt0">M0</span>Free OSS journal logger</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">the whole funnel</td>
-          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt1">M1</span>Team view</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">paid Team tier</td>
-          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt3">M2</span>Communication layer</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">activation + conversion</td>
-          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt4">M3</span>Enforcement rules</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">recurring recovery</td>
-          <td class="ctr"><span class="pri-badge pri-p0">P0</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt2">M4</span>Auth + GitHub sign-up</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">friction + enterprise-ready</td>
-          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt2">M5</span>Aggregator coverage</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">API coverage</td>
-          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt3">M6</span>SDK expansion</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">funnel width</td>
-          <td class="ctr"><span class="pri-badge pri-p1">P1</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt5">M7</span>In-product refunds</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">conversion proof</td>
-          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt6">M8</span>Enterprise + expansion</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr">large $ + TAM</td>
-          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt4">M9</span>Claude Cowork plugin</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">distribution + new surface</td>
-          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt2">M10</span>Pricing-change radar</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">continuous trigger</td>
-          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt4">M11</span>Benchmark index</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr">brand + inbound</td>
-          <td class="ctr"><span class="pri-badge pri-p2">P2</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt6">M12</span>Verified mark</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr">category ownership</td>
-          <td class="ctr"><span class="pri-badge pri-p3">P3 · bet</span></td>
-        </tr>
-        <tr>
-          <td class="mname"><span class="mt7">M13</span>Chat frontier</td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i><i class="sp"></i></span></td>
-          <td class="ctr"><span class="scorepips"><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp on"></i><i class="sp"></i></span></td>
-          <td class="ctr">largest surface</td>
-          <td class="ctr"><span class="pri-badge pri-p3">P3 · gated</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="prio-logic">
-      <p><b>The logic:</b> the P0 core is M0–M3 — the <b>free OSS hook</b> (fills the funnel), the <b>communication layer</b> (moves users down it), the <b>Team view</b> (creates the paid tier), and <b>enforcement</b> (headlined by Ralph-loop protection — turns findings into recurring recovery). Next (M4–M7): <b>auth + GitHub sign-up</b> cuts friction and readies enterprise security review, then aggregator coverage, SDK breadth, and the in-product refund flow widen reach and prove conversion. M8–M9 are P2 — enterprise recovery with <b>cloud convergence</b> (AWS/Vertex already live → unified view) and the Cowork distribution play. <b>M10–M12 are the standout bets</b> — radar, index, verified mark — high-ceiling and category-defining, dependent on the rate-card and audit-data foundation. M13 (chat) stays P3, explicitly <b>gated</b> on a proven data path.</p>
-      <p style="font-size:12.5px;color:var(--muted);font-weight:300;margin-top:12px;line-height:1.55">Running alongside throughout: ongoing upgrades based on user feedback — installation &amp; setup documentation, server / self-hosting guides, quickstart and config reference — refined as users tell us where they get stuck.</p>
-    </div>
-  </div>
-</section>
+<div class="docflow" id="roadmap">
 
 <!-- ============ MILESTONES ============ -->
 <section>
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">R2</span><h2>Expansion milestones</h2></div>
-    <p class="sec-sub">Ordered by the build sequence — each milestone names its <b>persona</b>, the <b>usage type</b> it deepens, what ships, the value created, and how we'll measure it. Earlier milestones unlock later ones.</p>
+    <div class="sec-head"><span class="sec-num">02</span><h2>The roadmap</h2></div>
+    <p class="qhint" style="margin-bottom:16px">Each card is labelled by <b>funnel stage</b> (Acquisition · Activation · Conversion · Retention · Expansion); <span style="color:var(--purple);font-weight:600">Budget control</span> marks BudgetRouter work. Dates are delivery targets; click a card for detail.</p>
 
-    <div class="ms">
-
-      <!-- M0 FREE HOOK -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m0">M0</span>
-          <div class="ms-title"><h3>Free open-source journal logger — the hook</h3><div class="theme">Immediate. The acquisition layer: get individuals in, then convert to the free plan.</div></div>
-          <span class="ms-axis mx-cov">Persona · Individual · CLI</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Open-source CLI journal logger</b> — installs in seconds, reads the local Claude Code / Copilot usage file, runs <b>fully on-device</b> (data never leaves the machine)</li>
-              <li><b>Personal usage insights + refund findings</b> — token heatmap, model mix, cache-hit tracking, likely-leak flags</li>
-              <li><b>Frictionless distribution</b> — public install, no signup, no key; a developer can try it in under a minute</li>
-              <li><b>Convert-to-free-plan path</b> — one prompt to claim a free account that syncs the logger and unlocks the dashboard</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">This is the <b>top of the entire funnel</b>. Open-source + zero-friction earns developer trust before any ask; the local-only logger is a give, not a pitch. Everything above — free plan, Team, Enterprise — depends on this inflow.</div></div>
-            <div class="valbox"><div class="vk">Growth motion</div><div class="vv">Classic PLG hook: <b>free tool → free account → Team upgrade</b>. The logger creates the install base M1's team-view converts.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> installs / week</span><span class="ms-metric"><b>KPI</b> logger→free-account %</span><span class="ms-metric"><b>KPI</b> GitHub stars / OSS reach</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M1 TEAM VIEW -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m1">M1</span>
-          <div class="ms-title"><h3>Team view — see the whole team's usage</h3><div class="theme">Individual → Team. The upgrade trigger: from "my usage" to "everyone's."</div></div>
-          <span class="ms-axis mx-cov">Persona · Team · CLI</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Team dashboard</b> — every member's usage and <b>usage types</b> (CLI vs API) in one view</li>
-              <li><b>Per-developer attribution</b> — who spends what, where the findings concentrate</li>
-              <li><b>Seat activity</b> — who's actually using their seat vs. paying idle</li>
-              <li>Manager digest rolling up individual journal data across the team</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">This is the <b>Individual→Team conversion event</b>. The free CLI tool shows a dev <b>their own</b> usage; the reason to pay is seeing it <b>across everyone</b>. Currently a gap — building it is what creates the paid Team tier.</div></div>
-            <div class="valbox"><div class="vk">Commercial</div><div class="vv">Establishes the per-seat plan and the first recurring revenue line above free.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> free→Team conversion %</span><span class="ms-metric"><b>KPI</b> seats per team</span><span class="ms-metric"><b>KPI</b> idle-seat $ surfaced</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- COMMS -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m3">M2</span>
-          <div class="ms-title"><h3>Communication &amp; lifecycle layer</h3><div class="theme">Immediate. Turn installs into active, converting users.</div></div>
-          <span class="ms-axis mx-cov">Growth · all personas</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Drip / onboarding email sequences</b> — guide a new install from first run to first finding to first recovered dollar</li>
-              <li><b>Lifecycle &amp; activation nurture</b> — re-engage dormant loggers, surface "you have unclaimed findings," prompt the free→Team step</li>
-              <li><b>Digest emails</b> — weekly personal &amp; manager rollups that pull users back in</li>
-              <li>Event-triggered messaging on the conversion moments (first leak found, key connected)</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">M0 fills the funnel; <b>this is what moves people down it</b>. A free OSS install with no follow-up goes cold — drip + lifecycle messaging is the cheapest, highest-leverage lever on activation and free→paid conversion.</div></div>
-            <div class="valbox"><div class="vk">Growth</div><div class="vv">Directly multiplies every acquisition dollar — the same installs convert at a higher rate with a nurture engine behind them.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> activation rate</span><span class="ms-metric"><b>KPI</b> email→action CTR</span><span class="ms-metric"><b>KPI</b> dormant reactivation %</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M2 ENFORCEMENT -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m4">M3</span>
-          <div class="ms-title"><h3>Enforcement rules</h3><div class="theme">From reporting waste to preventing it — headlined by Ralph-loop / agentic-loop protection.</div></div>
-          <span class="ms-axis mx-depth">Usage · API · Team / Enterprise</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Rule engine</b> — solve enforcement properly: model-downgrade on over-tiered calls, token caps, cache enforcement, dedup of redundant calls</li>
-              <li><b>Agentic-loop guard (Ralph-loop protection)</b> — detect and cap autonomous agent loops (Ralph loops, retry storms, runaway sub-agents) before they burn tokens silently — the single biggest agentic-spend risk</li>
-              <li><b>Adjustable thresholds</b> per team, opt-in via the proxy (one env var)</li>
-              <li><b>Expanding capability over time</b> — budget gates and new loop/anomaly rules as a growing rule library</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Converts the product from a <b>dashboard you read</b> into a <b>control that acts</b>. Recovery becomes automatic and recurring — a monthly run-rate, not a one-off finding.</div></div>
-            <div class="valbox"><div class="vk">Flagship rule · marketing</div><div class="vv"><b>Ralph-loop / agentic-loop protection</b> is the headline capability — as agentic billing crosses the majority of AI spend, "we stop runaway agent loops before they bankrupt you" is the line that sells. Name it, don't bury it in the SDK.</div></div>
-            <div class="valbox"><div class="vk">Commercial</div><div class="vv">The core paid payoff and the strongest retention lever — once rules run live, removing TokenID means re-opening the leaks.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> recovered $/mo run-rate</span><span class="ms-metric"><b>KPI</b> loops caught / capped</span><span class="ms-metric"><b>KPI</b> proxy activation rate</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AUTH -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m2">M4</span>
-          <div class="ms-title"><h3>Auth layer migration + GitHub sign-up</h3><div class="theme">Next. Cut signup friction for the developer audience.</div></div>
-          <span class="ms-axis mx-depth">Growth · Individual / Team</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Auth layer migration</b> — move to a modern, hardened auth stack (SSO-ready, audit-logged), the foundation enterprise security review will require</li>
-              <li><b>GitHub sign-up / OAuth</b> — one-click signup for the developer persona who already lives in GitHub; removes the password-form drop-off</li>
-              <li>Groundwork for SSO / SAML used later by the Enterprise tier</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">GitHub sign-up is the <b>lowest-friction door</b> for developers — the exact audience the OSS logger and SDK bring in. The auth migration also unblocks the <b>enterprise security review</b> that M8 (enterprise recovery) depends on.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Reduces signup drop-off now and de-risks enterprise procurement later — a foundation investment, not just a convenience.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> signup completion %</span><span class="ms-metric"><b>KPI</b> GitHub-auth share</span><span class="ms-metric"><b>KPI</b> SSO-readiness</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M3 AGGREGATORS -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m2">M5</span>
-          <div class="ms-title"><h3>Aggregator coverage</h3><div class="theme">Close the gap on the API axis — where the meat already is.</div></div>
-          <span class="ms-axis mx-cov">Usage · API · Team</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Aggregator key ingest</b> — OpenRouter, Together, Fireworks via read-only key</li>
-              <li><b>Aggregator-margin detection</b> — the premium paid vs. going direct, a leak only this tier has</li>
-              <li>Routing analysis — fallback-route cost spikes, needlessly expensive model selection</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">A large and growing share of API spend now flows through aggregators. Today this is <b>uncovered</b> — closing it extends the core audit+refund engine to where the money increasingly routes.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Surfaces a leak category — aggregator margin — that no direct-API tool can see.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> aggregator spend connected</span><span class="ms-metric"><b>KPI</b> margin $ surfaced</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M4 SDK EXPANSION -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m3">M6</span>
-          <div class="ms-title"><h3>Expand the SDK</h3><div class="theme">Meet engineers in their language — remove the integration barrier.</div></div>
-          <span class="ms-axis mx-depth">Usage · API · all personas</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>TypeScript / JS SDK</b> — covers the largest slice of production AI app developers</li>
-              <li><b>Public PyPI registry</b> — <code>pip install tokenid</code> with frictionless distribution, not a private index</li>
-              <li>Consistent instrumentation API across languages feeding the same audit engine</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">The audit is only as wide as the SDK reaches. Python alone misses most of the TS/JS app ecosystem; public PyPI removes the install friction that throttles self-serve adoption.</div></div>
-            <div class="valbox"><div class="vk">Growth</div><div class="vv">Lowers time-to-first-audit — the top of the entire funnel feeding every persona above.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> installs / week</span><span class="ms-metric"><b>KPI</b> languages live</span><span class="ms-metric"><b>KPI</b> time-to-first-audit</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M5 IN-PRODUCT REFUNDS -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m5">M7</span>
-          <div class="ms-title"><h3>In-product refund flow</h3><div class="theme">Make recovery one click away — findings become claimed dollars.</div></div>
-          <span class="ms-axis mx-plat">Persona · all · API</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>In-product refund flow</b> — auto-drafted provider claim packets with dollar figures, submitted from the app</li>
-              <li><b>Per-vector leakage breakdown</b> and recovered-dollar tracking over time</li>
-              <li>Claim status &amp; follow-up — from "leak found" to "credit received" in one place</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Recovery only converts if it's <b>effortless</b>. One-click refund packets turn findings into claimed dollars without manual paperwork — the proof point that justifies the success fee.</div></div>
-            <div class="valbox"><div class="vk">Commercial</div><div class="vv">Shortens the path from "leak found" to "money back" — the moment the product pays for itself.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> findings→claims submitted %</span><span class="ms-metric"><b>KPI</b> claim success rate</span><span class="ms-metric"><b>KPI</b> time-to-credit</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M6 ENTERPRISE + EXPANSION -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m4">M8</span>
-          <div class="ms-title"><h3>Enterprise recovery &amp; expansion</h3><div class="theme">The large dollars, then new surfaces off the same engine.</div></div>
-          <span class="ms-axis mx-plat">Persona · Enterprise</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Enterprise recovery</b> — contract + SLA-breach monitoring, legal-grade evidence bundle, credit-formula calculator (success-fee)</li>
-              <li><b>Cloud audit expansion</b> — AWS Bedrock + Google Vertex are <b>already live</b>; add <b>Azure OpenAI</b>, reserved-capacity validation, and deeper cloud-billing reconciliation</li>
-              <li><b>Unified spend view</b> — merge cloud audit and API/SDK audit into <b>one product surface</b>: a single leakage and recovery picture across direct, cloud, and aggregator spend</li>
-              <li><b>Platform bridge</b> — self-hosted GPU utilization; one audit engine across AI + cloud + compute</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Cloud audit already works — the win here is <b>convergence</b>: an enterprise running Bedrock, Vertex, and direct API sees <b>one unified spend audit</b>, not three. That single-pane view is what finance actually buys.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Standard recovery is small (0.5–2%); large recovery (<b>$10k–$100k+</b>) lives here via SLA leverage. The unified surface + KloudID bridge expands TAM into the full cloud + compute spend.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> enterprise recovered $ (success fee)</span><span class="ms-metric"><b>KPI</b> unified-view adoption</span><span class="ms-metric"><b>KPI</b> multi-surface accounts</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M7 CLAUDE COWORK -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m4">M9</span>
-          <div class="ms-title"><h3>Claude Cowork plugin — audit where finance works</h3><div class="theme">Meet the non-technical buyer in Anthropic's agentic desktop, and audit a new spend surface.</div></div>
-          <span class="ms-axis mx-plat">Distribution · Team / Enterprise</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>TokenID Cowork plugin</b> — published to the Cowork plugin marketplace, bundling our skills + connectors + slash commands (e.g. <code>/tokenid:audit</code>, <code>/tokenid:recover</code>)</li>
-              <li><b>Plain-language audits</b> — a finance/FinOps user runs "audit last month's AI spend and draft the refund claims" from the desktop, no SDK or CLI</li>
-              <li><b>Cowork-spend auditing</b> — Cowork is itself a new source of agentic token spend; we audit org-wide Cowork usage alongside API spend</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Reaches the <b>non-technical buyer</b> — the finance/ops persona who'll never touch an SDK — through a channel Anthropic is actively pushing. The plugin marketplace is <b>distribution we don't have to build</b>, landing us in front of enterprise teams already managing Cowork spend.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Agentic desktop work is a <b>new, growing spend surface</b> — auditing it early extends coverage before anyone else treats it as a billable axis.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> plugin installs</span><span class="ms-metric"><b>KPI</b> audits run via Cowork</span><span class="ms-metric"><b>KPI</b> non-technical buyer reach</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M8 PRICING RADAR -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m2">M10</span>
-          <div class="ms-title"><h3>Pricing-change radar</h3><div class="theme">Be first to every provider price change — automatically.</div></div>
-          <span class="ms-axis mx-depth">Standout · all personas</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Real-time pricing monitor</b> across every provider — rate cuts, new token types, caching/thinking tiers</li>
-              <li><b>Auto re-audit trigger</b> — the moment a card changes, every affected customer is flagged and re-run against the new pricing</li>
-              <li>Proactive alert: "Provider X cut Y by Z% — you're owed a re-rate / you should switch"</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">Only an <b>independent layer watching all providers at once</b> can do this. A single-customer tool never sees the pattern; a provider won't tell you its new price disadvantaged you. Turns the constantly-changing meter from a threat into our recurring trigger.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Makes the audit <b>continuous</b> rather than periodic — a reason to stay subscribed between findings.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> price changes detected → re-audits</span><span class="ms-metric"><b>KPI</b> $ recovered from rate changes</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M9 BENCHMARK INDEX -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m4">M11</span>
-          <div class="ms-title"><h3>Industry benchmark index</h3><div class="theme">Become the published reference for AI spend efficiency.</div></div>
-          <span class="ms-axis mx-plat">Standout · data asset</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Anonymized cross-account index</b> — leak rates, cache-hit norms, over-tiering and retry waste by workload type</li>
-              <li><b>In-product benchmarks</b> — "your cache hit rate is bottom-quartile for this workload"</li>
-              <li><b>Published "State of AI Spend" report</b> — the citable number, the way Flexera owns cloud-waste</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">A <b>marketing flywheel and a moat in one</b>: every customer enriches the index, the index drives inbound, and owning <em>the</em> number makes us the category's reference point. Built entirely on data competitors can't access.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Converts accumulated audit data into a standalone brand and demand-gen asset.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> accounts in index</span><span class="ms-metric"><b>KPI</b> report-driven inbound</span><span class="ms-metric"><b>KPI</b> benchmark citations</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M10 VERIFICATION MARK -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m6">M12</span>
-          <div class="ms-title"><h3>TokenID-verified mark</h3><div class="theme">Turn the audit methodology into a standard others display.</div></div>
-          <span class="ms-axis mx-plat">Standout · category ownership</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships</div>
-            <ul>
-              <li><b>Verification mark</b> — a "TokenID-verified bill" attestation a team can show finance, auditors, or a board</li>
-              <li><b>Public methodology</b> — the open audit format invoices can be checked against</li>
-              <li>API for third parties (FinOps tools, auditors) to verify against our standard</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it stands out</div><div class="vv">Productizes the attestation standard into something <b>customers and providers display</b> — the moment "TokenID-verified" means something, we've moved from a tool to the definition of correct. This is the gold-standard end-state made concrete.</div></div>
-            <div class="valbox"><div class="vk">Strategic</div><div class="vv">Owning the methodology before a standard is written owns the category — defensibility no feature can match.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>KPI</b> verified bills issued</span><span class="ms-metric"><b>KPI</b> third-party integrations of the standard</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- M11 FRONTIER -->
-      <div class="milestone">
-        <div class="ms-head">
-          <span class="ms-badge m5">M13</span>
-          <div class="ms-title"><h3>The chat frontier</h3><div class="theme">Research horizon — pursued, never promised before a data path exists.</div></div>
-          <span class="ms-axis mx-cov">Usage · Chat</span>
-        </div>
-        <div class="ms-body">
-          <div class="ms-col detail">
-            <div class="ms-label det">What ships (when proven)</div>
-            <ul>
-              <li><b>IDE BYOK detection</b> — route Cursor / Windsurf / Copilot bundled traffic through the customer's own key, collapsing chat into the auditable API tier</li>
-              <li><b>Enterprise admin-console probe</b> — test whether ChatGPT Enterprise / Claude Team expose seat-level usage exports</li>
-              <li><b>Seat right-sizing</b> — auditable from procurement even with zero token data</li>
-            </ul>
-          </div>
-          <div class="ms-col value">
-            <div class="ms-label val">Value created</div>
-            <div class="valbox hero"><div class="vk">Why it matters</div><div class="vv">Chat is the <b>largest unaddressed surface</b> and today has <b>no data path</b>. BYOK is the most credible lever to reach it.</div></div>
-            <div class="valbox"><div class="vk">Discipline</div><div class="vv">Stated as <b>research, not commitment</b> — gated on a proven data path. Seat right-sizing is the data-free fallback.</div></div>
-            <div class="ms-metrics"><span class="ms-metric"><b>GATE</b> proven data path before commit</span><span class="ms-metric"><b>KPI</b> BYOK seats made auditable</span></div>
-          </div>
-        </div>
-      </div>
-
+    <div class="qhead"><span class="qlabel now">Q2 2026 · NOW</span></div>
+    <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--orange),#ff7e52);color:#fff;border-radius:12px;padding:14px 20px;margin-bottom:14px;box-shadow:var(--shadow)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;background:rgba(255,255,255,.22);padding:5px 11px;border-radius:7px;flex-shrink:0">BUILT · JUL 6</span>
+      <span style="font-size:13.5px;font-weight:300"><b>BudgetRouter: lightweight demo June 17, built product July 6.</b> A working demo lands in the first two weeks; the full nine-module build delivers in 21 working days.</span>
     </div>
-  </div>
-</section>
-
-<!-- ============ ONGOING BETS ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">R3</span><h2>Ongoing bets — what we build in parallel</h2></div>
-    <p class="sec-sub">The milestones are discrete features. These are <b>continuous investments</b> that run across all of them — the work that converts a feature ladder into a defensible position. None of them "ship and stop"; they compound.</p>
-
-    <div class="ongoing">
-      <div class="obet">
-        <div class="ohead"><span class="oico">TEL</span><div><h4>Our own telemetry layer</h4><div class="orun">Continuous · foundational</div></div></div>
-        <p>Today we read provider usage APIs and local journals. Over time we build <b>first-party instrumentation</b> — our own SDK-level capture of every request, token type, and response — so we're not dependent on what a provider chooses to expose.</p>
-        <div class="owhy"><b>Why it compounds:</b> owning the measurement layer means we see signals providers don't surface (per-request billing match, error-billed calls, latency) and aren't blinded when a provider changes its API.</div>
-      </div>
-
-      <div class="obet">
-        <div class="ohead"><span class="oico">AGT</span><div><h4>Autonomous audit &amp; refund agents</h4><div class="orun">Continuous · automation</div></div></div>
-        <p>Recovery starts as drafted claim packets. The trajectory is <b>autonomous agents running in loops</b> (the Ralph-loop pattern — fresh-context iterations until the goal is met) that detect a leak, assemble the evidence, file the provider claim, and follow it to credit — with human review only above a threshold.</p>
-        <div class="owhy"><b>Why it compounds:</b> the same autonomous-loop technique we <em>guard against</em> for runaway customer spend is what <em>powers</em> our own audit agents — we both enforce loop safety and run loops safely. Every recovered case trains the agent on what wins.</div>
-      </div>
-
-      <div class="obet moat">
-        <div class="ohead"><span class="oico">RC</span><div><h4>Rate-card &amp; leak intelligence</h4><div class="orun">Continuous · the moat</div></div></div>
-        <p>A <b>versioned history of every provider's pricing</b> and a cross-account library of leak patterns. Every audit we run makes this sharper — benchmark bands, the 80/20 leak split, what "normal" looks like per workload.</p>
-        <div class="owhy"><b>Why it's the moat:</b> a competitor can copy a feature in a sprint; they cannot copy years of pricing history and cross-account leak data. This is the asset that gets harder to replicate the longer we run.</div>
-      </div>
-
-      <div class="obet moat">
-        <div class="ohead"><span class="oico">STD</span><div><h4>The attestation standard</h4><div class="orun">Continuous · category ownership</div></div></div>
-        <p>No third-party standard exists for verifying an AI bill. We build toward <b>owning the methodology</b> — the audit format finance teams cite, the "TokenID-verified" mark a provider's invoice can be checked against.</p>
-        <div class="owhy"><b>Why it compounds:</b> whoever defines how an AI bill is verified before a standard is written owns the seat at the table — and every audit run is a vote for our methodology becoming the default.</div>
-      </div>
-
-      <div class="obet">
-        <div class="ohead"><span class="oico">RAD</span><div><h4>Pricing-change radar</h4><div class="orun">Continuous · early-warning</div></div></div>
-        <p>The meter changes constantly — a rate cut, a new token type, a caching mode. We monitor every provider's pricing in real time and the moment something shifts, <b>every affected customer is auto-flagged and re-audited</b> against the new card.</p>
-        <div class="owhy"><b>Why it stands out:</b> only an independent layer watching all providers at once can do this — a single-customer tool never sees the pattern, and a provider won't warn you its price just disadvantaged you.</div>
-      </div>
-
-      <div class="obet moat">
-        <div class="ohead"><span class="oico">IDX</span><div><h4>Industry benchmark index</h4><div class="orun">Continuous · data asset</div></div></div>
-        <p>An anonymized, aggregate <b>"State of AI Spend Efficiency"</b> index — leak rates, cache-hit norms, over-tiering by workload type. The cross-account dataset becomes a published reference the way Flexera's cloud-waste report defined FinOps.</p>
-        <div class="owhy"><b>Why it compounds:</b> it's a marketing flywheel and a moat in one — every new customer enriches the index, the index drives inbound, and being <em>the</em> source of the number makes us the category's reference point.</div>
-      </div>
-
-      <div class="obet">
-        <div class="ohead"><span class="oico" style="background:var(--teal)">CLD</span><div><h4>Cloud + API convergence</h4><div class="orun">Continuous · unified surface</div></div></div>
-        <p>Cloud LLM audit (<b>AWS Bedrock + Google Vertex live today</b>) and API/SDK audit are separate lenses on the same spend. The ongoing effort is <b>merging them into one engine and one view</b> — and extending cloud depth (Azure, reserved-capacity, cross-region) as providers evolve.</p>
-        <div class="owhy"><b>Why it compounds:</b> enterprises don't think in "API vs cloud" — they think in total AI spend. Owning the <b>unified picture</b> across both is what a finance team can't get from any provider or single-surface tool, and it deepens every quarter as new cloud billing dimensions appear.</div>
-      </div>
-
-      <div class="obet">
-        <div class="ohead"><span class="oico">UX</span><div><h4>Continuous UI / product experience</h4><div class="orun">Continuous · always-on</div></div></div>
-        <p>The dashboard is never "done" — every new surface (cloud, aggregators, Cowork), every new rule, and every new leak type needs a coherent home. The UI evolves continuously so usage, effective rate, leakage, enforcement state, and recovery all read as <b>one legible picture</b>.</p>
-        <div class="owhy"><b>Why it's continuous:</b> a roadmap that keeps adding capabilities can't bolt each onto a static UI — legibility is what converts a finding into a claimed dollar, so the experience layer has to track the product, not lag it.</div>
-      </div>
+    <div class="mgrid">
+      <details class="mcard" open>
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 9–11</span></div>
+          <div class="mc-title">Gateway</div>
+          <div class="mc-desc">One-line setup to route AI traffic through us.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Works with OpenAI &amp; Anthropic — change the <code>base_url</code>, no rewrite</li><li>Keeps keys safe; passes requests and errors through</li><li>Gemini, Grok, Bedrock, Vertex next</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 9–11</span></div>
+          <div class="mc-title">Spend record</div>
+          <div class="mc-desc">Every request becomes a line item — who, which model, tokens, and cost — that you can reconcile against the provider bill.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Logs who made the call, which model, tokens in/out, and cost</li><li>Records the routing decision and the result of every request</li><li>Becomes the independent record you reconcile the provider bill against</li><li>The data layer every other BudgetRouter feature reads from — savings, rules, and the dashboard all run on it</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 10–15</span></div>
+          <div class="mc-title">Request sorter</div>
+          <div class="mc-desc">Reads each request to tell what job it's doing and how hard it is — so a cheaper model is used only when it's safe.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Tags each request by job type and how hard it is</li><li>Tells us when a cheaper model can safely handle it</li><li>If unsure, keeps the model you asked for — no blind downgrades</li><li>This is what makes smart routing safe — the difference between cutting cost and breaking output</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 11–16</span></div>
+          <div class="mc-title">Your rules</div>
+          <div class="mc-desc">You set budgets and routing rules; we follow them.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Budgets per request, project, team; allowed/blocked models</li><li>Limits on agent loops and repeat calls</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 12–17</span></div>
+          <div class="mc-title">Smart routing</div>
+          <div class="mc-desc">Pick the cheapest model that still does the job.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Safe to downgrade → cheaper model; over budget → downgrade or stop</li><li>Provider down → backup</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 12–18</span></div>
+          <div class="mc-title">Waste blockers</div>
+          <div class="mc-desc">Stop obvious money-wasting before it bills.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Cost limits, repeat catcher, runaway-loop stopper, budget guard</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 15–18</span></div>
+          <div class="mc-title">Savings counter</div>
+          <div class="mc-desc">Show the money saved, in dollars.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Adds up routing, blocking, and repeat-catch savings</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 15–22</span></div>
+          <div class="mc-title">Dashboard improvement</div>
+          <div class="mc-desc">A clearer spend view — spent vs saved at a glance.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>"Controlled $X, saved $Y"; spend by team and project</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Jun 17–24</span></div>
+          <div class="mc-title">Easy setup</div>
+          <div class="mc-desc">Start in minutes; you decide what we see.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Change the URL, use the SDK, or a local CLI tool</li><li>Watch → recommend → enforce</li><li>Usage-only or prompt-aware — your choice</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-when">Q2 2026</span></div>
+          <div class="mc-title">Team view</div>
+          <div class="mc-desc">The whole team's AI spend in one place. First paid plan.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Usage and spend by person and project</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Activation</span><span class="mc-when">Q2 2026</span></div>
+          <div class="mc-title">Onboarding emails</div>
+          <div class="mc-desc">Guide new users to their first recovered dollar.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Welcome, reminders, weekly summaries</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q2 2026</span></div>
+          <div class="mc-title">Spend rules</div>
+          <div class="mc-desc">Stop waste automatically, including runaway loops.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Downgrade over-priced calls, cap tokens, skip repeats</li></ul></div>
+      </details>
     </div>
 
-    <div class="ongoing-note">
-      <b>The pattern:</b> the milestones win customers; the ongoing bets make those wins <span class="teal">impossible to dislodge</span>. Telemetry removes provider dependency, agents scale recovery, the rate-card library and benchmark index compound with every audit, the pricing radar keeps us first to every change, the cloud+API and UX layers keep the whole surface coherent, and the standard turns a product into a category. <b>We're starting as an audit tool — these are how we become the infrastructure.</b>
+    <div class="qhead"><span class="qlabel">Q3 2026</span></div>
+    <div class="mgrid">
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q3 2026</span></div>
+          <div class="mc-title">Easy sign-in</div>
+          <div class="mc-desc">Quick signup, ready for bigger customers.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Sign in with GitHub; modern secure login</li><li><b>SSO</b> (SAML / Okta) for team and enterprise accounts</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q3 2026</span></div>
+          <div class="mc-title">More providers</div>
+          <div class="mc-desc">Cover the middlemen people route AI through.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Audit spend via OpenRouter, Together, and similar</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q3 2026</span></div>
+          <div class="mc-title">More languages</div>
+          <div class="mc-desc">Let more developers plug in.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>TypeScript version + public package</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Conversion</span><span class="mc-when">Q3 2026</span></div>
+          <div class="mc-title">One-click refunds</div>
+          <div class="mc-desc">Turn a finding into money back, no paperwork.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>We draft the claim; you send and track it</li></ul></div>
+      </details>
     </div>
-  </div>
-</section>
 
-<!-- ============ HORIZON / RISK FRAME ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">R4</span><h2>The honest boundary</h2></div>
-    <p class="sec-sub">What expansion can and cannot reach — stated plainly, because the roadmap's credibility depends on not overselling it.</p>
-
-    <div class="horizon">
-      <div class="horizon-tag">◆ Constraint, not a choice</div>
-      <h3>We can only find overspend where there's a per-use bill to check.</h3>
-      <p>On pay-per-token surfaces, we audit rate and leakage directly. On <strong>flat subscriptions there's nothing to leak against</strong> — so the value flips to right-sizing plans and seats. On <strong>self-hosted there's no token bill at all</strong> — it becomes a compute-utilization problem. And <strong>chat usage has no data path today</strong>. Each of these is addressed honestly in the milestones above rather than promised as token-level recovery.</p>
-
-      <div class="horizon-grid">
-        <div class="hcard">
-          <h4>Defensible moat</h4>
-          <p>The pricing surface gains a new billable dimension with every model and caching release. The audit's value compounds with that complexity.</p>
-          <p class="hverdict">→ widens with the market</p>
-        </div>
-        <div class="hcard">
-          <h4>Provider independence</h4>
-          <p>We audit spend <em>on</em> providers, not <em>for</em> them. No revenue dependency on any one — and customers won't trust a provider to audit its own bill.</p>
-          <p class="hverdict">→ structural neutrality</p>
-        </div>
-        <div class="hcard">
-          <h4>Platform optionality</h4>
-          <p>Shared plumbing with KloudID means the same engine extends into cloud and compute spend without rebuilding the core.</p>
-          <p class="hverdict">→ multi-product path</p>
-        </div>
-      </div>
+    <div class="qhead"><span class="qlabel">Q4 2026</span></div>
+    <div class="mgrid">
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q4 2026</span></div>
+          <div class="mc-title">Big-company recovery</div>
+          <div class="mc-desc">Go after large dollars; all spend in one view.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Recover against contracts and SLAs with evidence</li><li>Cloud + API in one picture; add Azure</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q4 2026</span></div>
+          <div class="mc-title">Works inside Cowork</div>
+          <div class="mc-desc">Reach the non-technical buyer where they work.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>A Claude Cowork plugin that audits spend there</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q4 2026</span></div>
+          <div class="mc-title">Auto refund agents</div>
+          <div class="mc-desc">Recover money on autopilot — grows the recovery side of the north star.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Agents find a leak, build the evidence, file the claim, track it to credit</li><li>Human review only above a set threshold</li><li>Turns recovery from manual work into a system that scales recovered $/mo</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q4 2026</span></div>
+          <div class="mc-title">All spend in one view</div>
+          <div class="mc-desc">Cloud + API + aggregator spend, one picture.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Merge cloud audit (Bedrock + Vertex, live) and API audit into one dashboard</li><li>Add Azure; one number for total AI spend</li></ul></div>
+      </details>
     </div>
-  </div>
-</section>
 
-<!-- ============ RISKS ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">R5</span><h2>Key risks &amp; how the roadmap mitigates them</h2></div>
-    <p class="sec-sub">The objections a diligent reader will raise — answered against the plan, not waved away.</p>
+    <div class="qhead"><span class="qlabel">Q1 2027</span></div>
+    <div class="mgrid">
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q1 2027</span></div>
+          <div class="mc-title">Always-on monitoring</div>
+          <div class="mc-desc">The recurring subscription — watch spend continuously.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Continuous auditing, not one-off checks</li><li>Turns one-time recovery into recurring monthly revenue — the tracking + control engine</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-when">Q1 2027</span></div>
+          <div class="mc-title">Price-change alerts</div>
+          <div class="mc-desc">Catch every provider price change instantly.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Watches pricing, re-checks your spend</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q1 2027</span></div>
+          <div class="mc-title">Spend benchmarks</div>
+          <div class="mc-desc">Show how a customer's costs compare to others.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Anonymized "you pay more than most" comparisons</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q1 2027</span></div>
+          <div class="mc-title">Verified badge</div>
+          <div class="mc-desc">Make the audit a stamp customers want.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>A trusted "spend verified" mark</li></ul></div>
+      </details>
+    </div>
 
-    <table class="risks">
-      <thead><tr><th>Risk</th><th>Mitigation in this roadmap</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="rk">A provider builds its own audit feature</td>
-          <td class="rm">Structural independence is the defense: customers won't trust a provider to audit its own bill, the same way a bank can't audit its own fees. We audit spend <b>on</b> providers, not for them — no single-provider revenue dependency (M8, §07).</td>
-        </tr>
-        <tr>
-          <td class="rk">Observability incumbents (Langfuse, Helicone) move into recovery</td>
-          <td class="rm">They're positioned as <b>distribution partners</b>, not competitors — their telemetry is our input layer. Recovery requires rate-card history + credit workflow + enforcement, a different product they'd have to become. We meet their users already instrumented (§05).</td>
-        </tr>
-        <tr>
-          <td class="rk">Model prices keep falling — does waste shrink?</td>
-          <td class="rm">Prices fell ~80% and spend still <b>doubled</b>, because adoption and complexity outrun price. Each new token type adds a billing axis; the leak surface grows with the meter. Our moat compounds with complexity (Force 02, §03).</td>
-        </tr>
-        <tr>
-          <td class="rk">Standard-tier recovery is small (0.5–2%)</td>
-          <td class="rm">Stated honestly and priced accordingly — standard tier is a "health check" wedge; the large dollars live in <b>enterprise SLA recovery</b> (M8) where success-fee pricing aligns to recovered dollars.</td>
-        </tr>
-        <tr>
-          <td class="rk">Chat usage has no data path</td>
-          <td class="rm">Kept out of committed scope as <b>research, gated on a proven data path</b> (M13). BYOK is the credible lever; seat right-sizing is the data-free fallback. We don't promise coverage we can't deliver.</td>
-        </tr>
-        <tr>
-          <td class="rk">Enforcement requires sitting in the request path</td>
-          <td class="rm">Proxy is <b>opt-in, one env var, ~20–80ms</b>, enabled only after trust is established via observe-first SDK/journal. The free→paid bridge is designed around exactly this adoption curve (M3).</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="qhead"><span class="qlabel">Q2 2027+</span></div>
+    <div class="mgrid">
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
+          <div class="mc-title">Multi-cloud + compute</div>
+          <div class="mc-desc">Audit total AI infra spend, not just tokens — the biggest dollar lever.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Extend beyond token bills into GPU / compute and reserved capacity</li><li>Bridges to KloudID (shared engine) so cloud and AI spend are audited together</li><li>Grows the recovered-dollar base far beyond per-token leakage</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Retention</span><span class="mc-tag feat-bc">Budget control</span><span class="mc-when">Q2 2027+</span></div>
+          <div class="mc-title">Auto-optimization mode</div>
+          <div class="mc-desc">BudgetRouter tunes routing on its own — controlled dollars grow hands-free.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Moves from "recommend" to continuously self-optimizing routing within your rules</li><li>Learns from what the audit found, so savings compound without manual tuning</li><li>Deepens the control side of the north star — spend managed hands-free</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
+          <div class="mc-title">Commit negotiation</div>
+          <div class="mc-desc">Use cross-account pricing data to negotiate better enterprise rates.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Know what every provider charges across accounts; negotiate rate commitments from data</li><li>Recovers dollars before they're spent — recurring, not one-off</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Expansion</span><span class="mc-when">Q2 2027+</span></div>
+          <div class="mc-title">Benchmark data API</div>
+          <div class="mc-desc">Sell the pricing + leak intelligence as a data product.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>Open the rate-card history and benchmark index as a paid API</li><li>Turns the moat data into a recurring revenue line beyond recovery fees</li></ul></div>
+      </details>
+      <details class="mcard">
+        <summary>
+          <div class="mc-top"><span class="mc-tag jrn">Acquisition</span><span class="mc-when">Q2 2027+</span></div>
+          <div class="mc-title">Chat tools (research)</div>
+          <div class="mc-desc">Audit ChatGPT / Claude.ai use — once data exists.</div>
+          <div class="mc-more"></div>
+        </summary>
+        <div class="mc-detail"><ul><li>No data path today; pursued only when one exists</li></ul></div>
+      </details>
+    </div>
   </div>
 </section>
 
 <!-- ============ VISION ============ -->
 <section>
   <div class="wrap">
-    <div class="vision">
-      <div class="vtag">◆ The end state</div>
-      <h3>From audit tool to the <em>gold standard</em><br>for AI spend.</h3>
-      <p class="vlede">We're starting where the value is provable — auditing API spend and recovering overcharges. But the destination is bigger: <b>the trusted, independent authority on what an AI bill should be.</b> When a finance team wants to verify AI spend, when a provider's invoice needs checking, when "is this charge correct?" gets asked — the answer runs through us.</p>
-      <div class="vsteps">
-        <div class="vstep">
-          <div class="vn">WHERE WE START</div>
-          <h5>The audit tool</h5>
-          <p>Catch leakage, recover overcharges, enforce guardrails. Prove the dollars, win the customers.</p>
-        </div>
-        <div class="vstep">
-          <div class="vn">WHERE WE'RE GOING</div>
-          <h5>The recovery infrastructure</h5>
-          <p>Own telemetry, autonomous refund agents, and the deepest cross-account leak intelligence in the market — recovery that scales and compounds.</p>
-        </div>
-        <div class="vstep">
-          <div class="vn">THE END STATE</div>
-          <h5>The gold standard</h5>
-          <p>The attestation methodology finance cites and providers are measured against. The category-defining authority on AI spend correctness.</p>
-        </div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Where this goes</h2></div>
+    <p class="qhint" style="margin-bottom:16px"><b>The north star:</b> become the gold standard for AI spend — audit, recovery, budget tracking, and control.</p>
+    <div class="pathrow">
+      <div class="pathstep">
+        <div class="pn">Today</div>
+        <h4>The audit tool</h4>
+        <p>Catch leaks, recover overcharges, stop waste. Prove the dollars, win the customers.</p>
+      </div>
+      <div class="patharrow">→</div>
+      <div class="pathstep">
+        <div class="pn">Next</div>
+        <h4>Budget tracking &amp; control</h4>
+        <p>Continuous monitoring and live routing put more spend under management every month — recovery, tracking, and control in one layer.</p>
+      </div>
+      <div class="patharrow">→</div>
+      <div class="pathstep final">
+        <div class="pn">End state</div>
+        <h4>The gold standard for AI spend</h4>
+        <p>The trusted authority on AI spend — audit, recovery, budget tracking, and control. When anyone asks "is this charge right, and is this spend under control?", the answer runs through us.</p>
       </div>
     </div>
   </div>
@@ -1295,29 +973,67 @@
 <!-- ============ CLOSER ============ -->
 <section>
   <div class="wrap">
-    <div class="closer">
-      <h3>The expansion in one line</h3>
-      <p><strong>Lead with the free open-source journal logger</strong> (M0) — the zero-friction hook that fills the funnel — and a <strong>communication &amp; lifecycle layer</strong> (M2) to move those installs to active, converting users. <strong>Build the Team view</strong> (M1) to create the paid tier, then <strong>solve enforcement</strong> (M3) — recurring recovery, headlined by Ralph-loop protection. Next, cut friction with <strong>auth migration + GitHub sign-up</strong> (M4), <strong>close the aggregator gap</strong> (M5), <strong>expand the SDK to TypeScript + public PyPI</strong> (M6), and ship the <strong>in-product refund flow</strong> (M7). <strong>Cloud audit (AWS Bedrock + Google Vertex) is already live</strong> — M8 converges it with API audit into one unified enterprise view, adds Azure, bridges to KloudID. <strong>Ship the Claude Cowork plugin</strong> (M9) for the non-technical buyer, then the category-defining bets — <strong>pricing radar (M10), benchmark index (M11), TokenID-verified mark (M12)</strong>. Chat (M13) stays the research frontier until a data path is proven.</p>
-      <p class="seq">free OSS logger → team view → comms layer → enforcement → auth + GitHub → aggregator coverage → SDK expansion → in-product refunds → enterprise + cloud convergence → Cowork plugin → pricing radar → benchmark index → verified mark → chat frontier</p>
-    </div>
-    <div style="margin-top:22px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Scope of this document</div>
-      <p style="font-size:13.5px;color:#3A3A40;font-weight:300;line-height:1.6;margin:0">This is the <b>product roadmap</b> — strategy, sequencing, prioritization, and the defensibility thesis. Three companion items live elsewhere in the data room and are referenced here only by the KPI slots they'll populate: <b>current traction</b> (recovered-dollar actuals, customer / design-partner logos), <b>team &amp; founders</b>, and the <b>GTM &amp; financial model</b>. Market figures on this page are public and cited; they are context for the opportunity, not company performance. The per-milestone KPIs are the metrics each milestone will be held to once live.</p>
-    </div>
-    <p style="font-size:11px;color:var(--muted);font-weight:300;margin-top:16px;line-height:1.6;font-family:'JetBrains Mono',monospace">Sources: Menlo Ventures 2025 LLM Market Update · Kong Enterprise AI Survey 2025 · Gartner GenAI forecast · Flexera State of the Cloud 2025–26 (27% cloud waste / ~$182B). Market figures are directional and cited for context, not company financials. Roadmap sequencing is directional, not a dated commitment.</p>
+    <p style="font-size:11px;color:var(--muted);font-weight:300;line-height:1.6;font-family:'JetBrains Mono',monospace">Sources: Menlo Ventures 2025 LLM Market Update · Kong Enterprise AI Survey 2025 · Gartner GenAI forecast · Flexera State of the Cloud 2025–26 (27% cloud waste / ~$182B). Dates are delivery targets, not commitments.</p>
   </div>
 </section>
 
-</div><!-- /tab-roadmap -->
+</div><!-- /roadmap -->
+
+</div><!-- /view-main -->
+
+<div class="tabview" id="view-bets">
+<div class="docflow">
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">●</span><h2>Ongoing bets</h2></div>
+    <p class="qhint" style="margin-bottom:16px">Continuous work that runs across every milestone — the things that turn features into a lasting moat. <span style="color:var(--orange);font-weight:600">Orange = the hardest to copy.</span></p>
+
+    <div class="end-grid">
+      <div class="endcard moat"><span class="tag">The moat</span><h4>Pricing &amp; leak intelligence</h4><p>A growing history of every provider's prices and a cross-account library of where money leaks. Every audit makes it sharper — a competitor can't copy years of data.</p></div>
+      <div class="endcard moat"><span class="tag">Category</span><h4>The verified standard</h4><p>The methodology finance teams cite to check an AI bill — the "verified" mark providers get measured against.</p></div>
+      <div class="endcard moat"><span class="tag">Data asset</span><h4>Industry benchmark index</h4><p>An anonymized "state of AI spend" index. Every customer enriches it; being the source drives inbound.</p></div>
+      <div class="endcard"><span class="tag">Foundational</span><h4>Our own telemetry</h4><p>First-party capture of every request, so we're not dependent on what a provider chooses to expose.</p></div>
+      <div class="endcard"><span class="tag">Early warning</span><h4>Price-change radar</h4><p>Watch every provider's prices; the moment one shifts, affected customers are auto-flagged and re-checked.</p></div>
+      <div class="endcard"><span class="tag">Always-on</span><h4>Product experience</h4><p>The dashboard keeps pace with every new surface and rule, so the whole picture stays easy to read.</p></div>
+    </div>
+
+    <div style="margin-top:26px;border-top:1px solid var(--line);padding-top:20px">
+      <h3 style="font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px">What we can't reach</h3>
+      <p class="qhint" style="margin-bottom:14px">Stated plainly — we only find overspend where there's a per-use bill to check.</p>
+      <div class="risk-grid">
+        <div class="riskcard"><div class="rc-q">Flat subscriptions</div><div class="rc-a">Nothing to leak against — value flips to right-sizing plans and seats.</div></div>
+        <div class="riskcard"><div class="rc-q">Self-hosted models</div><div class="rc-a">No token bill at all — it becomes a compute-utilization question.</div></div>
+        <div class="riskcard"><div class="rc-q">Chat (ChatGPT / Claude.ai)</div><div class="rc-a">No data path today — research only, not promised.</div></div>
+        <div class="riskcard"><div class="rc-q">Why it's still defensible</div><div class="rc-a">We audit <b>on</b> providers, not for them; the pricing surface gets more complex every release, so the audit's value grows with it.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;border-top:1px solid var(--line);padding-top:20px">
+      <h3 style="font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px">Risks we're watching</h3>
+      <div class="risk-grid">
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> A provider builds its own audit feature</div><div class="rc-a">Customers won't trust a provider to check its own bill — like a bank auditing its own fees. We audit <b>on</b> providers, not for them.</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Observability tools move into recovery</div><div class="rc-a">They're partners, not rivals — their data feeds us. Recovery needs pricing history, claims, and enforcement: a different product.</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Model prices keep falling — does waste shrink?</div><div class="rc-a">Prices fell ~80% and spend still <b>doubled</b>. Each new token type adds a billing axis — the leak surface grows with the meter.</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Is recovery alone a business?</div><div class="rc-a">No — it's the wedge. It wins the customer, then becomes monitoring (recurring) and spend control (the durable revenue).</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Standard recovery is small (0.5–2%)</div><div class="rc-a">It's the entry "health check." The large dollars are in enterprise SLA recovery, priced on what we recover.</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Chat usage has no data path</div><div class="rc-a">Kept as research, not promised. BYOK is the credible route; seat right-sizing the fallback.</div></div>
+        <div class="riskcard"><div class="rc-q"><span class="flag">⚑</span> Enforcement means sitting in the request path</div><div class="rc-a">Opt-in, one-line setup, ~20–80ms, only after trust is built by observing first.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+</div><!-- /view-bets -->
 
 <script>
-  document.querySelectorAll('.tab').forEach(function(btn){
+  document.querySelectorAll('.tabbtn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var id = btn.getAttribute('data-tab');
-      document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')});
-      document.querySelectorAll('.tabpanel').forEach(function(p){p.classList.remove('active')});
-      btn.classList.add('active');
-      document.getElementById('tab-'+id).classList.add('active');
+      var t = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.remove('on')});
+      document.querySelectorAll('.tabview').forEach(function(v){v.classList.remove('on')});
+      btn.classList.add('on');
+      document.getElementById('view-'+t).classList.add('on');
       window.scrollTo({top:0,behavior:'smooth'});
     });
   });
